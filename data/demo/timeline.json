@@ -1,0 +1,252 @@
+[
+  {
+    "id": "t1",
+    "date": "2026-02-28T10:00:00Z",
+    "title": "Sprint 1 planning kickoff",
+    "type": "conversation",
+    "description": "Full team sprint planning session. Defined initial backlog and sprint cadence.",
+    "stakeholderIds": ["s1", "s2", "s3", "s4"],
+    "linkedEntityId": "c1",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t2",
+    "date": "2026-03-02T09:00:00Z",
+    "title": "Team onboarding complete",
+    "type": "milestone",
+    "description": "All team members have access to repositories, environments, and communication channels.",
+    "stakeholderIds": ["s1", "s6"],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "t3",
+    "date": "2026-03-04T09:00:00Z",
+    "title": "Architecture decision on database",
+    "type": "decision",
+    "description": "Selected PostgreSQL over MongoDB based on query patterns and team expertise.",
+    "stakeholderIds": ["s1", "s3", "s6"],
+    "linkedEntityId": "c2",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t4",
+    "date": "2026-03-09T13:00:00Z",
+    "title": "Design review meeting",
+    "type": "conversation",
+    "description": "Reviewed onboarding flow mockups. Reduced from 5 screens to 3 with progressive disclosure.",
+    "stakeholderIds": ["s2", "s4", "s1"],
+    "linkedEntityId": "c3",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t5",
+    "date": "2026-03-09T15:00:00Z",
+    "title": "Onboarding designs approved",
+    "type": "decision",
+    "description": "3-screen onboarding flow approved with progressive disclosure approach.",
+    "stakeholderIds": ["s1", "s4"],
+    "linkedEntityId": "c3",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t6",
+    "date": "2026-03-12T10:00:00Z",
+    "title": "Infrastructure planning",
+    "type": "conversation",
+    "description": "Mapped out CI/CD pipeline and environment promotion strategy.",
+    "stakeholderIds": ["s6", "s3", "s1"],
+    "linkedEntityId": "c4",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t7",
+    "date": "2026-03-12T15:00:00Z",
+    "title": "Onboarding screens complete",
+    "type": "action",
+    "description": "James delivered final onboarding screen designs ahead of schedule.",
+    "stakeholderIds": ["s4"],
+    "linkedEntityId": "a4",
+    "linkedEntityType": "action"
+  },
+  {
+    "id": "t8",
+    "date": "2026-03-15T16:30:00Z",
+    "title": "CI/CD pipeline deployed",
+    "type": "milestone",
+    "description": "GitHub Actions pipeline live for dev, staging, and production environments with automated rollback.",
+    "stakeholderIds": ["s6"],
+    "linkedEntityId": "a3",
+    "linkedEntityType": "action"
+  },
+  {
+    "id": "t9",
+    "date": "2026-03-18T10:00:00Z",
+    "title": "Bug triage session",
+    "type": "conversation",
+    "description": "Reviewed 12 open bugs. Auth bugs prioritized P0, mobile layout P1.",
+    "stakeholderIds": ["s5", "s2", "s3"],
+    "linkedEntityId": "c5",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t10",
+    "date": "2026-03-20T11:00:00Z",
+    "title": "Design copy finalized",
+    "type": "action",
+    "description": "James completed onboarding copy — all text content reviewed and approved.",
+    "stakeholderIds": ["s4"],
+    "linkedEntityId": "a9",
+    "linkedEntityType": "action"
+  },
+  {
+    "id": "t11",
+    "date": "2026-03-21T09:00:00Z",
+    "title": "First beta user added",
+    "type": "milestone",
+    "description": "Lisa Nguyen onboarded as first external beta tester.",
+    "stakeholderIds": ["s7", "s1", "s5"],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "t12",
+    "date": "2026-03-22T14:00:00Z",
+    "title": "Scope negotiation",
+    "type": "conversation",
+    "description": "Adjusted beta scope. Deferred advanced reporting, team collaboration, and calendar integration to v1.1.",
+    "stakeholderIds": ["s1", "s4", "s7"],
+    "linkedEntityId": "c6",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t13",
+    "date": "2026-03-25T14:00:00Z",
+    "title": "Beta feedback form launched",
+    "type": "action",
+    "description": "Sarah created and distributed beta feedback form to all testers.",
+    "stakeholderIds": ["s5"],
+    "linkedEntityId": "a11",
+    "linkedEntityType": "action"
+  },
+  {
+    "id": "t14",
+    "date": "2026-03-25T17:00:00Z",
+    "title": "Security audit completed",
+    "type": "document",
+    "description": "External penetration test completed. No critical vulnerabilities found. Two medium-severity issues flagged.",
+    "stakeholderIds": ["s3", "s1"],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "t15",
+    "date": "2026-03-28T11:00:00Z",
+    "title": "Beta feedback debrief",
+    "type": "conversation",
+    "description": "Reviewed aggregated beta feedback. Positive onboarding ratings but mobile layout issues reported.",
+    "stakeholderIds": ["s1", "s7", "s8", "s5"],
+    "linkedEntityId": "c7",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t16",
+    "date": "2026-03-28T14:00:00Z",
+    "title": "Onboarding survey results",
+    "type": "document",
+    "description": "Survey results compiled: 8/10 beta users rated onboarding 4+ out of 5. Small sample size noted.",
+    "stakeholderIds": ["s5", "s4"],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "t17",
+    "date": "2026-03-29T10:00:00Z",
+    "title": "Scope boundary finalized",
+    "type": "decision",
+    "description": "v1 feature boundary formally documented. All beta feedback categorized as v1 must-have or v1.1 nice-to-have.",
+    "stakeholderIds": ["s1", "s4"],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "t18",
+    "date": "2026-03-30T08:00:00Z",
+    "title": "Auth bug discovered",
+    "type": "risk-change",
+    "description": "Critical auth flow bug identified: OAuth token refresh fails on non-standard error responses. Launch timeline risk escalated.",
+    "stakeholderIds": ["s3", "s5"],
+    "linkedEntityId": "r1",
+    "linkedEntityType": "risk"
+  },
+  {
+    "id": "t19",
+    "date": "2026-04-01T14:00:00Z",
+    "title": "Auth bug post-mortem",
+    "type": "conversation",
+    "description": "Root cause analysis of token refresh failure. 3 critical edge cases identified. Decision: no launch until resolved.",
+    "stakeholderIds": ["s3", "s2", "s6", "s5"],
+    "linkedEntityId": "c8",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t20",
+    "date": "2026-04-01T18:00:00Z",
+    "title": "Auth provider outage",
+    "type": "risk-change",
+    "description": "Third-party auth provider experienced outage. New risk logged for provider reliability. Fallback auth mechanism proposed.",
+    "stakeholderIds": ["s3", "s6"],
+    "linkedEntityId": "r3",
+    "linkedEntityType": "risk"
+  },
+  {
+    "id": "t21",
+    "date": "2026-04-02T16:00:00Z",
+    "title": "Load test baseline established",
+    "type": "document",
+    "description": "Initial load test results documented: API handles 500 concurrent users at p95 < 200ms. 1000-user test pending.",
+    "stakeholderIds": ["s6", "s3"],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "t22",
+    "date": "2026-04-03T09:00:00Z",
+    "title": "Database optimization started",
+    "type": "action",
+    "description": "Maria began index optimization work to improve query performance ahead of load testing.",
+    "stakeholderIds": ["s3"],
+    "linkedEntityId": "a14",
+    "linkedEntityType": "action"
+  },
+  {
+    "id": "t23",
+    "date": "2026-04-04T11:00:00Z",
+    "title": "Stakeholder update",
+    "type": "conversation",
+    "description": "Progress report: 4/15 actions complete, 3 blocked. Auth blockers may push launch by 1 week.",
+    "stakeholderIds": ["s1", "s5", "s6"],
+    "linkedEntityId": "c9",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t24",
+    "date": "2026-04-08T15:00:00Z",
+    "title": "Launch checklist review",
+    "type": "conversation",
+    "description": "Reviewed 15-item launch checklist. Auth flow and SSL certificates blocking. Launch date formally at risk.",
+    "stakeholderIds": ["s1", "s2", "s3", "s6", "s5"],
+    "linkedEntityId": "c10",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "t25",
+    "date": "2026-04-08T17:00:00Z",
+    "title": "Launch date at risk",
+    "type": "risk-change",
+    "description": "Launch date formally flagged as at-risk. Team to reassess on April 15 after auth blocker resolution attempt.",
+    "stakeholderIds": ["s1", "s3", "s6"],
+    "linkedEntityId": "r1",
+    "linkedEntityType": "risk"
+  }
+]

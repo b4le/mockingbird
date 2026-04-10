@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mockingbird
 
-## Getting Started
+A self-hosted project dashboard for tracking complex multi-stakeholder projects. Visualises project state, conversations, evidence, actions, and risks in a clean, mobile-first UI.
 
-First, run the development server:
+## Features
+
+- **Dashboard** — Project status, progress, summary metrics, recent activity, top risks
+- **Timeline** — Chronological event stream with filters by type and stakeholder
+- **Evidence Board** — Claims linked to supporting evidence with strength ratings
+- **Action Tracker** — Action items table with filters + risk register with mitigation plans
+- **Stakeholder Detail** — Click any avatar to see contact log, linked conversations, and assigned actions
+- **Multi-project** — Switch between projects via dropdown (each project is a folder of JSON files)
+- **Dark mode** — Theme toggle with light mode default
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Data Contract
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Each project lives in `data/{project-name}/` and contains 9 JSON files:
 
-## Learn More
+| File | Shape | Description |
+|------|-------|-------------|
+| `stakeholders.json` | `Stakeholder[]` | People involved, with contact logs |
+| `conversations.json` | `Conversation[]` | Meetings/discussions with key points and decisions |
+| `actions.json` | `ActionItem[]` | Tasks with status, priority, owner, due date |
+| `risks.json` | `Risk[]` | Risk register with severity, likelihood, mitigation |
+| `claims.json` | `Claim[]` | Assertions with evidence links and verification status |
+| `evidence.json` | `EvidenceItem[]` | Documents, metrics, and conversations supporting claims |
+| `timeline.json` | `TimelineEvent[]` | Chronological events across all entity types |
+| `state.json` | `ProjectState` | Project name, status, phase, progress, metrics |
+| `session.json` | `SessionMeta` | Last updated timestamp and metadata |
 
-To learn more about Next.js, take a look at the following resources:
+Full TypeScript interfaces are in `src/types/index.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding Your Own Project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a new folder under `data/` (e.g., `data/my-project/`)
+2. Add all 9 JSON files following the schemas in `src/types/index.ts`
+3. Rebuild — the project selector will pick it up automatically
 
-## Deploy on Vercel
+### Entity Cross-References
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Entities link to each other via string IDs:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `Conversation.participantIds` -> Stakeholder IDs
+- `ActionItem.ownerId` -> Stakeholder ID
+- `Claim.evidenceIds` -> EvidenceItem IDs
+- `Risk.actionIds` -> ActionItem IDs (mitigation actions)
+- `TimelineEvent.linkedEntityId` + `linkedEntityType` -> any entity
+
+See `plan-materials/entity-relationships.md` for full reference.
+
+## Stack
+
+- Next.js 16, React 19, TypeScript
+- Tailwind CSS v4 + shadcn/ui (zinc palette)
+- Static export — no server required
+- Deployed to GitHub Pages via GitHub Actions
+
+## Deployment
+
+Push to `main` triggers automatic deployment to GitHub Pages. Manual deploy via `workflow_dispatch`.
+
+For local preview of the static build:
+
+```bash
+npm run build
+npx serve out
+```
+
+## License
+
+MIT

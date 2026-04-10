@@ -1,0 +1,57 @@
+[
+  {
+    "id": "r1",
+    "title": "Launch timeline slip",
+    "status": "open",
+    "severity": "high",
+    "likelihood": "high",
+    "mitigation": "Daily standups to track blockers. Identify items that can be deferred to v1.1.",
+    "actionIds": ["a1", "a10"],
+    "createdDate": "2026-03-18T10:00:00Z",
+    "updatedDate": "2026-04-08T15:00:00Z"
+  },
+  {
+    "id": "r2",
+    "title": "API performance under load",
+    "status": "open",
+    "severity": "critical",
+    "likelihood": "medium",
+    "mitigation": "Conduct load testing before launch. Optimize database queries. Implement caching layer.",
+    "actionIds": ["a6", "a14"],
+    "createdDate": "2026-03-22T14:00:00Z",
+    "updatedDate": "2026-04-04T11:00:00Z"
+  },
+  {
+    "id": "r3",
+    "title": "Third-party auth provider reliability",
+    "status": "open",
+    "severity": "high",
+    "likelihood": "low",
+    "mitigation": "Implement fallback authentication method. Monitor provider status page. Set up alerting.",
+    "actionIds": ["a1"],
+    "createdDate": "2026-04-01T14:00:00Z",
+    "updatedDate": "2026-04-08T15:00:00Z"
+  },
+  {
+    "id": "r4",
+    "title": "Scope creep from beta feedback",
+    "status": "mitigated",
+    "severity": "medium",
+    "likelihood": "high",
+    "mitigation": "Established strict v1 feature boundary. Beta feedback categorized into v1 must-have vs v1.1 nice-to-have.",
+    "actionIds": ["a12"],
+    "createdDate": "2026-03-28T11:00:00Z",
+    "updatedDate": "2026-04-04T11:00:00Z"
+  },
+  {
+    "id": "r5",
+    "title": "Single point of failure on DevOps knowledge",
+    "status": "accepted",
+    "severity": "medium",
+    "likelihood": "medium",
+    "mitigation": "Tom to document all infrastructure procedures. Cross-train Maria on deployment process.",
+    "actionIds": ["a3", "a8"],
+    "createdDate": "2026-03-04T09:00:00Z",
+    "updatedDate": "2026-03-22T14:00:00Z"
+  }
+]

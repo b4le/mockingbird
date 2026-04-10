@@ -1,0 +1,14 @@
+{
+  "projectName": "Finch",
+  "status": "at-risk",
+  "statusMessage": "Two blockers on auth flow. Launch date may slip by 1 week.",
+  "lastUpdated": "2026-04-08T18:30:00Z",
+  "phase": "Phase 3: Beta Testing",
+  "phaseProgress": 65,
+  "metrics": [
+    { "label": "Actions Complete", "value": 4, "total": 15, "unit": "items" },
+    { "label": "Risks Open", "value": 3, "total": 5, "unit": "items" },
+    { "label": "Days to Launch", "value": 18, "total": null, "unit": "days" },
+    { "label": "Beta Users Active", "value": 2, "total": 2, "unit": "users" }
+  ]
+}

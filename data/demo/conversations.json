@@ -1,0 +1,180 @@
+[
+  {
+    "id": "c1",
+    "title": "Sprint 1 Planning",
+    "date": "2026-02-28T10:00:00Z",
+    "participantIds": ["s1", "s2", "s3", "s4"],
+    "keyPoints": [
+      "Defined initial sprint backlog with 8 stories",
+      "Agreed on 2-week sprint cadence",
+      "Alex and James to collaborate on onboarding flow first"
+    ],
+    "decisions": [
+      {
+        "summary": "Sprint cadence set to 2 weeks with standups on Mon/Wed/Fri",
+        "madeBy": "s1"
+      }
+    ],
+    "actionItemIds": ["a4", "a7"]
+  },
+  {
+    "id": "c2",
+    "title": "Architecture Decision: Database Choice",
+    "date": "2026-03-04T09:00:00Z",
+    "participantIds": ["s1", "s3", "s6"],
+    "keyPoints": [
+      "Evaluated Postgres vs MongoDB for primary data store",
+      "Maria presented benchmarks showing Postgres handles our query patterns better",
+      "Tom confirmed Postgres fits existing infrastructure tooling"
+    ],
+    "decisions": [
+      {
+        "summary": "Selected PostgreSQL as primary database — better fit for relational task data and existing team expertise",
+        "madeBy": "s3"
+      }
+    ],
+    "actionItemIds": ["a13", "a14"]
+  },
+  {
+    "id": "c3",
+    "title": "Design Review: Onboarding Flow",
+    "date": "2026-03-09T13:00:00Z",
+    "participantIds": ["s2", "s4", "s1"],
+    "keyPoints": [
+      "James presented 5-screen onboarding flow mockups",
+      "Ben requested reducing to 3 screens for faster time-to-value",
+      "Alex confirmed feasibility of progressive disclosure approach",
+      "Agreed to A/B test short vs long onboarding in beta"
+    ],
+    "decisions": [
+      {
+        "summary": "Approved 3-screen onboarding flow with progressive disclosure",
+        "madeBy": "s1"
+      }
+    ],
+    "actionItemIds": ["a4", "a9"]
+  },
+  {
+    "id": "c4",
+    "title": "Infrastructure Planning",
+    "date": "2026-03-12T10:00:00Z",
+    "participantIds": ["s6", "s3", "s1"],
+    "keyPoints": [
+      "Mapped out CI/CD pipeline: GitHub Actions to staging to production",
+      "Maria requested dedicated test database for integration tests",
+      "Defined environment promotion strategy: dev → staging → prod"
+    ],
+    "decisions": [
+      {
+        "summary": "GitHub Actions selected for CI/CD with automated staging deploys on merge to main",
+        "madeBy": "s6"
+      }
+    ],
+    "actionItemIds": ["a3", "a2", "a8"]
+  },
+  {
+    "id": "c5",
+    "title": "Bug Triage Session",
+    "date": "2026-03-18T10:00:00Z",
+    "participantIds": ["s5", "s2", "s3"],
+    "keyPoints": [
+      "Reviewed 12 open bugs from first week of internal testing",
+      "3 critical bugs in auth flow identified",
+      "Mobile responsive issues affecting onboarding and dashboard"
+    ],
+    "decisions": [
+      {
+        "summary": "Auth bugs prioritized as P0, mobile layout as P1",
+        "madeBy": "s5"
+      }
+    ],
+    "actionItemIds": ["a5", "a10"]
+  },
+  {
+    "id": "c6",
+    "title": "Scope Negotiation",
+    "date": "2026-03-22T14:00:00Z",
+    "participantIds": ["s1", "s4", "s7"],
+    "keyPoints": [
+      "Lisa shared beta user perspective on essential features",
+      "Agreed to defer advanced reporting to v1.1",
+      "Established strict v1 feature boundary to protect launch date"
+    ],
+    "decisions": [
+      {
+        "summary": "Advanced reporting, team collaboration, and calendar integration deferred to v1.1",
+        "madeBy": "s1"
+      },
+      {
+        "summary": "Beta feedback to be formally categorized as v1 must-have vs v1.1 nice-to-have",
+        "madeBy": "s1"
+      }
+    ],
+    "actionItemIds": ["a11", "a12"]
+  },
+  {
+    "id": "c7",
+    "title": "Beta Feedback Debrief",
+    "date": "2026-03-28T11:00:00Z",
+    "participantIds": ["s1", "s7", "s8", "s5"],
+    "keyPoints": [
+      "Both beta testers rated onboarding positively (4+ out of 5)",
+      "Mike reported mobile layout issues on Android devices",
+      "Lisa requested keyboard shortcuts for power users",
+      "Sarah presented aggregated survey results"
+    ],
+    "decisions": [],
+    "actionItemIds": ["a12"]
+  },
+  {
+    "id": "c8",
+    "title": "Auth Bug Post-Mortem",
+    "date": "2026-04-01T14:00:00Z",
+    "participantIds": ["s3", "s2", "s6", "s5"],
+    "keyPoints": [
+      "Root cause identified: OAuth token refresh fails when provider returns non-standard error format",
+      "3 critical edge cases in auth flow still failing in QA",
+      "Auth provider had 2 outages in March affecting our integration",
+      "Need fallback auth mechanism before launch"
+    ],
+    "decisions": [
+      {
+        "summary": "Auth flow fix is launch blocker — no launch until all 3 edge cases resolved",
+        "madeBy": "s3"
+      }
+    ],
+    "actionItemIds": ["a1", "a10"]
+  },
+  {
+    "id": "c9",
+    "title": "Stakeholder Update",
+    "date": "2026-04-04T11:00:00Z",
+    "participantIds": ["s1", "s5", "s6"],
+    "keyPoints": [
+      "4 of 15 actions complete, 5 in progress, 3 blocked",
+      "Auth blockers may push launch date by 1 week",
+      "Load testing not yet started — added to priority list"
+    ],
+    "decisions": [],
+    "actionItemIds": ["a6"]
+  },
+  {
+    "id": "c10",
+    "title": "Launch Checklist Review",
+    "date": "2026-04-08T15:00:00Z",
+    "participantIds": ["s1", "s2", "s3", "s6", "s5"],
+    "keyPoints": [
+      "Reviewed 15-item launch checklist",
+      "Auth flow and SSL certificates are blocking items",
+      "Load testing must complete before launch approval",
+      "Error monitoring setup still pending"
+    ],
+    "decisions": [
+      {
+        "summary": "Launch date formally at risk — team to reassess on April 15",
+        "madeBy": "s1"
+      }
+    ],
+    "actionItemIds": ["a1", "a6", "a15"]
+  }
+]

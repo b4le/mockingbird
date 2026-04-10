@@ -1,0 +1,56 @@
+[
+  {
+    "id": "cl1",
+    "assertion": "Authentication flow is production-ready",
+    "category": "Technical Readiness",
+    "status": "contested",
+    "evidenceIds": ["e1", "e2", "e3"],
+    "raisedById": "s3",
+    "date": "2026-04-01T14:00:00Z"
+  },
+  {
+    "id": "cl2",
+    "assertion": "API can handle 1000 concurrent users",
+    "category": "Performance",
+    "status": "unverified",
+    "evidenceIds": ["e4", "e5"],
+    "raisedById": "s3",
+    "date": "2026-03-22T14:00:00Z"
+  },
+  {
+    "id": "cl3",
+    "assertion": "Onboarding flow reduces churn by 20%",
+    "category": "User Experience",
+    "status": "contested",
+    "evidenceIds": ["e6", "e7"],
+    "raisedById": "s4",
+    "date": "2026-03-28T11:00:00Z"
+  },
+  {
+    "id": "cl4",
+    "assertion": "CI/CD pipeline covers all environments",
+    "category": "Infrastructure",
+    "status": "supported",
+    "evidenceIds": ["e8"],
+    "raisedById": "s6",
+    "date": "2026-03-15T16:30:00Z"
+  },
+  {
+    "id": "cl5",
+    "assertion": "Mobile layout works on all target devices",
+    "category": "Compatibility",
+    "status": "unverified",
+    "evidenceIds": ["e9"],
+    "raisedById": "s2",
+    "date": "2026-04-04T11:00:00Z"
+  },
+  {
+    "id": "cl6",
+    "assertion": "Third-party auth SLA meets our needs",
+    "category": "Vendor Risk",
+    "status": "contested",
+    "evidenceIds": ["e10", "e2"],
+    "raisedById": "s1",
+    "date": "2026-04-01T14:00:00Z"
+  }
+]
