@@ -9,27 +9,37 @@ const cardLinks: Record<string, string> = {
   "Beta Users Active": "/timeline",
 };
 
-export function SummaryCards({ metrics }: { metrics: ProjectState["metrics"] }) {
+export function SummaryCards({
+  metrics,
+  project,
+}: {
+  metrics: ProjectState["metrics"];
+  project: string;
+}) {
   return (
     <div className="grid grid-cols-2 gap-3">
-      {metrics.map((m) => (
-        <Link key={m.label} href={cardLinks[m.label] ?? "/"}>
-          <Card className="transition-colors hover:bg-accent/50">
-            <CardContent className="p-4">
-              <p className="text-xs text-muted-foreground">{m.label}</p>
-              <p className="mt-1 text-2xl font-bold">
-                {m.value}
-                {m.total !== null && (
-                  <span className="text-base font-normal text-muted-foreground">
-                    /{m.total}
-                  </span>
-                )}
-              </p>
-              <p className="text-xs text-muted-foreground">{m.unit}</p>
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
+      {metrics.map((m) => {
+        const basePath = cardLinks[m.label] ?? "/";
+        const href = basePath === "/" ? `/${project}` : `/${project}${basePath}`;
+        return (
+          <Link key={m.label} href={href}>
+            <Card className="transition-colors hover:bg-accent/50">
+              <CardContent className="p-4">
+                <p className="text-xs text-muted-foreground">{m.label}</p>
+                <p className="mt-1 text-2xl font-bold">
+                  {m.value}
+                  {m.total !== null && (
+                    <span className="text-base font-normal text-muted-foreground">
+                      /{m.total}
+                    </span>
+                  )}
+                </p>
+                <p className="text-xs text-muted-foreground">{m.unit}</p>
+              </CardContent>
+            </Card>
+          </Link>
+        );
+      })}
     </div>
   );
 }

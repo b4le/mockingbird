@@ -5,7 +5,7 @@ import { EmptyState } from "@/components/shared/EmptyState";
 import { PRIORITY_ORDER } from "@/lib/constants";
 import type { Risk } from "@/types";
 
-export function RiskSummary({ risks }: { risks: Risk[] }) {
+export function RiskSummary({ risks, project }: { risks: Risk[]; project: string }) {
   const openRisks = risks
     .filter((r) => r.status === "open")
     .sort((a, b) => {
@@ -19,7 +19,7 @@ export function RiskSummary({ risks }: { risks: Risk[] }) {
         <div className="flex items-center justify-between">
           <CardTitle className="text-base">Top Risks</CardTitle>
           <Link
-            href="/actions"
+            href={`/${project}/actions`}
             className="text-sm text-muted-foreground hover:text-foreground"
           >
             View all &rarr;

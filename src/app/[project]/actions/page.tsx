@@ -1,9 +1,12 @@
 import { getActions, getRisks, getStakeholders, getConversations, getClaims } from "@/lib/data";
-import { getDefaultProject } from "@/lib/projects";
 import { ActionsPageClient } from "@/components/actions/ActionsPageClient";
 
-export default async function ActionsPage() {
-  const project = getDefaultProject();
+export default async function ActionsPage({
+  params,
+}: {
+  params: Promise<{ project: string }>;
+}) {
+  const { project } = await params;
   const [actions, risks, stakeholders, conversations, claims] = await Promise.all([
     getActions(project),
     getRisks(project),

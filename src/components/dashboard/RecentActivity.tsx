@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { parseDate } from "@/lib/dates";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
@@ -16,6 +17,8 @@ interface RecentActivityProps {
 }
 
 export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
+  const params = useParams();
+  const project = params.project as string;
   const stakeholderMap = useMemo(() => buildStakeholderMap(stakeholders), [stakeholders]);
   const recent = [...events]
     .sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
@@ -27,7 +30,7 @@ export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
         <div className="flex items-center justify-between">
           <CardTitle className="text-base">Recent Activity</CardTitle>
           <Link
-            href="/timeline"
+            href={`/${project}/timeline`}
             className="text-sm text-muted-foreground hover:text-foreground"
           >
             View all &rarr;

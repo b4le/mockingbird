@@ -1,9 +1,12 @@
 import { getTimeline, getStakeholders, getConversations, getActions, getClaims } from "@/lib/data";
-import { getDefaultProject } from "@/lib/projects";
 import { TimelinePageClient } from "@/components/timeline/TimelinePageClient";
 
-export default async function TimelinePage() {
-  const project = getDefaultProject();
+export default async function TimelinePage({
+  params,
+}: {
+  params: Promise<{ project: string }>;
+}) {
+  const { project } = await params;
   const [timeline, stakeholders, conversations, actions, claims] = await Promise.all([
     getTimeline(project),
     getStakeholders(project),
