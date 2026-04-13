@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LogoLink } from "./LogoLink";
 import { NavLink } from "./NavLink";
 import { ProjectSelector } from "./ProjectSelector";
 import { ThemeToggle } from "./ThemeToggle";
@@ -14,9 +14,7 @@ export function NavBar({ projects }: { projects: string[] }) {
   return (
     <header className="sticky top-0 z-40 hidden border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:block">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          mockingbird
-        </Link>
+        <LogoLink />
         <ProjectSelector projects={projects} />
         <nav aria-label="Main navigation" className="flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
