@@ -12,7 +12,12 @@ interface NavLinkProps {
 export function NavLink({ href, label }: NavLinkProps) {
   const pathname = usePathname();
   const params = useParams();
-  const project = (params.project as string | undefined) ?? "";
+  const project = params.project as string | undefined;
+
+  // When there's no project context (e.g. the root redirect page),
+  // avoid constructing broken paths like "//timeline".
+  if (!project) return null;
+
   const fullHref = href === "/" ? `/${project}` : `/${project}${href}`;
   const isActive = pathname === fullHref;
 
