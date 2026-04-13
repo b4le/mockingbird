@@ -43,7 +43,7 @@ export function DateDisplay({ date }: { date: string }) {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <span className="text-sm text-muted-foreground">{formatAbsolute(date)}</span>;
+    return <span className="text-sm text-muted-foreground" suppressHydrationWarning>{formatAbsolute(date)}</span>;
   }
 
   return (
