@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   output: "export",
   images: { unoptimized: true },
   basePath: isGitHubPages ? "/mockingbird" : "",
-  assetPrefix: isGitHubPages ? "/mockingbird/" : "",
 };
 
 export default nextConfig;
