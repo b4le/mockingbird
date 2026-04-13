@@ -13,7 +13,7 @@ export function ProjectSelector({ projects }: { projects: string[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
-  const selected = (params.project as string) ?? projects[0] ?? "demo";
+  const selected = (params.project as string | undefined) ?? projects[0] ?? "demo";
 
   function handleSelect(project: string) {
     const segments = pathname.split("/");

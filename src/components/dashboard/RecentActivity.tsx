@@ -18,7 +18,7 @@ interface RecentActivityProps {
 
 export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
   const params = useParams();
-  const project = params.project as string;
+  const project = (params.project as string | undefined) ?? "";
   const stakeholderMap = useMemo(() => buildStakeholderMap(stakeholders), [stakeholders]);
   const recent = [...events]
     .sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())

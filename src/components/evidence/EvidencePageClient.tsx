@@ -44,14 +44,10 @@ export function EvidencePageClient({
     });
   }, []);
 
-  const handleSelectClaim = useCallback(
-    (claimId: string) => {
-      const nextClaim = selectedClaim === claimId ? null : claimId;
-      setSelectedClaim(nextClaim);
-      setExpandedEvidence(new Set());
-    },
-    [selectedClaim]
-  );
+  const handleSelectClaim = useCallback((claimId: string) => {
+    setSelectedClaim((prev) => (prev === claimId ? null : claimId));
+    setExpandedEvidence(new Set());
+  }, []);
 
   // On mobile (below md), scroll the evidence panel into view when a claim is selected
   useEffect(() => {
@@ -176,8 +172,17 @@ export function EvidencePageClient({
                   return (
                     <Card
                       key={ev.id}
+                      role="button"
+                      tabIndex={0}
+                      aria-expanded={isExpanded}
                       className="cursor-pointer transition-colors hover:bg-accent/50"
                       onClick={() => toggleEvidence(ev.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          toggleEvidence(ev.id);
+                        }
+                      }}
                     >
                       <CardContent className="p-4">
                         {/* Collapsed: title + strength badge + source */}
@@ -187,6 +192,7 @@ export function EvidencePageClient({
                               className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${
                                 isExpanded ? "rotate-0" : "-rotate-90"
                               }`}
+                              aria-hidden="true"
                             />
                             <p className="truncate text-sm font-medium">
                               {ev.title}

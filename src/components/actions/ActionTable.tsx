@@ -79,7 +79,7 @@ export function ActionTable({
             key={key}
             onClick={() => setSortKey(key)}
             aria-pressed={sortKey === key}
-            className={`rounded px-2 py-0.5 ${
+            className={`rounded px-2 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 ${
               sortKey === key
                 ? "bg-primary text-primary-foreground"
                 : "hover:bg-accent"

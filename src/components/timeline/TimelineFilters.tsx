@@ -48,11 +48,12 @@ export function TimelineFilters({
         size="sm"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-controls="timeline-filters"
         className="md:hidden"
       >
         {open ? "Hide Filters" : "Filters"}
       </Button>
-      <div className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
+      <div id="timeline-filters" className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
         <div>
           <p className="mb-1.5 text-xs font-medium text-muted-foreground">
             Event Type
@@ -60,6 +61,7 @@ export function TimelineFilters({
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by event type">
             {EVENT_TYPES.map((type) => (
               <button
+                className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
                 key={type}
                 type="button"
                 aria-pressed={selectedTypes.has(type)}
@@ -81,6 +83,7 @@ export function TimelineFilters({
           </p>
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by stakeholder">
             <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               type="button"
               aria-pressed={selectedStakeholder === null}
               onClick={() => onStakeholderChange(null)}
@@ -94,6 +97,7 @@ export function TimelineFilters({
             </button>
             {stakeholders.map((s) => (
               <button
+                className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
                 key={s.id}
                 type="button"
                 aria-pressed={selectedStakeholder === s.id}

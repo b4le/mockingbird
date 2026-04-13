@@ -35,17 +35,19 @@ export function EvidenceFilters({
         size="sm"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-controls="evidence-filters"
         className="md:hidden"
       >
         {open ? "Hide Filters" : "Filters"}
       </Button>
-      <div className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
+      <div id="evidence-filters" className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
         <div>
           <p className="mb-1.5 text-xs font-medium text-muted-foreground">
             Category
           </p>
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by category">
             <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               type="button"
               aria-pressed={selectedCategory === null}
               onClick={() => onCategoryChange(null)}
@@ -82,6 +84,7 @@ export function EvidenceFilters({
           </p>
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by claim status">
             <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               type="button"
               aria-pressed={selectedStatus === null}
               onClick={() => onStatusChange(null)}
@@ -118,6 +121,7 @@ export function EvidenceFilters({
           </p>
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by evidence strength">
             <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               type="button"
               aria-pressed={selectedStrength === null}
               onClick={() => onStrengthChange(null)}

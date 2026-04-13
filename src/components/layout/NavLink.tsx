@@ -12,7 +12,7 @@ interface NavLinkProps {
 export function NavLink({ href, label }: NavLinkProps) {
   const pathname = usePathname();
   const params = useParams();
-  const project = params.project as string;
+  const project = (params.project as string | undefined) ?? "";
   const fullHref = href === "/" ? `/${project}` : `/${project}${href}`;
   const isActive = pathname === fullHref;
 

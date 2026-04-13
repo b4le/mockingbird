@@ -70,7 +70,7 @@ export interface Claim {
   id: string;
   assertion: string;
   category: string;
-  status: 'supported' | 'contested' | 'unverified';
+  status: ClaimStatus;
   evidenceIds: string[];
   raisedById: string;
   date: string;
@@ -102,7 +102,7 @@ export interface TimelineEvent {
 
 export interface ProjectState {
   projectName: string;
-  status: 'on-track' | 'at-risk' | 'off-track' | 'paused' | 'completed';
+  status: ProjectStatus;
   statusMessage: string;
   lastUpdated: string;
   metrics: { label: string; value: number; total: number | null; unit: string }[];

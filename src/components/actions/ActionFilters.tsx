@@ -36,17 +36,19 @@ export function ActionFilters({
         size="sm"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-controls="action-filters"
         className="md:hidden"
       >
         {open ? "Hide Filters" : "Filters"}
       </Button>
-      <div className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
+      <div id="action-filters" className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
         <div>
           <p className="mb-1.5 text-xs font-medium text-muted-foreground">
             Status
           </p>
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by status">
             <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               type="button"
               aria-pressed={selectedStatus === null}
               onClick={() => onStatusChange(null)}
@@ -83,6 +85,7 @@ export function ActionFilters({
           </p>
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by priority">
             <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               type="button"
               aria-pressed={selectedPriority === null}
               onClick={() => onPriorityChange(null)}
@@ -119,6 +122,7 @@ export function ActionFilters({
           </p>
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by owner">
             <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               type="button"
               aria-pressed={selectedOwner === null}
               onClick={() => onOwnerChange(null)}
