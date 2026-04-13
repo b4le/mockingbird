@@ -53,8 +53,9 @@ export function MobileNav() {
           <Link
             key={item.href}
             href={item.href}
+            aria-current={pathname === item.href ? "page" : undefined}
             className={cn(
-              "flex min-w-[64px] flex-col items-center gap-0.5 px-2 py-1 text-xs transition-colors",
+              "flex min-w-[64px] flex-col items-center gap-0.5 px-4 py-2 text-xs transition-colors",
               pathname === item.href
                 ? "text-foreground"
                 : "text-muted-foreground"
@@ -62,6 +63,9 @@ export function MobileNav() {
           >
             {item.icon}
             <span>{item.label}</span>
+            {pathname === item.href && (
+              <span className="h-1 w-1 rounded-full bg-primary" aria-hidden="true" />
+            )}
           </Link>
         ))}
       </div>

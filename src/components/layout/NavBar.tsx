@@ -28,10 +28,11 @@ export function NavBar({ projects }: { projects: string[] }) {
             <Link
               key={item.href}
               href={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
               className={cn(
-                "rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
+                "rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
                 pathname === item.href
-                  ? "bg-accent text-accent-foreground"
+                  ? "bg-accent text-accent-foreground border-b-2 border-primary"
                   : "text-muted-foreground"
               )}
             >

@@ -7,16 +7,11 @@ import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { PriorityBadge } from "@/components/shared/PriorityBadge";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { PRIORITY_ORDER } from "@/lib/constants";
+import { EmptyState } from "@/components/shared/EmptyState";
 import type { ActionItem, ActionStatus, Priority, Stakeholder } from "@/types";
 
 type SortKey = "priority" | "dueDate" | "status";
-
-const priorityOrder: Record<Priority, number> = {
-  critical: 0,
-  high: 1,
-  medium: 2,
-  low: 3,
-};
 
 const statusOrder: Record<ActionStatus, number> = {
   blocked: 0,
@@ -60,7 +55,7 @@ export function ActionTable({
     return result.sort((a, b) => {
       switch (sortKey) {
         case "priority":
-          return priorityOrder[a.priority] - priorityOrder[b.priority];
+          return PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority];
         case "status":
           return statusOrder[a.status] - statusOrder[b.status];
         case "dueDate": {
@@ -219,9 +214,7 @@ export function ActionTable({
       </div>
 
       {filtered.length === 0 && (
-        <p className="py-8 text-center text-sm text-muted-foreground">
-          No actions match the current filters
-        </p>
+        <EmptyState message="No actions match the current filters" />
       )}
     </div>
   );

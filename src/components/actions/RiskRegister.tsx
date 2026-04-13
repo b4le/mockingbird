@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { PriorityBadge } from "@/components/shared/PriorityBadge";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { EmptyState } from "@/components/shared/EmptyState";
 import type { Risk, ActionItem } from "@/types";
 
 interface RiskRegisterProps {
@@ -51,6 +53,10 @@ export function RiskRegister({ risks, actions }: RiskRegisterProps) {
                     </span>
                   </div>
                 </div>
+                <ChevronDown
+                  className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
+                  aria-hidden="true"
+                />
               </div>
               {expanded && (
                 <div className="mt-3 space-y-3 border-t pt-3 text-sm">
@@ -89,9 +95,7 @@ export function RiskRegister({ risks, actions }: RiskRegisterProps) {
         );
       })}
       {risks.length === 0 && (
-        <p className="py-8 text-center text-sm text-muted-foreground">
-          No risks registered
-        </p>
+        <EmptyState message="No risks registered" />
       )}
     </div>
   );

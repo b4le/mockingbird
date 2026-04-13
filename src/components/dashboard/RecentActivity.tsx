@@ -4,16 +4,8 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { TIMELINE_TYPE_ICONS } from "@/lib/constants";
 import type { TimelineEvent, Stakeholder } from "@/types";
-
-const typeIcons: Record<string, string> = {
-  conversation: "💬",
-  decision: "⚖️",
-  milestone: "🎯",
-  document: "📄",
-  action: "✅",
-  "risk-change": "⚠️",
-};
 
 interface RecentActivityProps {
   events: TimelineEvent[];
@@ -43,7 +35,7 @@ export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
         {recent.map((event) => (
           <div key={event.id} className="flex items-start gap-3">
             <span className="mt-0.5 text-base" role="img" aria-label={event.type}>
-              {typeIcons[event.type] ?? "📌"}
+              {TIMELINE_TYPE_ICONS[event.type] ?? "📌"}
             </span>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium leading-tight">{event.title}</p>

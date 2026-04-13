@@ -1,6 +1,8 @@
 export type ActionStatus = 'todo' | 'in-progress' | 'blocked' | 'done';
 export type Priority = 'critical' | 'high' | 'medium' | 'low';
 export type RiskStatus = 'open' | 'mitigated' | 'accepted' | 'closed';
+export type ClaimStatus = 'supported' | 'contested' | 'unverified';
+export type ProjectStatus = 'on-track' | 'at-risk' | 'off-track' | 'paused' | 'completed';
 export type EvidenceStrength = 'strong' | 'moderate' | 'weak' | 'circumstantial';
 export type TimelineEventType = 'conversation' | 'decision' | 'milestone' | 'document' | 'action' | 'risk-change';
 export type ContactType = 'email' | 'call' | 'meeting' | 'chat' | 'other';

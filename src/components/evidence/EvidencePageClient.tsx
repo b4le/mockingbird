@@ -27,7 +27,10 @@ export function EvidencePageClient({
   const [selectedStrength, setSelectedStrength] = useState<string | null>(null);
 
   const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
-  const evidenceMap = new Map(evidence.map((e) => [e.id, e]));
+  const evidenceMap = useMemo(
+    () => new Map(evidence.map((e) => [e.id, e])),
+    [evidence]
+  );
   const categories = useMemo(
     () => [...new Set(claims.map((c) => c.category))].sort(),
     [claims]
