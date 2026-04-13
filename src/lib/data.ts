@@ -15,8 +15,15 @@ import type {
 
 async function loadJson<T>(project: string, file: string): Promise<T> {
   const filePath = path.join(process.cwd(), "data", project, file);
-  const raw = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(raw) as T;
+  try {
+    const raw = await fs.readFile(filePath, "utf-8");
+    return JSON.parse(raw) as T;
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : String(error);
+    console.error(`Failed to load ${filePath}: ${message}`);
+    throw new Error(`Failed to load data from ${filePath}: ${message}`);
+  }
 }
 
 export async function getStakeholders(
@@ -62,17 +69,7 @@ export async function getSession(project: string): Promise<SessionMeta> {
 }
 
 export async function getAllData(project: string) {
-  const [
-    stakeholders,
-    conversations,
-    actions,
-    risks,
-    claims,
-    evidence,
-    timeline,
-    projectState,
-    session,
-  ] = await Promise.all([
+  const results = await Promise.allSettled([
     getStakeholders(project),
     getConversations(project),
     getActions(project),
@@ -84,15 +81,35 @@ export async function getAllData(project: string) {
     getSession(project),
   ]);
 
+  function valueOrDefault<T>(
+    result: PromiseSettledResult<T>,
+    label: string,
+    fallback: T,
+  ): T {
+    if (result.status === "fulfilled") return result.value;
+    console.error(`Failed to load ${label}:`, result.reason);
+    return fallback;
+  }
+
+  function valueOrThrow<T>(
+    result: PromiseSettledResult<T>,
+    label: string,
+  ): T {
+    if (result.status === "fulfilled") return result.value;
+    throw new Error(
+      `Required data "${label}" failed to load: ${result.reason}`,
+    );
+  }
+
   return {
-    stakeholders,
-    conversations,
-    actions,
-    risks,
-    claims,
-    evidence,
-    timeline,
-    projectState,
-    session,
+    stakeholders: valueOrDefault(results[0], "stakeholders", []),
+    conversations: valueOrDefault(results[1], "conversations", []),
+    actions: valueOrDefault(results[2], "actions", []),
+    risks: valueOrDefault(results[3], "risks", []),
+    claims: valueOrDefault(results[4], "claims", []),
+    evidence: valueOrDefault(results[5], "evidence", []),
+    timeline: valueOrDefault(results[6], "timeline", []),
+    projectState: valueOrThrow(results[7], "projectState"),
+    session: valueOrThrow(results[8], "session"),
   };
 }
