@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { parseDate } from "@/lib/dates";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
@@ -15,7 +16,7 @@ interface RecentActivityProps {
 export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
   const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
   const recent = [...events]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
     .slice(0, 5);
 
   return (

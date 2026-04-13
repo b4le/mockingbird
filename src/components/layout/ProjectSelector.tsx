@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ChevronDown, Check } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,19 +33,7 @@ export function ProjectSelector({ projects }: { projects: string[] }) {
     <DropdownMenu>
       <DropdownMenuTrigger className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium capitalize hover:bg-accent hover:text-accent-foreground">
         {selected}
-        <svg
-          className="h-3.5 w-3.5 opacity-50"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        <ChevronDown className="h-3.5 w-3.5 opacity-50" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         {projects.map((p) => (
@@ -55,19 +44,7 @@ export function ProjectSelector({ projects }: { projects: string[] }) {
           >
             {p}
             {p === selected && (
-              <svg
-                className="ml-auto h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+              <Check className="ml-auto h-4 w-4" />
             )}
           </DropdownMenuItem>
         ))}
