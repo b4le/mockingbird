@@ -21,7 +21,7 @@ export function StatusBanner({ state }: { state: ProjectState }) {
             <span className="text-muted-foreground">{state.phase}</span>
             <span className="font-medium">{state.phaseProgress}%</span>
           </div>
-          <Progress value={state.phaseProgress} className="h-2" />
+          <Progress value={state.phaseProgress} className="h-2" aria-label={`${state.phase} progress: ${state.phaseProgress}%`} />
         </div>
       </CardContent>
     </Card>

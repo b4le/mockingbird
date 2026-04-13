@@ -34,6 +34,7 @@ export function EvidenceFilters({
         variant="outline"
         size="sm"
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
         className="md:hidden"
       >
         {open ? "Hide Filters" : "Filters"}

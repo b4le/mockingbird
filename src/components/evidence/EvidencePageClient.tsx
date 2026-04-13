@@ -226,7 +226,7 @@ export function EvidencePageClient({
                                 className="text-xs text-blue-600 hover:underline dark:text-blue-400"
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                View source &rarr;
+                                View source: {ev.title} &rarr;
                               </a>
                             )}
                           </div>
