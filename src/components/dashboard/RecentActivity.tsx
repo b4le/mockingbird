@@ -7,7 +7,7 @@ import { parseDate } from "@/lib/dates";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
-import { TIMELINE_TYPE_ICONS } from "@/lib/constants";
+import { TIMELINE_TYPE_ICONS, TIMELINE_TYPE_LABELS } from "@/lib/constants";
 import { buildStakeholderMap } from "@/lib/stakeholders";
 import type { TimelineEvent, Stakeholder } from "@/types";
 
@@ -40,7 +40,7 @@ export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
       <CardContent className="space-y-3">
         {recent.map((event) => (
           <div key={event.id} className="flex items-start gap-3">
-            <span className="mt-0.5 text-base" role="img" aria-label={event.type}>
+            <span className="mt-0.5 text-base" role="img" aria-label={TIMELINE_TYPE_LABELS[event.type] ?? event.type}>
               {TIMELINE_TYPE_ICONS[event.type] ?? "📌"}
             </span>
             <div className="min-w-0 flex-1">

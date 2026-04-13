@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { CONTACT_TYPE_LABELS } from "@/lib/constants";
 import { StatusBadge } from "./StatusBadge";
 import { DateDisplay } from "./DateDisplay";
 import type {
@@ -99,7 +100,7 @@ export function StakeholderDetailDialog({
                 .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .map((entry, i) => (
                   <div key={i} className="flex gap-2 text-sm">
-                    <span role="img" aria-label={entry.type}>{contactTypeIcons[entry.type] ?? "📌"}</span>
+                    <span role="img" aria-label={CONTACT_TYPE_LABELS[entry.type] ?? entry.type}>{contactTypeIcons[entry.type] ?? "📌"}</span>
                     <div className="min-w-0 flex-1">
                       <p>{entry.summary}</p>
                       <DateDisplay date={entry.date} />

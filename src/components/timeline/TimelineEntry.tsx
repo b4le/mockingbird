@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
-import { TIMELINE_TYPE_ICONS } from "@/lib/constants";
+import { TIMELINE_TYPE_ICONS, TIMELINE_TYPE_LABELS } from "@/lib/constants";
 import type { TimelineEvent, Stakeholder, Conversation } from "@/types";
 
 interface TimelineEntryProps {
@@ -29,7 +29,7 @@ export function TimelineEntry({
   return (
     <div className="flex gap-3">
       <div className="flex flex-col items-center">
-        <span className="mt-0.5 text-base" role="img" aria-label={event.type}>{TIMELINE_TYPE_ICONS[event.type] ?? "📌"}</span>
+        <span className="mt-0.5 text-base" role="img" aria-label={TIMELINE_TYPE_LABELS[event.type] ?? event.type}>{TIMELINE_TYPE_ICONS[event.type] ?? "📌"}</span>
         <div className="flex-1 w-px bg-border" />
       </div>
       <div className="min-w-0 flex-1 pb-6">
