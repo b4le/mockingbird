@@ -2,10 +2,11 @@
   {
     "id": "r1",
     "title": "Launch timeline slip",
+    "description": "Multiple blockers (auth bugs, SSL, load testing) risk pushing the launch date. 3 critical actions are blocked or not started.",
     "status": "open",
     "severity": "high",
     "likelihood": "high",
-    "mitigation": "Daily standups to track blockers. Identify items that can be deferred to v1.1.",
+    "mitigationPlan": "Daily standups to track blockers. Identify items that can be deferred to v1.1.",
     "actionIds": ["a1", "a10"],
     "createdDate": "2026-03-18T10:00:00Z",
     "updatedDate": "2026-04-08T15:00:00Z"
@@ -13,10 +14,11 @@
   {
     "id": "r2",
     "title": "API performance under load",
+    "description": "API endpoints have not been load tested. Database queries may be slow under production traffic volumes, especially with concurrent users.",
     "status": "open",
     "severity": "critical",
     "likelihood": "medium",
-    "mitigation": "Conduct load testing before launch. Optimize database queries. Implement caching layer.",
+    "mitigationPlan": "Conduct load testing before launch. Optimize database queries. Implement caching layer.",
     "actionIds": ["a6", "a14"],
     "createdDate": "2026-03-22T14:00:00Z",
     "updatedDate": "2026-04-04T11:00:00Z"
@@ -24,10 +26,11 @@
   {
     "id": "r3",
     "title": "Third-party auth provider reliability",
+    "description": "The OAuth provider had 2 outages in March and returns non-standard error formats for edge cases, affecting our integration reliability.",
     "status": "open",
     "severity": "high",
     "likelihood": "low",
-    "mitigation": "Implement fallback authentication method. Monitor provider status page. Set up alerting.",
+    "mitigationPlan": "Implement fallback authentication method. Monitor provider status page. Set up alerting.",
     "actionIds": ["a1"],
     "createdDate": "2026-04-01T14:00:00Z",
     "updatedDate": "2026-04-08T15:00:00Z"
@@ -35,10 +38,11 @@
   {
     "id": "r4",
     "title": "Scope creep from beta feedback",
+    "description": "Beta testers requested features (keyboard shortcuts, advanced reporting) that could expand scope beyond v1 boundaries if not managed.",
     "status": "mitigated",
     "severity": "medium",
     "likelihood": "high",
-    "mitigation": "Established strict v1 feature boundary. Beta feedback categorized into v1 must-have vs v1.1 nice-to-have.",
+    "mitigationPlan": "Established strict v1 feature boundary. Beta feedback categorized into v1 must-have vs v1.1 nice-to-have.",
     "actionIds": ["a12"],
     "createdDate": "2026-03-28T11:00:00Z",
     "updatedDate": "2026-04-04T11:00:00Z"
@@ -46,10 +50,11 @@
   {
     "id": "r5",
     "title": "Single point of failure on DevOps knowledge",
+    "description": "Tom is the only team member who understands the full infrastructure setup. If he's unavailable, deployments and infrastructure changes are blocked.",
     "status": "accepted",
     "severity": "medium",
     "likelihood": "medium",
-    "mitigation": "Tom to document all infrastructure procedures. Cross-train Maria on deployment process.",
+    "mitigationPlan": "Tom to document all infrastructure procedures. Cross-train Maria on deployment process.",
     "actionIds": ["a3", "a8"],
     "createdDate": "2026-03-04T09:00:00Z",
     "updatedDate": "2026-03-22T14:00:00Z"
