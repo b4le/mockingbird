@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { CONTACT_TYPE_LABELS } from "@/lib/constants";
+import { StatusBadge } from "./StatusBadge";
 import { DateDisplay } from "./DateDisplay";
 import type {
   Stakeholder,
@@ -98,7 +100,7 @@ export function StakeholderDetailDialog({
                 .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .map((entry, i) => (
                   <div key={i} className="flex gap-2 text-sm">
-                    <span>{contactTypeIcons[entry.type] ?? "📌"}</span>
+                    <span role="img" aria-label={CONTACT_TYPE_LABELS[entry.type] ?? entry.type}>{contactTypeIcons[entry.type] ?? "📌"}</span>
                     <div className="min-w-0 flex-1">
                       <p>{entry.summary}</p>
                       <DateDisplay date={entry.date} />
@@ -140,20 +142,7 @@ export function StakeholderDetailDialog({
               <div className="space-y-1.5">
                 {assignedActions.map((a) => (
                   <div key={a.id} className="flex items-center gap-2 text-sm">
-                    <Badge
-                      variant="outline"
-                      className={`border-0 text-xs ${
-                        a.status === "done"
-                          ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
-                          : a.status === "blocked"
-                            ? "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"
-                            : a.status === "in-progress"
-                              ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400"
-                              : "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
-                      }`}
-                    >
-                      {a.status}
-                    </Badge>
+                    <StatusBadge type="action" status={a.status} />
                     <span>{a.title}</span>
                   </div>
                 ))}

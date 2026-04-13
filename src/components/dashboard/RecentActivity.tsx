@@ -1,19 +1,15 @@
 "use client";
 
+import { useMemo } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { parseDate } from "@/lib/dates";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { TIMELINE_TYPE_ICONS, TIMELINE_TYPE_LABELS } from "@/lib/constants";
+import { buildStakeholderMap } from "@/lib/stakeholders";
 import type { TimelineEvent, Stakeholder } from "@/types";
-
-const typeIcons: Record<string, string> = {
-  conversation: "💬",
-  decision: "⚖️",
-  milestone: "🎯",
-  document: "📄",
-  action: "✅",
-  "risk-change": "⚠️",
-};
 
 interface RecentActivityProps {
   events: TimelineEvent[];
@@ -21,9 +17,11 @@ interface RecentActivityProps {
 }
 
 export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
-  const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
+  const params = useParams();
+  const project = (params.project as string | undefined) ?? "";
+  const stakeholderMap = useMemo(() => buildStakeholderMap(stakeholders), [stakeholders]);
   const recent = [...events]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
     .slice(0, 5);
 
   return (
@@ -32,7 +30,7 @@ export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
         <div className="flex items-center justify-between">
           <CardTitle className="text-base">Recent Activity</CardTitle>
           <Link
-            href="/timeline"
+            href={`/${project}/timeline`}
             className="text-sm text-muted-foreground hover:text-foreground"
           >
             View all &rarr;
@@ -42,8 +40,8 @@ export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
       <CardContent className="space-y-3">
         {recent.map((event) => (
           <div key={event.id} className="flex items-start gap-3">
-            <span className="mt-0.5 text-base">
-              {typeIcons[event.type] ?? "📌"}
+            <span className="mt-0.5 text-base" role="img" aria-label={TIMELINE_TYPE_LABELS[event.type] ?? event.type}>
+              {TIMELINE_TYPE_ICONS[event.type] ?? "📌"}
             </span>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium leading-tight">{event.title}</p>

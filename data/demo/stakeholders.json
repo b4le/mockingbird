@@ -3,36 +3,36 @@
     "id": "s1",
     "name": "Ben Purslow",
     "role": "Project Lead",
+    "organisation": "Finch App",
+    "initials": "BP",
+    "colour": "#3B82F6",
     "email": "ben.purslow@finchapp.dev",
-    "avatar": {
-      "initials": "BP",
-      "color": "#3B82F6"
-    },
+    "phone": "+44 7700 900001",
     "notes": "Overall project ownership. Manages scope, timeline, and stakeholder communication. Final decision-maker on launch readiness.",
     "contactLog": [
       {
         "date": "2026-02-28T10:00:00Z",
         "type": "meeting",
         "summary": "Sprint 1 planning kickoff with full team",
-        "conversationId": "c1"
+        "relatedConversationId": "c1"
       },
       {
         "date": "2026-03-22T14:00:00Z",
         "type": "call",
         "summary": "Scope negotiation call with James and Lisa to define beta boundaries",
-        "conversationId": "c6"
+        "relatedConversationId": "c6"
       },
       {
         "date": "2026-04-04T11:00:00Z",
         "type": "meeting",
         "summary": "Stakeholder update — reviewed progress and blockers with Sarah and Tom",
-        "conversationId": "c9"
+        "relatedConversationId": "c9"
       },
       {
         "date": "2026-04-08T15:00:00Z",
         "type": "meeting",
         "summary": "Launch checklist review with core team",
-        "conversationId": "c10"
+        "relatedConversationId": "c10"
       }
     ]
   },
@@ -40,30 +40,30 @@
     "id": "s2",
     "name": "Alex Chen",
     "role": "Frontend Dev",
+    "organisation": "Finch App",
+    "initials": "AC",
+    "colour": "#10B981",
     "email": "alex.chen@finchapp.dev",
-    "avatar": {
-      "initials": "AC",
-      "color": "#10B981"
-    },
+    "phone": "+44 7700 900002",
     "notes": "Leads frontend implementation. Focused on React dashboard and onboarding flow. Handling mobile responsive issues.",
     "contactLog": [
       {
         "date": "2026-02-28T10:00:00Z",
         "type": "meeting",
         "summary": "Sprint 1 planning — picked up dashboard and onboarding tickets",
-        "conversationId": "c1"
+        "relatedConversationId": "c1"
       },
       {
         "date": "2026-03-09T13:00:00Z",
         "type": "meeting",
         "summary": "Design review of onboarding screens with James",
-        "conversationId": "c3"
+        "relatedConversationId": "c3"
       },
       {
         "date": "2026-03-18T10:00:00Z",
         "type": "meeting",
         "summary": "Bug triage session — identified mobile layout regressions",
-        "conversationId": "c5"
+        "relatedConversationId": "c5"
       }
     ]
   },
@@ -71,36 +71,35 @@
     "id": "s3",
     "name": "Maria Santos",
     "role": "Backend Dev",
+    "organisation": "Finch App",
+    "initials": "MS",
+    "colour": "#8B5CF6",
     "email": "maria.santos@finchapp.dev",
-    "avatar": {
-      "initials": "MS",
-      "color": "#8B5CF6"
-    },
+    "phone": "+44 7700 900003",
     "notes": "Backend architecture and API development. Owns auth flow, database layer, and API documentation. Currently blocked on OAuth token refresh bug.",
     "contactLog": [
       {
         "date": "2026-03-04T09:00:00Z",
         "type": "meeting",
         "summary": "Architecture decision meeting — advocated for Postgres, team agreed",
-        "conversationId": "c2"
+        "relatedConversationId": "c2"
       },
       {
         "date": "2026-03-18T10:00:00Z",
         "type": "meeting",
         "summary": "Bug triage — flagged auth edge cases from QA",
-        "conversationId": "c5"
+        "relatedConversationId": "c5"
       },
       {
         "date": "2026-04-01T14:00:00Z",
         "type": "meeting",
         "summary": "Auth bug post-mortem — walked through token refresh failure root cause",
-        "conversationId": "c8"
+        "relatedConversationId": "c8"
       },
       {
         "date": "2026-04-03T16:00:00Z",
         "type": "chat",
-        "summary": "Slack thread with Tom about database index performance concerns",
-        "conversationId": null
+        "summary": "Slack thread with Tom about database index performance concerns"
       }
     ]
   },
@@ -108,30 +107,30 @@
     "id": "s4",
     "name": "James Wilson",
     "role": "Designer",
+    "organisation": "Finch App",
+    "initials": "JW",
+    "colour": "#F59E0B",
     "email": "james.wilson@finchapp.dev",
-    "avatar": {
-      "initials": "JW",
-      "color": "#F59E0B"
-    },
+    "phone": "+44 7700 900004",
     "notes": "UI/UX design lead. Completed onboarding flow design and copy. Contributed competitor analysis for onboarding benchmarking.",
     "contactLog": [
       {
         "date": "2026-02-28T10:00:00Z",
         "type": "meeting",
         "summary": "Sprint 1 planning — committed to onboarding design deliverables",
-        "conversationId": "c1"
+        "relatedConversationId": "c1"
       },
       {
         "date": "2026-03-09T13:00:00Z",
         "type": "meeting",
         "summary": "Design review — presented onboarding screens, received feedback",
-        "conversationId": "c3"
+        "relatedConversationId": "c3"
       },
       {
         "date": "2026-03-22T14:00:00Z",
         "type": "call",
         "summary": "Scope negotiation — discussed which design elements are v1 vs v1.1",
-        "conversationId": "c6"
+        "relatedConversationId": "c6"
       }
     ]
   },
@@ -139,36 +138,36 @@
     "id": "s5",
     "name": "Sarah Kim",
     "role": "QA Lead",
+    "organisation": "Finch App",
+    "initials": "SK",
+    "colour": "#EF4444",
     "email": "sarah.kim@finchapp.dev",
-    "avatar": {
-      "initials": "SK",
-      "color": "#EF4444"
-    },
+    "phone": "+44 7700 900005",
     "notes": "Quality assurance and testing strategy. Created beta feedback form. Leading auth flow test coverage and cross-browser testing.",
     "contactLog": [
       {
         "date": "2026-03-18T10:00:00Z",
         "type": "meeting",
         "summary": "Bug triage session — prioritized 12 open bugs by severity",
-        "conversationId": "c5"
+        "relatedConversationId": "c5"
       },
       {
         "date": "2026-03-28T11:00:00Z",
         "type": "meeting",
         "summary": "Beta feedback debrief — presented aggregated tester feedback",
-        "conversationId": "c7"
+        "relatedConversationId": "c7"
       },
       {
         "date": "2026-04-01T14:00:00Z",
         "type": "meeting",
         "summary": "Auth bug post-mortem — shared QA test results showing 3 critical failures",
-        "conversationId": "c8"
+        "relatedConversationId": "c8"
       },
       {
         "date": "2026-04-04T11:00:00Z",
         "type": "email",
         "summary": "Sent updated test coverage report to Ben ahead of stakeholder update",
-        "conversationId": "c9"
+        "relatedConversationId": "c9"
       }
     ]
   },
@@ -176,30 +175,30 @@
     "id": "s6",
     "name": "Tom Baker",
     "role": "DevOps",
+    "organisation": "Finch App",
+    "initials": "TB",
+    "colour": "#06B6D4",
     "email": "tom.baker@finchapp.dev",
-    "avatar": {
-      "initials": "TB",
-      "color": "#06B6D4"
-    },
+    "phone": "+44 7700 900006",
     "notes": "Infrastructure and deployment. Set up CI/CD pipeline. Handling SSL certificate configuration and error monitoring setup. Single point of failure risk identified.",
     "contactLog": [
       {
         "date": "2026-03-04T09:00:00Z",
         "type": "meeting",
         "summary": "Architecture decision — discussed infrastructure implications of Postgres choice",
-        "conversationId": "c2"
+        "relatedConversationId": "c2"
       },
       {
         "date": "2026-03-12T10:00:00Z",
         "type": "meeting",
         "summary": "Infrastructure planning — mapped out CI/CD pipeline and environment strategy",
-        "conversationId": "c4"
+        "relatedConversationId": "c4"
       },
       {
         "date": "2026-04-01T14:00:00Z",
         "type": "meeting",
         "summary": "Auth bug post-mortem — investigated deployment-related auth failures",
-        "conversationId": "c8"
+        "relatedConversationId": "c8"
       }
     ]
   },
@@ -207,24 +206,24 @@
     "id": "s7",
     "name": "Lisa Nguyen",
     "role": "Beta Tester",
+    "organisation": "External",
+    "initials": "LN",
+    "colour": "#EC4899",
     "email": "lisa.nguyen@finchapp.dev",
-    "avatar": {
-      "initials": "LN",
-      "color": "#EC4899"
-    },
+    "phone": "+44 7700 900007",
     "notes": "External beta tester. First user onboarded. Provided detailed feedback on onboarding flow and task management features.",
     "contactLog": [
       {
         "date": "2026-03-22T14:00:00Z",
         "type": "call",
         "summary": "Scope negotiation — shared beta user perspective on must-have features",
-        "conversationId": "c6"
+        "relatedConversationId": "c6"
       },
       {
         "date": "2026-03-28T11:00:00Z",
         "type": "meeting",
         "summary": "Beta feedback debrief — presented detailed usage notes and pain points",
-        "conversationId": "c7"
+        "relatedConversationId": "c7"
       }
     ]
   },
@@ -232,24 +231,23 @@
     "id": "s8",
     "name": "Mike Johnson",
     "role": "Beta Tester",
+    "organisation": "External",
+    "initials": "MJ",
+    "colour": "#F97316",
     "email": "mike.johnson@finchapp.dev",
-    "avatar": {
-      "initials": "MJ",
-      "color": "#F97316"
-    },
+    "phone": "+44 7700 900008",
     "notes": "External beta tester. Focused on mobile experience. Reported several responsive layout issues.",
     "contactLog": [
       {
         "date": "2026-03-28T11:00:00Z",
         "type": "meeting",
         "summary": "Beta feedback debrief — highlighted mobile layout issues and loading times",
-        "conversationId": "c7"
+        "relatedConversationId": "c7"
       },
       {
         "date": "2026-04-02T09:30:00Z",
         "type": "email",
-        "summary": "Sent follow-up email with screenshots of mobile rendering bugs on Android",
-        "conversationId": null
+        "summary": "Sent follow-up email with screenshots of mobile rendering bugs on Android"
       }
     ]
   }

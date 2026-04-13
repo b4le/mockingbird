@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PriorityBadge } from "@/components/shared/PriorityBadge";
+import { EmptyState } from "@/components/shared/EmptyState";
+import { PRIORITY_ORDER } from "@/lib/constants";
 import type { Risk } from "@/types";
 
-export function RiskSummary({ risks }: { risks: Risk[] }) {
+export function RiskSummary({ risks, project }: { risks: Risk[]; project: string }) {
   const openRisks = risks
     .filter((r) => r.status === "open")
     .sort((a, b) => {
-      const order = { critical: 0, high: 1, medium: 2, low: 3 };
-      return order[a.severity] - order[b.severity];
+      return PRIORITY_ORDER[a.severity] - PRIORITY_ORDER[b.severity];
     })
     .slice(0, 3);
 
@@ -18,7 +19,7 @@ export function RiskSummary({ risks }: { risks: Risk[] }) {
         <div className="flex items-center justify-between">
           <CardTitle className="text-base">Top Risks</CardTitle>
           <Link
-            href="/actions"
+            href={`/${project}/actions`}
             className="text-sm text-muted-foreground hover:text-foreground"
           >
             View all &rarr;
@@ -33,7 +34,7 @@ export function RiskSummary({ risks }: { risks: Risk[] }) {
           </div>
         ))}
         {openRisks.length === 0 && (
-          <p className="text-sm text-muted-foreground">No open risks</p>
+          <EmptyState message="No open risks" />
         )}
       </CardContent>
     </Card>

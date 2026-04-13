@@ -1,18 +1,21 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
-export function getProjects(): string[] {
+export async function getProjects(): Promise<string[]> {
   const dataDir = path.join(process.cwd(), "data");
-  if (!fs.existsSync(dataDir)) return [];
-  return fs
-    .readdirSync(dataDir, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) => d.name)
-    .sort();
+  try {
+    const entries = await fs.readdir(dataDir, { withFileTypes: true });
+    return entries
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name)
+      .sort();
+  } catch {
+    return [];
+  }
 }
 
-export function getDefaultProject(): string {
-  const projects = getProjects();
+export async function getDefaultProject(): Promise<string> {
+  const projects = await getProjects();
   if (projects.includes("demo")) return "demo";
   return projects[0] ?? "demo";
 }

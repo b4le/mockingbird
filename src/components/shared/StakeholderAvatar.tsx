@@ -27,7 +27,7 @@ export function StakeholderAvatar({
   return (
     <Tooltip>
       <TooltipTrigger
-        className={`${sizes[size]} inline-flex shrink-0 items-center justify-center rounded-full font-medium text-white ${onClick ? "cursor-pointer" : ""}`}
+        className={`${sizes[size]} relative inline-flex shrink-0 items-center justify-center rounded-full font-medium text-white before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-11 before:-translate-x-1/2 before:-translate-y-1/2 before:content-[''] ${onClick ? "cursor-pointer" : ""}`}
         style={{ backgroundColor: stakeholder.colour }}
         onClick={onClick}
       >

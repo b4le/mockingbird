@@ -15,8 +15,15 @@ import type {
 
 async function loadJson<T>(project: string, file: string): Promise<T> {
   const filePath = path.join(process.cwd(), "data", project, file);
-  const raw = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(raw) as T;
+  try {
+    const raw = await fs.readFile(filePath, "utf-8");
+    return JSON.parse(raw) as T;
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : String(error);
+    console.error(`Failed to load ${filePath}: ${message}`);
+    throw new Error(`Failed to load data from ${filePath}: ${message}`);
+  }
 }
 
 export async function getStakeholders(
@@ -59,40 +66,4 @@ export async function getProjectState(
 
 export async function getSession(project: string): Promise<SessionMeta> {
   return loadJson<SessionMeta>(project, "session.json");
-}
-
-export async function getAllData(project: string) {
-  const [
-    stakeholders,
-    conversations,
-    actions,
-    risks,
-    claims,
-    evidence,
-    timeline,
-    projectState,
-    session,
-  ] = await Promise.all([
-    getStakeholders(project),
-    getConversations(project),
-    getActions(project),
-    getRisks(project),
-    getClaims(project),
-    getEvidence(project),
-    getTimeline(project),
-    getProjectState(project),
-    getSession(project),
-  ]);
-
-  return {
-    stakeholders,
-    conversations,
-    actions,
-    risks,
-    claims,
-    evidence,
-    timeline,
-    projectState,
-    session,
-  };
 }

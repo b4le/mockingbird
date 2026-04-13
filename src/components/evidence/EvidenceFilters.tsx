@@ -34,34 +34,47 @@ export function EvidenceFilters({
         variant="outline"
         size="sm"
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls="evidence-filters"
         className="md:hidden"
       >
         {open ? "Hide Filters" : "Filters"}
       </Button>
-      <div className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
+      <div id="evidence-filters" className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
         <div>
           <p className="mb-1.5 text-xs font-medium text-muted-foreground">
             Category
           </p>
-          <div className="flex flex-wrap gap-1.5">
-            <Badge
-              variant={selectedCategory === null ? "default" : "outline"}
-              className="cursor-pointer"
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by category">
+            <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              type="button"
+              aria-pressed={selectedCategory === null}
               onClick={() => onCategoryChange(null)}
             >
-              All
-            </Badge>
-            {categories.map((cat) => (
               <Badge
+                variant={selectedCategory === null ? "default" : "outline"}
+                className="pointer-events-none"
+              >
+                All
+              </Badge>
+            </button>
+            {categories.map((cat) => (
+              <button
                 key={cat}
-                variant={selectedCategory === cat ? "default" : "outline"}
-                className="cursor-pointer"
+                type="button"
+                aria-pressed={selectedCategory === cat}
                 onClick={() =>
                   onCategoryChange(selectedCategory === cat ? null : cat)
                 }
               >
-                {cat}
-              </Badge>
+                <Badge
+                  variant={selectedCategory === cat ? "default" : "outline"}
+                  className="pointer-events-none"
+                >
+                  {cat}
+                </Badge>
+              </button>
             ))}
           </div>
         </div>
@@ -69,25 +82,36 @@ export function EvidenceFilters({
           <p className="mb-1.5 text-xs font-medium text-muted-foreground">
             Claim Status
           </p>
-          <div className="flex flex-wrap gap-1.5">
-            <Badge
-              variant={selectedStatus === null ? "default" : "outline"}
-              className="cursor-pointer"
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by claim status">
+            <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              type="button"
+              aria-pressed={selectedStatus === null}
               onClick={() => onStatusChange(null)}
             >
-              All
-            </Badge>
-            {STATUSES.map((s) => (
               <Badge
+                variant={selectedStatus === null ? "default" : "outline"}
+                className="pointer-events-none"
+              >
+                All
+              </Badge>
+            </button>
+            {STATUSES.map((s) => (
+              <button
                 key={s}
-                variant={selectedStatus === s ? "default" : "outline"}
-                className="cursor-pointer"
+                type="button"
+                aria-pressed={selectedStatus === s}
                 onClick={() =>
                   onStatusChange(selectedStatus === s ? null : s)
                 }
               >
-                {s}
-              </Badge>
+                <Badge
+                  variant={selectedStatus === s ? "default" : "outline"}
+                  className="pointer-events-none"
+                >
+                  {s}
+                </Badge>
+              </button>
             ))}
           </div>
         </div>
@@ -95,25 +119,36 @@ export function EvidenceFilters({
           <p className="mb-1.5 text-xs font-medium text-muted-foreground">
             Evidence Strength
           </p>
-          <div className="flex flex-wrap gap-1.5">
-            <Badge
-              variant={selectedStrength === null ? "default" : "outline"}
-              className="cursor-pointer"
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by evidence strength">
+            <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              type="button"
+              aria-pressed={selectedStrength === null}
               onClick={() => onStrengthChange(null)}
             >
-              All
-            </Badge>
-            {STRENGTHS.map((s) => (
               <Badge
+                variant={selectedStrength === null ? "default" : "outline"}
+                className="pointer-events-none"
+              >
+                All
+              </Badge>
+            </button>
+            {STRENGTHS.map((s) => (
+              <button
                 key={s}
-                variant={selectedStrength === s ? "default" : "outline"}
-                className="cursor-pointer"
+                type="button"
+                aria-pressed={selectedStrength === s}
                 onClick={() =>
                   onStrengthChange(selectedStrength === s ? null : s)
                 }
               >
-                {s}
-              </Badge>
+                <Badge
+                  variant={selectedStrength === s ? "default" : "outline"}
+                  className="pointer-events-none"
+                >
+                  {s}
+                </Badge>
+              </button>
             ))}
           </div>
         </div>

@@ -47,25 +47,33 @@ export function TimelineFilters({
         variant="outline"
         size="sm"
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls="timeline-filters"
         className="md:hidden"
       >
         {open ? "Hide Filters" : "Filters"}
       </Button>
-      <div className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
+      <div id="timeline-filters" className={`space-y-3 ${open ? "block" : "hidden md:block"}`}>
         <div>
           <p className="mb-1.5 text-xs font-medium text-muted-foreground">
             Event Type
           </p>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by event type">
             {EVENT_TYPES.map((type) => (
-              <Badge
+              <button
+                className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
                 key={type}
-                variant={selectedTypes.has(type) ? "default" : "outline"}
-                className="cursor-pointer"
+                type="button"
+                aria-pressed={selectedTypes.has(type)}
                 onClick={() => toggleType(type)}
               >
-                {type}
-              </Badge>
+                <Badge
+                  variant={selectedTypes.has(type) ? "default" : "outline"}
+                  className="pointer-events-none"
+                >
+                  {type}
+                </Badge>
+              </button>
             ))}
           </div>
         </div>
@@ -73,27 +81,39 @@ export function TimelineFilters({
           <p className="mb-1.5 text-xs font-medium text-muted-foreground">
             Stakeholder
           </p>
-          <div className="flex flex-wrap gap-1.5">
-            <Badge
-              variant={selectedStakeholder === null ? "default" : "outline"}
-              className="cursor-pointer"
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by stakeholder">
+            <button
+              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              type="button"
+              aria-pressed={selectedStakeholder === null}
               onClick={() => onStakeholderChange(null)}
             >
-              All
-            </Badge>
-            {stakeholders.map((s) => (
               <Badge
+                variant={selectedStakeholder === null ? "default" : "outline"}
+                className="pointer-events-none"
+              >
+                All
+              </Badge>
+            </button>
+            {stakeholders.map((s) => (
+              <button
+                className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
                 key={s.id}
-                variant={selectedStakeholder === s.id ? "default" : "outline"}
-                className="cursor-pointer"
+                type="button"
+                aria-pressed={selectedStakeholder === s.id}
                 onClick={() =>
                   onStakeholderChange(
                     selectedStakeholder === s.id ? null : s.id
                   )
                 }
               >
-                {s.name.split(" ")[0]}
-              </Badge>
+                <Badge
+                  variant={selectedStakeholder === s.id ? "default" : "outline"}
+                  className="pointer-events-none"
+                >
+                  {s.name.split(" ")[0]}
+                </Badge>
+              </button>
             ))}
           </div>
         </div>

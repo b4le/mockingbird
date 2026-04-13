@@ -7,16 +7,12 @@ import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { PriorityBadge } from "@/components/shared/PriorityBadge";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { PRIORITY_ORDER } from "@/lib/constants";
+import { EmptyState } from "@/components/shared/EmptyState";
+import { buildStakeholderMap } from "@/lib/stakeholders";
 import type { ActionItem, ActionStatus, Priority, Stakeholder } from "@/types";
 
 type SortKey = "priority" | "dueDate" | "status";
-
-const priorityOrder: Record<Priority, number> = {
-  critical: 0,
-  high: 1,
-  medium: 2,
-  low: 3,
-};
 
 const statusOrder: Record<ActionStatus, number> = {
   blocked: 0,
@@ -48,7 +44,7 @@ export function ActionTable({
   onStakeholderClick,
 }: ActionTableProps) {
   const [sortKey, setSortKey] = useState<SortKey>("priority");
-  const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
+  const stakeholderMap = useMemo(() => buildStakeholderMap(stakeholders), [stakeholders]);
 
   const filtered = useMemo(() => {
     let result = actions;
@@ -60,7 +56,7 @@ export function ActionTable({
     return result.sort((a, b) => {
       switch (sortKey) {
         case "priority":
-          return priorityOrder[a.priority] - priorityOrder[b.priority];
+          return PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority];
         case "status":
           return statusOrder[a.status] - statusOrder[b.status];
         case "dueDate": {
@@ -82,7 +78,8 @@ export function ActionTable({
           <button
             key={key}
             onClick={() => setSortKey(key)}
-            className={`rounded px-2 py-0.5 ${
+            aria-pressed={sortKey === key}
+            className={`rounded px-2 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 ${
               sortKey === key
                 ? "bg-primary text-primary-foreground"
                 : "hover:bg-accent"
@@ -98,12 +95,12 @@ export function ActionTable({
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b text-left text-xs text-muted-foreground">
-              <th className="pb-2 pr-3">Status</th>
-              <th className="pb-2 pr-3">Title</th>
-              <th className="pb-2 pr-3">Priority</th>
-              <th className="pb-2 pr-3">Owner</th>
-              <th className="pb-2 pr-3">Due</th>
-              <th className="pb-2">Tags</th>
+              <th scope="col" className="pb-2 pr-3">Status</th>
+              <th scope="col" className="pb-2 pr-3">Title</th>
+              <th scope="col" className="pb-2 pr-3">Priority</th>
+              <th scope="col" className="pb-2 pr-3">Owner</th>
+              <th scope="col" className="pb-2 pr-3">Due</th>
+              <th scope="col" className="pb-2">Tags</th>
             </tr>
           </thead>
           <tbody>
@@ -218,9 +215,7 @@ export function ActionTable({
       </div>
 
       {filtered.length === 0 && (
-        <p className="py-8 text-center text-sm text-muted-foreground">
-          No actions match the current filters
-        </p>
+        <EmptyState message="No actions match the current filters" />
       )}
     </div>
   );

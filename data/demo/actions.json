@@ -2,196 +2,196 @@
   {
     "id": "a1",
     "title": "Finalise authentication flow",
+    "description": "Complete the end-to-end authentication flow including OAuth integration, token refresh handling, and error states. Blocked by OAuth token refresh bug.",
     "status": "blocked",
     "priority": "critical",
-    "assigneeId": "s3",
+    "ownerId": "s3",
     "createdDate": "2026-03-20T09:00:00Z",
     "dueDate": "2026-04-10T17:00:00Z",
     "completedDate": null,
     "conversationId": "c8",
-    "tags": ["auth", "backend"],
-    "blockedReason": "OAuth token refresh bug must be resolved first (see a10). Auth provider instability adds uncertainty."
+    "tags": ["auth", "backend"]
   },
   {
     "id": "a2",
     "title": "Write API documentation",
+    "description": "Document all public API endpoints including request/response formats, authentication requirements, rate limits, and error codes.",
     "status": "in-progress",
     "priority": "high",
-    "assigneeId": "s3",
+    "ownerId": "s3",
     "createdDate": "2026-03-12T10:00:00Z",
     "dueDate": "2026-04-15T17:00:00Z",
     "completedDate": null,
     "conversationId": "c4",
-    "tags": ["docs", "api"],
-    "blockedReason": null
+    "tags": ["docs", "api"]
   },
   {
     "id": "a3",
     "title": "Set up CI/CD pipeline",
+    "description": "Configure GitHub Actions for automated builds, testing, and deployment to staging on merge to main.",
     "status": "done",
     "priority": "high",
-    "assigneeId": "s6",
+    "ownerId": "s6",
     "createdDate": "2026-03-04T09:00:00Z",
     "dueDate": "2026-03-18T17:00:00Z",
     "completedDate": "2026-03-15T16:30:00Z",
     "conversationId": "c4",
-    "tags": ["devops", "infrastructure"],
-    "blockedReason": null
+    "tags": ["devops", "infrastructure"]
   },
   {
     "id": "a4",
     "title": "Design onboarding screens",
+    "description": "Create mockups for the 3-screen onboarding flow with progressive disclosure, approved in the design review.",
     "status": "done",
     "priority": "medium",
-    "assigneeId": "s4",
+    "ownerId": "s4",
     "createdDate": "2026-02-28T10:00:00Z",
     "dueDate": "2026-03-14T17:00:00Z",
     "completedDate": "2026-03-12T15:00:00Z",
     "conversationId": "c3",
-    "tags": ["design", "onboarding"],
-    "blockedReason": null
+    "tags": ["design", "onboarding"]
   },
   {
     "id": "a5",
     "title": "Fix mobile responsive layout bug",
+    "description": "Resolve responsive layout regressions on the dashboard and onboarding screens affecting mobile viewports.",
     "status": "in-progress",
     "priority": "high",
-    "assigneeId": "s2",
+    "ownerId": "s2",
     "createdDate": "2026-03-25T09:00:00Z",
     "dueDate": "2026-04-12T17:00:00Z",
     "completedDate": null,
     "conversationId": "c5",
-    "tags": ["frontend", "bug"],
-    "blockedReason": null
+    "tags": ["frontend", "bug"]
   },
   {
     "id": "a6",
     "title": "Load test API endpoints",
+    "description": "Run load tests against all critical API endpoints to verify performance under expected production traffic levels.",
     "status": "todo",
     "priority": "critical",
-    "assigneeId": "s6",
+    "ownerId": "s6",
     "createdDate": "2026-04-04T11:00:00Z",
     "dueDate": "2026-04-18T17:00:00Z",
     "completedDate": null,
     "conversationId": "c9",
-    "tags": ["performance", "testing"],
-    "blockedReason": null
+    "tags": ["performance", "testing"]
   },
   {
     "id": "a7",
     "title": "Implement user dashboard",
+    "description": "Build the main user dashboard showing task overview, recent activity, and key metrics.",
     "status": "in-progress",
     "priority": "medium",
-    "assigneeId": "s2",
+    "ownerId": "s2",
     "createdDate": "2026-02-28T10:00:00Z",
     "dueDate": "2026-04-14T17:00:00Z",
     "completedDate": null,
     "conversationId": "c1",
-    "tags": ["frontend", "feature"],
-    "blockedReason": null
+    "tags": ["frontend", "feature"]
   },
   {
     "id": "a8",
     "title": "Set up error monitoring",
+    "description": "Configure error monitoring and alerting for production, including integration with the CI/CD pipeline.",
     "status": "todo",
     "priority": "medium",
-    "assigneeId": "s6",
+    "ownerId": "s6",
     "createdDate": "2026-03-12T10:00:00Z",
     "dueDate": "2026-04-20T17:00:00Z",
     "completedDate": null,
     "conversationId": "c4",
-    "tags": ["devops", "monitoring"],
-    "blockedReason": null
+    "tags": ["devops", "monitoring"]
   },
   {
     "id": "a9",
     "title": "Write onboarding copy",
+    "description": "Write user-facing copy for all onboarding screens, including tooltips and help text.",
     "status": "done",
     "priority": "low",
-    "assigneeId": "s4",
+    "ownerId": "s4",
     "createdDate": "2026-03-09T13:00:00Z",
     "dueDate": "2026-03-25T17:00:00Z",
     "completedDate": "2026-03-20T11:00:00Z",
     "conversationId": "c3",
-    "tags": ["content", "onboarding"],
-    "blockedReason": null
+    "tags": ["content", "onboarding"]
   },
   {
     "id": "a10",
     "title": "Fix OAuth token refresh bug",
+    "description": "Resolve the token refresh failure when the auth provider returns non-standard error format. Support ticket #4821 open with provider.",
     "status": "blocked",
     "priority": "critical",
-    "assigneeId": "s3",
+    "ownerId": "s3",
     "createdDate": "2026-03-28T09:00:00Z",
     "dueDate": "2026-04-11T17:00:00Z",
     "completedDate": null,
     "conversationId": "c8",
-    "tags": ["auth", "bug"],
-    "blockedReason": "Waiting on auth provider to confirm expected error response format for edge cases. Support ticket #4821 open."
+    "tags": ["auth", "bug"]
   },
   {
     "id": "a11",
     "title": "Create beta feedback form",
+    "description": "Design and deploy a feedback form for beta testers to report issues, rate features, and suggest improvements.",
     "status": "done",
     "priority": "medium",
-    "assigneeId": "s5",
+    "ownerId": "s5",
     "createdDate": "2026-03-15T09:00:00Z",
     "dueDate": "2026-03-28T17:00:00Z",
     "completedDate": "2026-03-25T14:00:00Z",
     "conversationId": "c6",
-    "tags": ["testing", "feedback"],
-    "blockedReason": null
+    "tags": ["testing", "feedback"]
   },
   {
     "id": "a12",
     "title": "Review and address beta feedback",
+    "description": "Triage and categorise all beta feedback into v1 must-have vs v1.1 nice-to-have, then address critical items.",
     "status": "in-progress",
     "priority": "high",
-    "assigneeId": "s1",
+    "ownerId": "s1",
     "createdDate": "2026-03-28T11:00:00Z",
     "dueDate": "2026-04-16T17:00:00Z",
     "completedDate": null,
     "conversationId": "c7",
-    "tags": ["feedback", "planning"],
-    "blockedReason": null
+    "tags": ["feedback", "planning"]
   },
   {
     "id": "a13",
     "title": "Implement rate limiting",
+    "description": "Add rate limiting to all public API endpoints to prevent abuse and ensure fair usage.",
     "status": "todo",
     "priority": "high",
-    "assigneeId": "s3",
+    "ownerId": "s3",
     "createdDate": "2026-03-04T09:00:00Z",
     "dueDate": "2026-04-22T17:00:00Z",
     "completedDate": null,
     "conversationId": "c2",
-    "tags": ["backend", "security"],
-    "blockedReason": null
+    "tags": ["backend", "security"]
   },
   {
     "id": "a14",
     "title": "Update database indexes",
+    "description": "Analyse query performance and add or update database indexes to optimise slow queries identified in profiling.",
     "status": "in-progress",
     "priority": "medium",
-    "assigneeId": "s3",
+    "ownerId": "s3",
     "createdDate": "2026-03-22T09:00:00Z",
     "dueDate": "2026-04-13T17:00:00Z",
     "completedDate": null,
     "conversationId": "c2",
-    "tags": ["database", "performance"],
-    "blockedReason": null
+    "tags": ["database", "performance"]
   },
   {
     "id": "a15",
     "title": "Configure SSL certificates",
+    "description": "Set up SSL certificates for production domain. Blocked on domain registrar transfer expected to complete by April 11.",
     "status": "blocked",
     "priority": "high",
-    "assigneeId": "s6",
+    "ownerId": "s6",
     "createdDate": "2026-03-28T09:00:00Z",
     "dueDate": "2026-04-09T17:00:00Z",
     "completedDate": null,
     "conversationId": null,
-    "tags": ["devops", "security"],
-    "blockedReason": "Domain registrar transfer pending — expected to complete by April 11."
+    "tags": ["devops", "security"]
   }
 ]

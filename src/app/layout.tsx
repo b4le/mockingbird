@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   description: "Project dashboard for tracking complex multi-stakeholder projects",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const projects = getProjects();
+  const projects = await getProjects();
 
   return (
     <html
@@ -39,9 +39,15 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <TooltipProvider>
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+            >
+              Skip to main content
+            </a>
             <NavBar projects={projects} />
             <MobileHeader projects={projects} />
-            <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 pb-20 md:pb-6">
+            <main id="main-content" className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 pb-20 md:pb-6">
               {children}
             </main>
             <MobileNav />

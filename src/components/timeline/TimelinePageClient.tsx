@@ -5,6 +5,8 @@ import { TimelineFilters } from "./TimelineFilters";
 import { TimelineEntry } from "./TimelineEntry";
 import { StakeholderDetailDialog } from "@/components/shared/StakeholderDetailDialog";
 import { EmptyState } from "@/components/shared/EmptyState";
+import { parseDate } from "@/lib/dates";
+import { buildStakeholderMap } from "@/lib/stakeholders";
 import type {
   TimelineEvent,
   TimelineEventType,
@@ -38,9 +40,14 @@ export function TimelinePageClient({
   const [dialogStakeholder, setDialogStakeholder] =
     useState<Stakeholder | null>(null);
 
+  const stakeholderMap = useMemo(
+    () => buildStakeholderMap(stakeholders),
+    [stakeholders]
+  );
+
   const filtered = useMemo(() => {
     let result = [...events].sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      (a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime()
     );
     if (selectedTypes.size > 0) {
       result = result.filter((e) => selectedTypes.has(e.type));
@@ -82,7 +89,7 @@ export function TimelinePageClient({
           {grouped.map(([date, dayEvents]) => (
             <div key={date}>
               <h3 className="mb-3 text-sm font-medium text-muted-foreground">
-                {new Date(date + "T00:00:00").toLocaleDateString("en-GB", {
+                {parseDate(date).toLocaleDateString("en-GB", {
                   weekday: "long",
                   day: "numeric",
                   month: "long",
@@ -94,7 +101,7 @@ export function TimelinePageClient({
                   <TimelineEntry
                     key={event.id}
                     event={event}
-                    stakeholders={stakeholders}
+                    stakeholderMap={stakeholderMap}
                     conversations={conversations}
                     onStakeholderClick={setDialogStakeholder}
                   />

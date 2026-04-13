@@ -6,9 +6,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { parseDate } from "@/lib/dates";
 
 function formatRelative(dateStr: string): string {
-  const date = new Date(dateStr);
+  const date = parseDate(dateStr);
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -29,7 +30,7 @@ function formatRelative(dateStr: string): string {
 }
 
 function formatAbsolute(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("en-GB", {
+  return parseDate(dateStr).toLocaleDateString("en-GB", {
     weekday: "short",
     day: "numeric",
     month: "short",

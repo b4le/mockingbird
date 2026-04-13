@@ -1,6 +1,8 @@
 export type ActionStatus = 'todo' | 'in-progress' | 'blocked' | 'done';
 export type Priority = 'critical' | 'high' | 'medium' | 'low';
 export type RiskStatus = 'open' | 'mitigated' | 'accepted' | 'closed';
+export type ClaimStatus = 'supported' | 'contested' | 'unverified';
+export type ProjectStatus = 'on-track' | 'at-risk' | 'off-track' | 'paused' | 'completed';
 export type EvidenceStrength = 'strong' | 'moderate' | 'weak' | 'circumstantial';
 export type TimelineEventType = 'conversation' | 'decision' | 'milestone' | 'document' | 'action' | 'risk-change';
 export type ContactType = 'email' | 'call' | 'meeting' | 'chat' | 'other';
@@ -68,7 +70,7 @@ export interface Claim {
   id: string;
   assertion: string;
   category: string;
-  status: 'supported' | 'contested' | 'unverified';
+  status: ClaimStatus;
   evidenceIds: string[];
   raisedById: string;
   date: string;
@@ -100,7 +102,7 @@ export interface TimelineEvent {
 
 export interface ProjectState {
   projectName: string;
-  status: 'on-track' | 'at-risk' | 'off-track' | 'paused' | 'completed';
+  status: ProjectStatus;
   statusMessage: string;
   lastUpdated: string;
   metrics: { label: string; value: number; total: number | null; unit: string }[];

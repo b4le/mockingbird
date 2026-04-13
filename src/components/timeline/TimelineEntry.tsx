@@ -1,34 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { TIMELINE_TYPE_ICONS, TIMELINE_TYPE_LABELS } from "@/lib/constants";
 import type { TimelineEvent, Stakeholder, Conversation } from "@/types";
-
-const typeIcons: Record<string, string> = {
-  conversation: "💬",
-  decision: "⚖️",
-  milestone: "🎯",
-  document: "📄",
-  action: "✅",
-  "risk-change": "⚠️",
-};
 
 interface TimelineEntryProps {
   event: TimelineEvent;
-  stakeholders: Stakeholder[];
+  stakeholderMap: Map<string, Stakeholder>;
   conversations: Conversation[];
   onStakeholderClick: (s: Stakeholder) => void;
 }
 
 export function TimelineEntry({
   event,
-  stakeholders,
+  stakeholderMap,
   conversations,
   onStakeholderClick,
 }: TimelineEntryProps) {
   const [expanded, setExpanded] = useState(false);
-  const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
   const isConversation = event.type === "conversation" && event.linkedEntityId;
   const linkedConversation = isConversation
     ? conversations.find((c) => c.id === event.linkedEntityId)
@@ -37,18 +29,41 @@ export function TimelineEntry({
   return (
     <div className="flex gap-3">
       <div className="flex flex-col items-center">
-        <span className="mt-0.5 text-base">{typeIcons[event.type] ?? "📌"}</span>
+        <span className="mt-0.5 text-base" role="img" aria-label={TIMELINE_TYPE_LABELS[event.type] ?? event.type}>{TIMELINE_TYPE_ICONS[event.type] ?? "📌"}</span>
         <div className="flex-1 w-px bg-border" />
       </div>
       <div className="min-w-0 flex-1 pb-6">
         <div
           className={`${isConversation ? "cursor-pointer" : ""}`}
-          onClick={() => isConversation && setExpanded(!expanded)}
+          {...(isConversation
+            ? {
+                role: "button",
+                tabIndex: 0,
+                "aria-expanded": expanded,
+                onClick: () => setExpanded(!expanded),
+                onKeyDown: (e: React.KeyboardEvent) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setExpanded(!expanded);
+                  }
+                },
+              }
+            : {})}
         >
-          <p className="text-sm font-medium leading-tight">{event.title}</p>
-          <p className="mt-0.5 text-sm text-muted-foreground line-clamp-2">
-            {event.description}
-          </p>
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <p className="text-sm font-medium leading-tight">{event.title}</p>
+              <p className="mt-0.5 text-sm text-muted-foreground line-clamp-2">
+                {event.description}
+              </p>
+            </div>
+            {isConversation && (
+              <ChevronDown
+                className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              />
+            )}
+          </div>
         </div>
         <div className="mt-1.5 flex items-center gap-2">
           <DateDisplay date={event.date} />
