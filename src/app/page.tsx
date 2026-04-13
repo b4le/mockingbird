@@ -1,4 +1,4 @@
-import { getAllData } from "@/lib/data";
+import { getTimeline, getStakeholders, getRisks, getProjectState } from "@/lib/data";
 import { getDefaultProject } from "@/lib/projects";
 import { StatusBanner } from "@/components/dashboard/StatusBanner";
 import { SummaryCards } from "@/components/dashboard/SummaryCards";
@@ -7,18 +7,23 @@ import { RiskSummary } from "@/components/dashboard/RiskSummary";
 
 export default async function DashboardPage() {
   const project = getDefaultProject();
-  const data = await getAllData(project);
+  const [timeline, stakeholders, risks, projectState] = await Promise.all([
+    getTimeline(project),
+    getStakeholders(project),
+    getRisks(project),
+    getProjectState(project),
+  ]);
 
   return (
     <div className="space-y-6">
-      <StatusBanner state={data.projectState} />
-      <SummaryCards metrics={data.projectState.metrics} />
+      <StatusBanner state={projectState} />
+      <SummaryCards metrics={projectState.metrics} />
       <div className="grid gap-6 lg:grid-cols-2">
         <RecentActivity
-          events={data.timeline}
-          stakeholders={data.stakeholders}
+          events={timeline}
+          stakeholders={stakeholders}
         />
-        <RiskSummary risks={data.risks} />
+        <RiskSummary risks={risks} />
       </div>
     </div>
   );

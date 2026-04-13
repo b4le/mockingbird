@@ -1,18 +1,24 @@
-import { getAllData } from "@/lib/data";
+import { getTimeline, getStakeholders, getConversations, getActions, getClaims } from "@/lib/data";
 import { getDefaultProject } from "@/lib/projects";
 import { TimelinePageClient } from "@/components/timeline/TimelinePageClient";
 
 export default async function TimelinePage() {
   const project = getDefaultProject();
-  const data = await getAllData(project);
+  const [timeline, stakeholders, conversations, actions, claims] = await Promise.all([
+    getTimeline(project),
+    getStakeholders(project),
+    getConversations(project),
+    getActions(project),
+    getClaims(project),
+  ]);
 
   return (
     <TimelinePageClient
-      events={data.timeline}
-      stakeholders={data.stakeholders}
-      conversations={data.conversations}
-      actions={data.actions}
-      claims={data.claims}
+      events={timeline}
+      stakeholders={stakeholders}
+      conversations={conversations}
+      actions={actions}
+      claims={claims}
     />
   );
 }

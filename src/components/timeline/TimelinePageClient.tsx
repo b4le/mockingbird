@@ -6,6 +6,7 @@ import { TimelineEntry } from "./TimelineEntry";
 import { StakeholderDetailDialog } from "@/components/shared/StakeholderDetailDialog";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { parseDate } from "@/lib/dates";
+import { buildStakeholderMap } from "@/lib/stakeholders";
 import type {
   TimelineEvent,
   TimelineEventType,
@@ -38,6 +39,11 @@ export function TimelinePageClient({
   );
   const [dialogStakeholder, setDialogStakeholder] =
     useState<Stakeholder | null>(null);
+
+  const stakeholderMap = useMemo(
+    () => buildStakeholderMap(stakeholders),
+    [stakeholders]
+  );
 
   const filtered = useMemo(() => {
     let result = [...events].sort(
@@ -95,7 +101,7 @@ export function TimelinePageClient({
                   <TimelineEntry
                     key={event.id}
                     event={event}
-                    stakeholders={stakeholders}
+                    stakeholderMap={stakeholderMap}
                     conversations={conversations}
                     onStakeholderClick={setDialogStakeholder}
                   />

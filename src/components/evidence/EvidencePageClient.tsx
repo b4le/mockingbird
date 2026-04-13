@@ -8,6 +8,7 @@ import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DateDisplay } from "@/components/shared/DateDisplay";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { EvidenceFilters } from "./EvidenceFilters";
+import { buildStakeholderMap } from "@/lib/stakeholders";
 import type { Claim, EvidenceItem, Stakeholder } from "@/types";
 
 interface EvidencePageClientProps {
@@ -26,7 +27,7 @@ export function EvidencePageClient({
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
   const [selectedStrength, setSelectedStrength] = useState<string | null>(null);
 
-  const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
+  const stakeholderMap = useMemo(() => buildStakeholderMap(stakeholders), [stakeholders]);
   const evidenceMap = useMemo(
     () => new Map(evidence.map((e) => [e.id, e])),
     [evidence]

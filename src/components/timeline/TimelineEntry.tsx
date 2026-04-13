@@ -9,19 +9,18 @@ import type { TimelineEvent, Stakeholder, Conversation } from "@/types";
 
 interface TimelineEntryProps {
   event: TimelineEvent;
-  stakeholders: Stakeholder[];
+  stakeholderMap: Map<string, Stakeholder>;
   conversations: Conversation[];
   onStakeholderClick: (s: Stakeholder) => void;
 }
 
 export function TimelineEntry({
   event,
-  stakeholders,
+  stakeholderMap,
   conversations,
   onStakeholderClick,
 }: TimelineEntryProps) {
   const [expanded, setExpanded] = useState(false);
-  const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
   const isConversation = event.type === "conversation" && event.linkedEntityId;
   const linkedConversation = isConversation
     ? conversations.find((c) => c.id === event.linkedEntityId)

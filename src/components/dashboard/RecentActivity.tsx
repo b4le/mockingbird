@@ -1,11 +1,13 @@
 "use client";
 
+import { useMemo } from "react";
 import Link from "next/link";
 import { parseDate } from "@/lib/dates";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
 import { TIMELINE_TYPE_ICONS } from "@/lib/constants";
+import { buildStakeholderMap } from "@/lib/stakeholders";
 import type { TimelineEvent, Stakeholder } from "@/types";
 
 interface RecentActivityProps {
@@ -14,7 +16,7 @@ interface RecentActivityProps {
 }
 
 export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
-  const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
+  const stakeholderMap = useMemo(() => buildStakeholderMap(stakeholders), [stakeholders]);
   const recent = [...events]
     .sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
     .slice(0, 5);

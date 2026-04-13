@@ -9,6 +9,7 @@ import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DateDisplay } from "@/components/shared/DateDisplay";
 import { PRIORITY_ORDER } from "@/lib/constants";
 import { EmptyState } from "@/components/shared/EmptyState";
+import { buildStakeholderMap } from "@/lib/stakeholders";
 import type { ActionItem, ActionStatus, Priority, Stakeholder } from "@/types";
 
 type SortKey = "priority" | "dueDate" | "status";
@@ -43,7 +44,7 @@ export function ActionTable({
   onStakeholderClick,
 }: ActionTableProps) {
   const [sortKey, setSortKey] = useState<SortKey>("priority");
-  const stakeholderMap = new Map(stakeholders.map((s) => [s.id, s]));
+  const stakeholderMap = useMemo(() => buildStakeholderMap(stakeholders), [stakeholders]);
 
   const filtered = useMemo(() => {
     let result = actions;
