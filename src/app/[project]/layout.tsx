@@ -2,7 +2,7 @@ import { getProjects } from "@/lib/projects";
 import { getSession } from "@/lib/data";
 
 export async function generateStaticParams() {
-  return getProjects().map((project) => ({ project }));
+  return (await getProjects()).map((project) => ({ project }));
 }
 
 export const dynamicParams = false;

@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   description: "Project dashboard for tracking complex multi-stakeholder projects",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const projects = getProjects();
+  const projects = await getProjects();
 
   return (
     <html
