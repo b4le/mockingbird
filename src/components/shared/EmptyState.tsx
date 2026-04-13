@@ -7,6 +7,7 @@ export function EmptyState({ message }: { message: string }) {
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={1}
+        aria-hidden="true"
       >
         <path
           strokeLinecap="round"

@@ -23,7 +23,7 @@ export function NavBar({ projects }: { projects: string[] }) {
           mockingbird
         </Link>
         <ProjectSelector projects={projects} />
-        <nav className="flex items-center gap-1">
+        <nav aria-label="Main navigation" className="flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}

@@ -82,6 +82,7 @@ export function ActionTable({
           <button
             key={key}
             onClick={() => setSortKey(key)}
+            aria-pressed={sortKey === key}
             className={`rounded px-2 py-0.5 ${
               sortKey === key
                 ? "bg-primary text-primary-foreground"
@@ -98,12 +99,12 @@ export function ActionTable({
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b text-left text-xs text-muted-foreground">
-              <th className="pb-2 pr-3">Status</th>
-              <th className="pb-2 pr-3">Title</th>
-              <th className="pb-2 pr-3">Priority</th>
-              <th className="pb-2 pr-3">Owner</th>
-              <th className="pb-2 pr-3">Due</th>
-              <th className="pb-2">Tags</th>
+              <th scope="col" className="pb-2 pr-3">Status</th>
+              <th scope="col" className="pb-2 pr-3">Title</th>
+              <th scope="col" className="pb-2 pr-3">Priority</th>
+              <th scope="col" className="pb-2 pr-3">Owner</th>
+              <th scope="col" className="pb-2 pr-3">Due</th>
+              <th scope="col" className="pb-2">Tags</th>
             </tr>
           </thead>
           <tbody>

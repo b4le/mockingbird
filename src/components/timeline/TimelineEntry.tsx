@@ -37,13 +37,26 @@ export function TimelineEntry({
   return (
     <div className="flex gap-3">
       <div className="flex flex-col items-center">
-        <span className="mt-0.5 text-base">{typeIcons[event.type] ?? "📌"}</span>
+        <span className="mt-0.5 text-base" role="img" aria-label={event.type}>{typeIcons[event.type] ?? "📌"}</span>
         <div className="flex-1 w-px bg-border" />
       </div>
       <div className="min-w-0 flex-1 pb-6">
         <div
           className={`${isConversation ? "cursor-pointer" : ""}`}
-          onClick={() => isConversation && setExpanded(!expanded)}
+          {...(isConversation
+            ? {
+                role: "button",
+                tabIndex: 0,
+                "aria-expanded": expanded,
+                onClick: () => setExpanded(!expanded),
+                onKeyDown: (e: React.KeyboardEvent) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setExpanded(!expanded);
+                  }
+                },
+              }
+            : {})}
         >
           <p className="text-sm font-medium leading-tight">{event.title}</p>
           <p className="mt-0.5 text-sm text-muted-foreground line-clamp-2">

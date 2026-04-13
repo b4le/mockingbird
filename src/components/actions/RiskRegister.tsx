@@ -27,8 +27,17 @@ export function RiskRegister({ risks, actions }: RiskRegisterProps) {
         return (
           <Card
             key={risk.id}
+            role="button"
+            tabIndex={0}
+            aria-expanded={expanded}
             className="cursor-pointer"
             onClick={() => setExpandedId(expanded ? null : risk.id)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setExpandedId(expanded ? null : risk.id);
+              }
+            }}
           >
             <CardContent className="p-4">
               <div className="flex items-start justify-between gap-3">

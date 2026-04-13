@@ -82,6 +82,9 @@ export function EvidencePageClient({
               return (
                 <Card
                   key={claim.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={selectedClaim === claim.id}
                   className={`cursor-pointer transition-colors hover:bg-accent/50 ${
                     selectedClaim === claim.id ? "ring-2 ring-primary" : ""
                   }`}
@@ -90,6 +93,14 @@ export function EvidencePageClient({
                       selectedClaim === claim.id ? null : claim.id
                     )
                   }
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedClaim(
+                        selectedClaim === claim.id ? null : claim.id
+                      );
+                    }
+                  }}
                 >
                   <CardContent className="p-4">
                     <p className="text-sm font-medium leading-tight line-clamp-2">

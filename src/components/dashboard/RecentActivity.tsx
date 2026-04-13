@@ -42,7 +42,7 @@ export function RecentActivity({ events, stakeholders }: RecentActivityProps) {
       <CardContent className="space-y-3">
         {recent.map((event) => (
           <div key={event.id} className="flex items-start gap-3">
-            <span className="mt-0.5 text-base">
+            <span className="mt-0.5 text-base" role="img" aria-label={event.type}>
               {typeIcons[event.type] ?? "📌"}
             </span>
             <div className="min-w-0 flex-1">
