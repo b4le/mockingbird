@@ -10,6 +10,7 @@ import { DateDisplay } from "@/components/shared/DateDisplay";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { EvidenceFilters } from "./EvidenceFilters";
 import { buildStakeholderMap } from "@/lib/stakeholders";
+import { resolveIds } from "@/lib/collections";
 import type { Claim, EvidenceItem, Stakeholder } from "@/types";
 
 interface EvidencePageClientProps {
@@ -94,9 +95,7 @@ export function EvidencePageClient({
     if (!selectedClaim) return [];
     const claim = claims.find((c) => c.id === selectedClaim);
     if (!claim) return [];
-    return claim.evidenceIds
-      .map((id) => evidenceMap.get(id))
-      .filter(Boolean) as EvidenceItem[];
+    return resolveIds(claim.evidenceIds, evidenceMap);
   }, [selectedClaim, claims, evidenceMap]);
 
   return (

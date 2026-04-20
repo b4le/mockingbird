@@ -7,6 +7,7 @@ import { PriorityBadge } from "@/components/shared/PriorityBadge";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DateDisplay } from "@/components/shared/DateDisplay";
 import { EmptyState } from "@/components/shared/EmptyState";
+import { resolveIds } from "@/lib/collections";
 import type { Risk, ActionItem } from "@/types";
 
 interface RiskRegisterProps {
@@ -22,9 +23,7 @@ export function RiskRegister({ risks, actions }: RiskRegisterProps) {
     <div className="space-y-3">
       {risks.map((risk) => {
         const expanded = expandedId === risk.id;
-        const linkedActions = risk.actionIds
-          .map((id) => actionMap.get(id))
-          .filter(Boolean) as ActionItem[];
+        const linkedActions = resolveIds(risk.actionIds, actionMap);
 
         return (
           <Card

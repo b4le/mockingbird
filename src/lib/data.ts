@@ -74,3 +74,62 @@ export async function getProjectState(
 export async function getSession(project: string): Promise<SessionMeta> {
   return loadJson<SessionMeta>(project, "session.json");
 }
+
+export interface ProjectBundle {
+  state: ProjectState;
+  session: SessionMeta;
+  stakeholders: Stakeholder[];
+  conversations: Conversation[];
+  communications: Communication[];
+  actions: ActionItem[];
+  risks: Risk[];
+  claims: Claim[];
+  evidence: EvidenceItem[];
+  timeline: TimelineEvent[];
+}
+
+/**
+ * Loads all ten project JSON files in parallel and returns them as a
+ * typed bundle. Convenience loader for pages that need most/all project
+ * entities — prefer the individual `getX` loaders when only one or two
+ * entities are required (e.g. layout reading just `session`).
+ */
+export async function getProjectBundle(
+  project: string,
+): Promise<ProjectBundle> {
+  const [
+    state,
+    session,
+    stakeholders,
+    conversations,
+    communications,
+    actions,
+    risks,
+    claims,
+    evidence,
+    timeline,
+  ] = await Promise.all([
+    getProjectState(project),
+    getSession(project),
+    getStakeholders(project),
+    getConversations(project),
+    getCommunications(project),
+    getActions(project),
+    getRisks(project),
+    getClaims(project),
+    getEvidence(project),
+    getTimeline(project),
+  ]);
+  return {
+    state,
+    session,
+    stakeholders,
+    conversations,
+    communications,
+    actions,
+    risks,
+    claims,
+    evidence,
+    timeline,
+  };
+}

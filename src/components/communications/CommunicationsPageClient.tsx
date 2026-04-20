@@ -10,6 +10,7 @@ import { EmptyState } from "@/components/shared/EmptyState";
 import { StakeholderDetailDialog } from "@/components/shared/StakeholderDetailDialog";
 import { CommunicationsFilters } from "./CommunicationsFilters";
 import { buildStakeholderMap } from "@/lib/stakeholders";
+import { resolveIds } from "@/lib/collections";
 import { parseDate } from "@/lib/dates";
 import {
   COMMUNICATION_CHANNEL_ICONS,
@@ -134,9 +135,10 @@ export function CommunicationsPageClient({
           <div className="space-y-3 lg:col-span-1">
             {filtered.map((comm) => {
               const isActive = selectedId === comm.id;
-              const participants = comm.participantIds
-                .map((id) => stakeholderMap.get(id))
-                .filter((s): s is Stakeholder => Boolean(s));
+              const participants = resolveIds(
+                comm.participantIds,
+                stakeholderMap,
+              );
               const extra =
                 comm.participantIds.length - participants.length +
                 (comm.externalParticipants?.length ?? 0);
@@ -259,9 +261,10 @@ function CommunicationDetail({
   riskMap,
   onStakeholderClick,
 }: CommunicationDetailProps) {
-  const trackedParticipants = communication.participantIds
-    .map((id) => stakeholderMap.get(id))
-    .filter((s): s is Stakeholder => Boolean(s));
+  const trackedParticipants = resolveIds(
+    communication.participantIds,
+    stakeholderMap,
+  );
 
   const sortedMessages = useMemo(
     () =>
@@ -271,26 +274,14 @@ function CommunicationDetail({
     [communication.messages],
   );
 
-  const linkedActions =
-    communication.actionItemIds
-      ?.map((id) => actionMap.get(id))
-      .filter((a): a is ActionItem => Boolean(a)) ?? [];
-  const linkedClaims =
-    communication.claimIds
-      ?.map((id) => claimMap.get(id))
-      .filter((c): c is Claim => Boolean(c)) ?? [];
-  const linkedEvidence =
-    communication.evidenceIds
-      ?.map((id) => evidenceMap.get(id))
-      .filter((e): e is EvidenceItem => Boolean(e)) ?? [];
-  const linkedRisks =
-    communication.riskIds
-      ?.map((id) => riskMap.get(id))
-      .filter((r): r is Risk => Boolean(r)) ?? [];
-  const linkedConversations =
-    communication.conversationIds
-      ?.map((id) => conversationMap.get(id))
-      .filter((c): c is Conversation => Boolean(c)) ?? [];
+  const linkedActions = resolveIds(communication.actionItemIds, actionMap);
+  const linkedClaims = resolveIds(communication.claimIds, claimMap);
+  const linkedEvidence = resolveIds(communication.evidenceIds, evidenceMap);
+  const linkedRisks = resolveIds(communication.riskIds, riskMap);
+  const linkedConversations = resolveIds(
+    communication.conversationIds,
+    conversationMap,
+  );
 
   const hasLinks =
     linkedActions.length +

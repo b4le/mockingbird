@@ -1,4 +1,4 @@
-import { getClaims, getEvidence, getStakeholders } from "@/lib/data";
+import { getProjectBundle } from "@/lib/data";
 import { EvidencePageClient } from "@/components/evidence/EvidencePageClient";
 
 export default async function EvidencePage({
@@ -7,11 +7,7 @@ export default async function EvidencePage({
   params: Promise<{ project: string }>;
 }) {
   const { project } = await params;
-  const [claims, evidence, stakeholders] = await Promise.all([
-    getClaims(project),
-    getEvidence(project),
-    getStakeholders(project),
-  ]);
+  const { claims, evidence, stakeholders } = await getProjectBundle(project);
 
   return (
     <EvidencePageClient
