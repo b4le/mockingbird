@@ -14,6 +14,10 @@ export type TimelineEventType =
   | 'communication';
 export type CommunicationChannel = 'email' | 'slack' | 'whatsapp' | 'sms' | 'other';
 
+// TODO(scale): extract to data/demo/external-contacts.json once a second project
+// is added or the first duplicate ExternalParticipant (same name + organisation)
+// appears across threads. Inline-only today is fine at demo scale.
+// See handoff mockingbird-comms-backlog-2026-04-21.md WI-2.
 export interface ExternalParticipant {
   name: string;
   email?: string;
