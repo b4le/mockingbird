@@ -114,7 +114,10 @@ export function StakeholderDetailDialog({
                           {icon}
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p className="truncate">{entry.title}</p>
+                          <p className="truncate">
+                            <span className="sr-only">Conversation: </span>
+                            {entry.title}
+                          </p>
                           <DateDisplay date={entry.date} />
                         </div>
                       </div>
@@ -129,7 +132,10 @@ export function StakeholderDetailDialog({
                         {COMMUNICATION_CHANNEL_ICONS[entry.channel]}
                       </span>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate">{entry.subject}</p>
+                        <p className="truncate">
+                          <span className="sr-only">Communication: </span>
+                          {entry.subject}
+                        </p>
                         <DateDisplay date={entry.date} />
                       </div>
                     </div>
