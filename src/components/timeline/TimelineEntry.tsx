@@ -147,7 +147,7 @@ export function TimelineEntry({
               <div>
                 <p className="font-medium">Messages</p>
                 <ul className="mt-1 space-y-1 text-muted-foreground">
-                  {linkedCommunication.messages.slice(0, 2).map((m, i) => {
+                  {linkedCommunication.messages.slice(0, 2).map((m) => {
                     const sender = m.senderId
                       ? stakeholderMap.get(m.senderId)
                       : null;
@@ -160,14 +160,8 @@ export function TimelineEntry({
                               : ""
                           }`
                         : "";
-                    const key = `${m.date}-${
-                      m.senderId ??
-                      m.externalSender?.email ??
-                      m.externalSender?.name ??
-                      i
-                    }`;
                     return (
-                      <li key={key}>
+                      <li key={m.id}>
                         <span className="font-medium text-foreground">
                           {label}
                         </span>
