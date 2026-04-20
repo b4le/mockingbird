@@ -4,6 +4,7 @@ import path from "path";
 import type {
   ActionItem,
   Claim,
+  Communication,
   Conversation,
   EvidenceItem,
   ProjectState,
@@ -36,6 +37,12 @@ export async function getConversations(
   project: string,
 ): Promise<Conversation[]> {
   return loadJson<Conversation[]>(project, "conversations.json");
+}
+
+export async function getCommunications(
+  project: string,
+): Promise<Communication[]> {
+  return loadJson<Communication[]>(project, "communications.json");
 }
 
 export async function getActions(project: string): Promise<ActionItem[]> {

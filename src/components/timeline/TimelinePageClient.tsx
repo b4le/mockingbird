@@ -12,6 +12,7 @@ import type {
   TimelineEventType,
   Stakeholder,
   Conversation,
+  Communication,
   ActionItem,
   Claim,
 } from "@/types";
@@ -20,6 +21,7 @@ interface TimelinePageClientProps {
   events: TimelineEvent[];
   stakeholders: Stakeholder[];
   conversations: Conversation[];
+  communications: Communication[];
   actions: ActionItem[];
   claims: Claim[];
 }
@@ -28,6 +30,7 @@ export function TimelinePageClient({
   events,
   stakeholders,
   conversations,
+  communications,
   actions,
   claims,
 }: TimelinePageClientProps) {
@@ -103,6 +106,7 @@ export function TimelinePageClient({
                     event={event}
                     stakeholderMap={stakeholderMap}
                     conversations={conversations}
+                    communications={communications}
                     onStakeholderClick={setDialogStakeholder}
                   />
                 ))}
@@ -116,6 +120,7 @@ export function TimelinePageClient({
         open={!!dialogStakeholder}
         onOpenChange={(open) => !open && setDialogStakeholder(null)}
         conversations={conversations}
+        communications={communications}
         actions={actions}
         claims={claims}
       />

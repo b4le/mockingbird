@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "/timeline", label: "Timeline" },
   { href: "/evidence", label: "Evidence" },
   { href: "/actions", label: "Actions" },
+  { href: "/communications", label: "Communications" },
 ];
 
 export function NavBar({ projects }: { projects: string[] }) {

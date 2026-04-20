@@ -13,6 +13,7 @@ import type {
   Risk,
   Stakeholder,
   Conversation,
+  Communication,
   Claim,
 } from "@/types";
 
@@ -21,6 +22,7 @@ interface ActionsPageClientProps {
   risks: Risk[];
   stakeholders: Stakeholder[];
   conversations: Conversation[];
+  communications: Communication[];
   claims: Claim[];
 }
 
@@ -29,6 +31,7 @@ export function ActionsPageClient({
   risks,
   stakeholders,
   conversations,
+  communications,
   claims,
 }: ActionsPageClientProps) {
   const [statusFilter, setStatusFilter] = useState<ActionStatus | null>(null);
@@ -77,6 +80,7 @@ export function ActionsPageClient({
         open={!!dialogStakeholder}
         onOpenChange={(open) => !open && setDialogStakeholder(null)}
         conversations={conversations}
+        communications={communications}
         actions={actions}
         claims={claims}
       />

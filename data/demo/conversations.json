@@ -13,7 +13,8 @@
     "decisions": [
       "Sprint cadence set to 2 weeks with standups on Mon/Wed/Fri"
     ],
-    "actionItemIds": ["a4", "a7"]
+    "actionItemIds": ["a4", "a7"],
+    "medium": "in-person"
   },
   {
     "id": "c2",
@@ -29,7 +30,8 @@
     "decisions": [
       "Selected PostgreSQL as primary database — better fit for relational task data and existing team expertise"
     ],
-    "actionItemIds": ["a13", "a14"]
+    "actionItemIds": ["a13", "a14"],
+    "medium": "in-person"
   },
   {
     "id": "c3",
@@ -46,7 +48,8 @@
     "decisions": [
       "Approved 3-screen onboarding flow with progressive disclosure"
     ],
-    "actionItemIds": ["a4", "a9"]
+    "actionItemIds": ["a4", "a9"],
+    "medium": "video-call"
   },
   {
     "id": "c4",
@@ -62,7 +65,8 @@
     "decisions": [
       "GitHub Actions selected for CI/CD with automated staging deploys on merge to main"
     ],
-    "actionItemIds": ["a3", "a2", "a8"]
+    "actionItemIds": ["a3", "a2", "a8"],
+    "medium": "in-person"
   },
   {
     "id": "c5",
@@ -78,7 +82,8 @@
     "decisions": [
       "Auth bugs prioritized as P0, mobile layout as P1"
     ],
-    "actionItemIds": ["a5", "a10"]
+    "actionItemIds": ["a5", "a10"],
+    "medium": "video-call"
   },
   {
     "id": "c6",
@@ -95,7 +100,8 @@
       "Advanced reporting, team collaboration, and calendar integration deferred to v1.1",
       "Beta feedback to be formally categorized as v1 must-have vs v1.1 nice-to-have"
     ],
-    "actionItemIds": ["a11", "a12"]
+    "actionItemIds": ["a11", "a12"],
+    "medium": "phone-call"
   },
   {
     "id": "c7",
@@ -110,7 +116,8 @@
       "Sarah presented aggregated survey results"
     ],
     "decisions": [],
-    "actionItemIds": ["a12"]
+    "actionItemIds": ["a12"],
+    "medium": "video-call"
   },
   {
     "id": "c8",
@@ -127,7 +134,8 @@
     "decisions": [
       "Auth flow fix is launch blocker — no launch until all 3 edge cases resolved"
     ],
-    "actionItemIds": ["a1", "a10"]
+    "actionItemIds": ["a1", "a10"],
+    "medium": "in-person"
   },
   {
     "id": "c9",
@@ -141,7 +149,8 @@
       "Load testing not yet started — added to priority list"
     ],
     "decisions": [],
-    "actionItemIds": ["a6"]
+    "actionItemIds": ["a6"],
+    "medium": "video-call"
   },
   {
     "id": "c10",
@@ -158,6 +167,7 @@
     "decisions": [
       "Launch date formally at risk — team to reassess on April 15"
     ],
-    "actionItemIds": ["a1", "a6", "a15"]
+    "actionItemIds": ["a1", "a6", "a15"],
+    "medium": "in-person"
   }
 ]

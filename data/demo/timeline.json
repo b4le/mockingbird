@@ -248,5 +248,45 @@
     "stakeholderIds": ["s1", "s3", "s6"],
     "linkedEntityId": "r1",
     "linkedEntityType": "risk"
+  },
+  {
+    "id": "t26",
+    "date": "2026-03-11T09:30:00Z",
+    "title": "Onboarding design partner email",
+    "type": "communication",
+    "description": "Email thread with Stripe Design Partners: Priya sends written critique, Ben confirms 3-screen direction, James picks up the CTA + persistent progress indicator changes.",
+    "stakeholderIds": ["s1", "s4"],
+    "linkedEntityId": "co2",
+    "linkedEntityType": "communication"
+  },
+  {
+    "id": "t27",
+    "date": "2026-03-17T14:12:00Z",
+    "title": "#backend Slack: OAuth token refresh debugging",
+    "type": "communication",
+    "description": "Slack thread between Ben and Maria debugging the OAuth token refresh issue ahead of the formal bug triage. Agreement to escalate with the provider.",
+    "stakeholderIds": ["s1", "s3"],
+    "linkedEntityId": "co1",
+    "linkedEntityType": "communication"
+  },
+  {
+    "id": "t28",
+    "date": "2026-04-04T09:00:00Z",
+    "title": "Weekly written update to Lisa",
+    "type": "communication",
+    "description": "Ben's weekly update to external stakeholder Lisa covering actions, blockers, and the pending launch-date reassessment. Lisa confirms she'll share with the beta cohort.",
+    "stakeholderIds": ["s1", "s7"],
+    "linkedEntityId": "co6",
+    "linkedEntityType": "communication"
+  },
+  {
+    "id": "t29",
+    "date": "2026-04-07T11:02:00Z",
+    "title": "#devops Slack: deploy readiness check",
+    "type": "communication",
+    "description": "Tom proposes flipping the staging-to-prod auto-promote toggle. Maria holds for the pending 1k-user load test; Alex confirms frontend is green.",
+    "stakeholderIds": ["s2", "s3", "s6"],
+    "linkedEntityId": "co5",
+    "linkedEntityType": "communication"
   }
 ]

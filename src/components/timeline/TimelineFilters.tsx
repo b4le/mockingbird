@@ -5,14 +5,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { TimelineEventType, Stakeholder } from "@/types";
 
-const EVENT_TYPES: TimelineEventType[] = [
+const EVENT_TYPES = [
   "conversation",
   "decision",
   "milestone",
   "document",
   "action",
   "risk-change",
-];
+  "communication",
+] as const satisfies readonly TimelineEventType[];
 
 interface TimelineFiltersProps {
   stakeholders: Stakeholder[];

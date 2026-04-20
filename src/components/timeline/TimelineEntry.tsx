@@ -4,13 +4,23 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
-import { TIMELINE_TYPE_ICONS, TIMELINE_TYPE_LABELS } from "@/lib/constants";
-import type { TimelineEvent, Stakeholder, Conversation } from "@/types";
+import {
+  COMMUNICATION_CHANNEL_LABELS,
+  TIMELINE_TYPE_ICONS,
+  TIMELINE_TYPE_LABELS,
+} from "@/lib/constants";
+import type {
+  TimelineEvent,
+  Stakeholder,
+  Conversation,
+  Communication,
+} from "@/types";
 
 interface TimelineEntryProps {
   event: TimelineEvent;
   stakeholderMap: Map<string, Stakeholder>;
   conversations: Conversation[];
+  communications: Communication[];
   onStakeholderClick: (s: Stakeholder) => void;
 }
 
@@ -18,13 +28,25 @@ export function TimelineEntry({
   event,
   stakeholderMap,
   conversations,
+  communications,
   onStakeholderClick,
 }: TimelineEntryProps) {
   const [expanded, setExpanded] = useState(false);
-  const isConversation = event.type === "conversation" && event.linkedEntityId;
+  const isConversation =
+    event.type === "conversation" &&
+    event.linkedEntityType === "conversation" &&
+    event.linkedEntityId;
   const linkedConversation = isConversation
     ? conversations.find((c) => c.id === event.linkedEntityId)
     : null;
+  const isCommunication =
+    event.type === "communication" &&
+    event.linkedEntityType === "communication" &&
+    event.linkedEntityId;
+  const linkedCommunication = isCommunication
+    ? communications.find((c) => c.id === event.linkedEntityId)
+    : null;
+  const isExpandable = Boolean(linkedConversation || linkedCommunication);
 
   return (
     <div className="flex gap-3">
@@ -34,8 +56,8 @@ export function TimelineEntry({
       </div>
       <div className="min-w-0 flex-1 pb-6">
         <div
-          className={`${isConversation ? "cursor-pointer" : ""}`}
-          {...(isConversation
+          className={`${isExpandable ? "cursor-pointer" : ""}`}
+          {...(isExpandable
             ? {
                 role: "button",
                 tabIndex: 0,
@@ -57,7 +79,7 @@ export function TimelineEntry({
                 {event.description}
               </p>
             </div>
-            {isConversation && (
+            {isExpandable && (
               <ChevronDown
                 className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
                 aria-hidden="true"
@@ -93,7 +115,7 @@ export function TimelineEntry({
                 <p className="font-medium">Key Points</p>
                 <ul className="mt-1 list-inside list-disc space-y-0.5 text-muted-foreground">
                   {linkedConversation.keyPoints.map((kp, i) => (
-                    <li key={i}>{kp}</li>
+                    <li key={`${kp}-${i}`}>{kp}</li>
                   ))}
                 </ul>
               </div>
@@ -103,9 +125,63 @@ export function TimelineEntry({
                 <p className="font-medium">Decisions</p>
                 <ul className="mt-1 list-inside list-disc space-y-0.5 text-muted-foreground">
                   {linkedConversation.decisions.map((d, i) => (
-                    <li key={i}>{d}</li>
+                    <li key={`${d}-${i}`}>{d}</li>
                   ))}
                 </ul>
+              </div>
+            )}
+          </div>
+        )}
+        {expanded && linkedCommunication && (
+          <div className="mt-3 rounded-lg border bg-muted/30 p-3 text-sm">
+            <div className="mb-2 flex flex-wrap items-baseline gap-2">
+              <p className="font-medium">{linkedCommunication.subject}</p>
+              <span className="text-xs text-muted-foreground">
+                {COMMUNICATION_CHANNEL_LABELS[linkedCommunication.channel]}
+              </span>
+            </div>
+            <p className="mb-2 text-muted-foreground">
+              {linkedCommunication.summary}
+            </p>
+            {linkedCommunication.messages.length > 0 && (
+              <div>
+                <p className="font-medium">Messages</p>
+                <ul className="mt-1 space-y-1 text-muted-foreground">
+                  {linkedCommunication.messages.slice(0, 2).map((m, i) => {
+                    const sender = m.senderId
+                      ? stakeholderMap.get(m.senderId)
+                      : null;
+                    const label = sender
+                      ? sender.name
+                      : m.externalSender
+                        ? `${m.externalSender.name}${
+                            m.externalSender.organisation
+                              ? ` (${m.externalSender.organisation})`
+                              : ""
+                          }`
+                        : "";
+                    const key = `${m.date}-${
+                      m.senderId ??
+                      m.externalSender?.email ??
+                      m.externalSender?.name ??
+                      i
+                    }`;
+                    return (
+                      <li key={key}>
+                        <span className="font-medium text-foreground">
+                          {label}
+                        </span>
+                        {label && ": "}
+                        {m.bodyPreview}
+                      </li>
+                    );
+                  })}
+                </ul>
+                {linkedCommunication.messages.length > 2 && (
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    +{linkedCommunication.messages.length - 2} more
+                  </p>
+                )}
               </div>
             )}
           </div>

@@ -4,14 +4,48 @@ export type RiskStatus = 'open' | 'mitigated' | 'accepted' | 'closed';
 export type ClaimStatus = 'supported' | 'contested' | 'unverified';
 export type ProjectStatus = 'on-track' | 'at-risk' | 'off-track' | 'paused' | 'completed';
 export type EvidenceStrength = 'strong' | 'moderate' | 'weak' | 'circumstantial';
-export type TimelineEventType = 'conversation' | 'decision' | 'milestone' | 'document' | 'action' | 'risk-change';
-export type ContactType = 'email' | 'call' | 'meeting' | 'chat' | 'other';
+export type TimelineEventType =
+  | 'conversation'
+  | 'decision'
+  | 'milestone'
+  | 'document'
+  | 'action'
+  | 'risk-change'
+  | 'communication';
+export type CommunicationChannel = 'email' | 'slack' | 'whatsapp' | 'sms' | 'other';
 
-export interface ContactLogEntry {
+export interface ExternalParticipant {
+  name: string;
+  email?: string;
+  organisation?: string;
+}
+
+export type CommMessage =
+  | { date: string; senderId: string; externalSender?: never; bodyPreview: string }
+  | { date: string; senderId?: never; externalSender: ExternalParticipant; bodyPreview: string };
+
+export interface CommAttachment {
+  evidenceId?: string;
+  name?: string;
+  url?: string;
+}
+
+export interface Communication {
+  id: string;
+  channel: CommunicationChannel;
   date: string;
-  type: ContactType;
+  subject: string;
+  participantIds: string[];
+  externalParticipants?: ExternalParticipant[];
   summary: string;
-  relatedConversationId?: string;
+  messages: CommMessage[];
+  attachments?: CommAttachment[];
+  actionItemIds?: string[];
+  claimIds?: string[];
+  evidenceIds?: string[];
+  riskIds?: string[];
+  conversationIds?: string[];
+  tags?: string[];
 }
 
 export interface Stakeholder {
@@ -25,7 +59,6 @@ export interface Stakeholder {
   phone?: string;
   avatarUrl?: string;
   notes?: string;
-  contactLog: ContactLogEntry[];
 }
 
 export interface Conversation {
@@ -37,6 +70,9 @@ export interface Conversation {
   keyPoints: string[];
   decisions: string[];
   actionItemIds: string[];
+  medium?: 'in-person' | 'video-call' | 'phone-call';
+  transcript?: string;
+  transcriptUrl?: string;
 }
 
 export interface ActionItem {
@@ -50,6 +86,7 @@ export interface ActionItem {
   dueDate: string | null;
   completedDate: string | null;
   tags: string[];
+  /** Conversation where this was first raised. May also be referenced by Communications — see Communication.actionItemIds for those backrefs. */
   conversationId: string | null;
 }
 
@@ -86,6 +123,7 @@ export interface EvidenceItem {
   date: string;
   url: string | null;
   claimIds: string[];
+  /** Conversation where this was first raised. May also be referenced by Communications — see Communication.evidenceIds for those backrefs. */
   conversationId: string | null;
 }
 
@@ -97,7 +135,13 @@ export interface TimelineEvent {
   description: string;
   stakeholderIds: string[];
   linkedEntityId: string | null;
-  linkedEntityType: 'conversation' | 'action' | 'claim' | 'risk' | null;
+  linkedEntityType:
+    | 'conversation'
+    | 'action'
+    | 'claim'
+    | 'risk'
+    | 'communication'
+    | null;
 }
 
 export interface ProjectState {
