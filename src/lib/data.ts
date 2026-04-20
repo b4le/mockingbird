@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import { z, ZodError } from "zod";
 
 import type {
   ActionItem,
@@ -13,13 +14,53 @@ import type {
   Stakeholder,
   TimelineEvent,
 } from "@/types";
+import {
+  ActionItemSchema,
+  ClaimSchema,
+  CommunicationSchema,
+  ConversationSchema,
+  EvidenceItemSchema,
+  ProjectStateSchema,
+  RiskSchema,
+  SessionMetaSchema,
+  StakeholderSchema,
+  TimelineEventSchema,
+} from "@/lib/schemas";
 
-async function loadJson<T>(project: string, file: string): Promise<T> {
+/**
+ * Reads a project JSON file and validates its shape with a zod schema before
+ * returning. Malformed data fails the build loudly at the point of ingestion
+ * rather than surfacing later as a mystery runtime render bug.
+ *
+ * The thrown error message includes the full `filePath` so CI logs point
+ * straight at the offending file, followed by the zod issue list formatted
+ * as human-readable lines (path + expected + received).
+ */
+async function loadValidated<T extends z.ZodTypeAny>(
+  project: string,
+  file: string,
+  schema: T,
+): Promise<z.infer<T>> {
   const filePath = path.join(process.cwd(), "data", project, file);
   try {
     const raw = await fs.readFile(filePath, "utf-8");
-    return JSON.parse(raw) as T;
+    const parsed: unknown = JSON.parse(raw);
+    return schema.parse(parsed);
   } catch (error) {
+    if (error instanceof ZodError) {
+      const issues = error.issues
+        .map((issue) => {
+          const location = issue.path.length
+            ? issue.path.join(".")
+            : "<root>";
+          return `  - ${location}: ${issue.message} (code: ${issue.code})`;
+        })
+        .join("\n");
+      const message =
+        `Failed to load ${filePath}: schema validation failed\n${issues}`;
+      console.error(message);
+      throw new Error(message);
+    }
     const message =
       error instanceof Error ? error.message : String(error);
     console.error(`Failed to load ${filePath}: ${message}`);
@@ -30,49 +71,57 @@ async function loadJson<T>(project: string, file: string): Promise<T> {
 export async function getStakeholders(
   project: string,
 ): Promise<Stakeholder[]> {
-  return loadJson<Stakeholder[]>(project, "stakeholders.json");
+  return loadValidated(project, "stakeholders.json", z.array(StakeholderSchema));
 }
 
 export async function getConversations(
   project: string,
 ): Promise<Conversation[]> {
-  return loadJson<Conversation[]>(project, "conversations.json");
+  return loadValidated(
+    project,
+    "conversations.json",
+    z.array(ConversationSchema),
+  );
 }
 
 export async function getCommunications(
   project: string,
 ): Promise<Communication[]> {
-  return loadJson<Communication[]>(project, "communications.json");
+  return loadValidated(
+    project,
+    "communications.json",
+    z.array(CommunicationSchema),
+  );
 }
 
 export async function getActions(project: string): Promise<ActionItem[]> {
-  return loadJson<ActionItem[]>(project, "actions.json");
+  return loadValidated(project, "actions.json", z.array(ActionItemSchema));
 }
 
 export async function getRisks(project: string): Promise<Risk[]> {
-  return loadJson<Risk[]>(project, "risks.json");
+  return loadValidated(project, "risks.json", z.array(RiskSchema));
 }
 
 export async function getClaims(project: string): Promise<Claim[]> {
-  return loadJson<Claim[]>(project, "claims.json");
+  return loadValidated(project, "claims.json", z.array(ClaimSchema));
 }
 
 export async function getEvidence(project: string): Promise<EvidenceItem[]> {
-  return loadJson<EvidenceItem[]>(project, "evidence.json");
+  return loadValidated(project, "evidence.json", z.array(EvidenceItemSchema));
 }
 
 export async function getTimeline(project: string): Promise<TimelineEvent[]> {
-  return loadJson<TimelineEvent[]>(project, "timeline.json");
+  return loadValidated(project, "timeline.json", z.array(TimelineEventSchema));
 }
 
 export async function getProjectState(
   project: string,
 ): Promise<ProjectState> {
-  return loadJson<ProjectState>(project, "state.json");
+  return loadValidated(project, "state.json", ProjectStateSchema);
 }
 
 export async function getSession(project: string): Promise<SessionMeta> {
-  return loadJson<SessionMeta>(project, "session.json");
+  return loadValidated(project, "session.json", SessionMetaSchema);
 }
 
 export interface ProjectBundle {
