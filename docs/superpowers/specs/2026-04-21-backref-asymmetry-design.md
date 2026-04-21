@@ -31,7 +31,7 @@ Matches the existing `TimelineEvent.linkedEntityId` + `linkedEntityType` pattern
 ## Invariants
 
 1. `sourceEntityId` is `null` iff `sourceEntityType` is `null`. Enforced by a `.refine()` on each zod schema (tighter than `TimelineEvent`, but the TimelineEvent pattern is permissive by historical accident, not by intent).
-2. If `sourceEntityType === 'communication'`, the referenced Communication's `actionItemIds` / `evidenceIds` must include this row's id. **Not** enforced by zod (cross-collection). Enforced by a runtime consistency check in `src/lib/data.ts::getProjectBundle` that logs `console.warn` on mismatch. Build stays green; the warning catches drift during future data edits.
+2. If `sourceEntityType === 'communication'`, the referenced Communication's `actionItemIds` / `evidenceIds` must include this row's id. Similarly for `sourceEntityType === 'conversation'` and `Conversation.actionItemIds`. **Not** enforced by zod (cross-collection). Enforced by a runtime consistency check in `src/lib/data.ts::getProjectBundle` (`warnOnBackrefDrift`). Policy: throws in CI (`process.env.CI === "true"`) so violations fail the build; warns in dev so hand-edits surface without blocking local iteration. The check is one-directional by design — see the semantics note in [Data migration](#data-migration-datademojson).
 3. `EvidenceItem.sourceType` (existing: `'document' | 'conversation' | 'metric' | 'external'`) is a categorisation of the evidence medium, not a pointer — it stays. Orthogonal to `sourceEntityType`.
 
 ## Data migration (data/demo/\*.json)
@@ -52,7 +52,7 @@ Rows with a single source today:
 - e1, e4, e5, e6, e8: `conversationId: <c*>` → `sourceEntityType: 'conversation'`, same id
 - e2, e3, e9, e10: `conversationId: null` — e9 gains `source = co4` (previously had no source but is listed in `co4.evidenceIds`); others stay fully null
 
-After migration, `Communication.actionItemIds` and `Communication.evidenceIds` remain on the Communication side as a denormalised fast-lookup cache. The new source field on the action / evidence is the single source of truth; the Communication back-ref is derivable from it.
+After migration, `Communication.actionItemIds`, `Communication.evidenceIds`, and `Conversation.actionItemIds` are **permissive linked-items lists**: they MUST include every child whose `sourceEntityId` points at this parent (the origin), and MAY additionally include related items that surfaced or were discussed in the thread/meeting without originating there. The child's `sourceEntityId` field is the single source of truth for origin; the parent's linked list is a superset carrying narrative richness (e.g. "this action was also discussed here"). The consistency check in `src/lib/data.ts::warnOnBackrefDrift` enforces the origin-must-be-mirrored direction only — reverse-direction "extras" are expected, not drift. In CI (`process.env.CI === "true"`) the check throws to fail the build; in dev it warns so hand-edits surface without blocking local iteration.
 
 ## UI changes (acceptance criterion #4)
 

@@ -144,14 +144,31 @@ interface SourceBacked {
 }
 
 /**
- * Cross-collection consistency check: every action/evidence row whose
- * `sourceEntityType` is `"communication"` must appear in the referenced
- * Communication's `actionItemIds` / `evidenceIds` back-ref. Similar for
- * `"conversation"` where Conversation has `actionItemIds` (Conversation
- * has no `evidenceIds` — evidence→conversation links are not validated).
+ * Cross-collection consistency check for the child→parent origin link.
  *
- * Warns on mismatch rather than throwing: catches semantic drift during
- * hand-edits without blocking the build.
+ * Semantics (permissive linked-items lists):
+ * - Each ActionItem / EvidenceItem has a single `sourceEntityId` +
+ *   `sourceEntityType` — the single source of truth for where the row
+ *   *originated*.
+ * - `Communication.actionItemIds`, `Communication.evidenceIds`, and
+ *   `Conversation.actionItemIds` are LINKED-ITEMS lists. They MUST
+ *   include the origin (the child where `sourceEntityId == this.id`)
+ *   and MAY include additional related items — actions/evidence that
+ *   surfaced, were referenced, or were otherwise discussed in that
+ *   thread/meeting without originating there. Extras are narrative
+ *   richness, not drift.
+ *
+ * So this check is deliberately one-directional: for every child whose
+ * origin points at a parent, the parent's linked list must mirror the
+ * link. The reverse — ids in the parent's list whose child's origin
+ * points elsewhere — is expected and not a violation.
+ *
+ * For evidence→conversation we skip the check entirely: Conversation
+ * has no `evidenceIds` field, so there is no parent list to mirror.
+ *
+ * Policy: throws in CI (`process.env.CI === "true"`) so violations fail
+ * the build; warns in dev so hand-edits surface without blocking local
+ * iteration. All 4 report sites route through the `report` closure.
  */
 function warnOnBackrefDrift(
   kind: "action" | "evidence",
@@ -162,6 +179,11 @@ function warnOnBackrefDrift(
 ): void {
   const commById = new Map(communications.map((c) => [c.id, c]));
   const convById = new Map(conversations.map((c) => [c.id, c]));
+  const strict = process.env.CI === "true";
+  const report = (msg: string): void => {
+    if (strict) throw new Error(msg);
+    console.warn(msg);
+  };
 
   for (const item of items) {
     if (item.sourceEntityId === null || item.sourceEntityType === null) {
@@ -171,14 +193,14 @@ function warnOnBackrefDrift(
     if (item.sourceEntityType === "communication") {
       const comm = commById.get(item.sourceEntityId);
       if (!comm) {
-        console.warn(
+        report(
           `[backref-drift] ${kind} ${item.id} references missing communication ${item.sourceEntityId}`,
         );
         continue;
       }
       const backref = comm[backrefField];
       if (!backref || !backref.includes(item.id)) {
-        console.warn(
+        report(
           `[backref-drift] ${kind} ${item.id} claims source ${comm.id} but ${comm.id}.${backrefField} does not include it`,
         );
       }
@@ -188,13 +210,13 @@ function warnOnBackrefDrift(
     // sourceEntityType === "conversation"
     const conv = convById.get(item.sourceEntityId);
     if (!conv) {
-      console.warn(
+      report(
         `[backref-drift] ${kind} ${item.id} references missing conversation ${item.sourceEntityId}`,
       );
       continue;
     }
     if (backrefField === "actionItemIds" && !conv.actionItemIds.includes(item.id)) {
-      console.warn(
+      report(
         `[backref-drift] ${kind} ${item.id} claims source ${conv.id} but ${conv.id}.actionItemIds does not include it`,
       );
     }

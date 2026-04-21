@@ -44,8 +44,10 @@ export interface Communication {
   summary: string;
   messages: CommMessage[];
   attachments?: CommAttachment[];
+  /** Linked actions: origin required, related extras OK. */
   actionItemIds?: string[];
   claimIds?: string[];
+  /** Linked evidence: origin required, related extras OK. */
   evidenceIds?: string[];
   riskIds?: string[];
   conversationIds?: string[];
@@ -73,6 +75,7 @@ export interface Conversation {
   summary: string;
   keyPoints: string[];
   decisions: string[];
+  /** Linked actions: origin required, related extras OK. */
   actionItemIds: string[];
   medium?: 'in-person' | 'video-call' | 'phone-call';
   transcript?: string;
