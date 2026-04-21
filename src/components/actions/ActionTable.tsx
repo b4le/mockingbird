@@ -10,7 +10,15 @@ import { DateDisplay } from "@/components/shared/DateDisplay";
 import { PRIORITY_ORDER } from "@/lib/constants";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { buildStakeholderMap } from "@/lib/stakeholders";
-import type { ActionItem, ActionStatus, Priority, Stakeholder } from "@/types";
+import { resolveSourceLabel } from "@/lib/stakeholder-activity";
+import type {
+  ActionItem,
+  ActionStatus,
+  Communication,
+  Conversation,
+  Priority,
+  Stakeholder,
+} from "@/types";
 
 type SortKey = "priority" | "dueDate" | "status";
 
@@ -24,6 +32,8 @@ const statusOrder: Record<ActionStatus, number> = {
 interface ActionTableProps {
   actions: ActionItem[];
   stakeholders: Stakeholder[];
+  conversations: Conversation[];
+  communications: Communication[];
   statusFilter: ActionStatus | null;
   priorityFilter: Priority | null;
   ownerFilter: string | null;
@@ -38,6 +48,8 @@ function isOverdue(action: ActionItem): boolean {
 export function ActionTable({
   actions,
   stakeholders,
+  conversations,
+  communications,
   statusFilter,
   priorityFilter,
   ownerFilter,
@@ -100,6 +112,7 @@ export function ActionTable({
               <th scope="col" className="pb-2 pr-3">Priority</th>
               <th scope="col" className="pb-2 pr-3">Owner</th>
               <th scope="col" className="pb-2 pr-3">Due</th>
+              <th scope="col" className="pb-2 pr-3">Source</th>
               <th scope="col" className="pb-2">Tags</th>
             </tr>
           </thead>
@@ -139,6 +152,32 @@ export function ActionTable({
                     ) : (
                       <span className="text-muted-foreground">—</span>
                     )}
+                  </td>
+                  <td className="py-2 pr-3">
+                    {(() => {
+                      const src = resolveSourceLabel(
+                        action.sourceEntityId,
+                        action.sourceEntityType,
+                        conversations,
+                        communications,
+                      );
+                      if (!src) {
+                        return <span className="text-muted-foreground">—</span>;
+                      }
+                      return (
+                        <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                          <span role="img" aria-label={src.ariaLabel}>
+                            {src.icon}
+                          </span>
+                          <span
+                            className="truncate max-w-[14ch]"
+                            title={src.title}
+                          >
+                            {src.title}
+                          </span>
+                        </span>
+                      );
+                    })()}
                   </td>
                   <td className="py-2">
                     <div className="flex flex-wrap gap-1">
@@ -208,6 +247,26 @@ export function ActionTable({
                     ))}
                   </div>
                 )}
+                {(() => {
+                  const src = resolveSourceLabel(
+                    action.sourceEntityId,
+                    action.sourceEntityType,
+                    conversations,
+                    communications,
+                  );
+                  if (!src) return null;
+                  return (
+                    <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
+                      <span>Source:</span>
+                      <span role="img" aria-label={src.ariaLabel}>
+                        {src.icon}
+                      </span>
+                      <span className="truncate" title={src.title}>
+                        {src.title}
+                      </span>
+                    </div>
+                  );
+                })()}
               </CardContent>
             </Card>
           );
