@@ -65,6 +65,8 @@ export function ActionsPageClient({
           <ActionTable
             actions={actions}
             stakeholders={stakeholders}
+            conversations={conversations}
+            communications={communications}
             statusFilter={statusFilter}
             priorityFilter={priorityFilter}
             ownerFilter={ownerFilter}

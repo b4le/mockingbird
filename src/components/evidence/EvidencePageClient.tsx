@@ -11,18 +11,29 @@ import { EmptyState } from "@/components/shared/EmptyState";
 import { EvidenceFilters } from "./EvidenceFilters";
 import { buildStakeholderMap } from "@/lib/stakeholders";
 import { resolveIds } from "@/lib/collections";
-import type { Claim, EvidenceItem, Stakeholder } from "@/types";
+import { resolveSourceLabel } from "@/lib/stakeholder-activity";
+import type {
+  Claim,
+  Communication,
+  Conversation,
+  EvidenceItem,
+  Stakeholder,
+} from "@/types";
 
 interface EvidencePageClientProps {
   claims: Claim[];
   evidence: EvidenceItem[];
   stakeholders: Stakeholder[];
+  conversations: Conversation[];
+  communications: Communication[];
 }
 
 export function EvidencePageClient({
   claims,
   evidence,
   stakeholders,
+  conversations,
+  communications,
 }: EvidencePageClientProps) {
   const [selectedClaim, setSelectedClaim] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -223,6 +234,26 @@ export function EvidencePageClient({
                               <span>&middot;</span>
                               <DateDisplay date={ev.date} />
                             </div>
+                            {(() => {
+                              const src = resolveSourceLabel(
+                                ev.sourceEntityId,
+                                ev.sourceEntityType,
+                                conversations,
+                                communications,
+                              );
+                              if (!src) return null;
+                              return (
+                                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                                  <span>From:</span>
+                                  <span role="img" aria-label={src.ariaLabel}>
+                                    {src.icon}
+                                  </span>
+                                  <span className="truncate" title={src.title}>
+                                    {src.title}
+                                  </span>
+                                </div>
+                              );
+                            })()}
                             {ev.url && (
                               <a
                                 href={ev.url}
