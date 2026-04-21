@@ -90,8 +90,15 @@ export interface ActionItem {
   dueDate: string | null;
   completedDate: string | null;
   tags: string[];
-  /** Conversation where this was first raised. May also be referenced by Communications — see Communication.actionItemIds for those backrefs. */
-  conversationId: string | null;
+  /**
+   * The conversation or communication where this action was first raised.
+   * Single source of truth — the referenced entity MUST mirror this link
+   * via its own `actionItemIds`. Both fields are null together or both
+   * non-null together (enforced in the zod schema). Mirrors the
+   * `TimelineEvent.linkedEntityId` / `linkedEntityType` pattern.
+   */
+  sourceEntityId: string | null;
+  sourceEntityType: 'conversation' | 'communication' | null;
 }
 
 export interface Risk {
@@ -127,8 +134,15 @@ export interface EvidenceItem {
   date: string;
   url: string | null;
   claimIds: string[];
-  /** Conversation where this was first raised. May also be referenced by Communications — see Communication.evidenceIds for those backrefs. */
-  conversationId: string | null;
+  /**
+   * The conversation or communication where this evidence was first raised.
+   * Single source of truth — the referenced entity MUST mirror this link
+   * via its own `evidenceIds`. Both fields are null together or both
+   * non-null together (enforced in the zod schema). Mirrors the
+   * `TimelineEvent.linkedEntityId` / `linkedEntityType` pattern.
+   */
+  sourceEntityId: string | null;
+  sourceEntityType: 'conversation' | 'communication' | null;
 }
 
 export interface TimelineEvent {

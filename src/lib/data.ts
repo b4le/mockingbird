@@ -137,6 +137,71 @@ export interface ProjectBundle {
   timeline: TimelineEvent[];
 }
 
+interface SourceBacked {
+  id: string;
+  sourceEntityId: string | null;
+  sourceEntityType: "conversation" | "communication" | null;
+}
+
+/**
+ * Cross-collection consistency check: every action/evidence row whose
+ * `sourceEntityType` is `"communication"` must appear in the referenced
+ * Communication's `actionItemIds` / `evidenceIds` back-ref. Similar for
+ * `"conversation"` where Conversation has `actionItemIds` (Conversation
+ * has no `evidenceIds` — evidence→conversation links are not validated).
+ *
+ * Warns on mismatch rather than throwing: catches semantic drift during
+ * hand-edits without blocking the build.
+ */
+function warnOnBackrefDrift(
+  kind: "action" | "evidence",
+  items: SourceBacked[],
+  communications: Communication[],
+  conversations: Conversation[],
+  backrefField: "actionItemIds" | "evidenceIds",
+): void {
+  const commById = new Map(communications.map((c) => [c.id, c]));
+  const convById = new Map(conversations.map((c) => [c.id, c]));
+
+  for (const item of items) {
+    if (item.sourceEntityId === null || item.sourceEntityType === null) {
+      continue;
+    }
+
+    if (item.sourceEntityType === "communication") {
+      const comm = commById.get(item.sourceEntityId);
+      if (!comm) {
+        console.warn(
+          `[backref-drift] ${kind} ${item.id} references missing communication ${item.sourceEntityId}`,
+        );
+        continue;
+      }
+      const backref = comm[backrefField];
+      if (!backref || !backref.includes(item.id)) {
+        console.warn(
+          `[backref-drift] ${kind} ${item.id} claims source ${comm.id} but ${comm.id}.${backrefField} does not include it`,
+        );
+      }
+      continue;
+    }
+
+    // sourceEntityType === "conversation"
+    const conv = convById.get(item.sourceEntityId);
+    if (!conv) {
+      console.warn(
+        `[backref-drift] ${kind} ${item.id} references missing conversation ${item.sourceEntityId}`,
+      );
+      continue;
+    }
+    if (backrefField === "actionItemIds" && !conv.actionItemIds.includes(item.id)) {
+      console.warn(
+        `[backref-drift] ${kind} ${item.id} claims source ${conv.id} but ${conv.id}.actionItemIds does not include it`,
+      );
+    }
+    // Conversations have no `evidenceIds` — skip the evidence→conversation check.
+  }
+}
+
 /**
  * Loads all ten project JSON files in parallel and returns them as a
  * typed bundle. Convenience loader for pages that need most/all project
@@ -169,6 +234,20 @@ export async function getProjectBundle(
     getEvidence(project),
     getTimeline(project),
   ]);
+  warnOnBackrefDrift(
+    "action",
+    actions,
+    communications,
+    conversations,
+    "actionItemIds",
+  );
+  warnOnBackrefDrift(
+    "evidence",
+    evidence,
+    communications,
+    conversations,
+    "evidenceIds",
+  );
   return {
     state,
     session,

@@ -80,6 +80,26 @@ const LinkedEntityTypeSchema = z.enum([
   "communication",
 ]);
 
+const SourceEntityTypeSchema = z.enum(["conversation", "communication"]);
+
+/**
+ * Cross-field invariant for `ActionItem` and `EvidenceItem`: the polymorphic
+ * source pointer is either fully set or fully null. Prevents the "half
+ * pointer" state (an id with no type, or a type with no id) that would
+ * silently break provenance rendering.
+ */
+const sourceEntityBothOrNeither = <
+  T extends {
+    sourceEntityId: string | null;
+    sourceEntityType: "conversation" | "communication" | null;
+  },
+>(
+  v: T,
+) => (v.sourceEntityId === null) === (v.sourceEntityType === null);
+
+const sourceEntityRefineMessage =
+  "sourceEntityId and sourceEntityType must both be null or both be set";
+
 // ---------------------------------------------------------------------------
 // Entity schemas
 // ---------------------------------------------------------------------------
@@ -168,19 +188,22 @@ export const ConversationSchema = z.object({
   transcriptUrl: z.string().optional(),
 });
 
-export const ActionItemSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  description: z.string(),
-  status: ActionStatusSchema,
-  priority: PrioritySchema,
-  ownerId: z.string(),
-  createdDate: z.string(),
-  dueDate: z.string().nullable(),
-  completedDate: z.string().nullable(),
-  tags: z.array(z.string()),
-  conversationId: z.string().nullable(),
-});
+export const ActionItemSchema = z
+  .object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    status: ActionStatusSchema,
+    priority: PrioritySchema,
+    ownerId: z.string(),
+    createdDate: z.string(),
+    dueDate: z.string().nullable(),
+    completedDate: z.string().nullable(),
+    tags: z.array(z.string()),
+    sourceEntityId: z.string().nullable(),
+    sourceEntityType: SourceEntityTypeSchema.nullable(),
+  })
+  .refine(sourceEntityBothOrNeither, { message: sourceEntityRefineMessage });
 
 export const RiskSchema = z.object({
   id: z.string(),
@@ -205,18 +228,21 @@ export const ClaimSchema = z.object({
   date: z.string(),
 });
 
-export const EvidenceItemSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  description: z.string(),
-  source: z.string(),
-  sourceType: EvidenceSourceTypeSchema,
-  strength: EvidenceStrengthSchema,
-  date: z.string(),
-  url: z.string().nullable(),
-  claimIds: z.array(z.string()),
-  conversationId: z.string().nullable(),
-});
+export const EvidenceItemSchema = z
+  .object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    source: z.string(),
+    sourceType: EvidenceSourceTypeSchema,
+    strength: EvidenceStrengthSchema,
+    date: z.string(),
+    url: z.string().nullable(),
+    claimIds: z.array(z.string()),
+    sourceEntityId: z.string().nullable(),
+    sourceEntityType: SourceEntityTypeSchema.nullable(),
+  })
+  .refine(sourceEntityBothOrNeither, { message: sourceEntityRefineMessage });
 
 export const TimelineEventSchema = z.object({
   id: z.string(),
