@@ -161,7 +161,7 @@ export function CommunicationDetail({
             Messages
           </p>
           <ol className="space-y-3">
-            {sortedMessages.map((m, i) => {
+            {sortedMessages.map((m) => {
               const sender = m.senderId ? stakeholderMap.get(m.senderId) : null;
               const label = sender
                 ? sender.name
@@ -172,14 +172,8 @@ export function CommunicationDetail({
                         : ""
                     }`
                   : "";
-              const key = `${m.date}-${
-                m.senderId ??
-                m.externalSender?.email ??
-                m.externalSender?.name ??
-                i
-              }`;
               return (
-                <li key={key} className="flex gap-2">
+                <li key={m.id} className="flex gap-2">
                   {sender ? (
                     <StakeholderAvatar
                       stakeholder={sender}

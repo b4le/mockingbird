@@ -8,21 +8,25 @@
     "summary": "Ben and Maria debug the OAuth token refresh bug in Slack the afternoon before the formal bug triage. Maria shares the non-standard error payload and Ben agrees to escalate with the provider.",
     "messages": [
       {
+        "id": "cm-co1-1",
         "date": "2026-03-17T14:12:00Z",
         "senderId": "s3",
         "bodyPreview": "Seeing token refresh fail intermittently in staging. Provider is returning a plain-text 500 instead of the JSON error shape we coded against. Will share a capture."
       },
       {
+        "id": "cm-co1-2",
         "date": "2026-03-17T14:31:00Z",
         "senderId": "s3",
         "bodyPreview": "Here's the raw body — not even valid JSON. Our error parser throws, then the retry loop never kicks in. So we lose the user's session."
       },
       {
+        "id": "cm-co1-3",
         "date": "2026-03-17T14:48:00Z",
         "senderId": "s1",
         "bodyPreview": "Confirmed reproducing on my side. Let's file this as a P0 and raise a ticket with the provider today. Can you write up the repro for the triage tomorrow?"
       },
       {
+        "id": "cm-co1-4",
         "date": "2026-03-17T15:02:00Z",
         "senderId": "s3",
         "bodyPreview": "On it. Will link from the bug triage notes."
@@ -49,6 +53,7 @@
     "summary": "Follow-up email thread with external design partner after the onboarding review. Priya sends written critique, Ben confirms the 3-screen direction, James picks up the action items.",
     "messages": [
       {
+        "id": "cm-co2-1",
         "date": "2026-03-11T09:30:00Z",
         "externalSender": {
           "name": "Priya Mehta",
@@ -58,11 +63,13 @@
         "bodyPreview": "Hi Ben — attached is the written critique from Tuesday's session. TL;DR: the 3-screen flow works, but screen 2 needs clearer CTA hierarchy and the progress indicator should be persistent, not only on the final step."
       },
       {
+        "id": "cm-co2-2",
         "date": "2026-03-11T11:15:00Z",
         "senderId": "s1",
         "bodyPreview": "Thanks Priya — really useful. Looping James in. We're going to keep the 3-screen direction but pick up the CTA + progress indicator changes before the beta cohort expands."
       },
       {
+        "id": "cm-co2-3",
         "date": "2026-03-11T15:40:00Z",
         "senderId": "s4",
         "bodyPreview": "Got it. I'll revise the CTA hierarchy and persistent progress bar by end of week. Will ping when ready for review."
@@ -87,21 +94,25 @@
     "summary": "Ad-hoc WhatsApp group between Ben, James, and Lisa the evening after the stakeholder update. They sanity-check whether the auth blocker really does push the launch, and agree to push back publicly on the date only after the April 15 reassessment.",
     "messages": [
       {
+        "id": "cm-co3-1",
         "date": "2026-04-05T18:25:00Z",
         "senderId": "s1",
         "bodyPreview": "Quick one — after today's update I'm 80% sure we're slipping a week. Don't want to say it externally yet. Wait for the 15th reassessment?"
       },
       {
+        "id": "cm-co3-2",
         "date": "2026-04-05T18:33:00Z",
         "senderId": "s7",
         "bodyPreview": "Makes sense. As long as the beta cohort knows internally. Don't want surprises for the testers I onboarded."
       },
       {
+        "id": "cm-co3-3",
         "date": "2026-04-05T18:41:00Z",
         "senderId": "s4",
         "bodyPreview": "Agreed. I'll hold off on updating the launch marketing assets until we have a confirmed date."
       },
       {
+        "id": "cm-co3-4",
         "date": "2026-04-05T18:44:00Z",
         "senderId": "s1",
         "bodyPreview": "Perfect. Sticking with quiet reassessment for now. Thanks both."
@@ -127,6 +138,7 @@
     "summary": "External beta tester Mike sends a long-form email with attached screenshots detailing mobile rendering bugs. Sarah forwards to Alex for triage ahead of the beta debrief.",
     "messages": [
       {
+        "id": "cm-co4-1",
         "date": "2026-03-27T08:10:00Z",
         "externalSender": {
           "name": "Mike Johnson",
@@ -136,11 +148,13 @@
         "bodyPreview": "Hi team — summary of week 2 testing. Onboarding was smooth, but I've hit mobile layout issues on Android in both the dashboard and onboarding. Screenshots attached for each issue."
       },
       {
+        "id": "cm-co4-2",
         "date": "2026-03-27T09:22:00Z",
         "senderId": "s5",
         "bodyPreview": "Thanks Mike — really helpful detail. Forwarding to Alex so she can fold this into the mobile layout work. We'll confirm fixes in the next beta build."
       },
       {
+        "id": "cm-co4-3",
         "date": "2026-03-27T10:05:00Z",
         "senderId": "s2",
         "bodyPreview": "Got it. These map to the responsive regressions I'm already on. Will track against a5 and include Mike's screenshots in the PR description."
@@ -168,21 +182,25 @@
     "summary": "Slack thread where Tom asks for a readiness confirmation before enabling staging auto-promote. Maria flags the outstanding load test, Alex confirms frontend is green.",
     "messages": [
       {
+        "id": "cm-co5-1",
         "date": "2026-04-07T11:02:00Z",
         "senderId": "s6",
         "bodyPreview": "Planning to flip the staging-to-prod auto-promote toggle this afternoon. Anything I should hold for?"
       },
       {
+        "id": "cm-co5-2",
         "date": "2026-04-07T11:09:00Z",
         "senderId": "s3",
         "bodyPreview": "Load test at 1k users hasn't happened yet. I'd hold. I don't want the first prod push to be the first time we find a bottleneck."
       },
       {
+        "id": "cm-co5-3",
         "date": "2026-04-07T11:14:00Z",
         "senderId": "s2",
         "bodyPreview": "Frontend is green — all checks pass. Happy either way but defer to Maria on backend readiness."
       },
       {
+        "id": "cm-co5-4",
         "date": "2026-04-07T11:21:00Z",
         "senderId": "s6",
         "bodyPreview": "Got it. Holding the toggle. Will revisit after the load test lands."
@@ -201,11 +219,13 @@
     "summary": "Ben's weekly written update to external stakeholder Lisa, summarising progress, blockers, and the pending launch-date reassessment. Lisa replies confirming she'll share with the beta cohort.",
     "messages": [
       {
+        "id": "cm-co6-1",
         "date": "2026-04-04T09:00:00Z",
         "senderId": "s1",
         "bodyPreview": "Hi Lisa — weekly update attached. Headlines: 4 of 15 actions closed, 3 blocked, auth fix is the critical path. Launch date officially at-risk pending the Apr 15 reassessment."
       },
       {
+        "id": "cm-co6-2",
         "date": "2026-04-04T10:45:00Z",
         "senderId": "s7",
         "bodyPreview": "Thanks Ben — clear. I'll share the summary with the beta cohort and pre-warn them about a potential one-week slip. Let me know when the reassessment lands."
@@ -224,16 +244,19 @@
     "summary": "Alex and James iterate on onboarding copy in Slack. James posts three variants for screen 2, Alex picks one and flags a length issue on mobile.",
     "messages": [
       {
+        "id": "cm-co7-1",
         "date": "2026-03-19T13:30:00Z",
         "senderId": "s4",
         "bodyPreview": "Three variants for screen 2 CTA — (a) 'Get started in 2 minutes' (b) 'Set up your first task' (c) 'Jump in'. Which reads best?"
       },
       {
+        "id": "cm-co7-2",
         "date": "2026-03-19T13:41:00Z",
         "senderId": "s2",
         "bodyPreview": "(b). It's specific and action-oriented. (a) wraps awkwardly on small iPhones — we measured 375px yesterday."
       },
       {
+        "id": "cm-co7-3",
         "date": "2026-03-19T13:47:00Z",
         "senderId": "s4",
         "bodyPreview": "Going with (b). Pushing updated copy to staging in the next hour."
@@ -252,11 +275,13 @@
     "summary": "Short SMS exchange between Ben and Maria the night before the auth post-mortem. Ben pings Maria for a quick call to preview findings before the formal meeting.",
     "messages": [
       {
+        "id": "cm-co8-1",
         "date": "2026-03-31T17:58:00Z",
         "senderId": "s1",
         "bodyPreview": "Are you free to hop on a quick call before tomorrow's post-mortem? Want to make sure we're aligned on the root cause framing."
       },
       {
+        "id": "cm-co8-2",
         "date": "2026-03-31T18:02:00Z",
         "senderId": "s3",
         "bodyPreview": "Yep. 10 min? Calling now."
