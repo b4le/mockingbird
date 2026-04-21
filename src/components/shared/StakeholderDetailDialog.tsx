@@ -14,7 +14,10 @@ import {
   CONVERSATION_MEDIUM_ICONS,
   CONVERSATION_MEDIUM_LABELS,
 } from "@/lib/constants";
-import { getStakeholderActivity } from "@/lib/stakeholder-activity";
+import {
+  getStakeholderActivity,
+  resolveSourceLabel,
+} from "@/lib/stakeholder-activity";
 import { StatusBadge } from "./StatusBadge";
 import { DateDisplay } from "./DateDisplay";
 import type {
@@ -153,13 +156,34 @@ export function StakeholderDetailDialog({
               <h4 className="mb-2 text-sm font-medium">
                 Assigned Actions ({assignedActions.length})
               </h4>
-              <div className="space-y-1.5">
-                {assignedActions.map((a) => (
-                  <div key={a.id} className="flex items-center gap-2 text-sm">
-                    <StatusBadge type="action" status={a.status} />
-                    <span>{a.title}</span>
-                  </div>
-                ))}
+              <div className="space-y-2">
+                {assignedActions.map((a) => {
+                  const src = resolveSourceLabel(
+                    a.sourceEntityId,
+                    a.sourceEntityType,
+                    conversations,
+                    communications,
+                  );
+                  return (
+                    <div key={a.id} className="flex flex-col gap-0.5 text-sm">
+                      <div className="flex items-center gap-2">
+                        <StatusBadge type="action" status={a.status} />
+                        <span>{a.title}</span>
+                      </div>
+                      {src && (
+                        <div className="ml-[4.5rem] flex items-center gap-1 text-xs text-muted-foreground">
+                          <span>from:</span>
+                          <span role="img" aria-label={src.ariaLabel}>
+                            {src.icon}
+                          </span>
+                          <span className="truncate" title={src.title}>
+                            {src.title}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </>
