@@ -25,8 +25,8 @@ export interface ExternalParticipant {
 }
 
 export type CommMessage =
-  | { date: string; senderId: string; externalSender?: never; bodyPreview: string }
-  | { date: string; senderId?: never; externalSender: ExternalParticipant; bodyPreview: string };
+  | { id: string; date: string; senderId: string; externalSender?: never; bodyPreview: string }
+  | { id: string; date: string; senderId?: never; externalSender: ExternalParticipant; bodyPreview: string };
 
 export interface CommAttachment {
   evidenceId?: string;
