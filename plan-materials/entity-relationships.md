@@ -1,6 +1,6 @@
 # Entity Relationships
 
-**Note (2026-04-21):** The `plan-materials/` mirror is under review. Long-term recommendation (per `local-state/reviews/20260421-pre-push/architect.md` P1-A) is to delete the mirror and link to `src/types/index.ts` as the single source of truth. For now, the mirror is kept in sync manually.
+**Single source of truth:** All runtime types referenced below are defined in [`src/types/index.ts`](../src/types/index.ts), with their zod validators in [`src/lib/schemas.ts`](../src/lib/schemas.ts). The prior reference-only mirror (`plan-materials/schemas.ts`) was retired on 2026-04-21 to eliminate drift risk — consult the files in `src/` directly when reconciling field-level details against this document.
 
 ## Hub Entity: Stakeholder
 Stakeholders are the central entity. Most other entities reference stakeholders.
