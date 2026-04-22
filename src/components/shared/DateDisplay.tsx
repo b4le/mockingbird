@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useIsClient } from "@/hooks/useIsClient";
 import { parseDate } from "@/lib/dates";
 
 function formatRelative(dateStr: string): string {
@@ -39,8 +39,7 @@ function formatAbsolute(dateStr: string): string {
 }
 
 export function DateDisplay({ date }: { date: string }) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useIsClient();
 
   if (!mounted) {
     return <span className="text-sm text-muted-foreground" suppressHydrationWarning>{formatAbsolute(date)}</span>;
