@@ -186,14 +186,9 @@ const CommAttachmentSchema = z
     name: z.string().optional(),
     url: z.string().optional(),
   })
-  .refine(
-    (a) =>
-      a.evidenceId !== undefined || a.name !== undefined || a.url !== undefined,
-    {
-      message:
-        "CommAttachment must have at least one of: evidenceId, name, url",
-    },
-  );
+  .refine((a) => Boolean(a.evidenceId || a.name || a.url), {
+    message: "CommAttachment must have at least one of: evidenceId, name, url",
+  });
 
 export const CommunicationSchema = z
   .object({
