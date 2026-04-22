@@ -25,6 +25,7 @@ import {
   SessionMetaSchema,
   StakeholderSchema,
   TimelineEventSchema,
+  uniqueIdArray,
 } from "@/lib/schemas";
 
 /**
@@ -71,7 +72,11 @@ async function loadValidated<T extends z.ZodTypeAny>(
 export async function getStakeholders(
   project: string,
 ): Promise<Stakeholder[]> {
-  return loadValidated(project, "stakeholders.json", z.array(StakeholderSchema));
+  return loadValidated(
+    project,
+    "stakeholders.json",
+    uniqueIdArray(StakeholderSchema, "Stakeholder"),
+  );
 }
 
 export async function getConversations(
@@ -80,7 +85,7 @@ export async function getConversations(
   return loadValidated(
     project,
     "conversations.json",
-    z.array(ConversationSchema),
+    uniqueIdArray(ConversationSchema, "Conversation"),
   );
 }
 
@@ -90,28 +95,48 @@ export async function getCommunications(
   return loadValidated(
     project,
     "communications.json",
-    z.array(CommunicationSchema),
+    uniqueIdArray(CommunicationSchema, "Communication"),
   );
 }
 
 export async function getActions(project: string): Promise<ActionItem[]> {
-  return loadValidated(project, "actions.json", z.array(ActionItemSchema));
+  return loadValidated(
+    project,
+    "actions.json",
+    uniqueIdArray(ActionItemSchema, "ActionItem"),
+  );
 }
 
 export async function getRisks(project: string): Promise<Risk[]> {
-  return loadValidated(project, "risks.json", z.array(RiskSchema));
+  return loadValidated(
+    project,
+    "risks.json",
+    uniqueIdArray(RiskSchema, "Risk"),
+  );
 }
 
 export async function getClaims(project: string): Promise<Claim[]> {
-  return loadValidated(project, "claims.json", z.array(ClaimSchema));
+  return loadValidated(
+    project,
+    "claims.json",
+    uniqueIdArray(ClaimSchema, "Claim"),
+  );
 }
 
 export async function getEvidence(project: string): Promise<EvidenceItem[]> {
-  return loadValidated(project, "evidence.json", z.array(EvidenceItemSchema));
+  return loadValidated(
+    project,
+    "evidence.json",
+    uniqueIdArray(EvidenceItemSchema, "EvidenceItem"),
+  );
 }
 
 export async function getTimeline(project: string): Promise<TimelineEvent[]> {
-  return loadValidated(project, "timeline.json", z.array(TimelineEventSchema));
+  return loadValidated(
+    project,
+    "timeline.json",
+    uniqueIdArray(TimelineEventSchema, "TimelineEvent"),
+  );
 }
 
 export async function getProjectState(

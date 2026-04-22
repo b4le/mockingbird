@@ -119,47 +119,104 @@ const ExternalParticipantSchema = z.object({
  * match the `?: never` discriminators on the TypeScript interface — this is
  * what lets the compile-time `satisfies` check in this file assert bidirectional
  * assignability between the schema's inferred type and `CommMessage`.
+ *
+ * Kept as `z.union` rather than `z.discriminatedUnion`: zod v4's
+ * `discriminatedUnion` requires each branch's discriminator to contribute a
+ * literal/primitive value to `propValues: Record<string, Set<Primitive>>`.
+ * The "presence of `senderId` vs presence of `externalSender`" pattern has
+ * no literal discriminator field on either branch, so `discriminatedUnion`
+ * would need a data-shape change (e.g. an added `kind: "internal" | "external"`
+ * tag) and a backfill of `data/demo/communications.json`. The union-level
+ * `error` below supplies the human-readable first-failure message that a
+ * plain `invalid_union` would otherwise muddy.
  */
-export const CommMessageSchema = z.union([
-  z.object({
-    id: z.string(),
-    date: z.string(),
-    senderId: z.string(),
-    externalSender: z.undefined().optional(),
-    bodyPreview: z.string(),
-  }),
-  z.object({
-    id: z.string(),
-    date: z.string(),
-    senderId: z.undefined().optional(),
-    externalSender: ExternalParticipantSchema,
-    bodyPreview: z.string(),
-  }),
-]);
+const commMessageDiscriminatorPreflight = z
+  .any()
+  .superRefine((v: unknown, ctx) => {
+    if (v === null || typeof v !== "object" || Array.isArray(v)) {
+      return;
+    }
+    const obj = v as Record<string, unknown>;
+    const hasInternal = obj.senderId !== undefined;
+    const hasExternal = obj.externalSender !== undefined;
+    if (hasInternal && hasExternal) {
+      ctx.addIssue({
+        code: "custom",
+        message:
+          "CommMessage must have exactly one of senderId or externalSender — both are set",
+      });
+    }
+    if (!hasInternal && !hasExternal) {
+      ctx.addIssue({
+        code: "custom",
+        message:
+          "CommMessage must have exactly one of senderId or externalSender — neither is set",
+      });
+    }
+  });
 
-const CommAttachmentSchema = z.object({
-  evidenceId: z.string().optional(),
-  name: z.string().optional(),
-  url: z.string().optional(),
-});
+export const CommMessageSchema = commMessageDiscriminatorPreflight.pipe(
+  z.union(
+    [
+      z.object({
+        id: z.string(),
+        date: z.string(),
+        senderId: z.string(),
+        externalSender: z.undefined().optional(),
+        bodyPreview: z.string(),
+      }),
+      z.object({
+        id: z.string(),
+        date: z.string(),
+        senderId: z.undefined().optional(),
+        externalSender: ExternalParticipantSchema,
+        bodyPreview: z.string(),
+      }),
+    ],
+    {
+      error:
+        "CommMessage must have exactly one of senderId (internal) or externalSender (external)",
+    },
+  ),
+);
 
-export const CommunicationSchema = z.object({
-  id: z.string(),
-  channel: CommunicationChannelSchema,
-  date: z.string(),
-  subject: z.string(),
-  participantIds: z.array(z.string()),
-  externalParticipants: z.array(ExternalParticipantSchema).optional(),
-  summary: z.string(),
-  messages: z.array(CommMessageSchema),
-  attachments: z.array(CommAttachmentSchema).optional(),
-  actionItemIds: z.array(z.string()).optional(),
-  claimIds: z.array(z.string()).optional(),
-  evidenceIds: z.array(z.string()).optional(),
-  riskIds: z.array(z.string()).optional(),
-  conversationIds: z.array(z.string()).optional(),
-  tags: z.array(z.string()).optional(),
-});
+const CommAttachmentSchema = z
+  .object({
+    evidenceId: z.string().optional(),
+    name: z.string().optional(),
+    url: z.string().optional(),
+  })
+  .refine(
+    (a) =>
+      a.evidenceId !== undefined || a.name !== undefined || a.url !== undefined,
+    {
+      message:
+        "CommAttachment must have at least one of: evidenceId, name, url",
+    },
+  );
+
+export const CommunicationSchema = z
+  .object({
+    id: z.string(),
+    channel: CommunicationChannelSchema,
+    date: z.string(),
+    subject: z.string(),
+    participantIds: z.array(z.string()),
+    externalParticipants: z.array(ExternalParticipantSchema).optional(),
+    summary: z.string(),
+    messages: z.array(CommMessageSchema),
+    attachments: z.array(CommAttachmentSchema).optional(),
+    actionItemIds: z.array(z.string()).optional(),
+    claimIds: z.array(z.string()).optional(),
+    evidenceIds: z.array(z.string()).optional(),
+    riskIds: z.array(z.string()).optional(),
+    conversationIds: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional(),
+  })
+  .refine(
+    (c) => new Set(c.messages.map((m) => m.id)).size === c.messages.length,
+    { message: "CommMessage ids must be unique within a Communication" },
+  );
 
 export const StakeholderSchema = z.object({
   id: z.string(),
@@ -278,6 +335,30 @@ export const SessionMetaSchema = z.object({
   generatedBy: z.string(),
   notes: z.string(),
 });
+
+// ---------------------------------------------------------------------------
+// Collection helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Wraps an element schema in `z.array` with a uniqueness refine on `id`.
+ * Every top-level entity collection loaded via `src/lib/data.ts` is a
+ * `ReadonlyArray<{ id: string }>` whose `id` must be unique — duplicate
+ * ids would silently produce duplicate React keys, ambiguous resolver
+ * lookups (first-write-wins in `Map` construction), and wrong UI state.
+ *
+ * Centralising the refine here keeps the policy consistent across all
+ * eight array loaders without spraying `.refine(...)` at each call site.
+ */
+export function uniqueIdArray<T extends z.ZodType<{ id: string }>>(
+  element: T,
+  entityName: string,
+): z.ZodType<z.infer<T>[]> {
+  return z.array(element).refine(
+    (arr) => new Set(arr.map((x) => x.id)).size === arr.length,
+    { message: `${entityName} ids must be unique across the collection` },
+  );
+}
 
 // ---------------------------------------------------------------------------
 // Compile-time cross-check between zod schemas and TypeScript interfaces.
