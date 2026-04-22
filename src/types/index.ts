@@ -35,6 +35,37 @@ export interface CommAttachment {
 }
 
 /**
+ * A polymorphic reference to another entity, parameterised by the allowed
+ * discriminator literals `K`. Encodes the "both-or-neither" invariant as a
+ * discriminated union: either both `id` and `type` are set, or both are
+ * `null` — the half-pointer state (id without type, or type without id) is
+ * unrepresentable at the type level.
+ *
+ * @remarks
+ * For future consumers only. The three existing polymorphic-pointer pairs —
+ * `TimelineEvent.linkedEntityId` / `linkedEntityType`,
+ * `ActionItem.sourceEntityId` / `sourceEntityType`, and
+ * `EvidenceItem.sourceEntityId` / `sourceEntityType` — intentionally retain
+ * their flat (two-field) shape. The zod schemas in `src/lib/schemas.ts`
+ * apply the `sourceEntityBothOrNeither` refine on the flat shape, and the
+ * `_AssertActionItem` / `_AssertEvidenceItem` / `_AssertTimelineEvent`
+ * bidirectional-assignability checks hold the interfaces in lockstep with
+ * those schemas. Migrating those three pairs to `EntityRef<K>` would
+ * require rewriting both the schemas and the refine — a larger change
+ * deliberately left out of scope here.
+ *
+ * @example
+ * ```ts
+ * type LinkTarget = 'conversation' | 'communication';
+ * const set: EntityRef<LinkTarget> = { id: 'conv-1', type: 'conversation' };
+ * const none: EntityRef<LinkTarget> = { id: null, type: null };
+ * ```
+ */
+export type EntityRef<K extends string> =
+  | { id: string; type: K }
+  | { id: null; type: null };
+
+/**
  * A `Communication` is any written asynchronous artefact, regardless of
  * whether its content refers to synchronous interactions. An SMS arranging
  * a call is a Communication; the call itself is a Conversation. Use
