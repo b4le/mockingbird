@@ -1,5 +1,7 @@
 # Entity Relationships
 
+**Note (2026-04-21):** The `plan-materials/` mirror is under review. Long-term recommendation (per `local-state/reviews/20260421-pre-push/architect.md` P1-A) is to delete the mirror and link to `src/types/index.ts` as the single source of truth. For now, the mirror is kept in sync manually.
+
 ## Hub Entity: Stakeholder
 Stakeholders are the central entity. Most other entities reference stakeholders.
 
@@ -8,11 +10,11 @@ Stakeholders are the central entity. Most other entities reference stakeholders.
 - `Conversation.participantIds` → Stakeholder IDs
 - `ActionItem.ownerId` → Stakeholder ID
 - `Claim.raisedById` → Stakeholder ID
-- `ActionItem.conversationId` → Conversation ID (source)
+- `ActionItem.sourceEntityId` + `sourceEntityType` → Conversation or Communication ID where the action was first raised (polymorphic; both null together or both non-null together). Referenced entity mirrors via its `actionItemIds`.
 - `Risk.actionIds` → ActionItem IDs (mitigations)
 - `Claim.evidenceIds` → EvidenceItem IDs
 - `EvidenceItem.claimIds` → Claim IDs (back-references)
-- `EvidenceItem.conversationId` → Conversation ID (source)
+- `EvidenceItem.sourceEntityId` + `sourceEntityType` → Conversation or Communication ID where the evidence was first raised (polymorphic; both null together or both non-null together). Referenced entity mirrors via its `evidenceIds`.
 - `Communication.participantIds` → Stakeholder IDs
 - `Communication.conversationIds` → Conversation IDs
 - `Communication.actionItemIds` → ActionItem IDs
@@ -30,7 +32,7 @@ Stakeholders are the central entity. Most other entities reference stakeholders.
 4. **Claims for evidence**: Use `evidence.claimIds` for back-references
 5. **Mitigation actions for a risk**: Use `risk.actionIds` to look up action items
 6. **Timeline for a stakeholder**: Filter `timeline` where `stakeholderIds` includes the stakeholder ID
-7. **Source conversation for an action/evidence**: Use `conversationId` field
+7. **Source conversation or communication for an action/evidence**: Use the `sourceEntityId` + `sourceEntityType` pair — when `sourceEntityType` is `'conversation'` look up in `conversations`, when `'communication'` look up in `communications`. Both fields are null together or both non-null together.
 8. **All communications for a stakeholder**: Filter `communications` where `participantIds` includes the stakeholder ID
 9. **All communications linked to a conversation**: Filter `communications` where `conversationIds` includes the conversation ID (or traverse from `Conversation` via any `Communication` back-reference)
 
