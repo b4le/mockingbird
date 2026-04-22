@@ -224,7 +224,7 @@ function warnOnBackrefDrift(
         continue;
       }
       const backref = comm[backrefField];
-      if (!backref || !backref.includes(item.id)) {
+      if (!backref.includes(item.id)) {
         report(
           `[backref-drift] ${kind} ${item.id} claims source ${comm.id} but ${comm.id}.${backrefField} does not include it`,
         );

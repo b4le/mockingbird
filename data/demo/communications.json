@@ -33,8 +33,10 @@
       }
     ],
     "actionItemIds": ["a10"],
-    "conversationIds": ["c5"],
+    "claimIds": [],
+    "evidenceIds": [],
     "riskIds": ["r3"],
+    "conversationIds": ["c5"],
     "tags": ["auth", "bug", "p0"]
   },
   {
@@ -81,8 +83,11 @@
         "name": "Onboarding partner critique (Stripe Design Partners).pdf"
       }
     ],
+    "actionItemIds": [],
     "claimIds": ["cl3"],
     "evidenceIds": ["e7"],
+    "riskIds": [],
+    "conversationIds": [],
     "tags": ["design", "onboarding", "external"]
   },
   {
@@ -118,8 +123,11 @@
         "bodyPreview": "Perfect. Sticking with quiet reassessment for now. Thanks both."
       }
     ],
-    "conversationIds": ["c9", "c10"],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
     "riskIds": ["r1"],
+    "conversationIds": ["c9", "c10"],
     "tags": ["launch", "timeline", "informal"]
   },
   {
@@ -168,9 +176,11 @@
         "name": "onboarding-screen2-mobile.png"
       }
     ],
-    "claimIds": ["cl5"],
     "actionItemIds": ["a5"],
+    "claimIds": ["cl5"],
     "evidenceIds": ["e9"],
+    "riskIds": [],
+    "conversationIds": [],
     "tags": ["beta", "mobile", "feedback"]
   },
   {
@@ -207,6 +217,9 @@
       }
     ],
     "actionItemIds": ["a6"],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
     "conversationIds": ["c10"],
     "tags": ["devops", "deploy", "readiness"]
   },
@@ -231,8 +244,11 @@
         "bodyPreview": "Thanks Ben — clear. I'll share the summary with the beta cohort and pre-warn them about a potential one-week slip. Let me know when the reassessment lands."
       }
     ],
-    "conversationIds": ["c9"],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
     "riskIds": ["r1"],
+    "conversationIds": ["c9"],
     "tags": ["stakeholder", "update", "weekly"]
   },
   {
@@ -263,6 +279,9 @@
       }
     ],
     "actionItemIds": ["a9"],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
     "conversationIds": ["c3"],
     "tags": ["design", "copy", "onboarding"]
   },
@@ -287,6 +306,10 @@
         "bodyPreview": "Yep. 10 min? Calling now."
       }
     ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
     "conversationIds": ["c8"],
     "tags": ["auth", "informal"]
   }

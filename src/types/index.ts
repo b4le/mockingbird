@@ -34,6 +34,12 @@ export interface CommAttachment {
   url?: string;
 }
 
+/**
+ * A `Communication` is any written asynchronous artefact, regardless of
+ * whether its content refers to synchronous interactions. An SMS arranging
+ * a call is a Communication; the call itself is a Conversation. Use
+ * `Communication.conversationIds` to link them.
+ */
 export interface Communication {
   id: string;
   channel: CommunicationChannel;
@@ -44,13 +50,16 @@ export interface Communication {
   summary: string;
   messages: CommMessage[];
   attachments?: CommAttachment[];
-  /** Linked actions: origin required, related extras OK. */
-  actionItemIds?: string[];
-  claimIds?: string[];
-  /** Linked evidence: origin required, related extras OK. */
-  evidenceIds?: string[];
-  riskIds?: string[];
-  conversationIds?: string[];
+  /** Linked actions: origin required, related extras OK. Required; empty array when none. */
+  actionItemIds: string[];
+  /** Linked claims: permissive semantics — no backref drift check today. Required; empty array when none. */
+  claimIds: string[];
+  /** Linked evidence: origin required, related extras OK. Required; empty array when none. */
+  evidenceIds: string[];
+  /** Linked risks: permissive semantics — no backref drift check today. Required; empty array when none. */
+  riskIds: string[];
+  /** Linked conversations: permissive semantics — no backref drift check today. Required; empty array when none. */
+  conversationIds: string[];
   tags?: string[];
 }
 
@@ -75,7 +84,7 @@ export interface Conversation {
   summary: string;
   keyPoints: string[];
   decisions: string[];
-  /** Linked actions: origin required, related extras OK. */
+  /** Linked actions: origin required, related extras OK. Required; empty array when none. */
   actionItemIds: string[];
   medium?: 'in-person' | 'video-call' | 'phone-call';
   transcript?: string;
@@ -112,6 +121,7 @@ export interface Risk {
   severity: Priority;
   likelihood: Priority;
   mitigationPlan: string;
+  /** Linked actions: permissive semantics — no backref drift check today. */
   actionIds: string[];
   createdDate: string;
   updatedDate: string;
@@ -122,6 +132,7 @@ export interface Claim {
   assertion: string;
   category: string;
   status: ClaimStatus;
+  /** Linked evidence (bidirectional pair with `EvidenceItem.claimIds`): permissive semantics — no backref drift check today. */
   evidenceIds: string[];
   raisedById: string;
   date: string;
@@ -136,6 +147,7 @@ export interface EvidenceItem {
   strength: EvidenceStrength;
   date: string;
   url: string | null;
+  /** Linked claims (bidirectional pair with `Claim.evidenceIds`): permissive semantics — no backref drift check today. */
   claimIds: string[];
   /**
    * The conversation or communication where this evidence was first raised.
