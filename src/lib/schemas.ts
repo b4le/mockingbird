@@ -360,7 +360,7 @@ export const SessionMetaSchema = z.object({
 // invariants to `src/lib/invariants.ts` (see AGENTS.md for the pattern).
 // ---------------------------------------------------------------------------
 
-const TranscriptCueSchema = z.object({
+export const TranscriptCueSchema = z.object({
   startMs: z.number(),
   endMs: z.number(),
   speaker: z.string(),
