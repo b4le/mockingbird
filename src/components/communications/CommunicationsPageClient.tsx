@@ -148,6 +148,7 @@ export function CommunicationsPageClient({
                   role="button"
                   tabIndex={0}
                   aria-pressed={isActive}
+                  aria-label={`Select communication: ${comm.subject}`}
                   className={`cursor-pointer transition-colors hover:bg-accent/50 ${
                     isActive ? "ring-2 ring-primary" : ""
                   }`}

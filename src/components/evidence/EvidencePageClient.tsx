@@ -134,6 +134,7 @@ export function EvidencePageClient({
                   role="button"
                   tabIndex={0}
                   aria-pressed={selectedClaim === claim.id}
+                  aria-label={`Select claim: ${claim.assertion}`}
                   className={`cursor-pointer transition-colors hover:bg-accent/50 ${
                     selectedClaim === claim.id ? "ring-2 ring-primary" : ""
                   }`}
@@ -185,6 +186,7 @@ export function EvidencePageClient({
                       role="button"
                       tabIndex={0}
                       aria-expanded={isExpanded}
+                      aria-label={`Expand evidence: ${ev.title}`}
                       className="cursor-pointer transition-colors hover:bg-accent/50"
                       onClick={() => toggleEvidence(ev.id)}
                       onKeyDown={(e) => {
