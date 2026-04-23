@@ -6,6 +6,8 @@ import type {
 import {
   COMMUNICATION_CHANNEL_ICONS,
   COMMUNICATION_CHANNEL_LABELS,
+  CONVERSATION_FALLBACK_ICON,
+  CONVERSATION_FALLBACK_LABEL,
   CONVERSATION_MEDIUM_ICONS,
   CONVERSATION_MEDIUM_LABELS,
 } from "@/lib/constants";
@@ -124,9 +126,11 @@ export function resolveSourceLabel(
     kind: "conversation",
     id: conv.id,
     title: conv.title,
-    icon: conv.medium ? CONVERSATION_MEDIUM_ICONS[conv.medium] : "💬",
+    icon: conv.medium
+      ? CONVERSATION_MEDIUM_ICONS[conv.medium]
+      : CONVERSATION_FALLBACK_ICON,
     ariaLabel: conv.medium
       ? CONVERSATION_MEDIUM_LABELS[conv.medium]
-      : "Conversation",
+      : CONVERSATION_FALLBACK_LABEL,
   };
 }

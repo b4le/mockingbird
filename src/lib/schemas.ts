@@ -201,11 +201,11 @@ export const CommunicationSchema = z
     summary: z.string(),
     messages: z.array(CommMessageSchema),
     attachments: z.array(CommAttachmentSchema).optional(),
-    actionItemIds: z.array(z.string()).optional(),
-    claimIds: z.array(z.string()).optional(),
-    evidenceIds: z.array(z.string()).optional(),
-    riskIds: z.array(z.string()).optional(),
-    conversationIds: z.array(z.string()).optional(),
+    actionItemIds: z.array(z.string()),
+    claimIds: z.array(z.string()),
+    evidenceIds: z.array(z.string()),
+    riskIds: z.array(z.string()),
+    conversationIds: z.array(z.string()),
     tags: z.array(z.string()).optional(),
   })
   .refine(

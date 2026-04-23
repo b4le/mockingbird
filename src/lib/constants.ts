@@ -59,6 +59,9 @@ export const CONVERSATION_MEDIUM_LABELS: Record<
   "phone-call": "Phone call",
 };
 
+export const CONVERSATION_FALLBACK_ICON = "💬";
+export const CONVERSATION_FALLBACK_LABEL = "Conversation";
+
 export const PRIORITY_ORDER: Record<Priority, number> = {
   critical: 0,
   high: 1,

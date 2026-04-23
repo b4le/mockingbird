@@ -10,7 +10,7 @@ import { DateDisplay } from "@/components/shared/DateDisplay";
 import { PRIORITY_ORDER } from "@/lib/constants";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { buildStakeholderMap } from "@/lib/stakeholders";
-import { resolveSourceLabel } from "@/lib/stakeholder-activity";
+import { SourceCell } from "@/components/actions/SourceCell";
 import type {
   ActionItem,
   ActionStatus,
@@ -154,30 +154,12 @@ export function ActionTable({
                     )}
                   </td>
                   <td className="py-2 pr-3">
-                    {(() => {
-                      const src = resolveSourceLabel(
-                        action.sourceEntityId,
-                        action.sourceEntityType,
-                        conversations,
-                        communications,
-                      );
-                      if (!src) {
-                        return <span className="text-muted-foreground">—</span>;
-                      }
-                      return (
-                        <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                          <span role="img" aria-label={src.ariaLabel}>
-                            {src.icon}
-                          </span>
-                          <span
-                            className="truncate max-w-[14ch]"
-                            title={src.title}
-                          >
-                            {src.title}
-                          </span>
-                        </span>
-                      );
-                    })()}
+                    <SourceCell
+                      item={action}
+                      conversations={conversations}
+                      communications={communications}
+                      variant="desktop"
+                    />
                   </td>
                   <td className="py-2">
                     <div className="flex flex-wrap gap-1">
@@ -247,26 +229,13 @@ export function ActionTable({
                     ))}
                   </div>
                 )}
-                {(() => {
-                  const src = resolveSourceLabel(
-                    action.sourceEntityId,
-                    action.sourceEntityType,
-                    conversations,
-                    communications,
-                  );
-                  if (!src) return null;
-                  return (
-                    <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
-                      <span>Source:</span>
-                      <span role="img" aria-label={src.ariaLabel}>
-                        {src.icon}
-                      </span>
-                      <span className="truncate" title={src.title}>
-                        {src.title}
-                      </span>
-                    </div>
-                  );
-                })()}
+                <SourceCell
+                  item={action}
+                  conversations={conversations}
+                  communications={communications}
+                  variant="mobile"
+                />
+
               </CardContent>
             </Card>
           );

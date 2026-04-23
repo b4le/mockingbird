@@ -11,6 +11,8 @@ import { Separator } from "@/components/ui/separator";
 import {
   COMMUNICATION_CHANNEL_ICONS,
   COMMUNICATION_CHANNEL_LABELS,
+  CONVERSATION_FALLBACK_ICON,
+  CONVERSATION_FALLBACK_LABEL,
   CONVERSATION_MEDIUM_ICONS,
   CONVERSATION_MEDIUM_LABELS,
 } from "@/lib/constants";
@@ -104,10 +106,10 @@ export function StakeholderDetailDialog({
                   if (entry.kind === "conversation") {
                     const icon = entry.medium
                       ? CONVERSATION_MEDIUM_ICONS[entry.medium]
-                      : "💬";
+                      : CONVERSATION_FALLBACK_ICON;
                     const label = entry.medium
                       ? CONVERSATION_MEDIUM_LABELS[entry.medium]
-                      : "Conversation";
+                      : CONVERSATION_FALLBACK_LABEL;
                     return (
                       <div
                         key={`c-${entry.id}`}

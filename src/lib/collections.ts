@@ -1,7 +1,16 @@
 /**
- * Resolves a list of entity IDs against a lookup map, dropping any IDs
- * that don't resolve. Accepts `undefined` to accommodate optional ID
- * arrays on typed relationships.
+ * Permissive: render what we know. Silently drops ids not in the map.
+ * Use when partial data is acceptable (e.g., UI rendering with stale
+ * references).
+ *
+ * Accepts `undefined` to accommodate optional ID arrays on typed
+ * relationships.
+ *
+ * Note: integrity-level "fail on missing id" checks live in
+ * `src/lib/invariants.ts` (see `checkActionBackref` /
+ * `checkEvidenceBackref`), which operate on id strings directly — a
+ * strict resolve-to-entity variant is not currently needed and was
+ * removed to avoid speculative API surface.
  */
 export function resolveIds<T extends { id: string }>(
   ids: readonly string[] | undefined,
