@@ -12,7 +12,7 @@ export type TimelineEventType =
   | 'action'
   | 'risk-change'
   | 'communication';
-export type CommunicationChannel = 'email' | 'slack' | 'whatsapp' | 'sms' | 'other';
+export type CommunicationChannel = 'email' | 'slack' | 'signal' | 'whatsapp' | 'sms' | 'other';
 
 // TODO(scale): extract to data/demo/external-contacts.json once a second project
 // is added or the first duplicate ExternalParticipant (same name + organisation)
@@ -108,6 +108,8 @@ export interface Conversation {
   medium?: 'in-person' | 'video-call' | 'phone-call';
   transcript?: string;
   transcriptUrl?: string;
+  transcriptId?: string;
+  snippetIds?: string[];
 }
 
 export interface ActionItem {
@@ -142,8 +144,8 @@ export interface Risk {
   mitigationPlan: string;
   /** Linked actions: permissive semantics — no backref drift check today. */
   actionIds: string[];
-  createdDate: string;
-  updatedDate: string;
+  createdDate: string | null;
+  updatedDate: string | null;
 }
 
 export interface Claim {
@@ -164,7 +166,7 @@ export interface EvidenceItem {
   source: string;
   sourceType: 'document' | 'conversation' | 'metric' | 'external';
   strength: EvidenceStrength;
-  date: string;
+  date: string | null;
   url: string | null;
   /** Linked claims (bidirectional pair with `Claim.evidenceIds`): permissive semantics — no backref drift check today. */
   claimIds: string[];
@@ -211,4 +213,44 @@ export interface SessionMeta {
   dataVersion: string;
   generatedBy: string;
   notes: string;
+}
+
+export interface TranscriptCue {
+  startMs: number;
+  endMs: number;
+  speaker: string;
+  text: string;
+}
+
+export interface Transcript {
+  id: string;
+  date: string;
+  category: string;
+  conversationId: string | null;
+  participants: string[];
+  participantIds?: string[];
+  durationSeconds: number | null;
+  cueCount: number;
+  hasCues: boolean;
+  cues: TranscriptCue[];
+  sourceFile: string;
+}
+
+export interface Snippet {
+  id: string;
+  clipId: string;
+  category: string;
+  sourceFile: string;
+  audioFile: string;
+  startSeconds: number;
+  endSeconds: number;
+  durationSeconds: number;
+  speaker: string;
+  transcript: string;
+  whatYoullHear: string;
+  top20Rank: number | null;
+  exhibitMapping: string[];
+  evidenceIds?: string[];
+  conversationId: string | null;
+  communicationId: string | null;
 }

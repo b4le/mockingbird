@@ -28,6 +28,7 @@ export const TIMELINE_TYPE_LABELS: Record<TimelineEventType, string> = {
 export const COMMUNICATION_CHANNEL_ICONS: Record<CommunicationChannel, string> = {
   email: "✉️",
   slack: "📣",
+  signal: "🔒",
   whatsapp: "📲",
   sms: "📱",
   other: "📌",
@@ -36,6 +37,7 @@ export const COMMUNICATION_CHANNEL_ICONS: Record<CommunicationChannel, string> =
 export const COMMUNICATION_CHANNEL_LABELS: Record<CommunicationChannel, string> = {
   email: "Email",
   slack: "Slack",
+  signal: "Signal",
   whatsapp: "WhatsApp",
   sms: "SMS",
   other: "Other",
