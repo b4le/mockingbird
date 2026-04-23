@@ -176,7 +176,10 @@ export interface ProjectBundle {
  * After loading, runs the cross-collection invariant checks from
  * `src/lib/invariants.ts`. The strict/warn policy is gated on
  * `process.env.CI === "true"` at this single call site — the check
- * functions themselves are pure functions of their inputs.
+ * functions themselves are pure functions of their inputs. Violations
+ * from every check accumulate through one reporter and flush once at
+ * the end, so a single CI run surfaces every drift in one error rather
+ * than failing one-kind-per-push.
  */
 export async function getProjectBundle(
   project: string,
@@ -204,9 +207,10 @@ export async function getProjectBundle(
     getEvidence(project),
     getTimeline(project),
   ]);
-  const report = createReporter(process.env.CI === "true");
-  checkActionBackref(report, actions, communications, conversations);
-  checkEvidenceBackref(report, evidence, communications);
+  const reporter = createReporter(process.env.CI === "true");
+  checkActionBackref(reporter.report, actions, communications, conversations);
+  checkEvidenceBackref(reporter.report, evidence, communications);
+  reporter.flush();
   return {
     state,
     session,

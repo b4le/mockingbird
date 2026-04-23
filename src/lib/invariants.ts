@@ -18,6 +18,14 @@ import type { Communication, Conversation } from "@/types";
  * `getProjectBundle`, so every function in this file is a pure function of
  * its inputs (no `process.env` reads here — that's the caller's job).
  *
+ * ## Batching
+ *
+ * {@link createReporter} accumulates messages rather than emitting on the
+ * first call. The caller flushes once at the end via `reporter.flush()`.
+ * This means a single CI run surfaces every drift across every check —
+ * fix them all in one push, rather than discovering the next kind on the
+ * next CI run after fixing the first.
+ *
  * ## Schema coupling (load-bearing)
  *
  * The checks below dereference `comm.actionItemIds.includes(...)` and
@@ -32,26 +40,58 @@ import type { Communication, Conversation } from "@/types";
  */
 
 // ---------------------------------------------------------------------------
-// Reporter
+// Reporter (batched)
 // ---------------------------------------------------------------------------
 
 /**
- * Returns a reporter function that either throws (strict mode, in CI) or
- * warns (dev). The `strict` boolean is passed in by the caller rather than
- * read from `process.env` here, so every check in this file remains a pure
- * function of its inputs — callers do the environment read once, at the
- * `getProjectBundle` boundary.
+ * A batched reporter for cross-collection invariant violations.
+ *
+ * Each check calls `report(msg)` for every violation it finds. At the end
+ * of the pass, the caller runs `flush()` exactly once: in strict mode
+ * (CI), it throws one `Error` whose message is every accumulated message
+ * joined by `\n`; in non-strict mode (dev), it emits a single
+ * `console.warn` with the same joined message. When there are no
+ * violations, `flush()` is a no-op.
+ *
+ * Batching matters in CI: without it, the first check's violations
+ * throw immediately and the next check never runs, so a developer
+ * discovers action-drift on one push, fixes it, pushes again, and only
+ * then discovers evidence-drift. Batching surfaces both in a single run.
+ */
+export interface InvariantReporter {
+  /** Record one violation. Message should start with `[backref-drift]`. */
+  report: (msg: string) => void;
+  /** Emit all accumulated violations at once. Throws in strict mode. */
+  flush: () => void;
+}
+
+/**
+ * Returns a batched {@link InvariantReporter}. The `strict` boolean is
+ * passed in by the caller rather than read from `process.env` here, so
+ * every check in this file remains a pure function of its inputs —
+ * callers do the environment read once, at the `getProjectBundle`
+ * boundary.
  *
  * @example
  * ```ts
- * const report = createReporter(process.env.CI === "true");
- * checkActionBackref(report, actions, communications, conversations);
+ * const reporter = createReporter(process.env.CI === "true");
+ * checkActionBackref(reporter.report, actions, communications, conversations);
+ * checkEvidenceBackref(reporter.report, evidence, communications);
+ * reporter.flush();
  * ```
  */
-export function createReporter(strict: boolean): (msg: string) => void {
-  return (msg) => {
-    if (strict) throw new Error(msg);
-    console.warn(msg);
+export function createReporter(strict: boolean): InvariantReporter {
+  const messages: string[] = [];
+  return {
+    report: (msg) => {
+      messages.push(msg);
+    },
+    flush: () => {
+      if (messages.length === 0) return;
+      const joined = messages.join("\n");
+      if (strict) throw new Error(joined);
+      console.warn(joined);
+    },
   };
 }
 
