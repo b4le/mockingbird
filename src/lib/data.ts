@@ -27,7 +27,11 @@ import {
   TimelineEventSchema,
   uniqueIdArray,
 } from "@/lib/schemas";
-import { createReporter } from "./invariants";
+import {
+  checkActionBackref,
+  checkEvidenceBackref,
+  createReporter,
+} from "./invariants";
 
 /**
  * Reads a project JSON file and validates its shape with a zod schema before
@@ -163,131 +167,16 @@ export interface ProjectBundle {
   timeline: TimelineEvent[];
 }
 
-interface SourceBacked {
-  id: string;
-  sourceEntityId: string | null;
-  sourceEntityType: "conversation" | "communication" | null;
-}
-
-/**
- * Cross-collection consistency check for the action→parent origin link.
- *
- * Semantics (permissive linked-items lists):
- * - Each ActionItem has a single `sourceEntityId` + `sourceEntityType`
- *   — the single source of truth for where the row *originated*.
- * - `Communication.actionItemIds` and `Conversation.actionItemIds` are
- *   LINKED-ITEMS lists. They MUST include the origin (the action where
- *   `sourceEntityId == this.id`) and MAY include additional related
- *   items that surfaced, were referenced, or were otherwise discussed
- *   in that thread/meeting without originating there. Extras are
- *   narrative richness, not drift.
- *
- * So this check is deliberately one-directional: for every action whose
- * origin points at a parent, the parent's linked list must mirror the
- * link. The reverse — ids in the parent's list whose action's origin
- * points elsewhere — is expected and not a violation.
- *
- * Policy: throws in CI (`process.env.CI === "true"`) so violations fail
- * the build; warns in dev so hand-edits surface without blocking local
- * iteration.
- */
-function checkActionBackref(
-  items: SourceBacked[],
-  communications: Communication[],
-  conversations: Conversation[],
-): void {
-  const commById = new Map(communications.map((c) => [c.id, c]));
-  const convById = new Map(conversations.map((c) => [c.id, c]));
-  const report = createReporter(process.env.CI === "true");
-
-  for (const item of items) {
-    if (item.sourceEntityId === null || item.sourceEntityType === null) {
-      continue;
-    }
-
-    if (item.sourceEntityType === "communication") {
-      const comm = commById.get(item.sourceEntityId);
-      if (!comm) {
-        report(
-          `[backref-drift] action ${item.id} references missing communication ${item.sourceEntityId}`,
-        );
-        continue;
-      }
-      if (!comm.actionItemIds.includes(item.id)) {
-        report(
-          `[backref-drift] action ${item.id} claims source ${comm.id} but ${comm.id}.actionItemIds does not include it`,
-        );
-      }
-      continue;
-    }
-
-    // sourceEntityType === "conversation"
-    const conv = convById.get(item.sourceEntityId);
-    if (!conv) {
-      report(
-        `[backref-drift] action ${item.id} references missing conversation ${item.sourceEntityId}`,
-      );
-      continue;
-    }
-    if (!conv.actionItemIds.includes(item.id)) {
-      report(
-        `[backref-drift] action ${item.id} claims source ${conv.id} but ${conv.id}.actionItemIds does not include it`,
-      );
-    }
-  }
-}
-
-/**
- * Cross-collection consistency check for the evidence→parent origin link.
- *
- * Evidence only back-references communications here. The signature
- * intentionally omits conversations: Conversation has no `evidenceIds`
- * field, so an evidence row whose `sourceEntityType === "conversation"`
- * has no parent list to mirror — there is nothing a backref check can
- * usefully verify. Restricting the parameter list makes that structural,
- * preventing future callers from passing conversations under the
- * mistaken assumption that this function will check them.
- *
- * Policy matches `checkActionBackref`: throws in CI, warns in dev.
- */
-function checkEvidenceBackref(
-  items: SourceBacked[],
-  communications: Communication[],
-): void {
-  const commById = new Map(communications.map((c) => [c.id, c]));
-  const report = createReporter(process.env.CI === "true");
-
-  for (const item of items) {
-    if (item.sourceEntityId === null || item.sourceEntityType === null) {
-      continue;
-    }
-
-    if (item.sourceEntityType === "communication") {
-      const comm = commById.get(item.sourceEntityId);
-      if (!comm) {
-        report(
-          `[backref-drift] evidence ${item.id} references missing communication ${item.sourceEntityId}`,
-        );
-        continue;
-      }
-      if (!comm.evidenceIds.includes(item.id)) {
-        report(
-          `[backref-drift] evidence ${item.id} claims source ${comm.id} but ${comm.id}.evidenceIds does not include it`,
-        );
-      }
-      continue;
-    }
-
-    // sourceEntityType === "conversation": no parent list to mirror
-    // (Conversation has no evidenceIds field), so nothing to check.
-  }
-}
-
 /**
  * Loads all ten project JSON files in parallel and returns them as a
  * typed bundle. Convenience loader for pages that need most/all project
  * entities — prefer the individual `getX` loaders when only one or two
  * entities are required (e.g. layout reading just `session`).
+ *
+ * After loading, runs the cross-collection invariant checks from
+ * `src/lib/invariants.ts`. The strict/warn policy is gated on
+ * `process.env.CI === "true"` at this single call site — the check
+ * functions themselves are pure functions of their inputs.
  */
 export async function getProjectBundle(
   project: string,
@@ -315,8 +204,9 @@ export async function getProjectBundle(
     getEvidence(project),
     getTimeline(project),
   ]);
-  checkActionBackref(actions, communications, conversations);
-  checkEvidenceBackref(evidence, communications);
+  const report = createReporter(process.env.CI === "true");
+  checkActionBackref(report, actions, communications, conversations);
+  checkEvidenceBackref(report, evidence, communications);
   return {
     state,
     session,
