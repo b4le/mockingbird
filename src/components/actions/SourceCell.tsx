@@ -2,17 +2,24 @@ import { resolveSourceLabel } from "@/lib/stakeholder-activity";
 import type { ActionItem, Communication, Conversation } from "@/types";
 
 /**
- * Renders the "source" provenance chip for an ActionItem row in ActionTable.
- * Two variants: `desktop` (inline span in the Source column, em-dash fallback
- * when the source is missing) and `mobile` (flex row with "Source:" prefix,
- * renders nothing when the source is missing). Consumed only by
- * `ActionTable.tsx` (desktop table body + mobile card list).
+ * Renders the "source" provenance chip for an ActionItem or EvidenceItem.
+ * Three variants:
+ *  - `desktop` (ActionTable desktop column): inline span with em-dash fallback.
+ *  - `mobile`  (ActionTable mobile card):    flex row prefixed "Source:",
+ *                                            renders nothing when no source.
+ *  - `evidence` (EvidencePageClient expanded body): flex row prefixed "From:",
+ *                                            no top margin, `gap-1.5`,
+ *                                            renders nothing when no source.
+ *
+ * The `item` prop is duck-typed on the polymorphic (sourceEntityId,
+ * sourceEntityType) pair, so both ActionItem and EvidenceItem satisfy it
+ * without widening the component's concrete dependency.
  */
 interface SourceCellProps {
   item: Pick<ActionItem, "sourceEntityId" | "sourceEntityType">;
   conversations: Conversation[];
   communications: Communication[];
-  variant: "desktop" | "mobile";
+  variant: "desktop" | "mobile" | "evidence";
 }
 
 export function SourceCell({
@@ -41,6 +48,21 @@ export function SourceCell({
           {src.title}
         </span>
       </span>
+    );
+  }
+
+  if (variant === "evidence") {
+    if (!src) return null;
+    return (
+      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+        <span>From:</span>
+        <span role="img" aria-label={src.ariaLabel}>
+          {src.icon}
+        </span>
+        <span className="truncate" title={src.title}>
+          {src.title}
+        </span>
+      </div>
     );
   }
 
