@@ -66,7 +66,12 @@ export function SourceCell({
     );
   }
 
-  // variant === "mobile"
+  // Exhaustiveness check: if a new variant is added to the union, this
+  // assignment will fail at compile time, forcing the author to handle it
+  // above rather than silently falling through to the mobile branch.
+  const _exhaustive: "mobile" = variant;
+  void _exhaustive;
+
   if (!src) return null;
   return (
     <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">

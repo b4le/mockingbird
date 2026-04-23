@@ -82,6 +82,10 @@ describe("invariants — cross-check batching through shared reporter", () => {
 
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
     reporter.flush();
+    // Guard: if flush() ever becomes a no-op we want a clean assertion
+    // failure here rather than a confusing TypeError on the .indexOf() call
+    // a few lines down.
+    expect(warnSpy).toHaveBeenCalledOnce();
     const emitted = warnSpy.mock.calls[0][0] as string;
     expect(emitted.indexOf("action-1")).toBeLessThan(emitted.indexOf("ev-1"));
     warnSpy.mockRestore();

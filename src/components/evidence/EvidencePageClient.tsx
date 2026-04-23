@@ -186,7 +186,7 @@ export function EvidencePageClient({
                       role="button"
                       tabIndex={0}
                       aria-expanded={isExpanded}
-                      aria-label={`Expand evidence: ${ev.title}`}
+                      aria-label={`${isExpanded ? "Collapse" : "Expand"} evidence: ${ev.title}`}
                       className="cursor-pointer transition-colors hover:bg-accent/50"
                       onClick={() => toggleEvidence(ev.id)}
                       onKeyDown={(e) => {
