@@ -114,8 +114,15 @@ export function TimelineEntry({
               <div className="mb-2">
                 <p className="font-medium">Key Points</p>
                 <ul className="mt-1 list-inside list-disc space-y-0.5 text-muted-foreground">
-                  {linkedConversation.keyPoints.map((kp, i) => (
-                    <li key={`${kp}-${i}`}>{kp}</li>
+                  {/*
+                   * keyPoints/decisions are short free-text strings from demo
+                   * data — duplicates are possible but rare. We accept React's
+                   * duplicate-key dev warning over papering it over with an
+                   * array index (which is an anti-pattern on reorderable
+                   * lists and hides genuine dupes).
+                   */}
+                  {linkedConversation.keyPoints.map((kp) => (
+                    <li key={kp}>{kp}</li>
                   ))}
                 </ul>
               </div>
@@ -124,8 +131,8 @@ export function TimelineEntry({
               <div>
                 <p className="font-medium">Decisions</p>
                 <ul className="mt-1 list-inside list-disc space-y-0.5 text-muted-foreground">
-                  {linkedConversation.decisions.map((d, i) => (
-                    <li key={`${d}-${i}`}>{d}</li>
+                  {linkedConversation.decisions.map((d) => (
+                    <li key={d}>{d}</li>
                   ))}
                 </ul>
               </div>
