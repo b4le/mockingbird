@@ -169,38 +169,31 @@ interface SourceBacked {
 }
 
 /**
- * Cross-collection consistency check for the child→parent origin link.
+ * Cross-collection consistency check for the action→parent origin link.
  *
  * Semantics (permissive linked-items lists):
- * - Each ActionItem / EvidenceItem has a single `sourceEntityId` +
- *   `sourceEntityType` — the single source of truth for where the row
- *   *originated*.
- * - `Communication.actionItemIds`, `Communication.evidenceIds`, and
- *   `Conversation.actionItemIds` are LINKED-ITEMS lists. They MUST
- *   include the origin (the child where `sourceEntityId == this.id`)
- *   and MAY include additional related items — actions/evidence that
- *   surfaced, were referenced, or were otherwise discussed in that
- *   thread/meeting without originating there. Extras are narrative
- *   richness, not drift.
+ * - Each ActionItem has a single `sourceEntityId` + `sourceEntityType`
+ *   — the single source of truth for where the row *originated*.
+ * - `Communication.actionItemIds` and `Conversation.actionItemIds` are
+ *   LINKED-ITEMS lists. They MUST include the origin (the action where
+ *   `sourceEntityId == this.id`) and MAY include additional related
+ *   items that surfaced, were referenced, or were otherwise discussed
+ *   in that thread/meeting without originating there. Extras are
+ *   narrative richness, not drift.
  *
- * So this check is deliberately one-directional: for every child whose
+ * So this check is deliberately one-directional: for every action whose
  * origin points at a parent, the parent's linked list must mirror the
- * link. The reverse — ids in the parent's list whose child's origin
+ * link. The reverse — ids in the parent's list whose action's origin
  * points elsewhere — is expected and not a violation.
- *
- * For evidence→conversation we skip the check entirely: Conversation
- * has no `evidenceIds` field, so there is no parent list to mirror.
  *
  * Policy: throws in CI (`process.env.CI === "true"`) so violations fail
  * the build; warns in dev so hand-edits surface without blocking local
- * iteration. All 4 report sites route through the `report` closure.
+ * iteration.
  */
-function warnOnBackrefDrift(
-  kind: "action" | "evidence",
+function checkActionBackref(
   items: SourceBacked[],
   communications: Communication[],
   conversations: Conversation[],
-  backrefField: "actionItemIds" | "evidenceIds",
 ): void {
   const commById = new Map(communications.map((c) => [c.id, c]));
   const convById = new Map(conversations.map((c) => [c.id, c]));
@@ -219,14 +212,13 @@ function warnOnBackrefDrift(
       const comm = commById.get(item.sourceEntityId);
       if (!comm) {
         report(
-          `[backref-drift] ${kind} ${item.id} references missing communication ${item.sourceEntityId}`,
+          `[backref-drift] action ${item.id} references missing communication ${item.sourceEntityId}`,
         );
         continue;
       }
-      const backref = comm[backrefField];
-      if (!backref.includes(item.id)) {
+      if (!comm.actionItemIds.includes(item.id)) {
         report(
-          `[backref-drift] ${kind} ${item.id} claims source ${comm.id} but ${comm.id}.${backrefField} does not include it`,
+          `[backref-drift] action ${item.id} claims source ${comm.id} but ${comm.id}.actionItemIds does not include it`,
         );
       }
       continue;
@@ -236,16 +228,65 @@ function warnOnBackrefDrift(
     const conv = convById.get(item.sourceEntityId);
     if (!conv) {
       report(
-        `[backref-drift] ${kind} ${item.id} references missing conversation ${item.sourceEntityId}`,
+        `[backref-drift] action ${item.id} references missing conversation ${item.sourceEntityId}`,
       );
       continue;
     }
-    if (backrefField === "actionItemIds" && !conv.actionItemIds.includes(item.id)) {
+    if (!conv.actionItemIds.includes(item.id)) {
       report(
-        `[backref-drift] ${kind} ${item.id} claims source ${conv.id} but ${conv.id}.actionItemIds does not include it`,
+        `[backref-drift] action ${item.id} claims source ${conv.id} but ${conv.id}.actionItemIds does not include it`,
       );
     }
-    // Conversations have no `evidenceIds` — skip the evidence→conversation check.
+  }
+}
+
+/**
+ * Cross-collection consistency check for the evidence→parent origin link.
+ *
+ * Evidence only back-references communications here. The signature
+ * intentionally omits conversations: Conversation has no `evidenceIds`
+ * field, so an evidence row whose `sourceEntityType === "conversation"`
+ * has no parent list to mirror — there is nothing a backref check can
+ * usefully verify. Restricting the parameter list makes that structural,
+ * preventing future callers from passing conversations under the
+ * mistaken assumption that this function will check them.
+ *
+ * Policy matches `checkActionBackref`: throws in CI, warns in dev.
+ */
+function checkEvidenceBackref(
+  items: SourceBacked[],
+  communications: Communication[],
+): void {
+  const commById = new Map(communications.map((c) => [c.id, c]));
+  const strict = process.env.CI === "true";
+  const report = (msg: string): void => {
+    if (strict) throw new Error(msg);
+    console.warn(msg);
+  };
+
+  for (const item of items) {
+    if (item.sourceEntityId === null || item.sourceEntityType === null) {
+      continue;
+    }
+
+    if (item.sourceEntityType === "communication") {
+      const comm = commById.get(item.sourceEntityId);
+      if (!comm) {
+        report(
+          `[backref-drift] evidence ${item.id} references missing communication ${item.sourceEntityId}`,
+        );
+        continue;
+      }
+      if (!comm.evidenceIds.includes(item.id)) {
+        report(
+          `[backref-drift] evidence ${item.id} claims source ${comm.id} but ${comm.id}.evidenceIds does not include it`,
+        );
+      }
+      continue;
+    }
+
+    // sourceEntityType === "conversation": no parent list to mirror
+    // (Conversation has no evidenceIds field), so nothing to check.
   }
 }
 
@@ -281,20 +322,8 @@ export async function getProjectBundle(
     getEvidence(project),
     getTimeline(project),
   ]);
-  warnOnBackrefDrift(
-    "action",
-    actions,
-    communications,
-    conversations,
-    "actionItemIds",
-  );
-  warnOnBackrefDrift(
-    "evidence",
-    evidence,
-    communications,
-    conversations,
-    "evidenceIds",
-  );
+  checkActionBackref(actions, communications, conversations);
+  checkEvidenceBackref(evidence, communications);
   return {
     state,
     session,
