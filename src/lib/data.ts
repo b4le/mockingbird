@@ -27,6 +27,7 @@ import {
   TimelineEventSchema,
   uniqueIdArray,
 } from "@/lib/schemas";
+import { createReporter } from "./invariants";
 
 /**
  * Reads a project JSON file and validates its shape with a zod schema before
@@ -197,11 +198,7 @@ function checkActionBackref(
 ): void {
   const commById = new Map(communications.map((c) => [c.id, c]));
   const convById = new Map(conversations.map((c) => [c.id, c]));
-  const strict = process.env.CI === "true";
-  const report = (msg: string): void => {
-    if (strict) throw new Error(msg);
-    console.warn(msg);
-  };
+  const report = createReporter(process.env.CI === "true");
 
   for (const item of items) {
     if (item.sourceEntityId === null || item.sourceEntityType === null) {
@@ -258,11 +255,7 @@ function checkEvidenceBackref(
   communications: Communication[],
 ): void {
   const commById = new Map(communications.map((c) => [c.id, c]));
-  const strict = process.env.CI === "true";
-  const report = (msg: string): void => {
-    if (strict) throw new Error(msg);
-    console.warn(msg);
-  };
+  const report = createReporter(process.env.CI === "true");
 
   for (const item of items) {
     if (item.sourceEntityId === null || item.sourceEntityType === null) {
