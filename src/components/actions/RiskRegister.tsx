@@ -31,6 +31,7 @@ export function RiskRegister({ risks, actions }: RiskRegisterProps) {
             role="button"
             tabIndex={0}
             aria-expanded={expanded}
+            aria-label={`${expanded ? "Collapse" : "Expand"} risk: ${risk.title}`}
             className="cursor-pointer"
             onClick={() => setExpandedId(expanded ? null : risk.id)}
             onKeyDown={(e) => {

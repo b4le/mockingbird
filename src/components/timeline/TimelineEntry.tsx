@@ -62,6 +62,7 @@ export function TimelineEntry({
                 role: "button",
                 tabIndex: 0,
                 "aria-expanded": expanded,
+                "aria-label": `${expanded ? "Collapse" : "Expand"} timeline event: ${event.title}`,
                 onClick: () => setExpanded(!expanded),
                 onKeyDown: (e: React.KeyboardEvent) => {
                   if (e.key === "Enter" || e.key === " ") {
