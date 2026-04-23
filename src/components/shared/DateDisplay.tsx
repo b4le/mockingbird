@@ -38,11 +38,19 @@ function formatAbsolute(dateStr: string): string {
   });
 }
 
-export function DateDisplay({ date }: { date: string }) {
+export function DateDisplay({ date }: { date: string | null }) {
   // Server renders absolute date; client swaps to relative on mount — the
   // hydration mismatch is intentional, so `suppressHydrationWarning` below
   // is load-bearing.
   const mounted = useIsClient();
+
+  if (date === null) {
+    return (
+      <span className="text-sm text-muted-foreground" aria-label="No date">
+        —
+      </span>
+    );
+  }
 
   if (!mounted) {
     return <span className="text-sm text-muted-foreground" suppressHydrationWarning>{formatAbsolute(date)}</span>;
