@@ -24,12 +24,24 @@ export function StakeholderAvatar({
   size = "md",
   onClick,
 }: StakeholderAvatarProps) {
+  // When there's no onClick, render the trigger as a <span>. This both
+  //   (1) avoids a useless focus stop on a button with no action, and
+  //   (2) prevents nested-button hydration errors when callers wrap the
+  //       avatar in their own <button> (e.g. the participant pill in
+  //       CommunicationDetail).
+  // Base UI's `render` prop swaps the underlying element while preserving
+  // tooltip wiring (pointer/focus handlers still work on any element).
+  // NOTE: This relies on TooltipTrigger in Base UI 1.3 having no `nativeButton`
+  // prop (unlike Popover/Dialog trigger + close, which do). If a future Base UI
+  // release adds one, swapping render={<span />} here may start leaking a
+  // `nativeButton` attribute to the DOM — revisit then.
+  const interactive = typeof onClick === "function";
   return (
     <Tooltip>
       <TooltipTrigger
-        className={`${sizes[size]} relative inline-flex shrink-0 items-center justify-center rounded-full font-medium text-white before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-11 before:-translate-x-1/2 before:-translate-y-1/2 before:content-[''] ${onClick ? "cursor-pointer" : ""}`}
+        {...(interactive ? { onClick } : { render: <span /> })}
+        className={`${sizes[size]} relative inline-flex shrink-0 items-center justify-center rounded-full font-medium text-white before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-11 before:-translate-x-1/2 before:-translate-y-1/2 before:content-[''] ${interactive ? "cursor-pointer" : ""}`}
         style={{ backgroundColor: stakeholder.colour }}
-        onClick={onClick}
       >
         {stakeholder.initials}
       </TooltipTrigger>
