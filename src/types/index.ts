@@ -252,5 +252,5 @@ export interface Snippet {
   exhibitMapping: string[];
   evidenceIds?: string[];
   conversationId: string | null;
-  communicationId?: string | null;
+  communicationId: string | null;
 }

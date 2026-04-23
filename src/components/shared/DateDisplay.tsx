@@ -45,7 +45,11 @@ export function DateDisplay({ date }: { date: string | null }) {
   const mounted = useIsClient();
 
   if (date === null) {
-    return <span className="text-sm text-muted-foreground">—</span>;
+    return (
+      <span className="text-sm text-muted-foreground" aria-label="No date">
+        —
+      </span>
+    );
   }
 
   if (!mounted) {

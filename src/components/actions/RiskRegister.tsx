@@ -85,7 +85,11 @@ export function RiskRegister({ risks, actions }: RiskRegisterProps) {
                     </div>
                   )}
                   <p className="text-xs text-muted-foreground">
-                    Updated: <DateDisplay date={risk.updatedDate} />
+                    {risk.updatedDate ? (
+                      <>Updated: <DateDisplay date={risk.updatedDate} /></>
+                    ) : (
+                      "Not yet updated"
+                    )}
                   </p>
                 </div>
               )}

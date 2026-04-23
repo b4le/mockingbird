@@ -9,8 +9,11 @@ import type {
   ProjectState,
   Risk,
   SessionMeta,
+  Snippet,
   Stakeholder,
   TimelineEvent,
+  Transcript,
+  TranscriptCue,
 } from "@/types";
 
 /**
@@ -100,6 +103,19 @@ const sourceEntityBothOrNeither = <
 
 const sourceEntityRefineMessage =
   "sourceEntityId and sourceEntityType must both be null or both be set";
+
+/**
+ * Reusable schema for nullable ISO dates. `z.string().nullable()` alone
+ * accepts `""`, which then flows past `DateDisplay`'s `=== null` guard and
+ * renders as "Invalid Date" once `parseDate` reaches it. This helper
+ * rejects empty strings (and any non-ISO-prefixed string) at the ingestion
+ * boundary, forcing the exporter to emit real `null` for unknown dates.
+ * Prefix regex so both `YYYY-MM-DD` and full ISO timestamps are accepted.
+ */
+const NullableIsoDateSchema = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}/, "date must be ISO-formatted (YYYY-MM-DD...) or null")
+  .nullable();
 
 // ---------------------------------------------------------------------------
 // Entity schemas
@@ -269,8 +285,8 @@ export const RiskSchema = z.object({
   likelihood: PrioritySchema,
   mitigationPlan: z.string(),
   actionIds: z.array(z.string()),
-  createdDate: z.string().nullable(),
-  updatedDate: z.string().nullable(),
+  createdDate: NullableIsoDateSchema,
+  updatedDate: NullableIsoDateSchema,
 });
 
 export const ClaimSchema = z.object({
@@ -291,7 +307,7 @@ export const EvidenceItemSchema = z
     source: z.string(),
     sourceType: EvidenceSourceTypeSchema,
     strength: EvidenceStrengthSchema,
-    date: z.string().nullable(),
+    date: NullableIsoDateSchema,
     url: z.string().nullable(),
     claimIds: z.array(z.string()),
     sourceEntityId: z.string().nullable(),
@@ -332,6 +348,56 @@ export const SessionMetaSchema = z.object({
   dataVersion: z.string(),
   generatedBy: z.string(),
   notes: z.string(),
+});
+
+// ---------------------------------------------------------------------------
+// Exporter-provided entities (atticus-finch export_mockingbird.py)
+//
+// These are declared alongside the rest so the compile-time `_AssertX`
+// cross-check remains the single place interface/schema drift is caught.
+// Loaders in `src/lib/data.ts` have not been wired yet — once they are,
+// add corresponding `checkSnippetBackref` / `checkTranscriptBackref`
+// invariants to `src/lib/invariants.ts` (see AGENTS.md for the pattern).
+// ---------------------------------------------------------------------------
+
+const TranscriptCueSchema = z.object({
+  startMs: z.number(),
+  endMs: z.number(),
+  speaker: z.string(),
+  text: z.string(),
+});
+
+export const TranscriptSchema = z.object({
+  id: z.string(),
+  date: z.string(),
+  category: z.string(),
+  conversationId: z.string().nullable(),
+  participants: z.array(z.string()),
+  participantIds: z.array(z.string()).optional(),
+  durationSeconds: z.number().nullable(),
+  cueCount: z.number(),
+  hasCues: z.boolean(),
+  cues: z.array(TranscriptCueSchema),
+  sourceFile: z.string(),
+});
+
+export const SnippetSchema = z.object({
+  id: z.string(),
+  clipId: z.string(),
+  category: z.string(),
+  sourceFile: z.string(),
+  audioFile: z.string(),
+  startSeconds: z.number(),
+  endSeconds: z.number(),
+  durationSeconds: z.number(),
+  speaker: z.string(),
+  transcript: z.string(),
+  whatYoullHear: z.string(),
+  top20Rank: z.number().nullable(),
+  exhibitMapping: z.array(z.string()),
+  evidenceIds: z.array(z.string()).optional(),
+  conversationId: z.string().nullable(),
+  communicationId: z.string().nullable(),
 });
 
 // ---------------------------------------------------------------------------
@@ -431,6 +497,24 @@ type _AssertSessionMeta =
       ? true
       : never
     : never;
+type _AssertTranscriptCue =
+  z.infer<typeof TranscriptCueSchema> extends TranscriptCue
+    ? TranscriptCue extends z.infer<typeof TranscriptCueSchema>
+      ? true
+      : never
+    : never;
+type _AssertTranscript =
+  z.infer<typeof TranscriptSchema> extends Transcript
+    ? Transcript extends z.infer<typeof TranscriptSchema>
+      ? true
+      : never
+    : never;
+type _AssertSnippet =
+  z.infer<typeof SnippetSchema> extends Snippet
+    ? Snippet extends z.infer<typeof SnippetSchema>
+      ? true
+      : never
+    : never;
 
 const _schemaChecks: [
   _AssertStakeholder,
@@ -443,5 +527,8 @@ const _schemaChecks: [
   _AssertTimelineEvent,
   _AssertProjectState,
   _AssertSessionMeta,
-] = [true, true, true, true, true, true, true, true, true, true];
+  _AssertTranscriptCue,
+  _AssertTranscript,
+  _AssertSnippet,
+] = [true, true, true, true, true, true, true, true, true, true, true, true, true];
 void _schemaChecks;
