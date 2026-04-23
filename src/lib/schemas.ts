@@ -61,6 +61,7 @@ const TimelineEventTypeSchema = z.enum([
 const CommunicationChannelSchema = z.enum([
   "email",
   "slack",
+  "signal",
   "whatsapp",
   "sms",
   "other",
@@ -238,6 +239,8 @@ export const ConversationSchema = z.object({
   medium: MediumSchema.optional(),
   transcript: z.string().optional(),
   transcriptUrl: z.string().optional(),
+  transcriptId: z.string().optional(),
+  snippetIds: z.array(z.string()).optional(),
 });
 
 export const ActionItemSchema = z
@@ -266,8 +269,8 @@ export const RiskSchema = z.object({
   likelihood: PrioritySchema,
   mitigationPlan: z.string(),
   actionIds: z.array(z.string()),
-  createdDate: z.string(),
-  updatedDate: z.string(),
+  createdDate: z.string().nullable(),
+  updatedDate: z.string().nullable(),
 });
 
 export const ClaimSchema = z.object({
@@ -288,7 +291,7 @@ export const EvidenceItemSchema = z
     source: z.string(),
     sourceType: EvidenceSourceTypeSchema,
     strength: EvidenceStrengthSchema,
-    date: z.string(),
+    date: z.string().nullable(),
     url: z.string().nullable(),
     claimIds: z.array(z.string()),
     sourceEntityId: z.string().nullable(),
