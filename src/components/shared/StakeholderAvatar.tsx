@@ -19,6 +19,16 @@ const sizes = {
   lg: "h-10 w-10 text-sm",
 };
 
+/**
+ * Renders a tooltip-wrapped avatar for a stakeholder.
+ *
+ * - With `onClick`: the trigger is a `<button>` (interactive, focusable).
+ * - Without `onClick`: the trigger is a `<span>` (non-interactive, no focus stop).
+ *
+ * **Contract:** do NOT pass `onClick` when this avatar is nested inside a caller's
+ * `<button>` — that reintroduces the nested-button hydration error fixed in
+ * `fix(communications): avoid nested <button> hydration in StakeholderAvatar`.
+ */
 export function StakeholderAvatar({
   stakeholder,
   size = "md",
