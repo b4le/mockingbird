@@ -12,7 +12,7 @@ export type TimelineEventType =
   | 'action'
   | 'risk-change'
   | 'communication';
-export type CommunicationChannel = 'email' | 'slack' | 'whatsapp' | 'sms' | 'other';
+export type CommunicationChannel = 'email' | 'slack' | 'signal' | 'whatsapp' | 'sms' | 'other';
 
 // TODO(scale): extract to data/demo/external-contacts.json once a second project
 // is added or the first duplicate ExternalParticipant (same name + organisation)

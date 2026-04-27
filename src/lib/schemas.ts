@@ -61,6 +61,7 @@ const TimelineEventTypeSchema = z.enum([
 const CommunicationChannelSchema = z.enum([
   "email",
   "slack",
+  "signal",
   "whatsapp",
   "sms",
   "other",
