@@ -29,6 +29,8 @@ import {
 } from "@/lib/schemas";
 import {
   checkActionBackref,
+  checkConversationActionIds,
+  checkConversationParticipantIds,
   checkEvidenceBackref,
   createReporter,
 } from "./invariants";
@@ -210,6 +212,8 @@ export async function getProjectBundle(
   const reporter = createReporter(process.env.CI === "true");
   checkActionBackref(reporter.report, actions, communications, conversations);
   checkEvidenceBackref(reporter.report, evidence, communications);
+  checkConversationActionIds(reporter.report, conversations, actions);
+  checkConversationParticipantIds(reporter.report, conversations, stakeholders);
   reporter.flush();
   return {
     state,

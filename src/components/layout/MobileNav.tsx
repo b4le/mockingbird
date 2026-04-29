@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { usePathname, useParams } from "next/navigation";
-import { Home, Clock, FileText, CheckCircle, MessageSquare } from "lucide-react";
+import {
+  Home,
+  Clock,
+  FileText,
+  CheckCircle,
+  MessageSquare,
+  MessagesSquare,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -30,6 +37,11 @@ const NAV_ITEMS = [
     href: "/communications",
     label: "Comms",
     icon: <MessageSquare className="h-5 w-5" aria-hidden="true" />,
+  },
+  {
+    href: "/conversations",
+    label: "Convs",
+    icon: <MessagesSquare className="h-5 w-5" aria-hidden="true" />,
   },
 ];
 

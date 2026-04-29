@@ -1,4 +1,4 @@
-import type { Communication, Conversation } from "@/types";
+import type { Communication, Conversation, Stakeholder } from "@/types";
 
 /**
  * Cross-collection invariant checks for the project data bundle.
@@ -37,6 +37,13 @@ import type { Communication, Conversation } from "@/types";
  * of undefined (reading 'includes')` instead of cleanly reporting drift —
  * strictly worse than before. Keep the schema fields required, or
  * reintroduce `if (!comm.actionItemIds) continue;` style guards here.
+ *
+ * The same coupling applies to {@link checkConversationActionIds} and
+ * {@link checkConversationParticipantIds}: both iterate
+ * `conv.actionItemIds` and `conv.participantIds` without a presence
+ * guard. `Conversation.actionItemIds` and `Conversation.participantIds`
+ * are REQUIRED arrays in `ConversationSchema` — if those are relaxed to
+ * optional, the new checks need explicit guards too.
  */
 
 // ---------------------------------------------------------------------------
@@ -229,5 +236,69 @@ export function checkEvidenceBackref(
 
     // sourceEntityType === "conversation": no parent list to mirror
     // (Conversation has no evidenceIds field), so nothing to check.
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Conversation.actionItemIds`.
+ *
+ * Every id listed under a conversation's linked actions must resolve to
+ * a real `ActionItem`. Drift here means an action was deleted or
+ * renamed but the linking conversation was not updated — the row would
+ * silently disappear from the UI's "linked actions" list with no
+ * warning. The complementary one-directional check
+ * (`action.sourceEntityId` mirrors into the parent's list) lives in
+ * {@link checkActionBackref}; this is the inbound counterpart and
+ * catches a different class of drift.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkConversationActionIds(
+  report: (msg: string) => void,
+  conversations: Conversation[],
+  actions: { id: string }[],
+): void {
+  const actionIds = new Set(actions.map((a) => a.id));
+  for (const conv of conversations) {
+    // Schema coupling: `conv.actionItemIds` is required by ConversationSchema.
+    // See top-of-file "Schema coupling" note before relaxing the schema.
+    for (const id of conv.actionItemIds) {
+      if (!actionIds.has(id)) {
+        report(
+          `[backref-drift] conversation ${conv.id} references missing action ${id}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Conversation.participantIds`.
+ *
+ * Every id listed under a conversation's participants must resolve to a
+ * real `Stakeholder`. Drift here means a stakeholder was deleted or
+ * renamed without updating the conversations that reference them — the
+ * participant avatar would silently drop out of the UI.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkConversationParticipantIds(
+  report: (msg: string) => void,
+  conversations: Conversation[],
+  stakeholders: Stakeholder[],
+): void {
+  const stakeholderIds = new Set(stakeholders.map((s) => s.id));
+  for (const conv of conversations) {
+    // Schema coupling: `conv.participantIds` is required by ConversationSchema.
+    // See top-of-file "Schema coupling" note before relaxing the schema.
+    for (const id of conv.participantIds) {
+      if (!stakeholderIds.has(id)) {
+        report(
+          `[backref-drift] conversation ${conv.id} references missing stakeholder ${id}`,
+        );
+      }
+    }
   }
 }
