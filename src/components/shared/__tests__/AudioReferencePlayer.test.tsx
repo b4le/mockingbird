@@ -161,4 +161,54 @@ describe("AudioReferencePlayer", () => {
     expect(container.querySelector("audio")).toBeNull();
     expect(getByRole("link", { name: /open in drive/i })).not.toBeNull();
   });
+
+  describe("compact variant", () => {
+    it("starts collapsed: shows trigger button, hides the audio element and link", () => {
+      const { container, queryByRole, getByRole } = render(
+        <AudioReferencePlayer
+          audioReference={completeRef}
+          variant="compact"
+        />,
+      );
+      // Trigger is a button with aria-expanded=false.
+      const trigger = getByRole("button", { name: /play recording/i });
+      expect(trigger.getAttribute("aria-expanded")).toBe("false");
+      // Body (audio + link) is not in the DOM yet.
+      expect(container.querySelector("audio")).toBeNull();
+      expect(queryByRole("link", { name: /open in drive/i })).toBeNull();
+    });
+
+    it("expands inline on click: reveals the audio element and link", () => {
+      const { container, getByRole } = render(
+        <AudioReferencePlayer
+          audioReference={completeRef}
+          variant="compact"
+        />,
+      );
+      const trigger = getByRole("button", { name: /play recording/i });
+      fireEvent.click(trigger);
+
+      // After expansion, the body renders and the trigger flips its
+      // label + aria-expanded so screen readers reflect the new state.
+      expect(getByRole("button", { name: /hide recording/i })).not.toBeNull();
+      expect(
+        getByRole("button", { name: /hide recording/i }).getAttribute(
+          "aria-expanded",
+        ),
+      ).toBe("true");
+      expect(container.querySelector("audio")).not.toBeNull();
+      expect(getByRole("link", { name: /open in drive/i })).not.toBeNull();
+    });
+
+    it("defaults to 'full' variant when no variant is specified", () => {
+      // Regression guard: existing call sites (Timeline expanded card)
+      // pass no variant prop and must continue to render the full
+      // player without a trigger button wrapping it.
+      const { container, queryByRole } = render(
+        <AudioReferencePlayer audioReference={completeRef} />,
+      );
+      expect(queryByRole("button", { name: /play recording/i })).toBeNull();
+      expect(container.querySelector("audio")).not.toBeNull();
+    });
+  });
 });

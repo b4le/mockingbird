@@ -1,16 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Mic } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { AudioReference, AudioReferenceStatus } from "@/types";
 
 /**
- * Renders a "play this conversation's recording" affordance for a
- * `Conversation.audioReference` (or `Transcript.audioReference`) payload.
+ * Bespoke renderer for a `Conversation.audioReference` (or
+ * `Transcript.audioReference`) payload. Designed to drop into any
+ * surface — Timeline expanded card, CommunicationDetail linked
+ * conversations, future Conversation page — with the parent supplying
+ * only the payload and (optionally) a layout-level `className`.
  *
- * Layout (vertical stack):
+ * The component owns the affordance (player + status badge + Drive
+ * link); the parent owns where it sits and what surrounds it. Keep
+ * this contract narrow: it is an `AudioReference` renderer, not a
+ * generic media player.
+ *
+ * Variants:
+ *
+ * - `"full"` (default) — vertical stack of pending-state badge,
+ *   native HTML5 `<audio>` element, and "Open in Drive" link. Suited
+ *   to expanded cards and detail panels where the player is the
+ *   primary affordance.
+ * - `"compact"` — collapsed-by-default trigger row showing only the
+ *   filename + Mic icon. Click expands the trigger into the same
+ *   `full` layout inline. Suited to inline usage (e.g. linked-
+ *   conversation rows) where the player should not dominate the row
+ *   until the user opts in.
+ *
+ * Layout (`full`):
  *   1. Optional pending-state badge (rendered only when `status` is set
  *      and not `"complete"`).
  *   2. Native HTML5 `<audio>` element pointing at `previewUrl` (skipped
@@ -31,19 +51,30 @@ const STATUS_LABELS: Record<Exclude<AudioReferenceStatus, "complete">, string> =
     "pending-audio-upload": "Audio pending upload",
   };
 
+export type AudioReferencePlayerVariant = "full" | "compact";
+
 interface AudioReferencePlayerProps {
   audioReference: AudioReference;
+  /**
+   * `full` (default) renders the player + badge + link inline.
+   * `compact` renders a click-to-expand trigger; the expanded body
+   * is the same layout as `full`.
+   */
+  variant?: AudioReferencePlayerVariant;
   className?: string;
 }
 
 export function AudioReferencePlayer({
   audioReference,
+  variant = "full",
   className,
 }: AudioReferencePlayerProps) {
   // One boolean — flips when the <audio> element fires `onError` (e.g.
   // Drive returns 403 because the user isn't signed in). Spec §5 says
   // to fall back to the view link in that case.
   const [audioFailed, setAudioFailed] = useState(false);
+  // Compact variant starts collapsed; ignored when `variant === 'full'`.
+  const [expanded, setExpanded] = useState(false);
 
   const status = audioReference.status ?? "complete";
   const showBadge = status !== "complete";
@@ -55,8 +86,8 @@ export function AudioReferencePlayer({
   // and gets a slightly more prominent treatment.
   const linkIsPrimary = audioFailed;
 
-  return (
-    <div className={cn("flex flex-col gap-2", className)}>
+  const body = (
+    <div className="flex flex-col gap-2">
       {showBadge && (
         <Badge
           variant="outline"
@@ -97,6 +128,28 @@ export function AudioReferencePlayer({
           Open in Drive
         </a>
       )}
+    </div>
+  );
+
+  if (variant === "full") {
+    return <div className={cn(className)}>{body}</div>;
+  }
+
+  // Compact: collapsed trigger row → expands inline into the same body.
+  // The trigger is a button so keyboard + screen-reader users can
+  // discover and toggle it the same way they would a native disclosure.
+  return (
+    <div className={cn("flex flex-col gap-2", className)}>
+      <button
+        type="button"
+        onClick={() => setExpanded((v) => !v)}
+        aria-expanded={expanded}
+        className="inline-flex items-center gap-1.5 self-start rounded-md border bg-background px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
+      >
+        <Mic className="h-3 w-3" aria-hidden="true" />
+        <span>{expanded ? "Hide recording" : "Play recording"}</span>
+      </button>
+      {expanded && body}
     </div>
   );
 }
