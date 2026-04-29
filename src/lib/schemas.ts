@@ -130,6 +130,48 @@ const ExternalParticipantSchema = z.object({
 });
 
 /**
+ * Attachment shape on a Communication (or CommMessage).
+ *
+ * The atticus-finch producer (`export_mockingbird.py`) emits a richer shape
+ * than the original consumer schema accepted: `filename`, `mime`, `size`,
+ * and `path` in addition to the original `name`/`url`/`evidenceId` triplet.
+ * The producer's JSON schema (`scripts/schemas/communication.schema.json`)
+ * is the on-disk source of truth — see PR b4le/atticus-finch#52.
+ *
+ * Previously this schema relied on Zod's default `.strip()` mode to drop the
+ * extra keys silently, losing useful UI metadata (file size, MIME type,
+ * relative path). This schema now accepts and surfaces them.
+ *
+ * Refinement: at least one of `filename`, `name`, `url`, or `evidenceId`
+ * must be present. The producer always emits both `filename` and `name`
+ * (mirrored values) so the refine passes; `name` is retained for back-compat
+ * with legacy demo data that predates the producer's `filename` emission.
+ *
+ * `path` is project-relative inside the producer repo and is NOT a
+ * fetchable URL — UI code must not render it as one. Use `url` for links.
+ *
+ * Declared above `CommMessageSchema` so the per-message `attachments?`
+ * field can reference it by value (no `z.lazy` forward ref required).
+ */
+const CommAttachmentSchema = z
+  .object({
+    filename: z.string().optional(),
+    name: z.string().optional(),
+    mime: z.string().optional(),
+    size: z.number().int().nonnegative().optional(),
+    path: z.string().optional(),
+    url: z.string().optional(),
+    evidenceId: z.string().optional(),
+  })
+  .refine(
+    (a) => Boolean(a.filename || a.name || a.url || a.evidenceId),
+    {
+      message:
+        "CommAttachment must have at least one of: filename, name, url, evidenceId",
+    },
+  );
+
+/**
  * Discriminated union mirroring `CommMessage` in `src/types/index.ts`.
  * Exactly one of `senderId` | `externalSender` is present. Every message has
  * a stable `id` for per-message React keys and future deep-linking.
@@ -183,6 +225,7 @@ export const CommMessageSchema = commMessageDiscriminatorPreflight.pipe(
         senderId: z.string(),
         externalSender: z.undefined().optional(),
         bodyPreview: z.string(),
+        attachments: z.array(CommAttachmentSchema).optional(),
       }),
       z.object({
         id: z.string(),
@@ -190,6 +233,7 @@ export const CommMessageSchema = commMessageDiscriminatorPreflight.pipe(
         senderId: z.undefined().optional(),
         externalSender: ExternalParticipantSchema,
         bodyPreview: z.string(),
+        attachments: z.array(CommAttachmentSchema).optional(),
       }),
     ],
     {
@@ -198,16 +242,6 @@ export const CommMessageSchema = commMessageDiscriminatorPreflight.pipe(
     },
   ),
 );
-
-const CommAttachmentSchema = z
-  .object({
-    evidenceId: z.string().optional(),
-    name: z.string().optional(),
-    url: z.string().optional(),
-  })
-  .refine((a) => Boolean(a.evidenceId || a.name || a.url), {
-    message: "CommAttachment must have at least one of: evidenceId, name, url",
-  });
 
 export const CommunicationSchema = z
   .object({
@@ -220,6 +254,13 @@ export const CommunicationSchema = z
     summary: z.string(),
     messages: z.array(CommMessageSchema),
     attachments: z.array(CommAttachmentSchema).optional(),
+    /**
+     * Producer-emitted convenience flag (atticus-finch
+     * `export_mockingbird.py`): `true` iff at least one non-privileged
+     * message in the Communication carries user-visible attachments.
+     * Optional — legacy records may omit it.
+     */
+    hasAttachments: z.boolean().optional(),
     actionItemIds: z.array(z.string()),
     claimIds: z.array(z.string()),
     evidenceIds: z.array(z.string()),
