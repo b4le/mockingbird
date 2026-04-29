@@ -25,6 +25,7 @@ import type {
   Communication,
   Conversation,
   Stakeholder,
+  Transcript,
 } from "@/types";
 
 type Medium = NonNullable<Conversation["medium"]>;
@@ -35,6 +36,7 @@ interface ConversationsPageClientProps {
   communications: Communication[];
   actions: ActionItem[];
   claims: Claim[];
+  transcripts: Transcript[];
 }
 
 // Conversations may have a null date. Sort nulls to the bottom; otherwise sort
@@ -55,6 +57,7 @@ export function ConversationsPageClient({
   communications,
   actions,
   claims,
+  transcripts,
 }: ConversationsPageClientProps) {
   const [selectedMedium, setSelectedMedium] = useState<Medium | null>(null);
   const [selectedParticipantId, setSelectedParticipantId] = useState<
@@ -75,6 +78,13 @@ export function ConversationsPageClient({
     () => new Map(actions.map((a) => [a.id, a])),
     [actions],
   );
+  const transcriptByConversationId = useMemo(() => {
+    const map = new Map<string, Transcript>();
+    for (const t of transcripts) {
+      if (t.conversationId) map.set(t.conversationId, t);
+    }
+    return map;
+  }, [transcripts]);
 
   const filtered = useMemo(() => {
     let result = [...conversations].sort(compareConversationsByDateDesc);
@@ -210,6 +220,10 @@ export function ConversationsPageClient({
                 conversation={selected}
                 stakeholderMap={stakeholderMap}
                 actionMap={actionMap}
+                stakeholders={stakeholders}
+                transcript={
+                  transcriptByConversationId.get(selected.id) ?? null
+                }
                 onStakeholderClick={setDialogStakeholder}
               />
             ) : (

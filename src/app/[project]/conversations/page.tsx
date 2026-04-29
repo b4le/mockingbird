@@ -13,6 +13,7 @@ export default async function ConversationsPage({
     communications,
     actions,
     claims,
+    transcripts,
   } = await getProjectBundle(project);
 
   return (
@@ -22,6 +23,7 @@ export default async function ConversationsPage({
       communications={communications}
       actions={actions}
       claims={claims}
+      transcripts={transcripts}
     />
   );
 }

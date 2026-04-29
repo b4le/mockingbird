@@ -1,4 +1,9 @@
-import type { Communication, Conversation, Stakeholder } from "@/types";
+import type {
+  Communication,
+  Conversation,
+  Stakeholder,
+  Transcript,
+} from "@/types";
 
 /**
  * Cross-collection invariant checks for the project data bundle.
@@ -44,6 +49,17 @@ import type { Communication, Conversation, Stakeholder } from "@/types";
  * guard. `Conversation.actionItemIds` and `Conversation.participantIds`
  * are REQUIRED arrays in `ConversationSchema` — if those are relaxed to
  * optional, the new checks need explicit guards too.
+ *
+ * The transcript checks {@link checkConversationTranscriptId},
+ * {@link checkTranscriptConversationId} and {@link checkTranscriptSpeakers}
+ * dereference `transcript.cues` (REQUIRED in `TranscriptSchema`) without a
+ * presence guard. They DO guard on the optional fields they target —
+ * `Conversation.transcriptId`, `TranscriptCue.speakerId`,
+ * `Transcript.speakerMap`, and `Transcript.participantIds` — because those
+ * are `.optional()` in the schemas, so absent values must be skipped
+ * (not flagged) and presence must be narrowed before the dereference. If
+ * `cues` is ever relaxed to optional, `checkTranscriptSpeakers` needs an
+ * explicit guard.
  */
 
 // ---------------------------------------------------------------------------
@@ -297,6 +313,121 @@ export function checkConversationParticipantIds(
       if (!stakeholderIds.has(id)) {
         report(
           `[backref-drift] conversation ${conv.id} references missing stakeholder ${id}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Conversation.transcriptId`.
+ *
+ * Every conversation that opts into the transcript viewer by setting
+ * `transcriptId` must point at a real transcript. Drift here means the
+ * Transcript tab would render an empty state or 404 for a conversation
+ * that explicitly claims to have one — strictly worse than just leaving
+ * `transcriptId` unset.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkConversationTranscriptId(
+  report: (msg: string) => void,
+  conversations: Conversation[],
+  transcripts: Transcript[],
+): void {
+  const transcriptIds = new Set(transcripts.map((t) => t.id));
+  for (const conv of conversations) {
+    if (conv.transcriptId === undefined) continue;
+    if (!transcriptIds.has(conv.transcriptId)) {
+      report(
+        `[backref-drift] conversation ${conv.id} references missing transcript ${conv.transcriptId}`,
+      );
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Transcript.conversationId`.
+ *
+ * Every transcript names the conversation it transcribes. The field is
+ * nullable (legacy transcripts may have no parent conversation), but when
+ * it IS set it must resolve to a real Conversation — otherwise the viewer
+ * cannot navigate back from a transcript to its origin.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkTranscriptConversationId(
+  report: (msg: string) => void,
+  transcripts: Transcript[],
+  conversations: Conversation[],
+): void {
+  const conversationIds = new Set(conversations.map((c) => c.id));
+  for (const transcript of transcripts) {
+    if (transcript.conversationId === null) continue;
+    if (!conversationIds.has(transcript.conversationId)) {
+      report(
+        `[backref-drift] transcript ${transcript.id} references missing conversation ${transcript.conversationId}`,
+      );
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for resolved transcript speakers.
+ *
+ * Three complementary checks live here because they all target the same
+ * "speaker resolution" concern:
+ *
+ * 1. Per-cue `speakerId` (optional) — if the exporter has resolved a
+ *    cue's raw speaker label to a Stakeholder.id, that id must exist.
+ *    Drift would render an avatar/name that silently falls back to the
+ *    raw label with no warning.
+ * 2. `Transcript.speakerMap` (optional) — every value in the map is a
+ *    Stakeholder.id. Same drift class as above, just at the
+ *    transcript-wide level rather than per-cue.
+ * 3. `Transcript.participantIds` (optional) — every id is a
+ *    Stakeholder.id. Drift here would silently drop a participant from
+ *    the transcript's header chip row even though the exporter named
+ *    them as present.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkTranscriptSpeakers(
+  report: (msg: string) => void,
+  transcripts: Transcript[],
+  stakeholders: Stakeholder[],
+): void {
+  const stakeholderIds = new Set(stakeholders.map((s) => s.id));
+  for (const transcript of transcripts) {
+    // Schema coupling: `transcript.cues` is required by TranscriptSchema.
+    // See top-of-file "Schema coupling" note before relaxing the schema.
+    for (const cue of transcript.cues) {
+      if (cue.speakerId === undefined) continue;
+      if (!stakeholderIds.has(cue.speakerId)) {
+        report(
+          `[backref-drift] transcript ${transcript.id} cue speakerId ${cue.speakerId} references missing stakeholder`,
+        );
+      }
+    }
+    if (transcript.speakerMap !== undefined) {
+      for (const [label, stakeholderId] of Object.entries(
+        transcript.speakerMap,
+      )) {
+        if (!stakeholderIds.has(stakeholderId)) {
+          report(
+            `[backref-drift] transcript ${transcript.id} speakerMap[${JSON.stringify(label)}] references missing stakeholder ${stakeholderId}`,
+          );
+        }
+      }
+    }
+    if (transcript.participantIds === undefined) continue;
+    for (const stakeholderId of transcript.participantIds) {
+      if (!stakeholderIds.has(stakeholderId)) {
+        report(
+          `[backref-drift] transcript ${transcript.id} participantIds references missing stakeholder ${stakeholderId}`,
         );
       }
     }

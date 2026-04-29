@@ -266,6 +266,7 @@ export interface TranscriptCue {
   startMs: number;
   endMs: number;
   speaker: string;
+  speakerId?: string;
   text: string;
 }
 
@@ -282,6 +283,8 @@ export interface Transcript {
   cues: TranscriptCue[];
   sourceFile: string;
   audioReference?: AudioReference;
+  /** Raw speaker label → Stakeholder.id; cheap resolution map at render time. */
+  speakerMap?: Record<string, string>;
 }
 
 export interface Snippet {

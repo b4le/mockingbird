@@ -5,6 +5,7 @@ import {
   EvidenceItemSchema,
   RiskSchema,
   SnippetSchema,
+  TranscriptCueSchema,
   TranscriptSchema,
 } from "@/lib/schemas";
 
@@ -406,5 +407,108 @@ describe("audioReference field on Conversation and Transcript", () => {
     expect(parsed.audioReference?.previewUrl).toContain(
       "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
     );
+  });
+});
+
+// ---------------------------------------------------------------------------
+// TranscriptCue numeric and string constraints
+// ---------------------------------------------------------------------------
+
+describe("TranscriptCueSchema numeric/string constraints", () => {
+  const validCue = {
+    startMs: 0,
+    endMs: 1000,
+    speaker: "Ben",
+    text: "Hello world",
+  };
+
+  it("accepts a well-formed cue", () => {
+    expect(() => TranscriptCueSchema.parse(validCue)).not.toThrow();
+  });
+
+  it("rejects negative startMs", () => {
+    const result = TranscriptCueSchema.safeParse({
+      ...validCue,
+      startMs: -1,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects non-integer startMs", () => {
+    const result = TranscriptCueSchema.safeParse({
+      ...validCue,
+      startMs: 12.5,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects negative endMs", () => {
+    const result = TranscriptCueSchema.safeParse({
+      ...validCue,
+      endMs: -100,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects empty speaker label", () => {
+    const result = TranscriptCueSchema.safeParse({
+      ...validCue,
+      speaker: "",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects speaker longer than 200 chars", () => {
+    const result = TranscriptCueSchema.safeParse({
+      ...validCue,
+      speaker: "a".repeat(201),
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects text longer than 10_000 chars", () => {
+    const result = TranscriptCueSchema.safeParse({
+      ...validCue,
+      text: "a".repeat(10_001),
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Transcript.speakerMap entry-count bound
+// ---------------------------------------------------------------------------
+
+describe("TranscriptSchema.speakerMap bound", () => {
+  const baseTranscript = {
+    id: "t-bound",
+    date: "2026-02-11",
+    category: "interview",
+    conversationId: null,
+    participants: [],
+    durationSeconds: null,
+    cueCount: 0,
+    hasCues: false,
+    cues: [],
+    sourceFile: "t.wav",
+  };
+
+  it("accepts a speakerMap with 50 entries (boundary)", () => {
+    const speakerMap: Record<string, string> = {};
+    for (let i = 0; i < 50; i += 1) {
+      speakerMap[`label-${i}`] = `s-${i}`;
+    }
+    expect(() =>
+      TranscriptSchema.parse({ ...baseTranscript, speakerMap }),
+    ).not.toThrow();
+  });
+
+  it("rejects a speakerMap with 51 entries", () => {
+    const speakerMap: Record<string, string> = {};
+    for (let i = 0; i < 51; i += 1) {
+      speakerMap[`label-${i}`] = `s-${i}`;
+    }
+    const result = TranscriptSchema.safeParse({ ...baseTranscript, speakerMap });
+    expect(result.success).toBe(false);
   });
 });

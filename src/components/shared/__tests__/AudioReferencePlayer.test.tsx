@@ -8,7 +8,12 @@ import { cleanup, fireEvent, render } from "@testing-library/react";
 afterEach(() => {
   cleanup();
 });
+import { useEffect, useRef } from "react";
 import { AudioReferencePlayer } from "../AudioReferencePlayer";
+import {
+  AudioPlayerProvider,
+  useAudioPlayerRegistry,
+} from "@/components/conversations/AudioPlayerContext";
 import type { AudioReference, AudioReferenceStatus } from "@/types";
 
 // Fixture shapes follow `data/audio-manifest.json` conventions: real
@@ -209,6 +214,60 @@ describe("AudioReferencePlayer", () => {
       );
       expect(queryByRole("button", { name: /play recording/i })).toBeNull();
       expect(container.querySelector("audio")).not.toBeNull();
+    });
+  });
+
+  describe("AudioPlayerProvider integration", () => {
+    it("registers the rendered <audio> element with the provider's store", () => {
+      // Drive a `play` event on the rendered <audio> and observe that
+      // the store flips `isPlaying` — that round trip can only succeed
+      // if AudioReferencePlayer registered the element with the
+      // provider. We capture the store via a probe component using a
+      // ref (no state mutation during render).
+      const stateHolder: { current: { isPlaying: boolean } | null } = {
+        current: null,
+      };
+      function StateProbe() {
+        const registry = useAudioPlayerRegistry();
+        const ref = useRef(stateHolder);
+        useEffect(() => {
+          if (!registry) return;
+          // Subscribe directly so we don't pull in
+          // useSyncExternalStore semantics — we only need to see the
+          // final snapshot after the play event.
+          return registry.store.subscribe(() => {
+            ref.current.current = registry.store.getSnapshot();
+          });
+        }, [registry]);
+        return null;
+      }
+      const { container } = render(
+        <AudioPlayerProvider>
+          <StateProbe />
+          <AudioReferencePlayer audioReference={completeRef} />
+        </AudioPlayerProvider>,
+      );
+      const audio = container.querySelector("audio");
+      expect(audio).not.toBeNull();
+      // Synthesize a play event (happy-dom doesn't decode media, so
+      // we manually flip `paused` and dispatch the lifecycle event).
+      Object.defineProperty(audio!, "paused", {
+        configurable: true,
+        get: () => false,
+      });
+      fireEvent(audio!, new Event("play"));
+      expect(stateHolder.current?.isPlaying).toBe(true);
+    });
+
+    it("renders identically without a provider (drop-anywhere contract)", () => {
+      // Same fixture, no provider — the existing assertions still hold.
+      const { container, getByRole } = render(
+        <AudioReferencePlayer audioReference={completeRef} />,
+      );
+      const audio = container.querySelector("audio");
+      expect(audio).not.toBeNull();
+      expect(audio?.getAttribute("src")).toBe(completeRef.previewUrl);
+      expect(getByRole("link", { name: /open in drive/i })).not.toBeNull();
     });
   });
 });
