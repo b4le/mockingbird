@@ -245,21 +245,23 @@ export const StakeholderSchema = z.object({
   notes: z.string().optional(),
 });
 
-/**
- * Reference to a Google Drive audio recording attached to a Conversation
- * (and optionally its Transcript). The exporter pre-computes both Drive
- * URLs from `driveId`, so the schema validates that the URL fields are
- * either real URLs or — for the `pending-audio-upload` case — empty
- * strings. The status-conditional `driveId` length check lives in
- * `superRefine` because Zod can't express "empty when status is X,
- * otherwise >=20 chars" without it. See
- * `docs/mockingbird-zod-audio-reference-spec.md` §4 for the canonical
- * shape.
- *
- * Defined ahead of `ConversationSchema` (rather than alongside the other
- * exporter-provided entities further down) so both `ConversationSchema`
- * and `TranscriptSchema` can reference it without `z.lazy`.
- */
+// ---------------------------------------------------------------------------
+// Exporter-provided entities (atticus-finch export_mockingbird.py)
+//
+// Declared above the core entity schemas because `ConversationSchema` and
+// `TranscriptSchema` reference `AudioReferenceSchema`. Putting the
+// referenced primitives first keeps every schema usable by value (no
+// `z.lazy` forward refs) and keeps the bidirectional `_AssertX` drift
+// checks at the bottom of the file strict.
+//
+// Loaders in `src/lib/data.ts` have not been wired yet for `Transcript`
+// or `Snippet` — once they are, add corresponding `checkTranscriptBackref`
+// / `checkSnippetBackref` invariants to `src/lib/invariants.ts` (see
+// AGENTS.md for the pattern). See
+// `docs/mockingbird-zod-audio-reference-spec.md` §4 for the
+// `AudioReference` shape rationale.
+// ---------------------------------------------------------------------------
+
 export const AudioReferenceStatusSchema = z.enum([
   "complete",
   "pending-summary",
@@ -297,6 +299,51 @@ export const AudioReferenceSchema = z
       });
     }
   });
+
+export const TranscriptCueSchema = z.object({
+  startMs: z.number(),
+  endMs: z.number(),
+  speaker: z.string(),
+  text: z.string(),
+});
+
+export const TranscriptSchema = z.object({
+  id: z.string(),
+  date: z.string(),
+  category: z.string(),
+  conversationId: z.string().nullable(),
+  participants: z.array(z.string()),
+  participantIds: z.array(z.string()).optional(),
+  durationSeconds: z.number().nullable(),
+  cueCount: z.number(),
+  hasCues: z.boolean(),
+  cues: z.array(TranscriptCueSchema),
+  sourceFile: z.string(),
+  audioReference: AudioReferenceSchema.optional(),
+});
+
+export const SnippetSchema = z.object({
+  id: z.string(),
+  clipId: z.string(),
+  category: z.string(),
+  sourceFile: z.string(),
+  audioFile: z.string(),
+  startSeconds: z.number(),
+  endSeconds: z.number(),
+  durationSeconds: z.number(),
+  speaker: z.string(),
+  transcript: z.string(),
+  whatYoullHear: z.string(),
+  top20Rank: z.number().nullable(),
+  exhibitMapping: z.array(z.string()),
+  evidenceIds: z.array(z.string()).optional(),
+  conversationId: z.string().nullable(),
+  communicationId: z.string().nullable(),
+});
+
+// ---------------------------------------------------------------------------
+// Core entity schemas
+// ---------------------------------------------------------------------------
 
 export const ConversationSchema = z.object({
   id: z.string(),
@@ -404,57 +451,6 @@ export const SessionMetaSchema = z.object({
   dataVersion: z.string(),
   generatedBy: z.string(),
   notes: z.string(),
-});
-
-// ---------------------------------------------------------------------------
-// Exporter-provided entities (atticus-finch export_mockingbird.py)
-//
-// These are declared alongside the rest so the compile-time `_AssertX`
-// cross-check remains the single place interface/schema drift is caught.
-// Loaders in `src/lib/data.ts` have not been wired yet — once they are,
-// add corresponding `checkSnippetBackref` / `checkTranscriptBackref`
-// invariants to `src/lib/invariants.ts` (see AGENTS.md for the pattern).
-// ---------------------------------------------------------------------------
-
-export const TranscriptCueSchema = z.object({
-  startMs: z.number(),
-  endMs: z.number(),
-  speaker: z.string(),
-  text: z.string(),
-});
-
-export const TranscriptSchema = z.object({
-  id: z.string(),
-  date: z.string(),
-  category: z.string(),
-  conversationId: z.string().nullable(),
-  participants: z.array(z.string()),
-  participantIds: z.array(z.string()).optional(),
-  durationSeconds: z.number().nullable(),
-  cueCount: z.number(),
-  hasCues: z.boolean(),
-  cues: z.array(TranscriptCueSchema),
-  sourceFile: z.string(),
-  audioReference: AudioReferenceSchema.optional(),
-});
-
-export const SnippetSchema = z.object({
-  id: z.string(),
-  clipId: z.string(),
-  category: z.string(),
-  sourceFile: z.string(),
-  audioFile: z.string(),
-  startSeconds: z.number(),
-  endSeconds: z.number(),
-  durationSeconds: z.number(),
-  speaker: z.string(),
-  transcript: z.string(),
-  whatYoullHear: z.string(),
-  top20Rank: z.number().nullable(),
-  exhibitMapping: z.array(z.string()),
-  evidenceIds: z.array(z.string()).optional(),
-  conversationId: z.string().nullable(),
-  communicationId: z.string().nullable(),
 });
 
 // ---------------------------------------------------------------------------
