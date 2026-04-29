@@ -316,6 +316,26 @@ describe("AudioReferenceSchema", () => {
       }),
     ).not.toThrow();
   });
+
+  // Defence in depth: Zod's `.url()` accepts `javascript:`, `data:`,
+  // `vbscript:`, `file:` and similar schemes. `viewUrl` is rendered into
+  // an `<a href>` where a `javascript:` value would execute on click.
+  // The schema enforces an `https://` prefix to neutralise that.
+  it.each([
+    "javascript:alert(1)",
+    "JAVASCRIPT:alert(1)",
+    "data:text/html,<script>alert(1)</script>",
+    "vbscript:msgbox(1)",
+    "file:///etc/passwd",
+    "http://example.com",
+  ])("rejects non-https URL scheme: %s", (badUrl) => {
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, viewUrl: badUrl }),
+    ).toThrow();
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, previewUrl: badUrl }),
+    ).toThrow();
+  });
 });
 
 describe("audioReference field on Conversation and Transcript", () => {

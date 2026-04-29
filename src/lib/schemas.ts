@@ -269,6 +269,21 @@ export const AudioReferenceStatusSchema = z.enum([
   "pending-audio-upload",
 ]);
 
+// `z.string().url()` accepts `javascript:`, `data:`, `vbscript:`, `file:`
+// and other dangerous schemes — the underlying URL parser is permissive.
+// The exporter only ever emits `https://drive.google.com/...` URLs, but
+// this is the consumer-side trust boundary: we render `viewUrl` into an
+// `<a href>` where a `javascript:` value would execute on click. Restrict
+// to `https://` (and the documented empty-string sentinel for the
+// `pending-audio-upload` case) as defence in depth.
+const HttpsUrlSchema = z
+  .string()
+  .url()
+  .refine((s) => s.startsWith("https://"), {
+    message: "URL must use https://",
+  })
+  .or(z.literal(""));
+
 export const AudioReferenceSchema = z
   .object({
     // v1.1: driveId may be the empty string for pending-audio-upload entries
@@ -281,8 +296,8 @@ export const AudioReferenceSchema = z
     // viewUrl/previewUrl are empty strings when driveId is empty
     // (pending-audio-upload). Validate with .or(z.literal("")) so the field
     // stays required-string while accepting the absent-recording case.
-    viewUrl: z.string().url().or(z.literal("")),
-    previewUrl: z.string().url().or(z.literal("")),
+    viewUrl: HttpsUrlSchema,
+    previewUrl: HttpsUrlSchema,
     sizeBytes: z.number().int().nonnegative().nullable(),
     durationSeconds: z.number().int().nonnegative().nullable(),
     status: AudioReferenceStatusSchema.optional(),
