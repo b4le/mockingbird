@@ -189,6 +189,40 @@ describe("AudioPlayerContext", () => {
     expect(result.current.state.currentMs).toBe(12345);
   });
 
+  it("seek ignores NaN and Infinity inputs", () => {
+    const { audioRef, wrapper } = setup();
+    const { result } = renderHook(
+      () => ({
+        state: useAudioPlayerState(),
+        controls: useAudioPlayerControls(),
+      }),
+      { wrapper },
+    );
+    const el = audioRef.current!;
+
+    // Establish a known baseline currentTime that the guard must preserve.
+    act(() => {
+      result.current.controls.seek(5_000);
+    });
+    expect(el.currentTime).toBeCloseTo(5);
+    const baseline = el.currentTime;
+
+    act(() => {
+      result.current.controls.seek(Number.NaN);
+    });
+    expect(el.currentTime).toBe(baseline);
+
+    act(() => {
+      result.current.controls.seek(Number.POSITIVE_INFINITY);
+    });
+    expect(el.currentTime).toBe(baseline);
+
+    act(() => {
+      result.current.controls.seek(Number.NEGATIVE_INFINITY);
+    });
+    expect(el.currentTime).toBe(baseline);
+  });
+
   it("togglePlay flips isPlaying via play/pause events", () => {
     const { audioRef, wrapper } = setup();
     const { result } = renderHook(

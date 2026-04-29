@@ -16,6 +16,17 @@ describe("TranscriptCue", () => {
     expect(btn.textContent).toContain("Hello world");
   });
 
+  it("exposes start timestamp + cue text via aria-label", () => {
+    // The visible timestamp is aria-hidden, so AT depends on aria-label
+    // including both the timestamp and the cue text. 65000ms -> "1:05".
+    const { getByRole } = render(
+      <TranscriptCue index={0} text="Hello world" startMs={65000} />,
+    );
+    expect(getByRole("button").getAttribute("aria-label")).toBe(
+      "At 1:05: Hello world",
+    );
+  });
+
   it("omits aria-pressed and aria-current when not active", () => {
     const { getByRole } = render(
       <TranscriptCue index={0} text="x" startMs={0} />,

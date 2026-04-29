@@ -100,10 +100,19 @@ export function ConversationDetail({
           </div>
 
           {conversation.audioReference && (
-            <AudioReferencePlayer
-              audioReference={conversation.audioReference}
-              variant="full"
-            />
+            // On <md (mobile), the audio player sticks to the top of the
+            // detail panel scroll container so it stays in reach while the
+            // user scrolls through transcript cues. Desktop keeps the
+            // default static layout.
+            // Known iOS Safari fragility: position-sticky inside a scroll
+            // container can regress (see local-state/specs/transcript-viewer-spec.md
+            // Mobile section). If observed, fall back to a fixed mini-player.
+            <div className="sticky top-0 z-10 -mx-4 bg-background px-4 pb-2 pt-1 md:static md:mx-0 md:px-0 md:py-0">
+              <AudioReferencePlayer
+                audioReference={conversation.audioReference}
+                variant="full"
+              />
+            </div>
           )}
 
           <ConversationTabs
@@ -294,7 +303,6 @@ function TranscriptTab({
         flatTranscript={flatTranscript}
         speakerStakeholderMap={speakerStakeholderMap}
         onSeek={handleSeek}
-        activeCueIndex={null}
       />
     </div>
   );

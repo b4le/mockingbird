@@ -37,7 +37,7 @@ export function TranscriptEmpty({
         Recording transcribed but no cues yet.
       </p>
       {hasFlat ? (
-        <pre className="max-h-96 overflow-auto whitespace-pre-wrap rounded-md border bg-muted/30 p-3 text-xs text-muted-foreground">
+        <pre className="max-h-96 overflow-auto whitespace-pre-wrap rounded-md border bg-muted/30 p-3 text-xs text-foreground">
           {flatTranscript}
         </pre>
       ) : (

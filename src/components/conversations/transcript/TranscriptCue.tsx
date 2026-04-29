@@ -67,6 +67,10 @@ export function TranscriptCue({
       // not a toggle — non-active buttons render no pressed state at all.
       aria-pressed={isActive ? true : undefined}
       aria-current={isActive ? "true" : undefined}
+      // The visible timestamp is aria-hidden (revealed on hover/focus only),
+      // so we expose it to AT via aria-label. Because aria-label overrides the
+      // accessible name from text content, we must include the cue text here too.
+      aria-label={`At ${formatTime(startMs)}: ${text}`}
       onClick={() => onSeek?.(startMs)}
       className={cn(
         "group/cue flex w-full min-h-[44px] items-start gap-3 rounded-md border-l-2 border-transparent px-2 py-1.5 text-left text-sm transition-colors",

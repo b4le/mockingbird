@@ -56,6 +56,7 @@ export function useKeyboardShortcuts({
 
       // Cmd/Ctrl+F: panel-scoped focus into search.
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "f") {
+        if (inTextInput && !inSearch) return;
         if (onFocusSearch) {
           event.preventDefault();
           onFocusSearch();

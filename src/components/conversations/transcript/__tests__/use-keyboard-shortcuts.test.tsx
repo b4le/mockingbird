@@ -94,6 +94,31 @@ describe("useKeyboardShortcuts", () => {
     expect(onFocusSearch).toHaveBeenCalledTimes(1);
   });
 
+  it("does not intercept Cmd+F when focus is in a sibling text input", () => {
+    const onFocusSearch = vi.fn();
+    const { getByTestId } = render(
+      <Harness onFocusSearch={onFocusSearch} withInput />,
+    );
+    const textInput = getByTestId("text-input");
+    const event = fireEvent.keyDown(textInput, { key: "f", metaKey: true });
+    // fireEvent returns true when the event was NOT cancelled (preventDefault
+    // not called). The handler must let the browser's native Find UI take over.
+    expect(event).toBe(true);
+    expect(onFocusSearch).not.toHaveBeenCalled();
+  });
+
+  it("intercepts Cmd+F when focus is inside the search input itself", () => {
+    const onFocusSearch = vi.fn();
+    const { getByTestId } = render(
+      <Harness onFocusSearch={onFocusSearch} />,
+    );
+    const search = getByTestId("search");
+    const event = fireEvent.keyDown(search, { key: "f", metaKey: true });
+    // preventDefault was called → fireEvent returns false.
+    expect(event).toBe(false);
+    expect(onFocusSearch).toHaveBeenCalledTimes(1);
+  });
+
   it("invokes onClearSearch only when Esc is pressed inside the search input", () => {
     const onClearSearch = vi.fn();
     const { getByTestId } = render(

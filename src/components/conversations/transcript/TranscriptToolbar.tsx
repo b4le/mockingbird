@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef } from "react";
+import { forwardRef, useCallback, useRef, useState } from "react";
 import { HelpCircle, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -48,6 +48,28 @@ export const TranscriptToolbar = forwardRef<
         ? `${matchIndex + 1} of ${matchCount}`
         : "0 of 0";
 
+  // Mobile-only collapse state. On <md the search input is hidden behind a
+  // search-icon trigger; tapping the icon expands the input inline. On
+  // blurring with an empty query we collapse back to the icon. md+ ignores
+  // this state entirely (CSS forces the input visible).
+  const [searchExpandedMobile, setSearchExpandedMobile] = useState(false);
+
+  // Hold a local ref to the input so we can focus it when the mobile
+  // trigger is tapped. We also forward the same node to the parent ref via
+  // a callback ref, supporting both object-refs and callback-refs.
+  const localInputRef = useRef<HTMLInputElement | null>(null);
+  const setInputRef = useCallback(
+    (node: HTMLInputElement | null) => {
+      localInputRef.current = node;
+      if (typeof searchInputRef === "function") {
+        searchInputRef(node);
+      } else if (searchInputRef) {
+        searchInputRef.current = node;
+      }
+    },
+    [searchInputRef],
+  );
+
   const handleSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -67,24 +89,62 @@ export const TranscriptToolbar = forwardRef<
     }
   };
 
+  const handleSearchBlur = () => {
+    // Collapse back to the icon on mobile only when the query is empty.
+    // (md+ doesn't render the trigger, so this state is a no-op there.)
+    if (!searchQuery) {
+      setSearchExpandedMobile(false);
+    }
+  };
+
+  const handleExpandSearchMobile = () => {
+    setSearchExpandedMobile(true);
+    // Defer focus to next tick so the input has been revealed by React
+    // before we try to focus it (otherwise focus would fail on a hidden
+    // input on slower devices).
+    queueMicrotask(() => {
+      localInputRef.current?.focus();
+    });
+  };
+
   return (
     <div
       className={cn(
-        "flex items-center gap-2 border-b bg-background/80 px-2 py-1.5",
+        "flex flex-wrap items-center gap-2 border-b bg-background/80 px-2 py-1.5",
         className,
       )}
     >
-      <div className="relative flex-1">
+      {/* Mobile-only search trigger: visible <md when search is collapsed. */}
+      {!searchExpandedMobile ? (
+        <button
+          type="button"
+          aria-label="Open search"
+          aria-expanded={false}
+          onClick={handleExpandSearchMobile}
+          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:hidden"
+        >
+          <Search aria-hidden="true" className="h-3.5 w-3.5" />
+        </button>
+      ) : null}
+
+      {/* Search input wrapper: always visible md+; on <md only visible when expanded. */}
+      <div
+        className={cn(
+          "relative min-w-0 flex-1 md:flex",
+          searchExpandedMobile ? "flex" : "hidden",
+        )}
+      >
         <Search
           aria-hidden="true"
           className="pointer-events-none absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground"
         />
         <input
-          ref={searchInputRef}
+          ref={setInputRef}
           type="search"
           value={searchQuery}
           onChange={(e) => onSearchChange?.(e.target.value)}
           onKeyDown={handleSearchKeyDown}
+          onBlur={handleSearchBlur}
           placeholder="Search transcript"
           aria-label="Search transcript"
           className="h-8 w-full rounded-md border bg-background pl-7 pr-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -125,8 +185,6 @@ export const TranscriptToolbar = forwardRef<
       ) : null}
       <div
         role="status"
-        aria-live="polite"
-        aria-atomic="true"
         className="shrink-0 font-mono text-[10px] tabular-nums text-muted-foreground"
       >
         {counterText}
@@ -136,7 +194,7 @@ export const TranscriptToolbar = forwardRef<
           type="button"
           aria-label="Show keyboard shortcuts"
           onClick={onOpenHelp}
-          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="hidden h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:inline-flex"
         >
           <HelpCircle aria-hidden="true" className="h-3.5 w-3.5" />
         </button>

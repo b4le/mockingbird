@@ -98,6 +98,7 @@ class AudioPlayerStore {
   seek = (ms: number): void => {
     const el = this.element;
     if (!el) return;
+    if (!Number.isFinite(ms)) return;
     const clamped = Math.max(0, ms);
     el.currentTime = clamped / 1000;
     // Some browsers don't fire `seeked` until the next tick; surface
