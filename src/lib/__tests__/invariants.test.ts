@@ -4,10 +4,19 @@ import {
   checkActionBackref,
   checkConversationActionIds,
   checkConversationParticipantIds,
+  checkConversationTranscriptId,
   checkEvidenceBackref,
+  checkTranscriptConversationId,
+  checkTranscriptSpeakers,
   type SourceBacked,
 } from "@/lib/invariants";
-import type { Communication, Conversation, Stakeholder } from "@/types";
+import type {
+  Communication,
+  Conversation,
+  Stakeholder,
+  Transcript,
+  TranscriptCue,
+} from "@/types";
 
 // ---------------------------------------------------------------------------
 // Minimal fixture helpers
@@ -38,6 +47,7 @@ function makeConv(
   id: string,
   actionItemIds: string[] = [],
   participantIds: string[] = [],
+  overrides: Partial<Conversation> = {},
 ): Conversation {
   return {
     id,
@@ -48,7 +58,32 @@ function makeConv(
     keyPoints: [],
     decisions: [],
     actionItemIds,
+    ...overrides,
   };
+}
+
+function makeTranscript(
+  id: string,
+  conversationId: string | null,
+  overrides: Partial<Transcript> = {},
+): Transcript {
+  const base: Transcript = {
+    id,
+    date: "",
+    category: "test",
+    conversationId,
+    participants: [],
+    durationSeconds: null,
+    cueCount: 0,
+    hasCues: false,
+    cues: [],
+    sourceFile: "test.md",
+  };
+  return { ...base, ...overrides };
+}
+
+function makeCue(speaker: string, speakerId?: string): TranscriptCue {
+  return { startMs: 0, endMs: 1000, speaker, speakerId, text: "..." };
 }
 
 function makeStakeholder(id: string): Stakeholder {
@@ -282,6 +317,145 @@ describe("checkConversationParticipantIds", () => {
     expect(msgs).toHaveLength(1);
     expect(msgs[0]).toMatch(/backref-drift/);
     expect(msgs[0]).toContain("conv-1");
+    expect(msgs[0]).toContain("s-missing");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkConversationTranscriptId
+// ---------------------------------------------------------------------------
+
+describe("checkConversationTranscriptId", () => {
+  it("happy path — conv.transcriptId resolves to a transcript", () => {
+    const conv = makeConv("conv-1", [], [], { transcriptId: "t-1" });
+    const msgs: string[] = [];
+    checkConversationTranscriptId(
+      (m) => msgs.push(m),
+      [conv],
+      [makeTranscript("t-1", "conv-1")],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("no-op — conversation has no transcriptId", () => {
+    const conv = makeConv("conv-1");
+    const msgs: string[] = [];
+    checkConversationTranscriptId((m) => msgs.push(m), [conv], []);
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — conv.transcriptId references a non-existent transcript", () => {
+    const conv = makeConv("conv-1", [], [], { transcriptId: "t-missing" });
+    const msgs: string[] = [];
+    checkConversationTranscriptId((m) => msgs.push(m), [conv], []);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("conv-1");
+    expect(msgs[0]).toContain("t-missing");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkTranscriptConversationId
+// ---------------------------------------------------------------------------
+
+describe("checkTranscriptConversationId", () => {
+  it("happy path — transcript.conversationId resolves to a conversation", () => {
+    const transcript = makeTranscript("t-1", "conv-1");
+    const msgs: string[] = [];
+    checkTranscriptConversationId(
+      (m) => msgs.push(m),
+      [transcript],
+      [makeConv("conv-1")],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("no-op — transcript.conversationId is null", () => {
+    const transcript = makeTranscript("t-1", null);
+    const msgs: string[] = [];
+    checkTranscriptConversationId((m) => msgs.push(m), [transcript], []);
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — transcript.conversationId references a non-existent conversation", () => {
+    const transcript = makeTranscript("t-1", "conv-missing");
+    const msgs: string[] = [];
+    checkTranscriptConversationId((m) => msgs.push(m), [transcript], []);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("t-1");
+    expect(msgs[0]).toContain("conv-missing");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkTranscriptSpeakers
+// ---------------------------------------------------------------------------
+
+describe("checkTranscriptSpeakers", () => {
+  it("happy path — every cue.speakerId and speakerMap value resolves", () => {
+    const transcript = makeTranscript("t-1", "conv-1", {
+      cues: [makeCue("Ben", "s1"), makeCue("Adrian", "s2")],
+      speakerMap: { Ben: "s1", Adrian: "s2" },
+    });
+    const msgs: string[] = [];
+    checkTranscriptSpeakers(
+      (m) => msgs.push(m),
+      [transcript],
+      [makeStakeholder("s1"), makeStakeholder("s2")],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("no-op — no speakerId on cues and no speakerMap", () => {
+    const transcript = makeTranscript("t-1", "conv-1", {
+      cues: [makeCue("Ben"), makeCue("Adrian")],
+    });
+    const msgs: string[] = [];
+    checkTranscriptSpeakers((m) => msgs.push(m), [transcript], []);
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — cue.speakerId references a non-existent stakeholder", () => {
+    const transcript = makeTranscript("t-1", "conv-1", {
+      cues: [makeCue("Ben", "s-missing")],
+    });
+    const msgs: string[] = [];
+    checkTranscriptSpeakers((m) => msgs.push(m), [transcript], []);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("t-1");
+    expect(msgs[0]).toContain("s-missing");
+  });
+
+  it("drift — speakerMap value references a non-existent stakeholder", () => {
+    const transcript = makeTranscript("t-1", "conv-1", {
+      speakerMap: { Ben: "s-missing" },
+    });
+    const msgs: string[] = [];
+    checkTranscriptSpeakers((m) => msgs.push(m), [transcript], []);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("t-1");
+    expect(msgs[0]).toContain("s-missing");
+    expect(msgs[0]).toContain("Ben");
+  });
+
+  it("drift — participantIds references a non-existent stakeholder", () => {
+    const transcript = makeTranscript("t-1", "conv-1", {
+      participantIds: ["s1", "s-missing"],
+    });
+    const msgs: string[] = [];
+    checkTranscriptSpeakers(
+      (m) => msgs.push(m),
+      [transcript],
+      [makeStakeholder("s1")],
+    );
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("t-1");
+    expect(msgs[0]).toContain("participantIds");
     expect(msgs[0]).toContain("s-missing");
   });
 });

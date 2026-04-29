@@ -32,6 +32,7 @@
     ],
     "actionItemIds": ["a13", "a14"],
     "medium": "in-person",
+    "transcriptId": "transcript-c2",
     "audioReference": {
       "driveId": "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
       "filename": "Architecture Decision — Database Choice.m4a",

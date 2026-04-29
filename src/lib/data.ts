@@ -13,6 +13,7 @@ import type {
   SessionMeta,
   Stakeholder,
   TimelineEvent,
+  Transcript,
 } from "@/types";
 import {
   ActionItemSchema,
@@ -25,13 +26,17 @@ import {
   SessionMetaSchema,
   StakeholderSchema,
   TimelineEventSchema,
+  TranscriptSchema,
   uniqueIdArray,
 } from "@/lib/schemas";
 import {
   checkActionBackref,
   checkConversationActionIds,
   checkConversationParticipantIds,
+  checkConversationTranscriptId,
   checkEvidenceBackref,
+  checkTranscriptConversationId,
+  checkTranscriptSpeakers,
   createReporter,
 } from "./invariants";
 
@@ -156,6 +161,28 @@ export async function getSession(project: string): Promise<SessionMeta> {
   return loadValidated(project, "session.json", SessionMetaSchema);
 }
 
+/**
+ * Loads `<project>/transcripts.json` if present and validates it. Returns an
+ * empty array when the file does not exist — transcripts are an opt-in
+ * collection (only the `scout` project ships them today; `blank` and projects
+ * that have not yet been transcribed have no file).
+ */
+export async function getTranscripts(
+  project: string,
+): Promise<Transcript[]> {
+  const filePath = path.join(process.cwd(), "data", project, "transcripts.json");
+  try {
+    await fs.access(filePath);
+  } catch {
+    return [];
+  }
+  return loadValidated(
+    project,
+    "transcripts.json",
+    uniqueIdArray(TranscriptSchema, "Transcript"),
+  );
+}
+
 export interface ProjectBundle {
   state: ProjectState;
   session: SessionMeta;
@@ -167,6 +194,7 @@ export interface ProjectBundle {
   claims: Claim[];
   evidence: EvidenceItem[];
   timeline: TimelineEvent[];
+  transcripts: Transcript[];
 }
 
 /**
@@ -197,6 +225,7 @@ export async function getProjectBundle(
     claims,
     evidence,
     timeline,
+    transcripts,
   ] = await Promise.all([
     getProjectState(project),
     getSession(project),
@@ -208,12 +237,16 @@ export async function getProjectBundle(
     getClaims(project),
     getEvidence(project),
     getTimeline(project),
+    getTranscripts(project),
   ]);
   const reporter = createReporter(process.env.CI === "true");
   checkActionBackref(reporter.report, actions, communications, conversations);
   checkEvidenceBackref(reporter.report, evidence, communications);
   checkConversationActionIds(reporter.report, conversations, actions);
   checkConversationParticipantIds(reporter.report, conversations, stakeholders);
+  checkConversationTranscriptId(reporter.report, conversations, transcripts);
+  checkTranscriptConversationId(reporter.report, transcripts, conversations);
+  checkTranscriptSpeakers(reporter.report, transcripts, stakeholders);
   reporter.flush();
   return {
     state,
@@ -226,5 +259,6 @@ export async function getProjectBundle(
     claims,
     evidence,
     timeline,
+    transcripts,
   };
 }

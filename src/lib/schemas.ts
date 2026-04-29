@@ -254,9 +254,12 @@ export const StakeholderSchema = z.object({
 // `z.lazy` forward refs) and keeps the bidirectional `_AssertX` drift
 // checks at the bottom of the file strict.
 //
-// Loaders in `src/lib/data.ts` have not been wired yet for `Transcript`
-// or `Snippet` — once they are, add corresponding `checkTranscriptBackref`
-// / `checkSnippetBackref` invariants to `src/lib/invariants.ts` (see
+// `Transcript` is now fully wired: loaded by `getTranscripts` in
+// `src/lib/data.ts` and policed by `checkConversationTranscriptId`,
+// `checkTranscriptConversationId`, and `checkTranscriptSpeakers` in
+// `src/lib/invariants.ts`. `Snippet` is still NOT wired — when a
+// `getSnippets` loader is added, add the corresponding
+// `checkSnippetBackref` invariant alongside the transcript ones (see
 // AGENTS.md for the pattern). See
 // `docs/mockingbird-zod-audio-reference-spec.md` §4 for the
 // `AudioReference` shape rationale.
@@ -316,10 +319,14 @@ export const AudioReferenceSchema = z
   });
 
 export const TranscriptCueSchema = z.object({
-  startMs: z.number(),
-  endMs: z.number(),
-  speaker: z.string(),
-  text: z.string(),
+  // Real scout data has no nulls on cue timing; integers in non-negative ms.
+  startMs: z.number().int().nonnegative(),
+  endMs: z.number().int().nonnegative(),
+  speaker: z.string().min(1).max(200),
+  // Optional resolved Stakeholder.id. Cue keeps `speaker: string` as raw label.
+  speakerId: z.string().max(200).optional(),
+  // Bounded to defend against pathological input; real cues are well under 10k.
+  text: z.string().max(10_000),
 });
 
 export const TranscriptSchema = z.object({
@@ -329,12 +336,20 @@ export const TranscriptSchema = z.object({
   conversationId: z.string().nullable(),
   participants: z.array(z.string()),
   participantIds: z.array(z.string()).optional(),
-  durationSeconds: z.number().nullable(),
-  cueCount: z.number(),
+  durationSeconds: z.number().nonnegative().nullable(),
+  cueCount: z.number().int().nonnegative(),
   hasCues: z.boolean(),
   cues: z.array(TranscriptCueSchema),
   sourceFile: z.string(),
   audioReference: AudioReferenceSchema.optional(),
+  // Raw speaker label → Stakeholder.id, for cheap resolution at render time.
+  // Bounded so a malformed exporter cannot produce an unbounded resolver map.
+  speakerMap: z
+    .record(z.string().min(1).max(200), z.string().max(200))
+    .refine((m) => Object.keys(m).length <= 50, {
+      message: "speakerMap must not exceed 50 entries",
+    })
+    .optional(),
 });
 
 export const SnippetSchema = z.object({

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ExternalLink, Mic } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useAudioPlayerRegistry } from "@/components/conversations/AudioPlayerContext";
 import { cn } from "@/lib/utils";
 import type { AudioReference, AudioReferenceStatus } from "@/types";
 
@@ -76,6 +77,46 @@ export function AudioReferencePlayer({
   // Compact variant starts collapsed; ignored when `variant === 'full'`.
   const [expanded, setExpanded] = useState(false);
 
+  // When wrapped in an `<AudioPlayerProvider>` (currently only the
+  // ConversationDetail tabbed layout), register the rendered <audio>
+  // element so descendants (transcript cues) can drive playback. When
+  // no provider is present — Timeline expanded card, evidence rows,
+  // communications detail — the registry is null and the callback
+  // ref still holds the local element reference but never publishes
+  // it, preserving the drop-anywhere contract.
+  const registry = useAudioPlayerRegistry();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  // Ref callback fires synchronously on mount/unmount of the <audio>
+  // element. Using a callback ref (instead of `useEffect` keyed on
+  // `audioRef.current`) is the React-idiomatic way to subscribe to a
+  // DOM node's lifecycle, and it correctly fires when the element
+  // appears/disappears via showPlayer or compact-expand toggling.
+  const setAudioRef = useCallback(
+    (node: HTMLAudioElement | null) => {
+      const previous = audioRef.current;
+      audioRef.current = node;
+      if (!registry) return;
+      if (previous && previous !== node) {
+        registry.registerAudioElement(null);
+      }
+      if (node) {
+        registry.registerAudioElement(node);
+      } else {
+        registry.registerAudioElement(null);
+      }
+    },
+    [registry],
+  );
+  // Detach when the component unmounts so a parent provider doesn't
+  // keep listening to a node that's about to be removed from the DOM.
+  useEffect(() => {
+    return () => {
+      if (registry && audioRef.current) {
+        registry.registerAudioElement(null);
+      }
+    };
+  }, [registry]);
+
   const status = audioReference.status ?? "complete";
   const showBadge = status !== "complete";
   // Skip the player when the URL is empty (pending-audio-upload) or
@@ -103,6 +144,7 @@ export function AudioReferencePlayer({
       )}
       {showPlayer && (
         <audio
+          ref={setAudioRef}
           controls
           preload="none"
           src={audioReference.previewUrl}

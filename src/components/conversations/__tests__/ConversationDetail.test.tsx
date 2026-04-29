@@ -1,5 +1,5 @@
 import { afterEach, describe, it, expect } from "vitest";
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 
 // Vitest does not run @testing-library/react's auto-cleanup unless
 // `globals: true` is set; this project keeps globals off (see
@@ -15,6 +15,7 @@ import type {
   AudioReference,
   Conversation,
   Stakeholder,
+  Transcript,
 } from "@/types";
 
 const stakeholderA: Stakeholder = {
@@ -76,8 +77,38 @@ const audioReference: AudioReference = {
   status: "complete",
 };
 
-function renderDetail(overrides: Partial<Conversation> = {}) {
-  const conversation: Conversation = { ...baseConversation, ...overrides };
+interface RenderDetailOptions {
+  conversation?: Partial<Conversation>;
+  transcript?: Transcript | null;
+}
+
+function makeTranscript(overrides: Partial<Transcript> = {}): Transcript {
+  return {
+    id: "t1",
+    date: "",
+    category: "demo",
+    conversationId: "c1",
+    participants: ["Alex Stone"],
+    durationSeconds: 120,
+    cueCount: 1,
+    hasCues: true,
+    cues: [{ startMs: 0, endMs: 1000, speaker: "Alex Stone", text: "Hello." }],
+    sourceFile: "x",
+    ...overrides,
+  };
+}
+
+function renderDetail(
+  overridesOrOptions: Partial<Conversation> | RenderDetailOptions = {},
+) {
+  const options: RenderDetailOptions =
+    "conversation" in overridesOrOptions || "transcript" in overridesOrOptions
+      ? (overridesOrOptions as RenderDetailOptions)
+      : { conversation: overridesOrOptions as Partial<Conversation> };
+  const conversation: Conversation = {
+    ...baseConversation,
+    ...options.conversation,
+  };
   const stakeholderMap = new Map([
     [stakeholderA.id, stakeholderA],
     [stakeholderB.id, stakeholderB],
@@ -88,6 +119,8 @@ function renderDetail(overrides: Partial<Conversation> = {}) {
       conversation={conversation}
       stakeholderMap={stakeholderMap}
       actionMap={actionMap}
+      stakeholders={[stakeholderA, stakeholderB]}
+      transcript={options.transcript ?? null}
       onStakeholderClick={() => {}}
     />,
   );
@@ -132,14 +165,60 @@ describe("ConversationDetail", () => {
     expect(audio?.getAttribute("src")).toBe(audioReference.previewUrl);
   });
 
-  it("renders linked actions when actionItemIds resolves to actions", () => {
-    const { getByText } = renderDetail();
+  it("renders linked actions when the user opens the Linked tab", () => {
+    const { getByRole, getByText } = renderDetail();
+    fireEvent.click(getByRole("tab", { name: "Linked" }));
     expect(getByText("Action items")).not.toBeNull();
     expect(getByText("Spike on schema migration")).not.toBeNull();
   });
 
-  it("hides the action items section when actionItemIds is empty", () => {
-    const { queryByText } = renderDetail({ actionItemIds: [] });
-    expect(queryByText("Action items")).toBeNull();
+  it("renders three tab triggers", () => {
+    const { getByRole } = renderDetail();
+    expect(getByRole("tab", { name: "Overview" })).not.toBeNull();
+    expect(getByRole("tab", { name: "Transcript" })).not.toBeNull();
+    expect(getByRole("tab", { name: "Linked" })).not.toBeNull();
+  });
+
+  it("defaults to the Overview tab when no transcript is supplied", () => {
+    const { getByRole } = renderDetail();
+    const overviewTab = getByRole("tab", { name: "Overview" });
+    expect(overviewTab.getAttribute("data-active")).toBe("");
+  });
+
+  it("defaults to the Transcript tab when a transcript is supplied", () => {
+    const { getByRole } = renderDetail({ transcript: makeTranscript() });
+    const transcriptTab = getByRole("tab", { name: "Transcript" });
+    expect(transcriptTab.getAttribute("data-active")).toBe("");
+  });
+
+  it("disables the Transcript trigger when neither structured nor flat transcript exists", () => {
+    const { getByRole } = renderDetail();
+    const transcriptTab = getByRole("tab", { name: "Transcript" });
+    expect(transcriptTab.getAttribute("aria-disabled")).toBe("true");
+  });
+
+  it("enables the Transcript trigger when only a flat fallback exists", () => {
+    const { getByRole } = renderDetail({
+      conversation: { transcript: "Some flat transcript text." },
+    });
+    const transcriptTab = getByRole("tab", { name: "Transcript" });
+    expect(transcriptTab.getAttribute("aria-disabled")).not.toBe("true");
+  });
+
+  it("renders the audio player above the tab list", () => {
+    const { container } = renderDetail({
+      conversation: { audioReference },
+    });
+    const audio = container.querySelector("audio");
+    const tabList = container.querySelector('[role="tablist"]');
+    expect(audio).not.toBeNull();
+    expect(tabList).not.toBeNull();
+    // Both nodes should share an ancestor and audio precedes the tab list
+    // in document order.
+    const compared = audio!.compareDocumentPosition(tabList!);
+    // DOCUMENT_POSITION_FOLLOWING (4) means tabList comes after audio.
+    expect(compared & Node.DOCUMENT_POSITION_FOLLOWING).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
   });
 });
