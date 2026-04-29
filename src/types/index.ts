@@ -143,7 +143,7 @@ export interface AudioReference {
 
 export interface Conversation {
   id: string;
-  date: string;
+  date: string | null;
   title: string;
   participantIds: string[];
   summary: string;

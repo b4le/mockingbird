@@ -362,7 +362,7 @@ export const SnippetSchema = z.object({
 
 export const ConversationSchema = z.object({
   id: z.string(),
-  date: z.string(),
+  date: NullableIsoDateSchema,
   title: z.string(),
   participantIds: z.array(z.string()),
   summary: z.string(),
