@@ -16,7 +16,7 @@ import { parseDate } from "@/lib/dates";
 export type StakeholderActivityEntry =
   | {
       kind: "conversation";
-      date: string;
+      date: string | null;
       id: string;
       title: string;
       medium?: Conversation["medium"];
@@ -66,9 +66,12 @@ export function getStakeholderActivity(
     }
   }
 
-  entries.sort(
-    (a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime(),
-  );
+  entries.sort((a, b) => {
+    if (a.date === null && b.date === null) return 0;
+    if (a.date === null) return 1;
+    if (b.date === null) return -1;
+    return parseDate(b.date).getTime() - parseDate(a.date).getTime();
+  });
 
   return entries;
 }
