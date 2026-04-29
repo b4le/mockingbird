@@ -2,10 +2,12 @@ import { describe, it, expect, vi } from "vitest";
 import {
   createReporter,
   checkActionBackref,
+  checkConversationActionIds,
+  checkConversationParticipantIds,
   checkEvidenceBackref,
   type SourceBacked,
 } from "@/lib/invariants";
-import type { Communication, Conversation } from "@/types";
+import type { Communication, Conversation, Stakeholder } from "@/types";
 
 // ---------------------------------------------------------------------------
 // Minimal fixture helpers
@@ -32,16 +34,31 @@ function makeComm(
   };
 }
 
-function makeConv(id: string, actionItemIds: string[] = []): Conversation {
+function makeConv(
+  id: string,
+  actionItemIds: string[] = [],
+  participantIds: string[] = [],
+): Conversation {
   return {
     id,
     date: "2024-01-01",
     title: "t",
-    participantIds: [],
+    participantIds,
     summary: "s",
     keyPoints: [],
     decisions: [],
     actionItemIds,
+  };
+}
+
+function makeStakeholder(id: string): Stakeholder {
+  return {
+    id,
+    name: id,
+    role: "r",
+    organisation: "o",
+    initials: "x",
+    colour: "#000000",
   };
 }
 
@@ -204,5 +221,67 @@ describe("checkEvidenceBackref", () => {
     const msgs: string[] = [];
     checkEvidenceBackref((m) => msgs.push(m), [item], []);
     expect(msgs).toHaveLength(0);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkConversationActionIds
+// ---------------------------------------------------------------------------
+
+describe("checkConversationActionIds", () => {
+  it("happy path — every conv.actionItemIds id resolves to an action", () => {
+    const conv = makeConv("conv-1", ["a1", "a2"]);
+    const msgs: string[] = [];
+    checkConversationActionIds(
+      (m) => msgs.push(m),
+      [conv],
+      [{ id: "a1" }, { id: "a2" }],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — conv.actionItemIds includes an id with no matching action", () => {
+    const conv = makeConv("conv-1", ["a1", "a-missing"]);
+    const msgs: string[] = [];
+    checkConversationActionIds(
+      (m) => msgs.push(m),
+      [conv],
+      [{ id: "a1" }],
+    );
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("conv-1");
+    expect(msgs[0]).toContain("a-missing");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkConversationParticipantIds
+// ---------------------------------------------------------------------------
+
+describe("checkConversationParticipantIds", () => {
+  it("happy path — every conv.participantIds id resolves to a stakeholder", () => {
+    const conv = makeConv("conv-1", [], ["s1", "s2"]);
+    const msgs: string[] = [];
+    checkConversationParticipantIds(
+      (m) => msgs.push(m),
+      [conv],
+      [makeStakeholder("s1"), makeStakeholder("s2")],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — conv.participantIds includes an id with no matching stakeholder", () => {
+    const conv = makeConv("conv-1", [], ["s1", "s-missing"]);
+    const msgs: string[] = [];
+    checkConversationParticipantIds(
+      (m) => msgs.push(m),
+      [conv],
+      [makeStakeholder("s1")],
+    );
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("conv-1");
+    expect(msgs[0]).toContain("s-missing");
   });
 });

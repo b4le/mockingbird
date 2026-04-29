@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { href: "/evidence", label: "Evidence" },
   { href: "/actions", label: "Actions" },
   { href: "/communications", label: "Communications" },
+  { href: "/conversations", label: "Conversations" },
 ];
 
 export function NavBar({ projects }: { projects: string[] }) {

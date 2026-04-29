@@ -116,7 +116,7 @@ export function AudioReferencePlayer({
         <a
           href={audioReference.viewUrl}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           className={cn(
             "inline-flex items-center gap-1 self-start text-xs underline-offset-2 hover:underline",
             linkIsPrimary
