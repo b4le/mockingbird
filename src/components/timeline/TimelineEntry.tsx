@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { AudioReferencePlayer } from "@/components/shared/AudioReferencePlayer";
+import { AudioReferenceIndicator } from "@/components/shared/AudioReferenceIndicator";
 import {
   COMMUNICATION_CHANNEL_LABELS,
   TIMELINE_TYPE_ICONS,
@@ -108,9 +110,24 @@ export function TimelineEntry({
               </span>
             )}
           </div>
+          {/*
+           * Discoverability cue: surface "this row has a recording"
+           * before the user expands. Hidden once expanded — the
+           * player itself takes over the affordance.
+           */}
+          {!expanded && linkedConversation?.audioReference && (
+            <AudioReferenceIndicator />
+          )}
         </div>
         {expanded && linkedConversation && (
           <div className="mt-3 rounded-lg border bg-muted/30 p-3 text-sm">
+            {linkedConversation.audioReference && (
+              <div className="mb-3">
+                <AudioReferencePlayer
+                  audioReference={linkedConversation.audioReference}
+                />
+              </div>
+            )}
             {linkedConversation.keyPoints.length > 0 && (
               <div className="mb-2">
                 <p className="font-medium">Key Points</p>

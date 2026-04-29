@@ -95,6 +95,52 @@ export interface Stakeholder {
   notes?: string;
 }
 
+/**
+ * Reference to a Google Drive audio recording that is the source of a
+ * Conversation (and, when present, its Transcript). Attached by the
+ * Atticus exporter when an audio manifest entry exists for the
+ * conversation's stem. Optional — not every Conversation has a recording.
+ *
+ * `viewUrl` opens Drive's full-page viewer in a new tab.
+ * `previewUrl` is the embeddable variant (use in an <iframe> or <audio>).
+ * The exporter computes both from `driveId` so the UI does not need to.
+ *
+ * `sizeBytes` and `durationSeconds` are nullable — populated only when
+ * the manifest carries them. Treat them as best-effort metadata.
+ *
+ * v1.1 fields:
+ *   `status` — one of "complete" | "pending-summary" |
+ *   "pending-vault-sync" | "pending-audio-upload". When the field is
+ *   missing on a payload, the UI should treat it as "complete" (the v1
+ *   default and the steady state). Pending statuses surface from the
+ *   Atticus side when audio and vault summary are out of sync.
+ *
+ *   `notes` — short string explaining the pending reason. Optional in
+ *   all cases; populated by the manifest author for pending-* entries.
+ *
+ * For `pending-audio-upload`, `driveId` will be the empty string and
+ * both URLs will be empty — the recording isn't in Drive yet, so there
+ * is nothing to play. Render the badge and skip the player.
+ */
+export type AudioReferenceStatus =
+  | 'complete'
+  | 'pending-summary'
+  | 'pending-vault-sync'
+  | 'pending-audio-upload';
+
+export interface AudioReference {
+  driveId: string;
+  filename: string;
+  driveFolderId: string;
+  mimeType: string;
+  viewUrl: string;
+  previewUrl: string;
+  sizeBytes: number | null;
+  durationSeconds: number | null;
+  status?: AudioReferenceStatus;
+  notes?: string;
+}
+
 export interface Conversation {
   id: string;
   date: string;
@@ -110,6 +156,7 @@ export interface Conversation {
   transcriptUrl?: string;
   transcriptId?: string;
   snippetIds?: string[];
+  audioReference?: AudioReference;
 }
 
 export interface ActionItem {
@@ -234,6 +281,7 @@ export interface Transcript {
   hasCues: boolean;
   cues: TranscriptCue[];
   sourceFile: string;
+  audioReference?: AudioReference;
 }
 
 export interface Snippet {

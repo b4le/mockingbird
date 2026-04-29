@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { AudioReferencePlayer } from "@/components/shared/AudioReferencePlayer";
+import { AudioReferenceIndicator } from "@/components/shared/AudioReferenceIndicator";
 import { LinkedEntityList } from "./LinkedEntityList";
 import { resolveIds } from "@/lib/collections";
 import { parseDate } from "@/lib/dates";
@@ -254,13 +256,35 @@ export function CommunicationDetail({
           <>
             <Separator />
             <div className="space-y-3">
-              <LinkedEntityList
-                label="Conversations"
-                items={linkedConversations.map((c) => ({
-                  key: c.id,
-                  text: c.title,
-                }))}
-              />
+              {linkedConversations.length > 0 && (
+                <div>
+                  <p className="mb-1.5 text-xs font-medium text-muted-foreground">
+                    Conversations
+                  </p>
+                  <ul className="space-y-2 text-sm">
+                    {linkedConversations.map((c) => (
+                      <li key={c.id} className="flex flex-col gap-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <span className="line-clamp-1">{c.title}</span>
+                          {/*
+                           * Discoverability cue: chip-level "has recording"
+                           * indicator. The compact player below provides
+                           * the actual affordance.
+                           */}
+                          {c.audioReference && <AudioReferenceIndicator />}
+                        </div>
+                        {c.audioReference && (
+                          <AudioReferencePlayer
+                            audioReference={c.audioReference}
+                            variant="compact"
+                            className="ml-0"
+                          />
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <LinkedEntityList
                 label="Action items"
                 items={linkedActions.map((a) => ({

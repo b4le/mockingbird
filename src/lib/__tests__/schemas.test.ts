@@ -1,7 +1,9 @@
 import { describe, it, expect } from "vitest";
 import {
-  RiskSchema,
+  AudioReferenceSchema,
+  ConversationSchema,
   EvidenceItemSchema,
+  RiskSchema,
   SnippetSchema,
   TranscriptSchema,
 } from "@/lib/schemas";
@@ -181,5 +183,228 @@ describe("exporter-provided schemas", () => {
       communicationId: null,
     });
     expect(parsed.communicationId).toBeNull();
+  });
+});
+
+describe("AudioReferenceSchema", () => {
+  // Realistic shape derived from atticus-finch/data/audio-manifest.json
+  // (the Adrian 11th Feb entry — has size_bytes, real Drive URLs).
+  const completeRef = {
+    driveId: "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
+    filename: "Adrian + Ben 11th Feb.m4a",
+    driveFolderId: "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+    mimeType: "audio/x-m4a",
+    viewUrl:
+      "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view",
+    previewUrl:
+      "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+    sizeBytes: 53896450,
+    durationSeconds: null,
+  };
+
+  it("accepts a complete v1.0 entry without status/notes", () => {
+    const parsed = AudioReferenceSchema.parse(completeRef);
+    expect(parsed.driveId).toBe("10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS");
+    expect(parsed.status).toBeUndefined();
+    expect(parsed.notes).toBeUndefined();
+  });
+
+  it.each([
+    ["complete", completeRef],
+    [
+      "pending-summary",
+      { ...completeRef, status: "pending-summary", notes: "Vault summary not yet written" },
+    ],
+    [
+      "pending-vault-sync",
+      { ...completeRef, status: "pending-vault-sync", notes: "Awaiting vault sync" },
+    ],
+  ] as const)("accepts status=%s with a real driveId", (_label, input) => {
+    expect(() => AudioReferenceSchema.parse(input)).not.toThrow();
+  });
+
+  it("accepts pending-audio-upload with empty driveId and empty URLs", () => {
+    const parsed = AudioReferenceSchema.parse({
+      driveId: "",
+      filename: "Marqia + Ben 14th Mar.m4a",
+      driveFolderId: "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      mimeType: "",
+      viewUrl: "",
+      previewUrl: "",
+      sizeBytes: null,
+      durationSeconds: null,
+      status: "pending-audio-upload",
+      notes: "Recording not yet uploaded to Drive",
+    });
+    expect(parsed.status).toBe("pending-audio-upload");
+    expect(parsed.driveId).toBe("");
+    expect(parsed.viewUrl).toBe("");
+  });
+
+  it("rejects too-short driveId when status is pending-summary (path is [driveId])", () => {
+    const result = AudioReferenceSchema.safeParse({
+      ...completeRef,
+      driveId: "abc",
+      status: "pending-summary",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const driveIdIssue = result.error.issues.find((i) =>
+        i.path.length === 1 && i.path[0] === "driveId",
+      );
+      expect(driveIdIssue).toBeDefined();
+    }
+  });
+
+  it("rejects too-short driveId when status is absent (defaults to complete)", () => {
+    const result = AudioReferenceSchema.safeParse({
+      ...completeRef,
+      driveId: "abc",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(
+        result.error.issues.some(
+          (i) => i.path.length === 1 && i.path[0] === "driveId",
+        ),
+      ).toBe(true);
+    }
+  });
+
+  it("rejects malformed mimeType but accepts empty string", () => {
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, mimeType: "not/a-mime" }),
+    ).toThrow();
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, mimeType: "audio/" }),
+    ).toThrow();
+    // Empty mimeType allowed (mirrors pending-audio-upload shape)
+    expect(() =>
+      AudioReferenceSchema.parse({
+        driveId: "",
+        filename: "f.m4a",
+        driveFolderId: "x",
+        mimeType: "",
+        viewUrl: "",
+        previewUrl: "",
+        sizeBytes: null,
+        durationSeconds: null,
+        status: "pending-audio-upload",
+      }),
+    ).not.toThrow();
+  });
+
+  it("rejects malformed URLs but accepts empty strings on viewUrl/previewUrl", () => {
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, viewUrl: "not-a-url" }),
+    ).toThrow();
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, previewUrl: "also-not-a-url" }),
+    ).toThrow();
+    // Empty URLs allowed (the pending-audio-upload shape)
+    expect(() =>
+      AudioReferenceSchema.parse({
+        driveId: "",
+        filename: "f.m4a",
+        driveFolderId: "x",
+        mimeType: "",
+        viewUrl: "",
+        previewUrl: "",
+        sizeBytes: null,
+        durationSeconds: null,
+        status: "pending-audio-upload",
+      }),
+    ).not.toThrow();
+  });
+
+  // Defence in depth: Zod's `.url()` accepts `javascript:`, `data:`,
+  // `vbscript:`, `file:` and similar schemes. `viewUrl` is rendered into
+  // an `<a href>` where a `javascript:` value would execute on click.
+  // The schema enforces an `https://` prefix to neutralise that.
+  it.each([
+    "javascript:alert(1)",
+    "JAVASCRIPT:alert(1)",
+    "data:text/html,<script>alert(1)</script>",
+    "vbscript:msgbox(1)",
+    "file:///etc/passwd",
+    "http://example.com",
+  ])("rejects non-https URL scheme: %s", (badUrl) => {
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, viewUrl: badUrl }),
+    ).toThrow();
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, previewUrl: badUrl }),
+    ).toThrow();
+  });
+});
+
+describe("audioReference field on Conversation and Transcript", () => {
+  const minimalConversation = {
+    id: "conv-1",
+    date: "2026-02-11",
+    title: "Adrian + Ben 1:1",
+    participantIds: ["s1", "s2"],
+    summary: "Catch-up",
+    keyPoints: [],
+    decisions: [],
+    actionItemIds: [],
+  };
+
+  // Real entry from atticus-finch/data/audio-manifest.json — Adrian 11th Feb.
+  const populatedAudioReference = {
+    driveId: "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
+    filename: "Adrian + Ben 11th Feb.m4a",
+    driveFolderId: "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+    mimeType: "audio/x-m4a",
+    viewUrl:
+      "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view",
+    previewUrl:
+      "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+    sizeBytes: 53896450,
+    durationSeconds: null,
+  };
+
+  it("ConversationSchema accepts a Conversation without audioReference (regression)", () => {
+    const parsed = ConversationSchema.parse(minimalConversation);
+    expect(parsed.audioReference).toBeUndefined();
+  });
+
+  it("ConversationSchema accepts a Conversation with audioReference populated", () => {
+    const parsed = ConversationSchema.parse({
+      ...minimalConversation,
+      audioReference: populatedAudioReference,
+    });
+    expect(parsed.audioReference?.driveId).toBe(
+      "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
+    );
+    expect(parsed.audioReference?.filename).toBe("Adrian + Ben 11th Feb.m4a");
+  });
+
+  const minimalTranscript = {
+    id: "t1",
+    date: "2026-02-11",
+    category: "interview",
+    conversationId: "conv-1",
+    participants: ["alice"],
+    durationSeconds: null,
+    cueCount: 0,
+    hasCues: false,
+    cues: [],
+    sourceFile: "t1.wav",
+  };
+
+  it("TranscriptSchema accepts a Transcript without audioReference (regression)", () => {
+    const parsed = TranscriptSchema.parse(minimalTranscript);
+    expect(parsed.audioReference).toBeUndefined();
+  });
+
+  it("TranscriptSchema accepts a Transcript with audioReference populated", () => {
+    const parsed = TranscriptSchema.parse({
+      ...minimalTranscript,
+      audioReference: populatedAudioReference,
+    });
+    expect(parsed.audioReference?.previewUrl).toContain(
+      "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
+    );
   });
 });
