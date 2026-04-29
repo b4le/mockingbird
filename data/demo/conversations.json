@@ -31,7 +31,18 @@
       "Selected PostgreSQL as primary database — better fit for relational task data and existing team expertise"
     ],
     "actionItemIds": ["a13", "a14"],
-    "medium": "in-person"
+    "medium": "in-person",
+    "audioReference": {
+      "driveId": "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
+      "filename": "Architecture Decision — Database Choice.m4a",
+      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      "mimeType": "audio/x-m4a",
+      "viewUrl": "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view?usp=drive_link",
+      "previewUrl": "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+      "sizeBytes": 53896450,
+      "durationSeconds": null,
+      "status": "complete"
+    }
   },
   {
     "id": "c3",
@@ -83,7 +94,19 @@
       "Auth bugs prioritized as P0, mobile layout as P1"
     ],
     "actionItemIds": ["a5", "a10"],
-    "medium": "video-call"
+    "medium": "video-call",
+    "audioReference": {
+      "driveId": "1IW5eYOdMuGoBnZc1NZ04QyHijekgd1J-",
+      "filename": "Bug Triage 18th Mar.m4a",
+      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      "mimeType": "audio/x-m4a",
+      "viewUrl": "https://drive.google.com/file/d/1IW5eYOdMuGoBnZc1NZ04QyHijekgd1J-/view?usp=drive_link",
+      "previewUrl": "https://drive.google.com/file/d/1IW5eYOdMuGoBnZc1NZ04QyHijekgd1J-/preview",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "pending-summary",
+      "notes": "Recording exists in Drive; written summary not yet finalised."
+    }
   },
   {
     "id": "c6",

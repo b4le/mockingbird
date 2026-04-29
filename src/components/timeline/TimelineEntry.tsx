@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
+import { AudioReferencePlayer } from "@/components/shared/AudioReferencePlayer";
 import {
   COMMUNICATION_CHANNEL_LABELS,
   TIMELINE_TYPE_ICONS,
@@ -111,6 +112,13 @@ export function TimelineEntry({
         </div>
         {expanded && linkedConversation && (
           <div className="mt-3 rounded-lg border bg-muted/30 p-3 text-sm">
+            {linkedConversation.audioReference && (
+              <div className="mb-3">
+                <AudioReferencePlayer
+                  audioReference={linkedConversation.audioReference}
+                />
+              </div>
+            )}
             {linkedConversation.keyPoints.length > 0 && (
               <div className="mb-2">
                 <p className="font-medium">Key Points</p>

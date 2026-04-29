@@ -2,6 +2,8 @@ import { z } from "zod";
 
 import type {
   ActionItem,
+  AudioReference,
+  AudioReferenceStatus,
   Claim,
   Communication,
   Conversation,
@@ -243,6 +245,59 @@ export const StakeholderSchema = z.object({
   notes: z.string().optional(),
 });
 
+/**
+ * Reference to a Google Drive audio recording attached to a Conversation
+ * (and optionally its Transcript). The exporter pre-computes both Drive
+ * URLs from `driveId`, so the schema validates that the URL fields are
+ * either real URLs or — for the `pending-audio-upload` case — empty
+ * strings. The status-conditional `driveId` length check lives in
+ * `superRefine` because Zod can't express "empty when status is X,
+ * otherwise >=20 chars" without it. See
+ * `docs/mockingbird-zod-audio-reference-spec.md` §4 for the canonical
+ * shape.
+ *
+ * Defined ahead of `ConversationSchema` (rather than alongside the other
+ * exporter-provided entities further down) so both `ConversationSchema`
+ * and `TranscriptSchema` can reference it without `z.lazy`.
+ */
+export const AudioReferenceStatusSchema = z.enum([
+  "complete",
+  "pending-summary",
+  "pending-vault-sync",
+  "pending-audio-upload",
+]);
+
+export const AudioReferenceSchema = z
+  .object({
+    // v1.1: driveId may be the empty string for pending-audio-upload entries
+    // (no recording in Drive yet). Validated by status in the superRefine
+    // below rather than by a flat .min(20).
+    driveId: z.string(),
+    filename: z.string(),
+    driveFolderId: z.string(),
+    mimeType: z.string().regex(/^audio\/[a-z0-9.-]+$/).or(z.literal("")),
+    // viewUrl/previewUrl are empty strings when driveId is empty
+    // (pending-audio-upload). Validate with .or(z.literal("")) so the field
+    // stays required-string while accepting the absent-recording case.
+    viewUrl: z.string().url().or(z.literal("")),
+    previewUrl: z.string().url().or(z.literal("")),
+    sizeBytes: z.number().int().nonnegative().nullable(),
+    durationSeconds: z.number().int().nonnegative().nullable(),
+    status: AudioReferenceStatusSchema.optional(),
+    notes: z.string().optional(),
+  })
+  .superRefine((ref, ctx) => {
+    // For non-pending-audio-upload statuses, require a real Drive ID.
+    const status = ref.status ?? "complete";
+    if (status !== "pending-audio-upload" && ref.driveId.length < 20) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["driveId"],
+        message: `driveId must be a real Drive file ID (>=20 chars) when status is "${status}"`,
+      });
+    }
+  });
+
 export const ConversationSchema = z.object({
   id: z.string(),
   date: z.string(),
@@ -257,6 +312,7 @@ export const ConversationSchema = z.object({
   transcriptUrl: z.string().optional(),
   transcriptId: z.string().optional(),
   snippetIds: z.array(z.string()).optional(),
+  audioReference: AudioReferenceSchema.optional(),
 });
 
 export const ActionItemSchema = z
@@ -379,6 +435,7 @@ export const TranscriptSchema = z.object({
   hasCues: z.boolean(),
   cues: z.array(TranscriptCueSchema),
   sourceFile: z.string(),
+  audioReference: AudioReferenceSchema.optional(),
 });
 
 export const SnippetSchema = z.object({
@@ -515,6 +572,18 @@ type _AssertSnippet =
       ? true
       : never
     : never;
+type _AssertAudioReferenceStatus =
+  z.infer<typeof AudioReferenceStatusSchema> extends AudioReferenceStatus
+    ? AudioReferenceStatus extends z.infer<typeof AudioReferenceStatusSchema>
+      ? true
+      : never
+    : never;
+type _AssertAudioReference =
+  z.infer<typeof AudioReferenceSchema> extends AudioReference
+    ? AudioReference extends z.infer<typeof AudioReferenceSchema>
+      ? true
+      : never
+    : never;
 
 const _schemaChecks: [
   _AssertStakeholder,
@@ -530,5 +599,23 @@ const _schemaChecks: [
   _AssertTranscriptCue,
   _AssertTranscript,
   _AssertSnippet,
-] = [true, true, true, true, true, true, true, true, true, true, true, true, true];
+  _AssertAudioReferenceStatus,
+  _AssertAudioReference,
+] = [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+];
 void _schemaChecks;
