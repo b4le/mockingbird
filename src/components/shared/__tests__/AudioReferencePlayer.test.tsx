@@ -130,7 +130,7 @@ describe("AudioReferencePlayer", () => {
     const link = getByRole("link", { name: /open in drive/i });
     expect(link.getAttribute("href")).toBe(completeRef.viewUrl);
     expect(link.getAttribute("target")).toBe("_blank");
-    expect(link.getAttribute("rel")).toBe("noopener");
+    expect(link.getAttribute("rel")).toBe("noopener noreferrer");
   });
 
   it("does not render the link when viewUrl is empty", () => {
