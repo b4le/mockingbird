@@ -173,6 +173,58 @@ describe("CommunicationDetail — per-message attachments", () => {
     expect(queryAllByRole("img", { name: /Attachment/ }).length).toBe(0);
   });
 
+  it("falls through to <span> when an attachment url uses an unsafe scheme", () => {
+    // Defence-in-depth: even if a producer-supplied attachment carries a
+    // dangerous URL like `javascript:alert(1)`, the renderer must NOT emit
+    // a clickable <a href>. The unsafe-URL fallback renders a plain <span>
+    // with the same label text instead.
+    const communication: Communication = {
+      id: "comm-unsafe-url",
+      channel: "email",
+      date: "2026-03-01T09:00:00Z",
+      subject: "Suspicious attachment",
+      participantIds: [stakeholderEbba.id],
+      summary: "javascript: scheme must not become a clickable link",
+      messages: [
+        {
+          id: "msg-unsafe-0",
+          date: "2026-03-01T09:00:00Z",
+          senderId: stakeholderEbba.id,
+          bodyPreview: "Please click the attachment.",
+          attachments: [
+            {
+              filename: "evil.pdf",
+              name: "evil.pdf",
+              mime: "application/pdf",
+              size: 1024,
+              url: "javascript:alert(1)",
+            },
+          ],
+        },
+      ],
+      actionItemIds: [],
+      claimIds: [],
+      evidenceIds: [],
+      riskIds: [],
+      conversationIds: [],
+    };
+
+    const { getByText, queryByRole } = render(
+      <CommunicationDetail
+        communication={communication}
+        {...makeMaps()}
+        onStakeholderClick={() => {}}
+      />,
+    );
+
+    // The label still renders (so users see the attachment exists)…
+    const labelEl = getByText("evil.pdf");
+    expect(labelEl).toBeTruthy();
+    // …but it is a <span>, not an <a>. No anchor element is emitted at all.
+    expect(labelEl.tagName).toBe("SPAN");
+    expect(queryByRole("link", { name: "evil.pdf" })).toBeNull();
+  });
+
   it("preserves the existing Communication-level renderer for legacy fixtures", () => {
     const communication: Communication = {
       id: "legacy-comm",

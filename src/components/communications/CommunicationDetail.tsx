@@ -83,6 +83,23 @@ function extToTag(name: string | undefined): string | null {
   return name.slice(dot + 1).toUpperCase();
 }
 
+/**
+ * Returns true iff `url` parses cleanly and uses an http/https/mailto scheme.
+ * Defends against `javascript:`, `data:`, `vbscript:`, `file:` and other
+ * dangerous schemes that the underlying URL parser accepts. Matches the same
+ * defence-in-depth pattern as `HttpsUrlSchema` in `src/lib/schemas.ts` for
+ * `AudioReference.viewUrl`.
+ */
+function isSafeAttachmentUrl(url: string | undefined): url is string {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url);
+    return ["https:", "http:", "mailto:"].includes(parsed.protocol);
+  } catch {
+    return false;
+  }
+}
+
 interface CommunicationDetailProps {
   communication: Communication;
   stakeholderMap: ReadonlyMap<string, Stakeholder>;
@@ -270,7 +287,7 @@ export function CommunicationDetail({
                           const ev = att.evidenceId
                             ? evidenceMap.get(att.evidenceId)
                             : null;
-                          const label =
+                          const attLabel =
                             att.filename ?? att.name ?? ev?.title ?? "Attachment";
                           const key =
                             att.evidenceId ??
@@ -282,27 +299,18 @@ export function CommunicationDetail({
                           const meta = formatAttachmentMeta(att);
                           return (
                             <li key={key} className="flex items-center gap-2">
-                              <span
-                                role="img"
-                                aria-label={
-                                  att.mime
-                                    ? `Attachment (${att.mime})`
-                                    : "Attachment"
-                                }
-                              >
-                                📎
-                              </span>
-                              {att.url ? (
+                              <span aria-hidden="true">📎</span>
+                              {isSafeAttachmentUrl(att.url) ? (
                                 <a
                                   href={att.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-blue-600 hover:underline dark:text-blue-400"
+                                  className="rounded-sm text-blue-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 dark:text-blue-400"
                                 >
-                                  {label}
+                                  {attLabel}
                                 </a>
                               ) : (
-                                <span>{label}</span>
+                                <span>{attLabel}</span>
                               )}
                               {meta && (
                                 <span className="text-xs text-muted-foreground">
@@ -356,22 +364,13 @@ export function CommunicationDetail({
                   const meta = formatAttachmentMeta(att);
                   return (
                     <li key={key} className="flex items-center gap-2">
-                      <span
-                        role="img"
-                        aria-label={
-                          att.mime
-                            ? `Attachment (${att.mime})`
-                            : "Attachment"
-                        }
-                      >
-                        📎
-                      </span>
-                      {att.url ? (
+                      <span aria-hidden="true">📎</span>
+                      {isSafeAttachmentUrl(att.url) ? (
                         <a
                           href={att.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline dark:text-blue-400"
+                          className="rounded-sm text-blue-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 dark:text-blue-400"
                         >
                           {label}
                         </a>
