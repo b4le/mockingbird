@@ -258,6 +258,67 @@ export function CommunicationDetail({
                     <p className="mt-0.5 text-sm text-muted-foreground">
                       {m.bodyPreview}
                     </p>
+                    {/*
+                     * Privileged messages have their `attachments` redacted
+                     * by the producer (empty array or absent), so the length
+                     * guard below is sufficient — no UI-side privilege
+                     * handling needed.
+                     */}
+                    {m.attachments && m.attachments.length > 0 && (
+                      <ul className="mt-2 space-y-1.5 text-sm">
+                        {m.attachments.map((att, i) => {
+                          const ev = att.evidenceId
+                            ? evidenceMap.get(att.evidenceId)
+                            : null;
+                          const label =
+                            att.filename ?? att.name ?? ev?.title ?? "Attachment";
+                          const key =
+                            att.evidenceId ??
+                            att.url ??
+                            att.path ??
+                            att.filename ??
+                            att.name ??
+                            `att-${m.id}-${i}`;
+                          const meta = formatAttachmentMeta(att);
+                          return (
+                            <li key={key} className="flex items-center gap-2">
+                              <span
+                                role="img"
+                                aria-label={
+                                  att.mime
+                                    ? `Attachment (${att.mime})`
+                                    : "Attachment"
+                                }
+                              >
+                                📎
+                              </span>
+                              {att.url ? (
+                                <a
+                                  href={att.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-600 hover:underline dark:text-blue-400"
+                                >
+                                  {label}
+                                </a>
+                              ) : (
+                                <span>{label}</span>
+                              )}
+                              {meta && (
+                                <span className="text-xs text-muted-foreground">
+                                  {meta}
+                                </span>
+                              )}
+                              {ev && (
+                                <Badge variant="outline" className="text-xs">
+                                  Evidence
+                                </Badge>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
                   </div>
                 </li>
               );
