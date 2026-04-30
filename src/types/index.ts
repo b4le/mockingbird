@@ -25,13 +25,56 @@ export interface ExternalParticipant {
 }
 
 export type CommMessage =
-  | { id: string; date: string; senderId: string; externalSender?: never; bodyPreview: string }
-  | { id: string; date: string; senderId?: never; externalSender: ExternalParticipant; bodyPreview: string };
+  | {
+      id: string;
+      date: string;
+      senderId: string;
+      externalSender?: never;
+      bodyPreview: string;
+      attachments?: CommAttachment[];
+    }
+  | {
+      id: string;
+      date: string;
+      senderId?: never;
+      externalSender: ExternalParticipant;
+      bodyPreview: string;
+      attachments?: CommAttachment[];
+    };
 
+/**
+ * An attachment on a `Communication` (or `CommMessage`). The producer
+ * (atticus-finch `export_mockingbird.py`) emits a richer shape than the
+ * original consumer schema accepted — see PR b4le/atticus-finch#52.
+ *
+ * Required by the consumer refinement: at least one of `filename`, `name`,
+ * `url`, or `evidenceId`. The producer always emits both `filename` and
+ * `name` (with identical values) so the refine passes; `name` is retained
+ * as an alias so legacy demo data without `filename` still validates.
+ *
+ * `path` is a *project-relative* path inside the producer repo (e.g.
+ * `local-state/emails/attachments/<thread-id>/<file>.pdf`). It is NOT a
+ * fetchable URL and must not be rendered as one — UI code should treat
+ * `path` as informational metadata only and link via `url` when present.
+ */
 export interface CommAttachment {
-  evidenceId?: string;
+  /** Display filename (preferred). Producer-emitted, mirrors `name`. */
+  filename?: string;
+  /** Legacy alias for `filename`. Producer-emitted for back-compat. */
   name?: string;
+  /** MIME type, e.g. `application/pdf`. Optional. */
+  mime?: string;
+  /** Size in bytes, non-negative integer. Optional. */
+  size?: number;
+  /**
+   * Project-relative path inside the producer repo. NOT a fetchable URL —
+   * informational metadata only.
+   */
+  path?: string;
+  /** Externally fetchable URL (e.g. Drive link). Kept for back-compat. */
   url?: string;
+  /** Linked Evidence id. Kept for evidence-tagged attachments. */
+  evidenceId?: string;
 }
 
 /**
@@ -69,6 +112,14 @@ export interface Communication {
   summary: string;
   messages: CommMessage[];
   attachments?: CommAttachment[];
+  /**
+   * Producer-emitted convenience flag: `true` iff at least one
+   * non-privileged message in the Communication carries user-visible
+   * attachments. Optional — legacy records may omit it; consumers that
+   * need a derived flag should fall back to `attachments?.length > 0` or
+   * scanning `messages[].attachments`.
+   */
+  hasAttachments?: boolean;
   /** Linked actions: origin required, related extras OK. Required; empty array when none. */
   actionItemIds: string[];
   /** Linked claims: permissive semantics — no backref drift check today. Required; empty array when none. */

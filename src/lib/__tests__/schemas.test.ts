@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   AudioReferenceSchema,
+  CommunicationSchema,
   ConversationSchema,
   EvidenceItemSchema,
   RiskSchema,
@@ -510,5 +511,153 @@ describe("TranscriptSchema.speakerMap bound", () => {
     }
     const result = TranscriptSchema.safeParse({ ...baseTranscript, speakerMap });
     expect(result.success).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// CommunicationSchema — attachment shape alignment with the atticus-finch
+// producer (see PR b4le/atticus-finch#52). The producer emits richer
+// metadata (filename / mime / size / path) on every attachment; the consumer
+// schema previously stripped these silently via Zod's default `.strip()`.
+// ---------------------------------------------------------------------------
+
+describe("CommunicationSchema attachment metadata", () => {
+  const baseCommunication = {
+    id: "comm-test",
+    channel: "email" as const,
+    date: "2026-01-27T12:50:16Z",
+    subject: "Test",
+    participantIds: ["s-1"],
+    summary: "Test summary",
+    messages: [
+      {
+        id: "comm-test-msg-0",
+        date: "2026-01-27T12:50:16Z",
+        senderId: "s-1",
+        bodyPreview: "hello",
+      },
+    ],
+    actionItemIds: [],
+    claimIds: [],
+    evidenceIds: [],
+    riskIds: [],
+    conversationIds: [],
+  };
+
+  it("accepts producer-shape attachments with filename, mime, size, path", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      attachments: [
+        {
+          name: "Termination Agreement Ben Purslow.docx.pdf",
+          filename: "Termination Agreement Ben Purslow.docx.pdf",
+          mime: "application/pdf",
+          size: 128_595,
+          path: "local-state/emails/attachments/19bfa273eca78c37/Termination Agreement Ben Purslow.docx.pdf",
+        },
+      ],
+      hasAttachments: true,
+    });
+    expect(result.success).toBe(true);
+    if (!result.success) return;
+    // Critical regression guard: verify the rich metadata SURVIVES parsing
+    // (previously `.strip()` would drop these silently).
+    const att = result.data.attachments?.[0];
+    expect(att?.filename).toBe(
+      "Termination Agreement Ben Purslow.docx.pdf",
+    );
+    expect(att?.mime).toBe("application/pdf");
+    expect(att?.size).toBe(128_595);
+    expect(att?.path).toBe(
+      "local-state/emails/attachments/19bfa273eca78c37/Termination Agreement Ben Purslow.docx.pdf",
+    );
+    expect(result.data.hasAttachments).toBe(true);
+  });
+
+  it("accepts legacy attachments with only name (back-compat)", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      attachments: [{ name: "Legacy.pdf" }],
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts legacy attachments with only url (back-compat)", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      attachments: [{ url: "https://drive.google.com/file/d/abc123" }],
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts evidence-tagged attachments without filename or url", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      attachments: [{ evidenceId: "ev-1" }],
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects attachments with NONE of filename/name/url/evidenceId", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      attachments: [{ mime: "application/pdf", size: 100 }],
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects negative attachment size", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      attachments: [{ filename: "f.pdf", size: -1 }],
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects non-integer attachment size", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      attachments: [{ filename: "f.pdf", size: 1.5 }],
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts hasAttachments: false (no attachments array)", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      hasAttachments: false,
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts a Communication with no hasAttachments field (legacy demo data)", () => {
+    const result = CommunicationSchema.safeParse(baseCommunication);
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts per-message attachments in producer shape", () => {
+    const result = CommunicationSchema.safeParse({
+      ...baseCommunication,
+      messages: [
+        {
+          id: "comm-test-msg-0",
+          date: "2026-01-27T12:50:16Z",
+          senderId: "s-1",
+          bodyPreview: "see attached",
+          attachments: [
+            {
+              name: "INTOO Global Outplacement Program.pdf",
+              filename: "INTOO Global Outplacement Program.pdf",
+              mime: "application/pdf",
+              size: 165_351,
+              path: "local-state/emails/attachments/19bfa273eca78c37/INTOO Global Outplacement Program.pdf",
+            },
+          ],
+        },
+      ],
+    });
+    expect(result.success).toBe(true);
+    if (!result.success) return;
+    expect(result.data.messages[0]?.attachments?.[0]?.size).toBe(165_351);
   });
 });

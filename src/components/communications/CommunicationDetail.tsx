@@ -18,12 +18,70 @@ import {
 import type {
   ActionItem,
   Claim,
+  CommAttachment,
   Communication,
   Conversation,
   EvidenceItem,
   Risk,
   Stakeholder,
 } from "@/types";
+
+/**
+ * Format human-readable byte size, e.g. 128_595 → "126 KB", 41_768 → "41 KB",
+ * 1_234_567 → "1.2 MB". Uses base-1024 (binary) units to match what users
+ * see in operating-system file managers. Returns `null` for missing or
+ * non-finite sizes so the caller can elide the metadata span entirely.
+ */
+function formatBytes(bytes: number | undefined): string | null {
+  if (bytes === undefined || !Number.isFinite(bytes) || bytes < 0) return null;
+  if (bytes < 1024) return `${bytes} B`;
+  const kb = bytes / 1024;
+  if (kb < 1024) return `${Math.round(kb)} KB`;
+  const mb = kb / 1024;
+  if (mb < 1024) return `${mb.toFixed(1)} MB`;
+  const gb = mb / 1024;
+  return `${gb.toFixed(1)} GB`;
+}
+
+/**
+ * Format the secondary metadata line for an attachment: size and MIME-derived
+ * extension (uppercased). Returns `null` when no secondary metadata is
+ * available so the caller can omit the empty span.
+ *
+ * Examples:
+ *   { mime: "application/pdf", size: 128595 } → "PDF · 126 KB"
+ *   { size: 1024 }                            → "1 KB"
+ *   { mime: "application/pdf" }               → "PDF"
+ *   {}                                        → null
+ */
+function formatAttachmentMeta(att: CommAttachment): string | null {
+  const sizeStr = formatBytes(att.size);
+  // Derive a short type tag from MIME — prefer the subtype after `/`,
+  // strip vendor prefixes (`vnd.`, `x-`), and uppercase. Falls back to
+  // the filename extension if MIME is missing.
+  const typeTag = mimeToTag(att.mime) ?? extToTag(att.filename ?? att.name);
+  const parts = [typeTag, sizeStr].filter((s): s is string => Boolean(s));
+  return parts.length ? parts.join(" · ") : null;
+}
+
+function mimeToTag(mime: string | undefined): string | null {
+  if (!mime) return null;
+  const slash = mime.indexOf("/");
+  if (slash === -1) return mime.toUpperCase();
+  const subtype = mime.slice(slash + 1).replace(/^(vnd\.|x-)/, "");
+  // Take the segment before any `+` (e.g. `vnd.openxmlformats.../+xml`).
+  const head = subtype.split("+")[0] ?? subtype;
+  // Trim long vendor paths like `openxmlformats-officedocument.wordprocessingml.document`.
+  const last = head.split(".").pop() ?? head;
+  return last.toUpperCase();
+}
+
+function extToTag(name: string | undefined): string | null {
+  if (!name) return null;
+  const dot = name.lastIndexOf(".");
+  if (dot === -1 || dot === name.length - 1) return null;
+  return name.slice(dot + 1).toUpperCase();
+}
 
 interface CommunicationDetailProps {
   communication: Communication;
@@ -219,12 +277,32 @@ export function CommunicationDetail({
                   const ev = att.evidenceId
                     ? evidenceMap.get(att.evidenceId)
                     : null;
-                  const label = att.name ?? ev?.title ?? "Attachment";
+                  // Display label preference: producer-emitted `filename`,
+                  // then legacy `name`, then linked Evidence title, then a
+                  // generic fallback.
+                  const label =
+                    att.filename ?? att.name ?? ev?.title ?? "Attachment";
                   const key =
-                    att.evidenceId ?? att.url ?? att.name ?? `att-${i}`;
+                    att.evidenceId ??
+                    att.url ??
+                    att.path ??
+                    att.filename ??
+                    att.name ??
+                    `att-${i}`;
+                  // `path` is project-relative inside the producer repo
+                  // (e.g. `local-state/emails/attachments/...`). It is NOT
+                  // a fetchable URL — only `url` (when present) is.
+                  const meta = formatAttachmentMeta(att);
                   return (
                     <li key={key} className="flex items-center gap-2">
-                      <span role="img" aria-label="Attachment">
+                      <span
+                        role="img"
+                        aria-label={
+                          att.mime
+                            ? `Attachment (${att.mime})`
+                            : "Attachment"
+                        }
+                      >
                         📎
                       </span>
                       {att.url ? (
@@ -238,6 +316,11 @@ export function CommunicationDetail({
                         </a>
                       ) : (
                         <span>{label}</span>
+                      )}
+                      {meta && (
+                        <span className="text-xs text-muted-foreground">
+                          {meta}
+                        </span>
                       )}
                       {ev && (
                         <Badge variant="outline" className="text-xs">
