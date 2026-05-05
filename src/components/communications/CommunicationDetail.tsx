@@ -11,6 +11,7 @@ import { AudioReferenceIndicator } from "@/components/shared/AudioReferenceIndic
 import { LinkedEntityList } from "./LinkedEntityList";
 import { resolveIds } from "@/lib/collections";
 import { parseDate } from "@/lib/dates";
+import { isSafeAttachmentUrl } from "@/lib/url-safety";
 import {
   COMMUNICATION_CHANNEL_ICONS,
   COMMUNICATION_CHANNEL_LABELS,
@@ -258,6 +259,58 @@ export function CommunicationDetail({
                     <p className="mt-0.5 text-sm text-muted-foreground">
                       {m.bodyPreview}
                     </p>
+                    {/*
+                     * Privileged messages have their `attachments` redacted
+                     * by the producer (empty array or absent), so the length
+                     * guard below is sufficient — no UI-side privilege
+                     * handling needed.
+                     */}
+                    {m.attachments?.length ? (
+                      <ul className="mt-2 space-y-1.5 text-sm">
+                        {m.attachments.map((att, i) => {
+                          const ev = att.evidenceId
+                            ? evidenceMap.get(att.evidenceId)
+                            : null;
+                          const attLabel =
+                            att.filename ?? att.name ?? ev?.title ?? "Attachment";
+                          const key =
+                            att.evidenceId ??
+                            att.url ??
+                            att.path ??
+                            att.filename ??
+                            att.name ??
+                            `att-${m.id}-${i}`;
+                          const meta = formatAttachmentMeta(att);
+                          return (
+                            <li key={key} className="flex items-center gap-2">
+                              <span aria-hidden="true">📎</span>
+                              {isSafeAttachmentUrl(att.url) ? (
+                                <a
+                                  href={att.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="rounded-sm text-blue-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 dark:text-blue-400"
+                                >
+                                  {attLabel}
+                                </a>
+                              ) : (
+                                <span>{attLabel}</span>
+                              )}
+                              {meta && (
+                                <span className="text-xs text-muted-foreground">
+                                  {meta}
+                                </span>
+                              )}
+                              {ev && (
+                                <Badge variant="outline" className="text-xs">
+                                  Evidence
+                                </Badge>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : null}
                   </div>
                 </li>
               );
@@ -265,7 +318,7 @@ export function CommunicationDetail({
           </ol>
         </div>
 
-        {communication.attachments && communication.attachments.length > 0 && (
+        {communication.attachments?.length ? (
           <>
             <Separator />
             <div>
@@ -295,22 +348,13 @@ export function CommunicationDetail({
                   const meta = formatAttachmentMeta(att);
                   return (
                     <li key={key} className="flex items-center gap-2">
-                      <span
-                        role="img"
-                        aria-label={
-                          att.mime
-                            ? `Attachment (${att.mime})`
-                            : "Attachment"
-                        }
-                      >
-                        📎
-                      </span>
-                      {att.url ? (
+                      <span aria-hidden="true">📎</span>
+                      {isSafeAttachmentUrl(att.url) ? (
                         <a
                           href={att.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline dark:text-blue-400"
+                          className="rounded-sm text-blue-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 dark:text-blue-400"
                         >
                           {label}
                         </a>
@@ -333,7 +377,7 @@ export function CommunicationDetail({
               </ul>
             </div>
           </>
-        )}
+        ) : null}
 
         {hasLinks && (
           <>
