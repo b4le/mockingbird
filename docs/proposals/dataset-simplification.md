@@ -30,7 +30,7 @@ Wiring a loader against the current misaligned linkage would either fail `loadVa
 
 **Follow-up:**
 
-File a atticus-finch issue to reconcile `SnippetSchema` fields (`exhibitMapping` vs `exhibitIds`/`claimIds`) with actual exporter output before a loader is added.
+[b4le/atticus-finch#71](https://github.com/b4le/atticus-finch/issues/71) — reconcile `SnippetSchema` fields (`exhibitMapping` vs `exhibitIds`/`claimIds`) with actual exporter output before a loader is added.
 
 ---
 
@@ -57,7 +57,7 @@ Removing the duplication requires the atticus-finch exporter to stop emitting `C
 
 **Follow-up:**
 
-File an atticus-finch issue: stop emitting `Conversation.audioReference` when the corresponding `Transcript` row already carries it. Bump `dataVersion` on the consumer side once the exporter stops dual-emitting.
+[b4le/atticus-finch#70](https://github.com/b4le/atticus-finch/issues/70) — stop emitting `Conversation.audioReference` when the corresponding `Transcript` row already carries it. Bump `dataVersion` on the consumer side once the exporter stops dual-emitting.
 
 ---
 
@@ -101,7 +101,7 @@ Once all `data/` records have a `transcriptId`, remove `Conversation.transcript`
 
 **Follow-up:**
 
-File an atticus-finch issue: once the exporter stops emitting `name`, remove it from the schema refine guard and the interface. Update `CommunicationDetail.tsx` to drop the `?? att.name` fallback.
+[b4le/atticus-finch#69](https://github.com/b4le/atticus-finch/issues/69) — once the exporter stops emitting `name`, remove it from the schema refine guard and the interface. Update `CommunicationDetail.tsx` to drop the `?? att.name` fallback.
 
 ---
 
