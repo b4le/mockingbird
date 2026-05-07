@@ -64,7 +64,7 @@ export interface CommAttachment {
    * @deprecated — prefer `filename`. Retained as tolerant-reader fallback
    * for legacy demo records and the atticus-finch exporter's mirror-emission.
    * Will be removed after the exporter drops `name` (paired atticus-finch
-   * issue: TBD).
+   * issue: b4le/atticus-finch#69).
    */
   name?: string;
   /** MIME type, e.g. `application/pdf`. Optional. */

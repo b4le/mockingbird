@@ -160,7 +160,7 @@ const CommAttachmentSchema = z
      * @deprecated — prefer `filename`. Retained as tolerant-reader fallback
      * for legacy demo records and the atticus-finch exporter's mirror-emission.
      * Will be removed after the exporter drops `name` (paired atticus-finch
-     * issue: TBD).
+     * issue: b4le/atticus-finch#69).
      */
     name: z.string().optional(),
     mime: z.string().optional(),
@@ -423,7 +423,7 @@ export const TranscriptSchema = z.object({
  *    atticus-finch exporter and this schema are reconciled, wiring this
  *    loader would fail `loadValidated` at startup.
  *
- * Track resolution in atticus-finch (issue TBD: snippet shape + linkage
+ * Track resolution in b4le/atticus-finch#71 (snippet shape + linkage
  * reconciliation).
  */
 export const SnippetSchema = z.object({
