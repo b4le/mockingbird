@@ -60,7 +60,12 @@ export type CommMessage =
 export interface CommAttachment {
   /** Display filename (preferred). Producer-emitted, mirrors `name`. */
   filename?: string;
-  /** Legacy alias for `filename`. Producer-emitted for back-compat. */
+  /**
+   * @deprecated — prefer `filename`. Retained as tolerant-reader fallback
+   * for legacy demo records and the atticus-finch exporter's mirror-emission.
+   * Will be removed after the exporter drops `name` (paired atticus-finch
+   * issue: TBD).
+   */
   name?: string;
   /** MIME type, e.g. `application/pdf`. Optional. */
   mime?: string;
@@ -122,13 +127,13 @@ export interface Communication {
   hasAttachments?: boolean;
   /** Linked actions: origin required, related extras OK. Required; empty array when none. */
   actionItemIds: string[];
-  /** Linked claims: permissive semantics — no backref drift check today. Required; empty array when none. */
+  /** Linked claims: every id must resolve to a real Claim (checked by `checkCommunicationClaimIds` in src/lib/invariants.ts). Required; empty array when none. */
   claimIds: string[];
   /** Linked evidence: origin required, related extras OK. Required; empty array when none. */
   evidenceIds: string[];
-  /** Linked risks: permissive semantics — no backref drift check today. Required; empty array when none. */
+  /** Linked risks: every id must resolve to a real Risk (checked by `checkCommunicationRiskIds` in src/lib/invariants.ts). Required; empty array when none. */
   riskIds: string[];
-  /** Linked conversations: permissive semantics — no backref drift check today. Required; empty array when none. */
+  /** Linked conversations: every id must resolve to a real Conversation (checked by `checkCommunicationConversationIds` in src/lib/invariants.ts). Required; empty array when none. */
   conversationIds: string[];
   tags?: string[];
 }
@@ -203,10 +208,20 @@ export interface Conversation {
   /** Linked actions: origin required, related extras OK. Required; empty array when none. */
   actionItemIds: string[];
   medium?: 'in-person' | 'video-call' | 'phone-call';
+  /**
+   * Legacy back-compat fallback. Prefer `transcriptId` joining a Transcript
+   * row. Will be removed once all data uses `transcriptId`.
+   */
   transcript?: string;
-  transcriptUrl?: string;
   transcriptId?: string;
   snippetIds?: string[];
+  /**
+   * Owned by `Conversation` only when the conversation has audio but no
+   * Transcript row (e.g. legacy or audio-only sessions). When `transcriptId`
+   * is set and that Transcript carries `audioReference`, the Transcript's
+   * copy is the source of truth — Conversation's value, if present, is
+   * denormalised back-compat and may be removed in a future cleanup.
+   */
   audioReference?: AudioReference;
 }
 
@@ -333,6 +348,11 @@ export interface Transcript {
   hasCues: boolean;
   cues: TranscriptCue[];
   sourceFile: string;
+  /**
+   * Source of truth for the underlying audio when a Transcript exists.
+   * Mirrors any `audioReference` on the parent Conversation; consumers
+   * should prefer this field when both are present.
+   */
   audioReference?: AudioReference;
   /** Raw speaker label → Stakeholder.id; cheap resolution map at render time. */
   speakerMap?: Record<string, string>;
@@ -347,6 +367,7 @@ export interface Snippet {
   startSeconds: number;
   endSeconds: number;
   durationSeconds: number;
+  date?: string | null;
   speaker: string;
   transcript: string;
   whatYoullHear: string;

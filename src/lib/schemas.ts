@@ -156,6 +156,12 @@ const ExternalParticipantSchema = z.object({
 const CommAttachmentSchema = z
   .object({
     filename: z.string().optional(),
+    /**
+     * @deprecated — prefer `filename`. Retained as tolerant-reader fallback
+     * for legacy demo records and the atticus-finch exporter's mirror-emission.
+     * Will be removed after the exporter drops `name` (paired atticus-finch
+     * issue: TBD).
+     */
     name: z.string().optional(),
     mime: z.string().optional(),
     size: z.number().int().nonnegative().optional(),
@@ -328,6 +334,15 @@ const HttpsUrlSchema = z
   })
   .or(z.literal(""));
 
+/**
+ * Ownership policy: when a Conversation has a Transcript row and that
+ * Transcript carries `audioReference`, the Transcript's copy is the source
+ * of truth. Any `audioReference` on the parent Conversation is denormalised
+ * back-compat (or applies only to the audio-only case where no Transcript
+ * exists). Consumers should prefer `Transcript.audioReference` when both
+ * are present. See the matching JSDoc on `Conversation.audioReference` /
+ * `Transcript.audioReference` in `src/types/index.ts`.
+ */
 export const AudioReferenceSchema = z
   .object({
     // v1.1: driveId may be the empty string for pending-audio-upload entries
@@ -393,6 +408,24 @@ export const TranscriptSchema = z.object({
     .optional(),
 });
 
+/**
+ * Schema is exported but NOT wired to a loader.
+ *
+ * Two layers of drift block wiring today:
+ * 1. `data/local/snippets.json` records carry `conversationId` values that
+ *    do not match `Conversation.id` in the same project (the loaded record
+ *    has `conversationId: null`; older fixtures had exporter-generated UUIDs
+ *    like `conversation-bf3bd223-...`). Either way, no join is currently
+ *    safe.
+ * 2. The on-disk shape and this schema are not yet aligned — JSON records
+ *    carry `exhibitIds`/`claimIds` keys absent from the schema, while
+ *    `exhibitMapping` (required here) is absent from the JSON. Until the
+ *    atticus-finch exporter and this schema are reconciled, wiring this
+ *    loader would fail `loadValidated` at startup.
+ *
+ * Track resolution in atticus-finch (issue TBD: snippet shape + linkage
+ * reconciliation).
+ */
 export const SnippetSchema = z.object({
   id: z.string(),
   clipId: z.string(),
@@ -402,6 +435,7 @@ export const SnippetSchema = z.object({
   startSeconds: z.number(),
   endSeconds: z.number(),
   durationSeconds: z.number(),
+  date: z.string().nullable().optional(),
   speaker: z.string(),
   transcript: z.string(),
   whatYoullHear: z.string(),
@@ -426,8 +460,11 @@ export const ConversationSchema = z.object({
   decisions: z.array(z.string()),
   actionItemIds: z.array(z.string()),
   medium: MediumSchema.optional(),
+  /**
+   * Legacy back-compat fallback. Prefer `transcriptId` joining a Transcript
+   * row. Will be removed once all data uses `transcriptId`.
+   */
   transcript: z.string().optional(),
-  transcriptUrl: z.string().optional(),
   transcriptId: z.string().optional(),
   snippetIds: z.array(z.string()).optional(),
   audioReference: AudioReferenceSchema.optional(),
