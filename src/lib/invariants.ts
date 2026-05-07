@@ -1,6 +1,8 @@
 import type {
+  Claim,
   Communication,
   Conversation,
+  Risk,
   Stakeholder,
   Transcript,
 } from "@/types";
@@ -49,6 +51,14 @@ import type {
  * guard. `Conversation.actionItemIds` and `Conversation.participantIds`
  * are REQUIRED arrays in `ConversationSchema` — if those are relaxed to
  * optional, the new checks need explicit guards too.
+ *
+ * It also applies to {@link checkCommunicationClaimIds},
+ * {@link checkCommunicationRiskIds}, and
+ * {@link checkCommunicationConversationIds}: all three iterate
+ * `comm.claimIds` / `comm.riskIds` / `comm.conversationIds` without a
+ * presence guard. Those three fields are REQUIRED arrays in
+ * `CommunicationSchema` — if any is relaxed to optional, the matching
+ * check needs an explicit guard too.
  *
  * The transcript checks {@link checkConversationTranscriptId},
  * {@link checkTranscriptConversationId} and {@link checkTranscriptSpeakers}
@@ -428,6 +438,100 @@ export function checkTranscriptSpeakers(
       if (!stakeholderIds.has(stakeholderId)) {
         report(
           `[backref-drift] transcript ${transcript.id} participantIds references missing stakeholder ${stakeholderId}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Communication.claimIds`.
+ *
+ * Every id listed under a communication's linked claims must resolve to
+ * a real `Claim`. Drift here means a claim was deleted or renamed
+ * without updating the communications that reference it — the linked
+ * claim chip would silently disappear from the UI's communication
+ * detail with no warning.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkCommunicationClaimIds(
+  report: (msg: string) => void,
+  communications: Communication[],
+  claims: Claim[],
+): void {
+  const claimIds = new Set(claims.map((c) => c.id));
+  for (const comm of communications) {
+    // Schema coupling: `comm.claimIds` is required by CommunicationSchema.
+    // See top-of-file "Schema coupling" note before relaxing the schema.
+    for (const id of comm.claimIds) {
+      if (!claimIds.has(id)) {
+        report(
+          `[backref-drift] communication ${comm.id} references missing claim ${id}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Communication.riskIds`.
+ *
+ * Every id listed under a communication's linked risks must resolve to
+ * a real `Risk`. Drift here means a risk was deleted or renamed without
+ * updating the communications that reference it — the linked risk chip
+ * would silently disappear from the UI's communication detail with no
+ * warning.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkCommunicationRiskIds(
+  report: (msg: string) => void,
+  communications: Communication[],
+  risks: Risk[],
+): void {
+  const riskIds = new Set(risks.map((r) => r.id));
+  for (const comm of communications) {
+    // Schema coupling: `comm.riskIds` is required by CommunicationSchema.
+    // See top-of-file "Schema coupling" note before relaxing the schema.
+    for (const id of comm.riskIds) {
+      if (!riskIds.has(id)) {
+        report(
+          `[backref-drift] communication ${comm.id} references missing risk ${id}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Communication.conversationIds`.
+ *
+ * Every id listed under a communication's linked conversations must
+ * resolve to a real `Conversation`. Drift here means a conversation was
+ * deleted or renamed without updating the communications that reference
+ * it — the cross-link from a Communication to its companion Conversation
+ * (e.g. an SMS arranging a call that points at the call itself) would
+ * silently dead-end in the UI.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkCommunicationConversationIds(
+  report: (msg: string) => void,
+  communications: Communication[],
+  conversations: Conversation[],
+): void {
+  const conversationIds = new Set(conversations.map((c) => c.id));
+  for (const comm of communications) {
+    // Schema coupling: `comm.conversationIds` is required by CommunicationSchema.
+    // See top-of-file "Schema coupling" note before relaxing the schema.
+    for (const id of comm.conversationIds) {
+      if (!conversationIds.has(id)) {
+        report(
+          `[backref-drift] communication ${comm.id} references missing conversation ${id}`,
         );
       }
     }

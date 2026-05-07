@@ -19,6 +19,12 @@ Strict mode is gated on `process.env.CI === "true"` at the single `getProjectBun
 
 The backref checks dereference `comm.actionItemIds.includes(...)` and `comm.evidenceIds.includes(...)` without a presence guard. That's only safe because `Communication.actionItemIds` and `Communication.evidenceIds` are declared REQUIRED (not `.optional()`) in `CommunicationSchema`. If a future change relaxes those fields back to optional, the checks will crash with `Cannot read properties of undefined (reading 'includes')` instead of cleanly reporting drift — strictly worse than before. Keep the fields required, or reintroduce explicit `if (!comm.actionItemIds) continue;` guards in `checkActionBackref` / `checkEvidenceBackref`. The same rule applies to any new backref check that consumes a "required array" field.
 
+The same coupling applies to the three checks added for Finding 5:
+
+- `checkCommunicationClaimIds` iterates `comm.claimIds` without a presence guard — safe only while `Communication.claimIds` is REQUIRED in `CommunicationSchema`. If relaxed to optional, reintroduce `if (!comm.claimIds) continue;`.
+- `checkCommunicationRiskIds` iterates `comm.riskIds` without a presence guard — same constraint on `Communication.riskIds`.
+- `checkCommunicationConversationIds` iterates `comm.conversationIds` without a presence guard — same constraint on `Communication.conversationIds`.
+
 ### Adding a new cross-collection check
 
 Follow the same pattern:
