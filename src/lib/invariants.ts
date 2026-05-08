@@ -3,6 +3,7 @@ import type {
   Communication,
   Conversation,
   Risk,
+  Snippet,
   Stakeholder,
   TimelineEvent,
   Transcript,
@@ -84,6 +85,11 @@ import type {
  * `TimelineEventSchema`. The schema permits the half-pointer state
  * (id-without-type or vice versa) — the check reports it explicitly
  * rather than crashing.
+ *
+ * {@link checkSnippetBackref} guards on `snippet.evidenceIds` because the
+ * field is `.optional()` in `SnippetSchema`. `conversationId` and
+ * `communicationId` are `.nullable()` (always present), so the null
+ * branch is the skip case rather than a presence guard.
  */
 
 // ---------------------------------------------------------------------------
@@ -683,6 +689,71 @@ export function checkTimelineLinkedEntity(
       report(
         `[backref-drift] timeline event ${event.id} references missing ${type} ${id}`,
       );
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Snippet` linkage.
+ *
+ * Snippets are short audio clips lifted from a parent conversation or
+ * communication. Three independent links are validated here:
+ *
+ * 1. `Snippet.conversationId` (nullable) — when set, must resolve to a
+ *    real `Conversation`. Drift here would render an "Open
+ *    conversation" link that dead-ends.
+ * 2. `Snippet.communicationId` (nullable) — same, against
+ *    `Communication`.
+ * 3. `Snippet.evidenceIds` (optional array) — every id must resolve to
+ *    a real `EvidenceItem`. The field is `.optional()` in
+ *    `SnippetSchema`, so absence is the skip case (not a violation);
+ *    presence is narrowed before iteration via the explicit guard.
+ *
+ * The atticus-finch exporter previously emitted snippet linkage that
+ * the mockingbird normaliser silently smoothed over (issue #71). The
+ * exporter is now correct upstream — this check exists to catch any
+ * future regressions at the ingestion boundary.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkSnippetBackref(
+  report: (msg: string) => void,
+  snippets: Snippet[],
+  conversations: Conversation[],
+  communications: Communication[],
+  evidence: { id: string }[],
+): void {
+  const conversationIds = new Set(conversations.map((c) => c.id));
+  const communicationIds = new Set(communications.map((c) => c.id));
+  const evidenceIds = new Set(evidence.map((e) => e.id));
+
+  for (const snippet of snippets) {
+    if (
+      snippet.conversationId !== null &&
+      !conversationIds.has(snippet.conversationId)
+    ) {
+      report(
+        `[backref-drift] snippet ${snippet.id} references missing conversation ${snippet.conversationId}`,
+      );
+    }
+    if (
+      snippet.communicationId !== null &&
+      !communicationIds.has(snippet.communicationId)
+    ) {
+      report(
+        `[backref-drift] snippet ${snippet.id} references missing communication ${snippet.communicationId}`,
+      );
+    }
+    // Schema coupling: `snippet.evidenceIds` is OPTIONAL in SnippetSchema —
+    // explicit presence guard required (unlike the required-array checks).
+    if (!snippet.evidenceIds) continue;
+    for (const id of snippet.evidenceIds) {
+      if (!evidenceIds.has(id)) {
+        report(
+          `[backref-drift] snippet ${snippet.id} references missing evidence ${id}`,
+        );
+      }
     }
   }
 }
