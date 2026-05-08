@@ -361,6 +361,8 @@ export const AudioReferenceSchema = z
     durationSeconds: z.number().int().nonnegative().nullable(),
     status: AudioReferenceStatusSchema.optional(),
     notes: z.string().optional(),
+    // free-form: vocabulary not bounded; stakeholder/scope names may grow
+    stream: z.string().optional(),
   })
   .superRefine((ref, ctx) => {
     // For non-pending-audio-upload statuses, require a real Drive ID.
@@ -460,6 +462,7 @@ export const ConversationSchema = z.object({
   transcriptId: z.string().optional(),
   snippetIds: z.array(z.string()).optional(),
   audioReference: AudioReferenceSchema.optional(),
+  category: z.enum(["1-on-1", "hr-meeting", "union-meeting"]).optional(),
 });
 
 export const ActionItemSchema = z
