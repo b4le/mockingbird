@@ -2,6 +2,9 @@ import { describe, it, expect, vi } from "vitest";
 import {
   createReporter,
   checkActionBackref,
+  checkCommunicationClaimIds,
+  checkCommunicationConversationIds,
+  checkCommunicationRiskIds,
   checkConversationActionIds,
   checkConversationParticipantIds,
   checkConversationTranscriptId,
@@ -11,8 +14,10 @@ import {
   type SourceBacked,
 } from "@/lib/invariants";
 import type {
+  Claim,
   Communication,
   Conversation,
+  Risk,
   Stakeholder,
   Transcript,
   TranscriptCue,
@@ -26,6 +31,7 @@ function makeComm(
   id: string,
   actionItemIds: string[] = [],
   evidenceIds: string[] = [],
+  overrides: Partial<Communication> = {},
 ): Communication {
   return {
     id,
@@ -40,6 +46,34 @@ function makeComm(
     evidenceIds,
     riskIds: [],
     conversationIds: [],
+    ...overrides,
+  };
+}
+
+function makeClaim(id: string): Claim {
+  return {
+    id,
+    assertion: "a",
+    category: "c",
+    status: "unverified",
+    evidenceIds: [],
+    raisedById: "s1",
+    date: "2024-01-01",
+  };
+}
+
+function makeRisk(id: string): Risk {
+  return {
+    id,
+    title: "t",
+    description: "d",
+    status: "open",
+    severity: "medium",
+    likelihood: "medium",
+    mitigationPlan: "m",
+    actionIds: [],
+    createdDate: null,
+    updatedDate: null,
   };
 }
 
@@ -457,5 +491,139 @@ describe("checkTranscriptSpeakers", () => {
     expect(msgs[0]).toContain("t-1");
     expect(msgs[0]).toContain("participantIds");
     expect(msgs[0]).toContain("s-missing");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkCommunicationClaimIds
+// ---------------------------------------------------------------------------
+
+describe("checkCommunicationClaimIds", () => {
+  it("happy path — every comm.claimIds id resolves to a claim", () => {
+    const comm = makeComm("comm-1", [], [], { claimIds: ["c1", "c2"] });
+    const msgs: string[] = [];
+    checkCommunicationClaimIds(
+      (m) => msgs.push(m),
+      [comm],
+      [makeClaim("c1"), makeClaim("c2")],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — comm.claimIds includes an id with no matching claim", () => {
+    const comm = makeComm("comm-1", [], [], {
+      claimIds: ["c1", "c-missing"],
+    });
+    const msgs: string[] = [];
+    checkCommunicationClaimIds(
+      (m) => msgs.push(m),
+      [comm],
+      [makeClaim("c1")],
+    );
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("comm-1");
+    expect(msgs[0]).toContain("c-missing");
+  });
+
+  it("drift — multiple missing claim ids on one communication produce multiple reports", () => {
+    const comm = makeComm("comm-1", [], [], {
+      claimIds: ["c-missing-1", "c-missing-2"],
+    });
+    const msgs: string[] = [];
+    checkCommunicationClaimIds((m) => msgs.push(m), [comm], []);
+    expect(msgs).toHaveLength(2);
+    expect(msgs[0]).toContain("c-missing-1");
+    expect(msgs[1]).toContain("c-missing-2");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkCommunicationRiskIds
+// ---------------------------------------------------------------------------
+
+describe("checkCommunicationRiskIds", () => {
+  it("happy path — every comm.riskIds id resolves to a risk", () => {
+    const comm = makeComm("comm-1", [], [], { riskIds: ["r1", "r2"] });
+    const msgs: string[] = [];
+    checkCommunicationRiskIds(
+      (m) => msgs.push(m),
+      [comm],
+      [makeRisk("r1"), makeRisk("r2")],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — comm.riskIds includes an id with no matching risk", () => {
+    const comm = makeComm("comm-1", [], [], {
+      riskIds: ["r1", "r-missing"],
+    });
+    const msgs: string[] = [];
+    checkCommunicationRiskIds(
+      (m) => msgs.push(m),
+      [comm],
+      [makeRisk("r1")],
+    );
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("comm-1");
+    expect(msgs[0]).toContain("r-missing");
+  });
+
+  it("drift — multiple missing risk ids on one communication produce multiple reports", () => {
+    const comm = makeComm("comm-1", [], [], {
+      riskIds: ["r-missing-1", "r-missing-2"],
+    });
+    const msgs: string[] = [];
+    checkCommunicationRiskIds((m) => msgs.push(m), [comm], []);
+    expect(msgs).toHaveLength(2);
+    expect(msgs[0]).toContain("r-missing-1");
+    expect(msgs[1]).toContain("r-missing-2");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkCommunicationConversationIds
+// ---------------------------------------------------------------------------
+
+describe("checkCommunicationConversationIds", () => {
+  it("happy path — every comm.conversationIds id resolves to a conversation", () => {
+    const comm = makeComm("comm-1", [], [], {
+      conversationIds: ["conv-1", "conv-2"],
+    });
+    const msgs: string[] = [];
+    checkCommunicationConversationIds(
+      (m) => msgs.push(m),
+      [comm],
+      [makeConv("conv-1"), makeConv("conv-2")],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — comm.conversationIds includes an id with no matching conversation", () => {
+    const comm = makeComm("comm-1", [], [], {
+      conversationIds: ["conv-1", "conv-missing"],
+    });
+    const msgs: string[] = [];
+    checkCommunicationConversationIds(
+      (m) => msgs.push(m),
+      [comm],
+      [makeConv("conv-1")],
+    );
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("comm-1");
+    expect(msgs[0]).toContain("conv-missing");
+  });
+
+  it("drift — multiple missing conversation ids on one communication produce multiple reports", () => {
+    const comm = makeComm("comm-1", [], [], {
+      conversationIds: ["conv-missing-1", "conv-missing-2"],
+    });
+    const msgs: string[] = [];
+    checkCommunicationConversationIds((m) => msgs.push(m), [comm], []);
+    expect(msgs).toHaveLength(2);
+    expect(msgs[0]).toContain("conv-missing-1");
+    expect(msgs[1]).toContain("conv-missing-2");
   });
 });
