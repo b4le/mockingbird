@@ -8,6 +8,7 @@ import {
   checkCommunicationRiskIds,
   checkConversationActionIds,
   checkConversationParticipantIds,
+  checkConversationSnippetIds,
   checkConversationTranscriptId,
   checkEvidenceBackref,
   checkRiskActionIds,
@@ -357,6 +358,42 @@ describe("checkConversationActionIds", () => {
 // ---------------------------------------------------------------------------
 // checkConversationParticipantIds
 // ---------------------------------------------------------------------------
+
+describe("checkConversationSnippetIds", () => {
+  it("happy path — all linked snippet ids resolve", () => {
+    const conv = makeConv("conv-1", [], [], { snippetIds: ["snip-1"] });
+    const msgs: string[] = [];
+    checkConversationSnippetIds(
+      (m) => msgs.push(m),
+      [conv],
+      [{ id: "snip-1" }],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — snippetIds contains a missing snippet id", () => {
+    const conv = makeConv("conv-1", [], [], {
+      snippetIds: ["snip-1", "snip-missing"],
+    });
+    const msgs: string[] = [];
+    checkConversationSnippetIds(
+      (m) => msgs.push(m),
+      [conv],
+      [{ id: "snip-1" }],
+    );
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("missing snippet snip-missing");
+  });
+
+  it("no-op — snippetIds undefined (optional-array exception)", () => {
+    const conv = makeConv("conv-1");
+    expect(conv.snippetIds).toBeUndefined();
+    const msgs: string[] = [];
+    checkConversationSnippetIds((m) => msgs.push(m), [conv], []);
+    expect(msgs).toHaveLength(0);
+  });
+});
 
 describe("checkConversationParticipantIds", () => {
   it("happy path — every conv.participantIds id resolves to a stakeholder", () => {

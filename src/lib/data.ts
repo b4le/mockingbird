@@ -39,6 +39,7 @@ import {
   checkCommunicationRiskIds,
   checkConversationActionIds,
   checkConversationParticipantIds,
+  checkConversationSnippetIds,
   checkConversationTranscriptId,
   checkEvidenceBackref,
   checkRiskActionIds,
@@ -303,6 +304,7 @@ export async function getProjectBundle(
     communications,
     evidence,
   );
+  checkConversationSnippetIds(reporter.report, conversations, snippets);
   reporter.flush();
   return {
     state,

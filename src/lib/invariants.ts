@@ -90,6 +90,12 @@ import type {
  * field is `.optional()` in `SnippetSchema`. `conversationId` and
  * `communicationId` are `.nullable()` (always present), so the null
  * branch is the skip case rather than a presence guard.
+ *
+ * {@link checkConversationSnippetIds} guards on `conv.snippetIds` because
+ * the field is `.optional()` in `ConversationSchema`. This is the second
+ * optional-array exception (alongside `checkSnippetBackref`'s
+ * `evidenceIds`); all other array-iterating checks above rely on a
+ * REQUIRED schema field and dereference without a presence guard.
  */
 
 // ---------------------------------------------------------------------------
@@ -313,6 +319,46 @@ export function checkConversationActionIds(
       if (!actionIds.has(id)) {
         report(
           `[backref-drift] conversation ${conv.id} references missing action ${id}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Conversation.snippetIds`.
+ *
+ * Every id listed under a conversation's linked snippets must resolve to
+ * a real `Snippet`. Drift here means a snippet was deleted upstream but
+ * the linking conversation was not updated — the snippet card would
+ * silently dead-end in the UI's "linked snippets" list with no warning.
+ * The complementary one-directional check (`snippet.conversationId`
+ * resolves to a real Conversation) lives in {@link checkSnippetBackref};
+ * this is the inbound counterpart and catches a different class of drift.
+ *
+ * Schema coupling: `Conversation.snippetIds` is `.optional()` in
+ * `ConversationSchema`, so this is the optional-array companion to the
+ * required-array pattern (see {@link checkConversationActionIds} for the
+ * required-array variant). Absence is the skip case (not a violation);
+ * presence is narrowed before iteration via the explicit guard.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkConversationSnippetIds(
+  report: (msg: string) => void,
+  conversations: Conversation[],
+  snippets: { id: string }[],
+): void {
+  const snippetIds = new Set(snippets.map((s) => s.id));
+  for (const conv of conversations) {
+    // Schema coupling: `conv.snippetIds` is OPTIONAL in ConversationSchema —
+    // explicit presence guard required (unlike the required-array checks).
+    if (!conv.snippetIds) continue;
+    for (const id of conv.snippetIds) {
+      if (!snippetIds.has(id)) {
+        report(
+          `[backref-drift] conversation ${conv.id} references missing snippet ${id}`,
         );
       }
     }
