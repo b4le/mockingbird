@@ -11,6 +11,7 @@ import {
   checkConversationTranscriptId,
   checkEvidenceBackref,
   checkRiskActionIds,
+  checkSnippetBackref,
   checkTimelineLinkedEntity,
   checkTranscriptConversationId,
   checkTranscriptSpeakers,
@@ -21,6 +22,7 @@ import type {
   Communication,
   Conversation,
   Risk,
+  Snippet,
   Stakeholder,
   TimelineEvent,
   Transcript,
@@ -122,6 +124,30 @@ function makeTranscript(
 
 function makeCue(speaker: string, speakerId?: string): TranscriptCue {
   return { startMs: 0, endMs: 1000, speaker, speakerId, text: "..." };
+}
+
+function makeSnippet(
+  id: string,
+  overrides: Partial<Snippet> = {},
+): Snippet {
+  return {
+    id,
+    clipId: "clip-x",
+    category: "top-20",
+    sourceFile: "src.md",
+    audioFile: "a.m4a",
+    startSeconds: 0,
+    endSeconds: 1,
+    durationSeconds: 1,
+    speaker: "spk",
+    transcript: "t",
+    whatYoullHear: "w",
+    top20Rank: null,
+    exhibitMapping: [],
+    conversationId: null,
+    communicationId: null,
+    ...overrides,
+  };
 }
 
 function makeStakeholder(id: string): Stakeholder {
@@ -761,5 +787,81 @@ describe("checkTimelineLinkedEntity", () => {
     expect(msgs).toHaveLength(1);
     expect(msgs[0]).toMatch(/backref-drift/);
     expect(msgs[0]).toContain("missing risk risk-missing");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkSnippetBackref
+// ---------------------------------------------------------------------------
+
+describe("checkSnippetBackref", () => {
+  it("happy path — all three link kinds resolve", () => {
+    const snippet = makeSnippet("snip-1", {
+      conversationId: "conv-1",
+      communicationId: "comm-1",
+      evidenceIds: ["ev-1"],
+    });
+    const msgs: string[] = [];
+    checkSnippetBackref(
+      (m) => msgs.push(m),
+      [snippet],
+      [makeConv("conv-1")],
+      [makeComm("comm-1")],
+      [{ id: "ev-1" }],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — conversationId references missing conversation", () => {
+    const snippet = makeSnippet("snip-1", { conversationId: "conv-missing" });
+    const msgs: string[] = [];
+    checkSnippetBackref((m) => msgs.push(m), [snippet], [], [], []);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("missing conversation conv-missing");
+  });
+
+  it("drift — communicationId references missing communication", () => {
+    const snippet = makeSnippet("snip-1", { communicationId: "comm-missing" });
+    const msgs: string[] = [];
+    checkSnippetBackref((m) => msgs.push(m), [snippet], [], [], []);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("missing communication comm-missing");
+  });
+
+  it("drift — evidenceIds contains a missing evidence id", () => {
+    const snippet = makeSnippet("snip-1", {
+      evidenceIds: ["ev-1", "ev-missing"],
+    });
+    const msgs: string[] = [];
+    checkSnippetBackref(
+      (m) => msgs.push(m),
+      [snippet],
+      [],
+      [],
+      [{ id: "ev-1" }],
+    );
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("missing evidence ev-missing");
+  });
+
+  it("no-op — evidenceIds undefined (optional-array exception)", () => {
+    const snippet = makeSnippet("snip-1");
+    expect(snippet.evidenceIds).toBeUndefined();
+    const msgs: string[] = [];
+    checkSnippetBackref((m) => msgs.push(m), [snippet], [], [], []);
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("no-op — both conversationId and communicationId null", () => {
+    const snippet = makeSnippet("snip-1", {
+      conversationId: null,
+      communicationId: null,
+    });
+    const msgs: string[] = [];
+    checkSnippetBackref((m) => msgs.push(m), [snippet], [], [], []);
+    expect(msgs).toHaveLength(0);
   });
 });
