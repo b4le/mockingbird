@@ -301,13 +301,12 @@ export const StakeholderSchema = z.object({
 // `z.lazy` forward refs) and keeps the bidirectional `_AssertX` drift
 // checks at the bottom of the file strict.
 //
-// `Transcript` is now fully wired: loaded by `getTranscripts` in
+// `Transcript` is fully wired: loaded by `getTranscripts` in
 // `src/lib/data.ts` and policed by `checkConversationTranscriptId`,
 // `checkTranscriptConversationId`, and `checkTranscriptSpeakers` in
-// `src/lib/invariants.ts`. `Snippet` is still NOT wired — when a
-// `getSnippets` loader is added, add the corresponding
-// `checkSnippetBackref` invariant alongside the transcript ones (see
-// AGENTS.md for the pattern). See
+// `src/lib/invariants.ts`. `Snippet` is also fully wired: loaded by
+// `getSnippets` and policed by `checkSnippetBackref` (snippet → parent)
+// plus `checkConversationSnippetIds` (parent → snippet). See
 // `docs/mockingbird-zod-audio-reference-spec.md` §4 for the
 // `AudioReference` shape rationale.
 // ---------------------------------------------------------------------------
@@ -411,13 +410,13 @@ export const TranscriptSchema = z.object({
 });
 
 /**
- * Schema is exported but NOT yet wired to a loader. The companion
- * loader `getSnippets` and invariant `checkSnippetBackref` are being
- * added in a separate packet (M2 of this session). The upstream drift
- * (atticus-finch #71 — snippet shape + linkage reconciliation) is now
- * resolved: the exporter emits `exhibitMapping` correctly and snippet
- * `conversationId` values match real `Conversation.id`. The issue
- * should be closed once this comment lands.
+ * Schema is fully wired: loaded by `getSnippets` in `src/lib/data.ts`
+ * and policed by `checkSnippetBackref` (snippet → parent: conversation,
+ * communication, evidence) and `checkConversationSnippetIds` (parent →
+ * snippet). The upstream drift (atticus-finch #71 — snippet shape +
+ * linkage reconciliation) is resolved: the exporter emits
+ * `exhibitMapping` correctly and snippet `conversationId` values match
+ * real `Conversation.id`.
  */
 export const SnippetSchema = z.object({
   id: z.string(),
