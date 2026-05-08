@@ -31,6 +31,7 @@ import {
 } from "@/lib/schemas";
 import {
   checkActionBackref,
+  checkClaimEvidenceIds,
   checkCommunicationClaimIds,
   checkCommunicationConversationIds,
   checkCommunicationRiskIds,
@@ -38,6 +39,8 @@ import {
   checkConversationParticipantIds,
   checkConversationTranscriptId,
   checkEvidenceBackref,
+  checkRiskActionIds,
+  checkTimelineLinkedEntity,
   checkTranscriptConversationId,
   checkTranscriptSpeakers,
   createReporter,
@@ -257,6 +260,15 @@ export async function getProjectBundle(
   checkConversationTranscriptId(reporter.report, conversations, transcripts);
   checkTranscriptConversationId(reporter.report, transcripts, conversations);
   checkTranscriptSpeakers(reporter.report, transcripts, stakeholders);
+  checkRiskActionIds(reporter.report, risks, actions);
+  checkClaimEvidenceIds(reporter.report, claims, evidence);
+  checkTimelineLinkedEntity(reporter.report, timeline, {
+    conversations,
+    communications,
+    actions,
+    risks,
+    claims,
+  });
   reporter.flush();
   return {
     state,

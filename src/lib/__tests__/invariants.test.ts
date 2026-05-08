@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import {
   createReporter,
   checkActionBackref,
+  checkClaimEvidenceIds,
   checkCommunicationClaimIds,
   checkCommunicationConversationIds,
   checkCommunicationRiskIds,
@@ -9,6 +10,8 @@ import {
   checkConversationParticipantIds,
   checkConversationTranscriptId,
   checkEvidenceBackref,
+  checkRiskActionIds,
+  checkTimelineLinkedEntity,
   checkTranscriptConversationId,
   checkTranscriptSpeakers,
   type SourceBacked,
@@ -19,6 +22,7 @@ import type {
   Conversation,
   Risk,
   Stakeholder,
+  TimelineEvent,
   Transcript,
   TranscriptCue,
 } from "@/types";
@@ -625,5 +629,137 @@ describe("checkCommunicationConversationIds", () => {
     expect(msgs).toHaveLength(2);
     expect(msgs[0]).toContain("conv-missing-1");
     expect(msgs[1]).toContain("conv-missing-2");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkRiskActionIds
+// ---------------------------------------------------------------------------
+
+describe("checkRiskActionIds", () => {
+  it("happy path — every risk.actionIds id resolves to an action", () => {
+    const risk: Risk = { ...makeRisk("r1"), actionIds: ["a1", "a2"] };
+    const msgs: string[] = [];
+    checkRiskActionIds(
+      (m) => msgs.push(m),
+      [risk],
+      [{ id: "a1" }, { id: "a2" }],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — risk.actionIds includes an id with no matching action", () => {
+    const risk: Risk = { ...makeRisk("r1"), actionIds: ["a1", "a-missing"] };
+    const msgs: string[] = [];
+    checkRiskActionIds((m) => msgs.push(m), [risk], [{ id: "a1" }]);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("r1");
+    expect(msgs[0]).toContain("a-missing");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkClaimEvidenceIds
+// ---------------------------------------------------------------------------
+
+describe("checkClaimEvidenceIds", () => {
+  it("happy path — every claim.evidenceIds id resolves to evidence", () => {
+    const claim: Claim = { ...makeClaim("c1"), evidenceIds: ["e1", "e2"] };
+    const msgs: string[] = [];
+    checkClaimEvidenceIds(
+      (m) => msgs.push(m),
+      [claim],
+      [{ id: "e1" }, { id: "e2" }],
+    );
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — claim.evidenceIds includes an id with no matching evidence", () => {
+    const claim: Claim = {
+      ...makeClaim("c1"),
+      evidenceIds: ["e1", "e-missing"],
+    };
+    const msgs: string[] = [];
+    checkClaimEvidenceIds((m) => msgs.push(m), [claim], [{ id: "e1" }]);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("c1");
+    expect(msgs[0]).toContain("e-missing");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// checkTimelineLinkedEntity
+// ---------------------------------------------------------------------------
+
+function makeTimeline(
+  id: string,
+  linkedEntityId: string | null,
+  linkedEntityType: TimelineEvent["linkedEntityType"],
+): TimelineEvent {
+  return {
+    id,
+    date: "2024-01-01",
+    type: "milestone",
+    title: "t",
+    description: "d",
+    stakeholderIds: [],
+    linkedEntityId,
+    linkedEntityType,
+  };
+}
+
+const emptyLookups = {
+  conversations: [] as Conversation[],
+  communications: [] as Communication[],
+  actions: [] as { id: string }[],
+  risks: [] as { id: string }[],
+  claims: [] as { id: string }[],
+};
+
+describe("checkTimelineLinkedEntity", () => {
+  it("no-op — both fields null", () => {
+    const event = makeTimeline("t1", null, null);
+    const msgs: string[] = [];
+    checkTimelineLinkedEntity((m) => msgs.push(m), [event], emptyLookups);
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("happy path — both set, target exists", () => {
+    const event = makeTimeline("t1", "conv-1", "conversation");
+    const msgs: string[] = [];
+    checkTimelineLinkedEntity((m) => msgs.push(m), [event], {
+      ...emptyLookups,
+      conversations: [makeConv("conv-1")],
+    });
+    expect(msgs).toHaveLength(0);
+  });
+
+  it("drift — half-pointer with id but null type", () => {
+    const event = makeTimeline("t1", "conv-1", null);
+    const msgs: string[] = [];
+    checkTimelineLinkedEntity((m) => msgs.push(m), [event], emptyLookups);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("mismatched");
+    expect(msgs[0]).toContain("t1");
+  });
+
+  it("drift — half-pointer with type but null id", () => {
+    const event = makeTimeline("t1", null, "conversation");
+    const msgs: string[] = [];
+    checkTimelineLinkedEntity((m) => msgs.push(m), [event], emptyLookups);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toContain("mismatched");
+  });
+
+  it("drift — both set but target does not exist in named collection", () => {
+    const event = makeTimeline("t1", "risk-missing", "risk");
+    const msgs: string[] = [];
+    checkTimelineLinkedEntity((m) => msgs.push(m), [event], emptyLookups);
+    expect(msgs).toHaveLength(1);
+    expect(msgs[0]).toMatch(/backref-drift/);
+    expect(msgs[0]).toContain("missing risk risk-missing");
   });
 });
