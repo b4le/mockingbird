@@ -18,14 +18,14 @@ Each decision was made with two constraints in mind: (1) do not silently break r
 
 `SnippetSchema` (`src/lib/schemas.ts`) and the `Snippet` interface (`src/types/index.ts`) are defined but have no loader in `src/lib/data.ts` (no `getSnippets` export) and no non-test component imports them. `Conversation.snippetIds` (`src/types/index.ts:217`) is a dangling forward-reference.
 
-`data/local/snippets.json` currently contains 1 record. Post this PR's addition of `date: z.string().nullable().optional()` to `SnippetSchema`, the schema now accepts the on-disk shape. The blocker for wiring is `conversationId` linkage drift: the single record has `"conversationId": null`, and any real records produced by the exporter will carry exporter-generated UUIDs (e.g. `"conversation-bf3bd223-..."`) that do not appear in `Conversation.id` (local dataset uses a single record with id `"conv-hr-20260315-6bd442"`). Wiring would fail any future `checkSnippetBackref` invariant on real exported data.
+`data/local/snippets.json` currently contains 30 records emitted by the atticus-finch exporter. Post this PR's addition of `date: NullableIsoDateSchema.optional()` to `SnippetSchema`, the schema now accepts the on-disk shape. The blocker for wiring is `conversationId` linkage drift: every record carries an exporter-generated UUID (e.g. `"conversation-bf3bd223-..."`) that does not appear in `Conversation.id` (local dataset uses a single record with id `"conv-hr-20260315-6bd442"`). Wiring would fail any future `checkSnippetBackref` invariant on real exported data.
 
 Wiring a loader against the current misaligned linkage would either fail `loadValidated` at startup or produce silently unverified cross-collection joins. Neither outcome is acceptable.
 
 **This PR:**
 
-- Add `date: z.string().nullable().optional()` to `SnippetSchema` to align with the JSON field present on disk.
-- Add JSDoc to `SnippetSchema` and `Snippet` explaining why the loader is deferred: schema/data drift is not yet resolved, and `conversationId` linkage semantics are undefined (`conversationId` is `null` in all current records, so no join is possible).
+- Add `date: NullableIsoDateSchema.optional()` to `SnippetSchema` to align with the JSON field present on disk.
+- Add JSDoc to `SnippetSchema` and `Snippet` explaining why the loader is deferred: schema/data drift is not yet resolved, and `conversationId` values are exporter-generated UUIDs that do not match any `Conversation.id` in the local dataset, so no join is possible.
 - No loader, no invariant wiring.
 
 **Follow-up:**

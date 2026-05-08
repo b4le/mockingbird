@@ -412,11 +412,10 @@ export const TranscriptSchema = z.object({
  * Schema is exported but NOT wired to a loader.
  *
  * Two layers of drift block wiring today:
- * 1. `data/local/snippets.json` records carry `conversationId` values that
- *    do not match `Conversation.id` in the same project (the loaded record
- *    has `conversationId: null`; older fixtures had exporter-generated UUIDs
- *    like `conversation-bf3bd223-...`). Either way, no join is currently
- *    safe.
+ * 1. `data/local/snippets.json` records carry exporter-generated
+ *    `conversationId` values (e.g. `conversation-bf3bd223-...`) that do
+ *    not match any `Conversation.id` in the same project. No join is
+ *    currently safe.
  * 2. The on-disk shape and this schema are not yet aligned — JSON records
  *    carry `exhibitIds`/`claimIds` keys absent from the schema, while
  *    `exhibitMapping` (required here) is absent from the JSON. Until the
@@ -435,7 +434,7 @@ export const SnippetSchema = z.object({
   startSeconds: z.number(),
   endSeconds: z.number(),
   durationSeconds: z.number(),
-  date: z.string().nullable().optional(),
+  date: NullableIsoDateSchema.optional(),
   speaker: z.string(),
   transcript: z.string(),
   whatYoullHear: z.string(),
@@ -461,8 +460,9 @@ export const ConversationSchema = z.object({
   actionItemIds: z.array(z.string()),
   medium: MediumSchema.optional(),
   /**
-   * Legacy back-compat fallback. Prefer `transcriptId` joining a Transcript
-   * row. Will be removed once all data uses `transcriptId`.
+   * @deprecated — legacy back-compat fallback. Prefer `transcriptId`
+   * joining a Transcript row. Will be removed once all data uses
+   * `transcriptId`.
    */
   transcript: z.string().optional(),
   transcriptId: z.string().optional(),

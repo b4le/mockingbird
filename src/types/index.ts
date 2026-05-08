@@ -209,8 +209,9 @@ export interface Conversation {
   actionItemIds: string[];
   medium?: 'in-person' | 'video-call' | 'phone-call';
   /**
-   * Legacy back-compat fallback. Prefer `transcriptId` joining a Transcript
-   * row. Will be removed once all data uses `transcriptId`.
+   * @deprecated — legacy back-compat fallback. Prefer `transcriptId`
+   * joining a Transcript row. Will be removed once all data uses
+   * `transcriptId`.
    */
   transcript?: string;
   transcriptId?: string;
