@@ -7,6 +7,7 @@ import { StakeholderDetailDialog } from "@/components/shared/StakeholderDetailDi
 import { EmptyState } from "@/components/shared/EmptyState";
 import { parseDate } from "@/lib/dates";
 import { buildStakeholderMap } from "@/lib/stakeholders";
+import { buildTranscriptByConversationId } from "@/lib/audio-reference";
 import type {
   TimelineEvent,
   TimelineEventType,
@@ -51,13 +52,10 @@ export function TimelinePageClient({
     [stakeholders]
   );
 
-  const transcriptByConversationId = useMemo(() => {
-    const map = new Map<string, Transcript>();
-    for (const t of transcripts) {
-      if (t.conversationId) map.set(t.conversationId, t);
-    }
-    return map;
-  }, [transcripts]);
+  const transcriptByConversationId = useMemo(
+    () => buildTranscriptByConversationId(transcripts),
+    [transcripts],
+  );
 
   const filtered = useMemo(() => {
     let result = [...events].sort(

@@ -396,7 +396,7 @@ export function CommunicationDetail({
                     {linkedConversations.map((c) => {
                       const audioReference = resolveAudioReference(
                         c,
-                        transcriptByConversationId.get(c.id) ?? null,
+                        transcriptByConversationId.get(c.id),
                       );
                       return (
                         <li key={c.id} className="flex flex-col gap-1.5">

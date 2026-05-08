@@ -1,5 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { resolveAudioReference } from "@/lib/audio-reference";
+import {
+  buildTranscriptByConversationId,
+  resolveAudioReference,
+} from "@/lib/audio-reference";
 import type { AudioReference, Conversation, Transcript } from "@/types";
 
 const audioA: AudioReference = {
@@ -76,5 +79,28 @@ describe("resolveAudioReference", () => {
     const transcript = makeTranscript(undefined);
     expect(resolveAudioReference(conversation, transcript)).toBeUndefined();
     expect(resolveAudioReference(conversation, null)).toBeUndefined();
+  });
+
+  it("treats `undefined` and `null` transcript identically (Map.get convenience)", () => {
+    const conversation = makeConversation(audioA);
+    expect(resolveAudioReference(conversation, undefined)).toBe(audioA);
+    expect(resolveAudioReference(conversation, null)).toBe(audioA);
+  });
+});
+
+describe("buildTranscriptByConversationId", () => {
+  it("indexes transcripts by conversationId", () => {
+    const t1: Transcript = { ...makeTranscript(undefined), id: "t1", conversationId: "c1" };
+    const t2: Transcript = { ...makeTranscript(undefined), id: "t2", conversationId: "c2" };
+    const map = buildTranscriptByConversationId([t1, t2]);
+    expect(map.get("c1")).toBe(t1);
+    expect(map.get("c2")).toBe(t2);
+    expect(map.size).toBe(2);
+  });
+
+  it("skips transcripts whose conversationId is null", () => {
+    const orphan: Transcript = { ...makeTranscript(undefined), id: "orphan", conversationId: null };
+    const map = buildTranscriptByConversationId([orphan]);
+    expect(map.size).toBe(0);
   });
 });

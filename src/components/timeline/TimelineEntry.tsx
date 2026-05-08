@@ -55,7 +55,7 @@ export function TimelineEntry({
   const linkedConversationAudio = linkedConversation
     ? resolveAudioReference(
         linkedConversation,
-        transcriptByConversationId.get(linkedConversation.id) ?? null,
+        transcriptByConversationId.get(linkedConversation.id),
       )
     : undefined;
   const isExpandable = Boolean(linkedConversation || linkedCommunication);

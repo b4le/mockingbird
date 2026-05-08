@@ -11,6 +11,7 @@ import { CommunicationsFilters } from "./CommunicationsFilters";
 import { CommunicationDetail } from "./CommunicationDetail";
 import { buildStakeholderMap } from "@/lib/stakeholders";
 import { resolveIds } from "@/lib/collections";
+import { buildTranscriptByConversationId } from "@/lib/audio-reference";
 import { parseDate } from "@/lib/dates";
 import {
   COMMUNICATION_CHANNEL_ICONS,
@@ -83,13 +84,10 @@ export function CommunicationsPageClient({
     () => new Map(risks.map((r) => [r.id, r])),
     [risks],
   );
-  const transcriptByConversationId = useMemo(() => {
-    const map = new Map<string, Transcript>();
-    for (const t of transcripts) {
-      if (t.conversationId) map.set(t.conversationId, t);
-    }
-    return map;
-  }, [transcripts]);
+  const transcriptByConversationId = useMemo(
+    () => buildTranscriptByConversationId(transcripts),
+    [transcripts],
+  );
 
   const filtered = useMemo(() => {
     let result = [...communications].sort(

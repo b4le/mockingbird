@@ -7,13 +7,36 @@ import type { AudioReference, Conversation, Transcript } from "@/types";
  * audio-only or legacy rows. See `Conversation.audioReference` and
  * `Transcript.audioReference` JSDoc for the policy this encodes.
  *
- * Pure: no I/O, no logging, no allocation. Consumers should call this
- * instead of reaching into either field directly so the policy can change
- * (e.g. when atticus-finch#70 stops dual-emitting) without UI churn.
+ * The `transcript` argument accepts both `null` (explicit "no transcript
+ * for this conversation") and `undefined` (the natural return of
+ * `Map.get`) so call sites don't need a `?? null` coercion.
+ *
+ * Pure: relies only on its arguments and returns a reference; no I/O.
+ * Consumers should call this instead of reaching into either field
+ * directly so the policy can change (e.g. when atticus-finch#70 stops
+ * dual-emitting) without UI churn.
  */
 export function resolveAudioReference(
   conversation: Conversation,
-  transcript: Transcript | null,
+  transcript: Transcript | null | undefined,
 ): AudioReference | undefined {
   return transcript?.audioReference ?? conversation.audioReference;
+}
+
+/**
+ * Build a lookup of `conversationId -> Transcript` from a flat
+ * `Transcript[]`. Skips rows whose `conversationId` is null (a
+ * Transcript without a parent conversation cannot resolve audio for
+ * any consumer). Use the result alongside `resolveAudioReference` —
+ * `transcriptByConversationId.get(conv.id)` returns `undefined` for
+ * missing rows, which the selector accepts directly.
+ */
+export function buildTranscriptByConversationId(
+  transcripts: readonly Transcript[],
+): ReadonlyMap<string, Transcript> {
+  const map = new Map<string, Transcript>();
+  for (const t of transcripts) {
+    if (t.conversationId) map.set(t.conversationId, t);
+  }
+  return map;
 }
