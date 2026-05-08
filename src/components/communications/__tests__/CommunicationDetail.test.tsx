@@ -18,6 +18,7 @@ import type {
   EvidenceItem,
   Risk,
   Stakeholder,
+  Transcript,
 } from "@/types";
 
 const stakeholderEbba: Stakeholder = {
@@ -48,6 +49,7 @@ function makeMaps() {
   const claimMap = new Map<string, Claim>();
   const evidenceMap = new Map<string, EvidenceItem>();
   const riskMap = new Map<string, Risk>();
+  const transcriptByConversationId = new Map<string, Transcript>();
   return {
     stakeholderMap,
     conversationMap,
@@ -55,6 +57,7 @@ function makeMaps() {
     claimMap,
     evidenceMap,
     riskMap,
+    transcriptByConversationId,
   };
 }
 

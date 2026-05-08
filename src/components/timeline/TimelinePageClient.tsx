@@ -7,6 +7,7 @@ import { StakeholderDetailDialog } from "@/components/shared/StakeholderDetailDi
 import { EmptyState } from "@/components/shared/EmptyState";
 import { parseDate } from "@/lib/dates";
 import { buildStakeholderMap } from "@/lib/stakeholders";
+import { buildTranscriptByConversationId } from "@/lib/audio-reference";
 import type {
   TimelineEvent,
   TimelineEventType,
@@ -15,6 +16,7 @@ import type {
   Communication,
   ActionItem,
   Claim,
+  Transcript,
 } from "@/types";
 
 interface TimelinePageClientProps {
@@ -24,6 +26,7 @@ interface TimelinePageClientProps {
   communications: Communication[];
   actions: ActionItem[];
   claims: Claim[];
+  transcripts: Transcript[];
 }
 
 export function TimelinePageClient({
@@ -33,6 +36,7 @@ export function TimelinePageClient({
   communications,
   actions,
   claims,
+  transcripts,
 }: TimelinePageClientProps) {
   const [selectedTypes, setSelectedTypes] = useState<Set<TimelineEventType>>(
     new Set()
@@ -46,6 +50,11 @@ export function TimelinePageClient({
   const stakeholderMap = useMemo(
     () => buildStakeholderMap(stakeholders),
     [stakeholders]
+  );
+
+  const transcriptByConversationId = useMemo(
+    () => buildTranscriptByConversationId(transcripts),
+    [transcripts],
   );
 
   const filtered = useMemo(() => {
@@ -107,6 +116,7 @@ export function TimelinePageClient({
                     stakeholderMap={stakeholderMap}
                     conversations={conversations}
                     communications={communications}
+                    transcriptByConversationId={transcriptByConversationId}
                     onStakeholderClick={setDialogStakeholder}
                   />
                 ))}

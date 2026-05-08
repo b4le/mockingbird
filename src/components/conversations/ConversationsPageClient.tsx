@@ -12,6 +12,10 @@ import { ConversationsFilters } from "./ConversationsFilters";
 import { ConversationDetail } from "./ConversationDetail";
 import { buildStakeholderMap } from "@/lib/stakeholders";
 import { resolveIds } from "@/lib/collections";
+import {
+  buildTranscriptByConversationId,
+  resolveAudioReference,
+} from "@/lib/audio-reference";
 import { parseDate } from "@/lib/dates";
 import {
   CONVERSATION_FALLBACK_ICON,
@@ -78,13 +82,10 @@ export function ConversationsPageClient({
     () => new Map(actions.map((a) => [a.id, a])),
     [actions],
   );
-  const transcriptByConversationId = useMemo(() => {
-    const map = new Map<string, Transcript>();
-    for (const t of transcripts) {
-      if (t.conversationId) map.set(t.conversationId, t);
-    }
-    return map;
-  }, [transcripts]);
+  const transcriptByConversationId = useMemo(
+    () => buildTranscriptByConversationId(transcripts),
+    [transcripts],
+  );
 
   const filtered = useMemo(() => {
     let result = [...conversations].sort(compareConversationsByDateDesc);
@@ -152,6 +153,10 @@ export function ConversationsPageClient({
               const mediumLabel = conv.medium
                 ? CONVERSATION_MEDIUM_LABELS[conv.medium]
                 : CONVERSATION_FALLBACK_LABEL;
+              const audioReference = resolveAudioReference(
+                conv,
+                transcriptByConversationId.get(conv.id),
+              );
               return (
                 <Card
                   key={conv.id}
@@ -190,7 +195,7 @@ export function ConversationsPageClient({
                           <span className="text-xs text-muted-foreground">
                             <DateDisplay date={conv.date} />
                           </span>
-                          {conv.audioReference && <AudioReferenceIndicator />}
+                          {audioReference && <AudioReferenceIndicator />}
                         </div>
                       </div>
                     </div>

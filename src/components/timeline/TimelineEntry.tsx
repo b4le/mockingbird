@@ -6,6 +6,7 @@ import { StakeholderAvatar } from "@/components/shared/StakeholderAvatar";
 import { DateDisplay } from "@/components/shared/DateDisplay";
 import { AudioReferencePlayer } from "@/components/shared/AudioReferencePlayer";
 import { AudioReferenceIndicator } from "@/components/shared/AudioReferenceIndicator";
+import { resolveAudioReference } from "@/lib/audio-reference";
 import {
   COMMUNICATION_CHANNEL_LABELS,
   TIMELINE_TYPE_ICONS,
@@ -16,6 +17,7 @@ import type {
   Stakeholder,
   Conversation,
   Communication,
+  Transcript,
 } from "@/types";
 
 interface TimelineEntryProps {
@@ -23,6 +25,7 @@ interface TimelineEntryProps {
   stakeholderMap: Map<string, Stakeholder>;
   conversations: Conversation[];
   communications: Communication[];
+  transcriptByConversationId: ReadonlyMap<string, Transcript>;
   onStakeholderClick: (s: Stakeholder) => void;
 }
 
@@ -31,6 +34,7 @@ export function TimelineEntry({
   stakeholderMap,
   conversations,
   communications,
+  transcriptByConversationId,
   onStakeholderClick,
 }: TimelineEntryProps) {
   const [expanded, setExpanded] = useState(false);
@@ -48,6 +52,12 @@ export function TimelineEntry({
   const linkedCommunication = isCommunication
     ? communications.find((c) => c.id === event.linkedEntityId)
     : null;
+  const linkedConversationAudio = linkedConversation
+    ? resolveAudioReference(
+        linkedConversation,
+        transcriptByConversationId.get(linkedConversation.id),
+      )
+    : undefined;
   const isExpandable = Boolean(linkedConversation || linkedCommunication);
 
   return (
@@ -115,16 +125,16 @@ export function TimelineEntry({
            * before the user expands. Hidden once expanded — the
            * player itself takes over the affordance.
            */}
-          {!expanded && linkedConversation?.audioReference && (
+          {!expanded && linkedConversationAudio && (
             <AudioReferenceIndicator />
           )}
         </div>
         {expanded && linkedConversation && (
           <div className="mt-3 rounded-lg border bg-muted/30 p-3 text-sm">
-            {linkedConversation.audioReference && (
+            {linkedConversationAudio && (
               <div className="mb-3">
                 <AudioReferencePlayer
-                  audioReference={linkedConversation.audioReference}
+                  audioReference={linkedConversationAudio}
                 />
               </div>
             )}

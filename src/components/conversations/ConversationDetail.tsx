@@ -16,6 +16,7 @@ import {
 import { TranscriptPanel } from "./transcript";
 import { buildSpeakerStakeholderMap } from "./transcript/speaker-resolution";
 import { resolveIds } from "@/lib/collections";
+import { resolveAudioReference } from "@/lib/audio-reference";
 import {
   CONVERSATION_FALLBACK_ICON,
   CONVERSATION_FALLBACK_LABEL,
@@ -50,6 +51,7 @@ export function ConversationDetail({
 }: ConversationDetailProps) {
   const participants = resolveIds(conversation.participantIds, stakeholderMap);
   const linkedActions = resolveIds(conversation.actionItemIds, actionMap);
+  const audioReference = resolveAudioReference(conversation, transcript);
 
   const mediumIcon = conversation.medium
     ? CONVERSATION_MEDIUM_ICONS[conversation.medium]
@@ -99,7 +101,7 @@ export function ConversationDetail({
             </div>
           </div>
 
-          {conversation.audioReference && (
+          {audioReference && (
             // On <md (mobile), the audio player sticks to the top of the
             // detail panel scroll container so it stays in reach while the
             // user scrolls through transcript cues. Desktop keeps the
@@ -109,7 +111,7 @@ export function ConversationDetail({
             // Mobile section). If observed, fall back to a fixed mini-player.
             <div className="sticky top-0 z-10 -mx-4 bg-background px-4 pb-2 pt-1 md:static md:mx-0 md:px-0 md:py-0">
               <AudioReferencePlayer
-                audioReference={conversation.audioReference}
+                audioReference={audioReference}
                 variant="full"
               />
             </div>

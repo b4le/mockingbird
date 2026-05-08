@@ -11,6 +11,7 @@ import { CommunicationsFilters } from "./CommunicationsFilters";
 import { CommunicationDetail } from "./CommunicationDetail";
 import { buildStakeholderMap } from "@/lib/stakeholders";
 import { resolveIds } from "@/lib/collections";
+import { buildTranscriptByConversationId } from "@/lib/audio-reference";
 import { parseDate } from "@/lib/dates";
 import {
   COMMUNICATION_CHANNEL_ICONS,
@@ -25,6 +26,7 @@ import type {
   EvidenceItem,
   Risk,
   Stakeholder,
+  Transcript,
 } from "@/types";
 
 interface CommunicationsPageClientProps {
@@ -35,6 +37,7 @@ interface CommunicationsPageClientProps {
   claims: Claim[];
   evidence: EvidenceItem[];
   risks: Risk[];
+  transcripts: Transcript[];
 }
 
 export function CommunicationsPageClient({
@@ -45,6 +48,7 @@ export function CommunicationsPageClient({
   claims,
   evidence,
   risks,
+  transcripts,
 }: CommunicationsPageClientProps) {
   const [selectedChannel, setSelectedChannel] =
     useState<CommunicationChannel | null>(null);
@@ -79,6 +83,10 @@ export function CommunicationsPageClient({
   const riskMap = useMemo(
     () => new Map(risks.map((r) => [r.id, r])),
     [risks],
+  );
+  const transcriptByConversationId = useMemo(
+    () => buildTranscriptByConversationId(transcripts),
+    [transcripts],
   );
 
   const filtered = useMemo(() => {
@@ -216,6 +224,7 @@ export function CommunicationsPageClient({
                 claimMap={claimMap}
                 evidenceMap={evidenceMap}
                 riskMap={riskMap}
+                transcriptByConversationId={transcriptByConversationId}
                 onStakeholderClick={setDialogStakeholder}
               />
             ) : (
