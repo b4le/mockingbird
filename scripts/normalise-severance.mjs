@@ -40,18 +40,6 @@ function record(file, kind, count) {
 }
 
 // ---------------------------------------------------------------------------
-// Per-record value mappings
-// ---------------------------------------------------------------------------
-
-// atticus-finch issue: exporter emits ActionItem.status = "open" / "complete"
-// but Mockingbird's ActionStatusSchema accepts only
-// todo|in-progress|blocked|done. Map until the exporter is updated.
-const ACTION_STATUS_MAP = new Map([
-  ["open", "todo"],
-  ["complete", "done"],
-]);
-
-// ---------------------------------------------------------------------------
 // Pass 1: load every collection
 // ---------------------------------------------------------------------------
 
@@ -68,22 +56,6 @@ try {
   transcripts = await readJson("transcripts.json");
 } catch {
   // transcripts.json is optional — Mockingbird handles its absence.
-}
-
-// ---------------------------------------------------------------------------
-// Pass 2: normalise per-record values
-// ---------------------------------------------------------------------------
-
-{
-  let changed = 0;
-  for (const a of actions) {
-    const replacement = ACTION_STATUS_MAP.get(a.status);
-    if (replacement) {
-      a.status = replacement;
-      changed += 1;
-    }
-  }
-  record("actions.json", "status remapped", changed);
 }
 
 // ---------------------------------------------------------------------------
