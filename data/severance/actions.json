@@ -1,0 +1,17 @@
+[
+  {
+    "id": "action-skipped-output-leak",
+    "title": "Leak in skipped output",
+    "description": "Manual entry on a file outputs_to_regen will not include this run.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-10T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [],
+    "sourceEntityId": null,
+    "sourceEntityType": null,
+    "conversationId": null
+  }
+]

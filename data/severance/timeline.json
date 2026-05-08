@@ -1,0 +1,533 @@
+[
+  {
+    "id": "timeline-2021-12-15-81530f",
+    "date": "2021-12-15T00:00:00Z",
+    "type": "milestone",
+    "title": "Ben started at Spotify in December 2021 (~4 years tenure)",
+    "description": "Ben started at Spotify in December 2021 (~4 years tenure)",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2025-11-11-46e49e",
+    "date": "2025-11-11T00:00:00Z",
+    "type": "milestone",
+    "title": "Citizenship application filed 11 November 2025 (case 52056264)",
+    "description": "Citizenship application filed 11 November 2025 (case 52056264). Supplementary evidence (13 documents) submitted and confirmed received 13 February 2026. British citizen, permanent residence since March 2020. Meets current 5-year requirement but NOT new 8-year requirement (reaches 8 years March 2028)",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2025-12-01-752bb7",
+    "date": "2025-12-01T00:00:00Z",
+    "type": "milestone",
+    "title": "All 14 direct reports reassigned to Marqia without notification — Ben still actively managing at time of change",
+    "description": "All 14 direct reports reassigned to Marqia without notification — Ben still actively managing at time of change",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-01-26-b73e40",
+    "date": "2026-01-26T00:00:00Z",
+    "type": "document",
+    "title": "HR separation email thread: 26 Jan – 25 Feb 2026",
+    "description": "HR separation email thread: 26 Jan – 25 Feb 2026",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-01-26-6b1af2",
+    "date": "2026-01-26T00:00:00Z",
+    "type": "conversation",
+    "title": "First HR Conversation — Separation Notification",
+    "description": "Ben returned from a 4–5 week absence to a video call with Ebba Krusenstierna, a Spotify Sweden HR generalist he had never previously met. Ebba assumed Ben already knew the news; he did not. She delive",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "linkedEntityId": "conversation-e04bddae-94ab-4e96-b523-bbc7e66e2359",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-01-26-c059ed",
+    "date": "2026-01-26T00:00:00Z",
+    "type": "conversation",
+    "title": "HR Email Exchange — Proposed Mutual Separation Agreement — Jan–Feb 2026 — Summary (Template v1)",
+    "description": "This thread documents the email correspondence between Ben Purslow and Spotify HR (first Ebba Krusenstierna, then Johan Sellgren) regarding a proposed mutual separation agreement initiated by the comp",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren",
+      "stakeholder-ebba"
+    ],
+    "linkedEntityId": "conversation-cf2d8d48-def9-46f1-9252-fe418418bb65",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-01-27-c380bf",
+    "date": "2026-01-27T00:00:00Z",
+    "type": "conversation",
+    "title": "Summary: Union Call with José Manuel",
+    "description": "Summary: Union Call with José Manuel\nKey points from the conversation:\nYou explained your situation: 4 years at Spotify as a Senior Engineering Manager (leading ~40 engineers), given severance notice ",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-jose-manuel"
+    ],
+    "linkedEntityId": "conversation-af5fc9d8-1095-4801-bf3e-97d6fc1e8391",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-01-28-0738d2",
+    "date": "2026-01-28T00:00:00Z",
+    "type": "document",
+    "title": "Union advice email thread: 28 Jan – 17 Feb 2026 (19+ days silence from Unionen)",
+    "description": "Union advice email thread: 28 Jan – 17 Feb 2026 (19+ days silence from Unionen)",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-01-29-ba1599",
+    "date": "2026-01-29T00:00:00Z",
+    "type": "conversation",
+    "title": "Second HR Conversation — \"Not a Redundancy\" Clarification & Initial Positioning",
+    "description": "Ebba explicitly stated that Spotify does not consider this a redundancy — it is a \"leadership decision\" in which \"Adrian, Watanabe, Stephanie, and Barbara have just all agreed that they do not see you",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "linkedEntityId": "conversation-0f9537cb-d470-4694-9b37-cdb3f800b9ed",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-02-a63a04",
+    "date": "2026-02-02T00:00:00Z",
+    "type": "conversation",
+    "title": "Third HR Conversation — Performance Basis Challenge & Redeployment Duty Question",
+    "description": "Ben confronted Ebba with two fundamental challenges: (1) what is the actual basis for the separation decision, and (2) why did HR proceed directly to a mutual separation agreement instead of exploring",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "linkedEntityId": "conversation-65b33afc-fd07-4c49-8c34-eefa79392b1f",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-04-b0ece1",
+    "date": "2026-02-04T00:00:00Z",
+    "type": "conversation",
+    "title": "Fourth HR Conversation — Johan, ADHD Disclosure and Parallel Tracks",
+    "description": "Johan Sellgren took over from Ebba as sole HR contact and spent 79 minutes attempting to navigate Ben toward a mutual separation agreement while unable to articulate a clear legal, performance, or red",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-05-df99ba",
+    "date": "2026-02-05T00:00:00Z",
+    "type": "conversation",
+    "title": "Fourth HR Conversation held 2026-02-05 — strongest single-conversation discrimination evidence",
+    "description": "Fourth HR Conversation held 2026-02-05 — strongest single-conversation discrimination evidence. Johan used 'fatal flaw' twice after ADHD disclosure.",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-02-05-a00511",
+    "date": "2026-02-05T00:00:00Z",
+    "type": "milestone",
+    "title": "Parallel tracks (separation + redeployment) agreed verbally in Fourth HR Conversation 2026-02-05 — still undocumented, n",
+    "description": "Parallel tracks (separation + redeployment) agreed verbally in Fourth HR Conversation 2026-02-05 — still undocumented, needs vigilance email",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-02-05-9672c7",
+    "date": "2026-02-05T00:00:00Z",
+    "type": "milestone",
+    "title": "Ben disclosed citizenship/immigration status to Johan on 2026-02-05",
+    "description": "Ben disclosed citizenship/immigration status to Johan on 2026-02-05. Standing rule: no further disclosure.",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-02-05-48548d",
+    "date": "2026-02-05T00:00:00Z",
+    "type": "milestone",
+    "title": "ADHD disclosed; \"fatal flaw\" response (minutes later)",
+    "description": "ADHD disclosed; \"fatal flaw\" response (minutes later)",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-02-11-b32f9b",
+    "date": "2026-02-11T00:00:00Z",
+    "type": "conversation",
+    "title": "Fifth HR Conversation — Johan's 'I'm confused'/subjective rationale",
+    "description": "Fifth HR Conversation — Johan's 'I'm confused'/subjective rationale",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-02-11-8a6f22",
+    "date": "2026-02-11T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian & Ben Conversation Summary — 11 February 2026",
+    "description": "Adrian & Ben Conversation Summary — 11 February 2026\nContext: Hybrid \"Pub Adrian\" / \"Spotify Adrian\" conversation immediately after the Fifth HR conversation with Johan (same day). The most candid and",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conversation-d738b9e8-5b43-498c-8bb6-0ae6396d6d31",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-11-2e09a7",
+    "date": "2026-02-11T00:00:00Z",
+    "type": "conversation",
+    "title": "Fifth HR Conversation — Subjectivity Admission & Dual-Track Establishment — Summary",
+    "description": "Johan's first substantive conversation as Ben's HRBP produced two critical developments: the most explicit admission yet that the assessment basis is subjective and potentially unresolvable, and the f",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conversation-83edc54e-3404-4b56-981d-c0327d7c1ae4",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-16-7b9190",
+    "date": "2026-02-16T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian and Ben Conversation — 16th Feb (Redeployment Progress & Operational Tension)",
+    "description": "This was a progress update and debrief conversation covering both redeployment tracks and emerging operational problems. The headline is that Adrian has secured approval for a Staff IC engineering rol",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conversation-3c3a6604-e5b3-49d5-8581-1b0ca5a15ede",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-17-2f6f2d",
+    "date": "2026-02-17T00:00:00Z",
+    "type": "document",
+    "title": "Ben forwarded Johan's clause responses (including flat rejections on 3",
+    "description": "Ben forwarded Johan's clause responses (including flat rejections on 3.2/3.3 and dangerous 2.5 competitor clause) to Helena on 17 Feb 2026",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-02-17-273d81",
+    "date": "2026-02-17T00:00:00Z",
+    "type": "conversation",
+    "title": "Check-in with Nico — Record & Analysis",
+    "description": "This was an informal check-in with Nico during a difficult period for both parties. Nico is dealing with a serious knee injury requiring surgery (6+ weeks immobilisation, then surgery, then rehabilita",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-nico-giagnoni"
+    ],
+    "linkedEntityId": "conversation-9083817f-8a0e-4bbf-b80e-394cf8897139",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-18-6eddd9",
+    "date": "2026-02-18T00:00:00Z",
+    "type": "conversation",
+    "title": "Marqia and Ben Conversation — 18th Feb (Replacement Structure Dynamics & CP Blocking Risk)",
+    "description": "This was an emotionally charged but strategically significant 1-on-1 initiated by mutual curiosity about each other's situation. The conversation operated on two levels: a surface-level check-in about",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-marqia-williams"
+    ],
+    "linkedEntityId": "conversation-b637de2d-3c49-4e28-865d-0d516a59c1b2",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-19-b8bfdd",
+    "date": "2026-02-19T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian and Ben Conversation — 19th Feb (Staff IC Doc Incoming, Adrian Departure Confirmed)",
+    "description": "This was a wide-ranging strategic conversation that operated as Adrian's most explicit coaching session to date. The dynamic has shifted from Adrian-as-advocate (\"I'll build the role\") to Adrian-as-ou",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conversation-dc91f505-291b-4b37-b777-1ada290ff2bd",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-20-bb05ec",
+    "date": "2026-02-20T00:00:00Z",
+    "type": "conversation",
+    "title": "Sixth HR Conversation — Johan cited 'stress projection' as perception problem",
+    "description": "Sixth HR Conversation — Johan cited 'stress projection' as perception problem",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-02-20-536aab",
+    "date": "2026-02-20T00:00:00Z",
+    "type": "document",
+    "title": "Staff IC scope document received 20 Feb 2026 from Adrian — lacked salary/equity/contract terms, NOT a valid redeployment",
+    "description": "Staff IC scope document received 20 Feb 2026 from Adrian — lacked salary/equity/contract terms, NOT a valid redeployment offer under LAS § 7",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-02-20-2594db",
+    "date": "2026-02-20T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian and Ben Conversation — 20th Feb (Emotional Check-in, ADHD Discrimination Articulated)",
+    "description": "This was an unplanned emotional check-in, not a strategic conversation. Ben called Adrian feeling stressed and wound up after a day of cognitive dissonance — watching Atelach showcase AI onboarding wo",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conversation-ca46ebd0-241a-47d8-a537-20b5c697f348",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-20-355c8a",
+    "date": "2026-02-20T00:00:00Z",
+    "type": "conversation",
+    "title": "Sixth HR Conversation — IC Channelling, Clause Dismissal & Stress Projection Admission",
+    "description": "Johan pushed three distinct agendas in a conversation framed as a casual check-in before sportlov: (1) dismissing the clause concerns raised by the union as standard and unlikely to change, (2) pushin",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conversation-53fe62ba-57da-4fce-b62d-7375b22ad112",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-23-58eeae",
+    "date": "2026-02-23T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian and Ben Conversation — 23rd Feb (Johan Escalation, T&S Interest, Strategic Disclosure)",
+    "description": "Mixed session: part strategic update, part venting, part coordination. Ben arrived late after dealing with union frustration. The conversation covered Johan's escalating procedural violations, Adrian'",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conversation-fc88ed26-0d53-4923-8958-42b9e339192f",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-03-03-7b96d2",
+    "date": "2026-03-03T00:00:00Z",
+    "type": "conversation",
+    "title": "Seventh HR Conversation held 2026-03-03 with Johan Sellgren — separation agreement withdrawn, IC offer committed with fu",
+    "description": "Seventh HR Conversation held 2026-03-03 with Johan Sellgren — separation agreement withdrawn, IC offer committed with full T&C, five counterparty admissions captured",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-03-03-f80666",
+    "date": "2026-03-03T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian meeting 2026-03-03 — T&S path deferred (Sarah Hoyle declined for now, T&S reorg planned)",
+    "description": "Adrian meeting 2026-03-03 — T&S path deferred (Sarah Hoyle declined for now, T&S reorg planned). Staff IC Supply now sole near-term active path.",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-03-03-742794",
+    "date": "2026-03-03T00:00:00Z",
+    "type": "conversation",
+    "title": "Seventh HR Conversation — Separation Agreement Withdrawal & Redeployment Formalisation",
+    "description": "Johan proposed to withdraw the separation agreement and instead send Ben a formal redeployment offer with complete terms and conditions for the Staff IC role. This is the most significant structural s",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-03-04-0128ec",
+    "date": "2026-03-04T00:00:00Z",
+    "type": "decision",
+    "title": "Session 4 strategic analysis completed 2026-03-04 — Track 1 RESCINDED, 7 new risks (#19-#25), 10 new TODOs",
+    "description": "Session 4 strategic analysis completed 2026-03-04 — Track 1 RESCINDED, 7 new risks (#19-#25), 10 new TODOs",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-03-06-02f652",
+    "date": "2026-03-06T00:00:00Z",
+    "type": "milestone",
+    "title": "Adrian on 10-day leave 2026-03-06 to 2026-03-16",
+    "description": "Adrian on 10-day leave 2026-03-06 to 2026-03-16. Ben not notified in advance. Did not respond to Ben's request to talk on 2026-03-07. Leave coincides exactly with Johan's expected start date for Ben's new role — Adrian absent for entire transition.",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-03-09-6bbe18",
+    "date": "2026-03-09T00:00:00Z",
+    "type": "milestone",
+    "title": "Adrian never completed 'what success looks like in 6 months' framework for Ben's redeployed role",
+    "description": "Adrian never completed 'what success looks like in 6 months' framework for Ben's redeployed role. This was an agreed deliverable. Without it, any role Ben accepts remains subject to the same subjective leadership evaluation that triggered the original separation — a structural vulnerability and pote",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-03-11-c48a00",
+    "date": "2026-03-11T00:00:00Z",
+    "type": "conversation",
+    "title": "Signal Messages -- Peter Toth (Local Unionen Club Chair)",
+    "description": "Accuracy: All messages copied verbatim from Signal Desktop. Truncated messages marked with `*[Read more]*` as they appear in the source. Edits captured with `(edited)` marker only — pre-edit text not ",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-peter-toth"
+    ],
+    "linkedEntityId": "conversation-7ab78d23-8e10-490c-8371-099cc7840888",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-03-25-b3f4fd",
+    "date": "2026-03-25T00:00:00Z",
+    "type": "conversation",
+    "title": "Fourth Adrian Conversation — Amendment Response Strategy & Counsel Concern",
+    "description": "Ben called Adrian to get feedback on a draft email to Johan responding to the 24 Mar email where Johan characterised the amendment as \"just a role change,\" confirmed the comp review is \"now closed,\" a",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conversation-2f9cd0c8-df91-421a-a8c8-435b56418467",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-03-27-b590a5",
+    "date": "2026-03-27T00:00:00Z",
+    "type": "milestone",
+    "title": "MBL consultation initiated (57 days late)",
+    "description": "MBL consultation initiated (57 days late)",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-04-28-c90cc1",
+    "date": "2026-04-28T00:00:00Z",
+    "type": "milestone",
+    "title": "Ben returns from Australia",
+    "description": "Ben returns from Australia",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-04-29-86d912",
+    "date": "2026-04-29T00:00:00Z",
+    "type": "conversation",
+    "title": "Analysis -- Peter Toth Signal Conversation (Local Unionen)",
+    "description": "Signal messages between Ben and Peter Tóth (local Unionen club board member at Spotify), 11 Mar – 29 Apr 2026. Covers: ombudsman request process, evidence sharing, discrimination case pathway, MBL for",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-peter-toth"
+    ],
+    "linkedEntityId": "conversation-e06bf47b-8038-46a3-be0f-8c94c0dc030d",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-05-07-591af1",
+    "date": "2026-05-07T00:00:00Z",
+    "type": "conversation",
+    "title": "Eighth HR Conversation — Ebba Returns; Process Coherence Challenged; Redeployment Offer Reissued",
+    "description": "The eighth HR conversation marked Ebba's return as Ben's HR counterparty after roughly three months of Johan handling the case. The meeting was scheduled around the formal reissue of the redeployment ",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "linkedEntityId": "conversation-9d4f7a2e-1c83-4f6b-8e1a-72e5b9d8c401",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-06-01-3c0f0e",
+    "date": "2026-06-01T00:00:00Z",
+    "type": "milestone",
+    "title": "Adrian departing approximately June 2026 — VERBAL ONLY, no written confirmation",
+    "description": "Adrian departing approximately June 2026 — VERBAL ONLY, no written confirmation. May be health-related (suspected serious illness). All advocacy-dependent paths have hard expiry. Departure may be abrupt rather than planned resignation.",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-06-06-161272",
+    "date": "2026-06-06T00:00:00Z",
+    "type": "milestone",
+    "title": "Swedish citizenship law change takes effect 6 June 2026",
+    "description": "Swedish citizenship law change takes effect 6 June 2026. Residence requirement increases from 5 to 8 years. New self-sufficiency requirement (försörjningskrav): income from employment ≥3 income base amounts/year (~250,200 SEK at 2026 levels), no income support (försörjningsstöd) for >6 months in 3 y",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-06-06-d7251a",
+    "date": "2026-06-06T00:00:00Z",
+    "type": "milestone",
+    "title": "Citizenship law change (5yr to 8yr)",
+    "description": "Citizenship law change (5yr to 8yr)",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-07-01-ebb9ec",
+    "date": "2026-07-01T00:00:00Z",
+    "type": "milestone",
+    "title": "T&S Engineering path to reassess H2 2026 (Sarah Hoyle — reorg planned first)",
+    "description": "T&S Engineering path to reassess H2 2026 (Sarah Hoyle — reorg planned first)",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2026-12-15-526c58",
+    "date": "2026-12-15T00:00:00Z",
+    "type": "milestone",
+    "title": "LAS s39 bracket jump (16 to 24 months; +~SEK 800K)",
+    "description": "LAS s39 bracket jump (16 to 24 months; +~SEK 800K)",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2027-03-01-66a6d8",
+    "date": "2027-03-01T00:00:00Z",
+    "type": "milestone",
+    "title": "Employment continuity deadline: March 2027 minimum (non-negotiable) — citizenship constraint",
+    "description": "Employment continuity deadline: March 2027 minimum (non-negotiable) — citizenship constraint",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  },
+  {
+    "id": "timeline-2027-03-01-327ae9",
+    "date": "2027-03-01T00:00:00Z",
+    "type": "milestone",
+    "title": "Citizenship employment continuity requirement — statutory basis",
+    "description": "Citizenship employment continuity requirement — statutory basis. Case number: 52056264. Filed: November 2025. Supplementary evidence: 13 February 2026. Employment continuity required through March 2027. Law change 6 June 2026: residence requirement 5yr to 8yr, new self-sufficiency requirement (försö",
+    "stakeholderIds": [],
+    "linkedEntityId": null,
+    "linkedEntityType": null
+  }
+]

@@ -1,0 +1,625 @@
+[
+  {
+    "id": "conversation-e04bddae-94ab-4e96-b523-bbc7e66e2359",
+    "date": "2026-01-26T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "First HR Conversation — Separation Notification",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "summary": "Ben returned from a 4–5 week absence to a video call with Ebba Krusenstierna, a Spotify Sweden HR generalist he had never previously met. Ebba assumed Ben already knew the news; he did not. She delivered the headline: Spotify does not believe it has any suitable alternative role for Ben and proposes a mutual separation. The package: 3-month notice period (released from work 11 Feb after a handover period), followed by a 4-month lump-sum severance calculated at one month per year of tenure. Rejection of the mutual agreement triggers a formal redundancy process via turordning.\n\nBen took control of the conversation within the first three minutes. He redirected Ebba away from the package walkthrough and toward the substantive question: why no suitable role exists, and what his internal mobility options are. He then rejected the severance quantum directly and forcefully — calling it \"a bit insulting\" and \"not respectful\" — while citing lost equity and consistent high performance as reaso...",
+    "keyPoints": [
+      "3-month notice period (per employment agreement)",
+      "Released from work starting 11 Feb after ~2 weeks of handover preparation",
+      "Salary, insurance, pension continue during notice",
+      "Vacation days accrue during notice; unused days paid out",
+      "Free to start new employment during notice (not at a competitor — [EXACT] \"we just need to make sure that it's not a company, like, a competitor to Spotify\")",
+      "4-month lump-sum severance (1 month per year of tenure) — [EXACT] \"in line with our internal standard practice\"",
+      "Salary/severance non-deductible if new employment found",
+      "3-month outplacement services (external vendor, career coaching)",
+      "Written agreement to follow via personal email"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-12481391-8c86-4e03-8177-1e8c2c63b88c",
+    "audioReference": {
+      "driveId": "1zwpGWbpQBITGZWS92RuymhR1Nubw32MI",
+      "filename": "Ebba + Ben 26th Jan.m4a",
+      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
+      "mimeType": "audio/mp4",
+      "viewUrl": "https://drive.google.com/file/d/1zwpGWbpQBITGZWS92RuymhR1Nubw32MI/view",
+      "previewUrl": "https://drive.google.com/file/d/1zwpGWbpQBITGZWS92RuymhR1Nubw32MI/preview",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "hr"
+    }
+  },
+  {
+    "id": "conversation-cf2d8d48-def9-46f1-9252-fe418418bb65",
+    "date": "2026-01-26T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "HR Email Exchange — Proposed Mutual Separation Agreement — Jan–Feb 2026 — Summary (Template v1)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren",
+      "stakeholder-ebba"
+    ],
+    "summary": "This thread documents the email correspondence between Ben Purslow and Spotify HR (first Ebba Krusenstierna, then Johan Sellgren) regarding a proposed mutual separation agreement initiated by the company during an organisational restructuring of Content Platform.\n\nPhase 1: Initial proposal and scheduling (26–27 Jan, Messages 1–3)\n\nEbba sent the proposed mutual separation agreement and outplacement support documentation following an in-person meeting, proposing a follow-up call. Ben responded that he was occupied supporting the team through reorganisation announcements. Ebba acknowledged Ben's care for the team but urged him — citing Adrian as co-author of this position — to \"shift your focus to yourself\" [EXACT], stating the purpose of reconnecting was to \"explore whether a mutual termination agreement is of interest\" [EXACT]. She sent a Thursday calendar invite.",
+    "keyPoints": [
+      "Significance: Pressure to disengage from the team during the reorg. Adrian explicitly co-named as co-author of this position.",
+      "Significance: Frames the entire process as mutual exploration, not a unilateral decision.",
+      "Significance: Written confirmation that the separation is a \"leadership decision\" — not arbetsbrist, not personliga skäl. This is the strongest admission in the thread.",
+      "Significance: Admits limitations of HR's authority; suggests the substantive decision sits with leadership (Adrian), not HR. Johan Sellgren — Work Email (5 Feb) 4.5 (5 Feb, Work Email): \"this is a leadership decision focused on the future requirements of the organization rather than a retrospective audit of your technical track record\" [EXACT — WORK EMAIL]",
+      "Significance: Direct source for the \"not a retrospective audit\" statement previously known only through Ben's characterisation. Confirms the decision is forward-looking and explicitly disclaims performance as the basis. This is a critical admission — it eliminates personliga skäl as a legal ground.",
+      "Significance: Identifies \"operational approach\" as a decision factor but attributes the underlying feedback to Adrian, not to any formal assessment. The phrasing \"as previously discussed with Adrian\" implies informal feedback, not documented performance management.",
+      "Significance: Identifies \"communication style\" as a decision factor. The phrasing \"which I understand you have previously reviewed\" is secondhand — Johan is reporting what he has been told, not what he has assessed.",
+      "Significance: The core conclusion. Note the passive construction — \"we have concluded\" — without specifying who \"we\" is or what process led to this conclusion.",
+      "Significance: Frames the separation as inevitable (\"does not provide a path for you to succeed\") while maintaining the \"mutual\" label. The \"best way forward for both parties\" language is standard HR framing that masks a unilateral decision.",
+      "Significance: Establishes that the initial negotiation phase was to be conducted exclusively between Johan and Ben, excluding Ben's manager (Adrian) and another stakeholder (Babar). This is notable because it isolates Ben from the decision-makers.",
+      "Significance: References an \"influence model\" from the 4 Feb meeting. This suggests Johan used a management/leadership framework to characterise Ben's leadership style as deficient. The specific model is not named. Johan Sellgren — Gmail Thread 4.12 (13 Feb, Message 9): \"This is our standard agreement, so we're not in a position to modify it\" [EXACT]",
+      "Significance: Take-it-or-leave-it framing on agreement terms. Contradicts the \"mutual\" characterisation.",
+      "Significance: Flat refusal to negotiate on liquidated damages, jurisdiction, and penalty clauses. These are significant legal provisions.",
+      "Significance: Confirms garden leave as the mechanism during notice period.",
+      "Significance: Contested characterisation. Johan's framing of Ben's concerns — reframed by Ben in Message 11: \"My concern wasn't about my own ability to succeed.\" Creates a written record that could be used to suggest Ben himself doubted his suitability. Ben's correction partially neutralises this but the original framing remains in the record.",
+      "Significance: Dismissal of Ben's (and the union's) concerns about clauses 3.2 and 3.3.",
+      "Significance: Creates a written record of an alleged commitment from a verbal meeting.",
+      "Significance: Binary ultimatum. Confirms no other internal mobility is being offered. This is the clearest statement of the company's position: take the one IC role or take the separation package.",
+      "Significance: Implicit time pressure — \"as long as it's still an option\" suggests the separation agreement could be withdrawn."
+    ],
+    "decisions": [],
+    "actionItemIds": []
+  },
+  {
+    "id": "conversation-af5fc9d8-1095-4801-bf3e-97d6fc1e8391",
+    "date": "2026-01-27T00:00:00Z",
+    "category": "union-meeting",
+    "title": "Summary: Union Call with José Manuel",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-jose-manuel"
+    ],
+    "summary": "Summary: Union Call with José Manuel\nKey points from the conversation:\nYou explained your situation: 4 years at Spotify as a Senior Engineering Manager (leading ~40 engineers), given severance notice Monday. The termination reason is \"lack of work\" due to reorganisation—your level is being replaced with director roles. One other person in your position was also laid off.\nYour current package:\n* 3 months notice period (per your contract, better than the legal minimum of 2 months for 4 years' tenure)\n* 4 months severance pay\nJosé's main recommendations:\n1. Push for longer notice period, not more severance — Being employed longer gives you more time to find a new job while still on payroll. Severance is money you receive after employment ends, which has implications for Försäkringskassan and A-kassa.\n2. Target: 4-5 months notice (work-exempt) instead of 3 months notice + 4 months severance\n3. Administrative requirements — You'll need to register with Arbetsförmedlingen as job-seeking, ...",
+    "keyPoints": [],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-e5c29cb0-ef5d-4eb0-9a81-3b69564d99dc"
+  },
+  {
+    "id": "conversation-0f9537cb-d470-4694-9b37-cdb3f800b9ed",
+    "date": "2026-01-29T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "Second HR Conversation — \"Not a Redundancy\" Clarification & Initial Positioning",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "summary": "Ebba explicitly stated that Spotify does not consider this a redundancy — it is a \"leadership decision\" in which \"Adrian, Watanabe, Stephanie, and Barbara have just all agreed that they do not see you being part of this new organization.\" This is the single most important disclosure in the conversation: it shifts the framing away from arbetsbrist (redundancy/lack of work) toward something closer to personliga skäl (personal reasons), but without committing to either legal basis. Ebba pointed Ben to clause 1.1 of the proposed agreement, which notes the agreement is \"concluded on our initiative\" without specifying redundancy grounds.\n\nThe conversation was primarily Ben establishing information-gathering procedures: requesting written reasoning for the decision, asking for documentation of what roles were considered and why he was excluded, and deferring counteroffer discussions until after union consultation. Ebba pushed twice for a counteroffer or questions about the agreement, and B...",
+    "keyPoints": [
+      "\"Not a Redundancy\" — Legal Basis Clarification",
+      "Counteroffer Pressure — First Instance",
+      "Request for Written Reasoning",
+      "Redeployment Scope — SEM-Equivalent Only",
+      "Formal Process Threat",
+      "Personal Context Disclosure",
+      "Timeline Pressure — One-Week Deadline"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-89dd08ff-6acc-4b0b-99dc-be6808e2e2b6",
+    "audioReference": {
+      "driveId": "1Lk_efLy4eYGIBmxr2s93MXWT3YZNagPq",
+      "filename": "Ebba + Ben 29th Jan.m4a",
+      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
+      "mimeType": "audio/mp4",
+      "viewUrl": "https://drive.google.com/file/d/1Lk_efLy4eYGIBmxr2s93MXWT3YZNagPq/view",
+      "previewUrl": "https://drive.google.com/file/d/1Lk_efLy4eYGIBmxr2s93MXWT3YZNagPq/preview",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "hr"
+    }
+  },
+  {
+    "id": "conversation-65b33afc-fd07-4c49-8c34-eefa79392b1f",
+    "date": "2026-02-02T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "Third HR Conversation — Performance Basis Challenge & Redeployment Duty Question",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "summary": "Ben confronted Ebba with two fundamental challenges: (1) what is the actual basis for the separation decision, and (2) why did HR proceed directly to a mutual separation agreement instead of exploring redeployment. Ebba introduced a \"performance feedback from CP leads\" rationale that Ben had never been told about and which contradicts his documented performance record. This is the single most significant development — Spotify's HRBP stated that performance feedback from CP leads was the reason HR did not consider redeployment, despite no written performance concerns ever being communicated to Ben.\n\nBen systematically dismantled the \"leadership decision\" framing by noting: his last performance review was positive, he has received equity every year, there is zero written evidence of performance issues, and the reorganisation has actually expanded scope (more directors, an SEM, EMs running product areas) rather than contracted it. He also established the citizenship constraint on recor...",
+    "keyPoints": [],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-ec7870a8-ec94-4713-ad5a-8101392e06a4",
+    "audioReference": {
+      "driveId": "1agfd_ybRfyw_82-zyZ9KAI9E35_pd4HJ",
+      "filename": "Ebba + Ben 2nd Feb.m4a",
+      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
+      "mimeType": "audio/mp4",
+      "viewUrl": "https://drive.google.com/file/d/1agfd_ybRfyw_82-zyZ9KAI9E35_pd4HJ/view",
+      "previewUrl": "https://drive.google.com/file/d/1agfd_ybRfyw_82-zyZ9KAI9E35_pd4HJ/preview",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "hr"
+    }
+  },
+  {
+    "id": "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+    "date": "2026-02-04T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "Fourth HR Conversation — Johan, ADHD Disclosure and Parallel Tracks",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren"
+    ],
+    "summary": "Johan Sellgren took over from Ebba as sole HR contact and spent 79 minutes attempting to navigate Ben toward a mutual separation agreement while unable to articulate a clear legal, performance, or redundancy basis for the decision. The most significant development was Johan's repeated use of the phrase \"fatal flaw\" to describe ADHD-linked behavioural traits — immediately after Ben disclosed his ADHD diagnosis — and his explicit admission that he could not provide specific justification for the separation, that it was not a performance case, not a redundancy, and that the positive departure narrative would contain \"BS.\" Johan also refused to put the reasoning in writing, stating directly that Ben might share it with \"someone else\" — an apparent reference to independent review.\n\nThe conversation revealed deep procedural defects in Spotify's approach: no formal notice served, no legal basis articulated, no performance documentation, no accommodation discussion following ADHD disclosure, the...",
+    "keyPoints": [
+      "ADHD diagnosis, medication, and management strategies — Ben disclosed extensively. While this strengthens the discrimination argument, it also revealed medical details the employer was not previously aware of at this level of specificity.",
+      "Financial position — 2M SEK unvested equity, offer characterised as \"quite small.\" Violates financial disclosure principle.",
+      "Awareness of HR's performance/promotion cycle pressure — \"you guys are about to go into performance mayhem\" shows Ben understands HR's internal constraints.",
+      "Markia comparison — Ben noted Markia operates similarly to him but \"better at hiding it.\" Potential discrimination comparator revealed to counterparty.",
+      "The \"fatal flaw\" language creates a direct line from ADHD disclosure to adverse employment action. Combined with \"not fair to ask you to stretch\" and zero accommodation discussion, this may be the strongest single piece of discrimination evidence. Preserve by pinning in vigilance email.",
+      "Johan's refusal to document reasoning \"because you might share it with someone\" is powerful evidence of consciousness of weak legal position. This should be noted in written follow-up.",
+      "Johan predicting \"another rift in less than a year\" suggests systemic instability — Ben's situation may be part of broader restructuring rather than individual assessment.",
+      "Counter-offer trap. Ben agreed to provide a number. If he does, he anchors the negotiation and validates the separation track. IMMEDIATE mitigation: do not provide a counter-offer. Redirect to employer proposing revised terms.",
+      "ADHD self-disclosure weaponisation. Ben's statements that he \"can't change it\" and has \"struggled with this his entire career\" could be selectively quoted to argue the issues are longstanding and inherent. Mitigation: reframe in future conversations as \"well-managed condition\" with four years of successful performance at Spotify as evidence.",
+      "Redeployment burden reversal. Ben doing the homework on redeployment options reverses the legal obligation. Mitigation: document clearly that Ben is voluntarily proposing options while noting that the employer retains the legal duty to comprehensively explore redeployment under LAS S 7.",
+      "HRBP unfamiliarity with subject employee. Johan called Ben by the wrong name three times in a 79-minute meeting (Dan, David, David). He admitted Content Platform is a \"black box\" and that he cannot provide specifics on the assessment. An HRBP driving a separation process while demonstrating this level of unfamiliarity with the employee and their role raises serious questions about process integrity.",
+      "Internal HR contradiction. Johan contradicted Ebba's performance framing and stated she \"should not have framed it like that.\" Two HR representatives have given materially different explanations for the same separation process.",
+      "Redeployment burden reversal. Johan asked Ben to identify his own redeployment options rather than the employer conducting a comprehensive search as required under LAS S 7."
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-95b4a0e2-9d1f-4ec9-bf64-98fc6a2a9161",
+    "snippetIds": [
+      "snippet-4hr-01",
+      "snippet-4hr-02",
+      "snippet-4hr-03",
+      "snippet-4hr-04",
+      "snippet-4hr-05",
+      "snippet-4hr-06",
+      "snippet-4hr-07",
+      "snippet-4hr-08",
+      "snippet-4hr-09",
+      "snippet-4hr-10",
+      "snippet-4hr-11",
+      "snippet-4hr-12",
+      "snippet-4hr-13",
+      "snippet-4hr-14",
+      "snippet-4hr-16",
+      "snippet-4hr-18",
+      "snippet-4hr-19",
+      "snippet-4hr-21",
+      "snippet-4hr-23",
+      "snippet-4hr-24",
+      "snippet-4hr-25a",
+      "snippet-4hr-25b",
+      "snippet-4hr-26",
+      "snippet-4hr-27",
+      "snippet-4hr-28",
+      "snippet-4hr-29a",
+      "snippet-4hr-29b",
+      "snippet-4hr-30",
+      "snippet-4hr-31",
+      "snippet-4hr-33"
+    ],
+    "audioReference": {
+      "driveId": "1pdd9UNL4SO7bG7bUp8a7c3uR4M64J0Cs",
+      "filename": "Johan + Ben 4th Feb.m4a",
+      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
+      "mimeType": "audio/mp4",
+      "viewUrl": "https://drive.google.com/file/d/1pdd9UNL4SO7bG7bUp8a7c3uR4M64J0Cs/view",
+      "previewUrl": "https://drive.google.com/file/d/1pdd9UNL4SO7bG7bUp8a7c3uR4M64J0Cs/preview",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "hr"
+    }
+  },
+  {
+    "id": "conversation-d738b9e8-5b43-498c-8bb6-0ae6396d6d31",
+    "date": "2026-02-11T00:00:00Z",
+    "category": "1-on-1",
+    "title": "Adrian & Ben Conversation Summary — 11 February 2026",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "summary": "Adrian & Ben Conversation Summary — 11 February 2026\nContext: Hybrid \"Pub Adrian\" / \"Spotify Adrian\" conversation immediately after the Fifth HR conversation with Johan (same day). The most candid and strategically significant exchange in the entire process.\n\nThe Headline: Adrian Has Taken the Wheel\nAdrian went \"ballistic\" at Johan that morning. The previous HR posture — don't share talent snapshot, don't engage on IC, don't don't don't — has been reversed. Adrian now believes he is in the driving seat of next steps. This is a fundamental power shift from HR controlling the process to your direct manager controlling it.\n\nBefore today, Johan and HR were the gatekeepers of information and redeployment exploration. Now Adrian has line-of-sight on talent snapshot sharing, IC exploration, and external conversations with other leaders — all previously blocked or slow-walked.",
+    "keyPoints": [],
+    "decisions": [],
+    "actionItemIds": [],
+    "audioReference": {
+      "driveId": "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
+      "filename": "Adrian + Ben 11th Feb.m4a",
+      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      "mimeType": "audio/x-m4a",
+      "viewUrl": "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view",
+      "previewUrl": "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+      "sizeBytes": 53896450,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "adrian"
+    }
+  },
+  {
+    "id": "conversation-83edc54e-3404-4b56-981d-c0327d7c1ae4",
+    "date": "2026-02-11T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "Fifth HR Conversation — Subjectivity Admission & Dual-Track Establishment — Summary",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren"
+    ],
+    "summary": "Johan's first substantive conversation as Ben's HRBP produced two critical developments: the most explicit admission yet that the assessment basis is subjective and potentially unresolvable, and the first formal proposal linking ADHD to redeployment conditions via an external coaching mandate. Johan stated directly that the talent snapshot review \"might be more a new pile of subjective questions\" and that he himself is \"confused\" trying to reconcile Ben's account with Adrian's. This is an admission against interest — the HRBP responsible for the separation process conceding that its evidentiary foundation may be subjective.\n\nThe conversation established the dual-track structure that now governs the process: separation agreement and IC redeployment proceeding in parallel. Johan framed this as time-limited (\"at some point we need to decide\") and pushed for Ben to provide a monetary number — the second such push after the Fourth HR Conversation. Ben deflected by linking any financial p...",
+    "keyPoints": [
+      "\"It's very confusing for me as well, Ben, to be honest. When I listen to you and I listen to Adrian, and I'm trying to kind of put the puzzle together here\" [EXACT]",
+      "\"It might be that we will not come out of that with more clear objective answers. It might be more a new pile of subjective questions.\" [EXACT]",
+      "\"I can't comment on that, Ben, and that's something you need to discuss with Adrian then\" (when Ben cited specific impact evidence) [EXACT]",
+      "\"What is just biases? What is old facts? What is false facts? What, what, what is what here?\" [EXACT]",
+      "\"There is no black or white in this... human relationships and perceptions... very much in a gray area\" [EXACT]"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-e99130a7-3b7b-44f7-b118-f367c44dca0d",
+    "audioReference": {
+      "driveId": "1rUUXM9LGEn3PNoJOBzvZUe4rXyxprVo8",
+      "filename": "Johan + Ben 11th Feb.m4a",
+      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
+      "mimeType": "audio/mp4",
+      "viewUrl": "https://drive.google.com/file/d/1rUUXM9LGEn3PNoJOBzvZUe4rXyxprVo8/view",
+      "previewUrl": "https://drive.google.com/file/d/1rUUXM9LGEn3PNoJOBzvZUe4rXyxprVo8/preview",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "hr"
+    }
+  },
+  {
+    "id": "conversation-3c3a6604-e5b3-49d5-8581-1b0ca5a15ede",
+    "date": "2026-02-16T00:00:00Z",
+    "category": "1-on-1",
+    "title": "Adrian and Ben Conversation — 16th Feb (Redeployment Progress & Operational Tension)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "summary": "This was a progress update and debrief conversation covering both redeployment tracks and emerging operational problems. The headline is that Adrian has secured approval for a Staff IC engineering role in the Supply domain reporting to him — the first concrete redeployment option to materialise. However, significant new intelligence emerged from Ben's conversation with Marqia on the previous Friday: she was told Ben is on garden leave and was instructed not to engage with him — neither of which is true.\n\nThe conversation also surfaced Nico's ongoing reputation damage (speaking negatively about Ben behind the scenes), the complete blockage of promotion cases for Ben's direct reports due to handover failure, and the narrowing of redeployment options within Content Platform as both Marqia and Atelach want \"space\" from Ben's involvement in the policy & safety domain.\n\nAdrian provided a reality check on where Ben should focus energy, steering him away from CoCaM operational problems and ...",
+    "keyPoints": [
+      "Staff IC Role in Supply Domain — Approved",
+      "Marqia Conversation — Misinformation Revealed",
+      "Nico — Reputation Damage and Betrayal",
+      "Redeployment Options — Narrowing Within Content Platform",
+      "Promotion Cases — Blocked and Unresolved",
+      "Separation Track — Slowing via Union Pushback",
+      "Ben's Broader Frustration — Operational Gaps and Ego Management"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-9e0f0eb9-f788-4a63-b2a4-31eee786b938",
+    "audioReference": {
+      "driveId": "1QCLFjbXagQzO2IS_cyy_JgL7zkzGd50F",
+      "filename": "Adrian + Ben 16th Feb.m4a",
+      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      "mimeType": "audio/x-m4a",
+      "viewUrl": "https://drive.google.com/file/d/1QCLFjbXagQzO2IS_cyy_JgL7zkzGd50F/view",
+      "previewUrl": "https://drive.google.com/file/d/1QCLFjbXagQzO2IS_cyy_JgL7zkzGd50F/preview",
+      "sizeBytes": 36868997,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "adrian"
+    }
+  },
+  {
+    "id": "conversation-9083817f-8a0e-4bbf-b80e-394cf8897139",
+    "date": "2026-02-17T00:00:00Z",
+    "category": "1-on-1",
+    "title": "Check-in with Nico — Record & Analysis",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-nico-giagnoni"
+    ],
+    "summary": "This was an informal check-in with Nico during a difficult period for both parties. Nico is dealing with a serious knee injury requiring surgery (6+ weeks immobilisation, then surgery, then rehabilitation) while simultaneously navigating the organisational chaos post-reorg. Ben initiated the conversation to clear the air about reported friction and ensure Nico had support.\n\nThe conversation revealed several important dynamics:\n\n1. Nico's frustration is primarily about role clarity, not Ben. He explicitly stated \"I'm not annoyed personally with anybody\" and \"it's about my situation right now.\" His core grievance is that his contributions (VLOP, platform work, cross-company awareness building) are being overlooked while Jonas is being positioned as the visible leader without having done the foundational work.",
+    "keyPoints": [
+      "HR's Use of Nico Against Ben",
+      "Nico's Career Frustrations",
+      "Trust & Safety as Potential Path for Both",
+      "Organisational Knowledge Gaps",
+      "Employment Status Clarification",
+      "General frustration that's been reframed as directed at Ben"
+    ],
+    "decisions": [],
+    "actionItemIds": []
+  },
+  {
+    "id": "conversation-b637de2d-3c49-4e28-865d-0d516a59c1b2",
+    "date": "2026-02-18T00:00:00Z",
+    "category": "1-on-1",
+    "title": "Marqia and Ben Conversation — 18th Feb (Replacement Structure Dynamics & CP Blocking Risk)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-marqia-williams"
+    ],
+    "summary": "This was an emotionally charged but strategically significant 1-on-1 initiated by mutual curiosity about each other's situation. The conversation operated on two levels: a surface-level check-in about operational chaos and promotion fallout, and a deeper negotiation of trust, information flow, and territorial boundaries in the post-reorg structure.\n\nMarqia opened by asking about Ben's \"next steps,\" revealing she has limited visibility into the separation/redeployment process. Ben disclosed he's receiving mixed signals — Adrian advocating for redeployment while HR pushes the separation offer, and leadership apparently telling people not to engage with him. The conversation quickly became a candid exchange about confusion in the org, with both parties expressing frustration at being placed in an impossible situation by decisions neither made.\n\nThe most strategically significant dynamics were: (1) Marqia constructing a \"competing perspectives\" narrative that could be used to block Ben ...",
+    "keyPoints": [
+      "Ben's Limbo and Mixed Signals",
+      "The \"Competing Perspectives\" / \"Confusion\" Narrative",
+      "Promotion Failures and Team Unrest",
+      "Operational Risk Acknowledgment",
+      "Discrimination Disclosure",
+      "Staff IC Role Discussion",
+      "Information Isolation Confirmed"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-b63958f8-1ce8-4407-b1e7-51ac94fd3193",
+    "audioReference": {
+      "driveId": "19pjxBzcryGe93RMlSVobQ4t3TYcgeQDG",
+      "filename": "Marqia + Ben 18th Feb.m4a",
+      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      "mimeType": "audio/x-m4a",
+      "viewUrl": "https://drive.google.com/file/d/19pjxBzcryGe93RMlSVobQ4t3TYcgeQDG/view",
+      "previewUrl": "https://drive.google.com/file/d/19pjxBzcryGe93RMlSVobQ4t3TYcgeQDG/preview",
+      "sizeBytes": 41238923,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "marqia"
+    }
+  },
+  {
+    "id": "conversation-dc91f505-291b-4b37-b777-1ada290ff2bd",
+    "date": "2026-02-19T00:00:00Z",
+    "category": "1-on-1",
+    "title": "Adrian and Ben Conversation — 19th Feb (Staff IC Doc Incoming, Adrian Departure Confirmed)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "summary": "This was a wide-ranging strategic conversation that operated as Adrian's most explicit coaching session to date. The dynamic has shifted from Adrian-as-advocate (\"I'll build the role\") to Adrian-as-outgoing-mentor (\"here's how to protect yourself when I'm gone\"). Three things confirm Adrian is leaving Spotify: his statement \"I won't be back and that's guaranteed,\" his impact curve frustration with leadership's refusal to clarify whether it's temporary or permanent, and his philosophical \"what would I do in your shoes\" framing that all but said he wouldn't stay.\n\nThe conversation covered four main areas: (1) the incoming Staff IC role document and how to handle Johan's imposed timeline, (2) the Sarah/T&S path still being blocked by a family situation, (3) a detailed debrief of the Marqia conversation from 18 Feb and Adrian's coaching on the \"go away then come back\" transition model, and (4) Adrian's broader concerns about Spotify's direction that are driving his own departure.",
+    "keyPoints": [
+      "Staff IC Role Document — Incoming with Timeline",
+      "Sarah Hoyle / T&S Path — Still Blocked",
+      "Marqia Debrief — Adrian's Analysis and Tactical Offer",
+      "Ollie — Low Risk, Useful Data Point",
+      "Adrian's Departure Signals and Broader Spotify Concerns",
+      "Ben's Emotional State and Strategic Frustration",
+      "Johan's ADHD/Coaching Framing"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-5ddaf74b-eb34-4a3a-bdc9-028cef07dfca",
+    "audioReference": {
+      "driveId": "1HYyJA0FosNC0wEcA8JB1RGKY_mygRFZc",
+      "filename": "Adrian + Ben 19th Feb.m4a",
+      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      "mimeType": "audio/x-m4a",
+      "viewUrl": "https://drive.google.com/file/d/1HYyJA0FosNC0wEcA8JB1RGKY_mygRFZc/view",
+      "previewUrl": "https://drive.google.com/file/d/1HYyJA0FosNC0wEcA8JB1RGKY_mygRFZc/preview",
+      "sizeBytes": 41936652,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "adrian"
+    }
+  },
+  {
+    "id": "conversation-ca46ebd0-241a-47d8-a537-20b5c697f348",
+    "date": "2026-02-20T00:00:00Z",
+    "category": "1-on-1",
+    "title": "Adrian and Ben Conversation — 20th Feb (Emotional Check-in, ADHD Discrimination Articulated)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "summary": "This was an unplanned emotional check-in, not a strategic conversation. Ben called Adrian feeling stressed and wound up after a day of cognitive dissonance — watching Atelach showcase AI onboarding work at the CP demo (directly flowing from Ben's DEF roadmap) and seeing Rasmig share EM expectation documents that mirror Ben's previous work. The combination of \"your work is being celebrated\" and \"you've been excluded\" hit a breaking point.\n\nUnlike the structured 19 Feb conversation, this was raw venting. Adrian absorbed it supportively, validated Ben's strengths explicitly, and offered grounding. The conversation ended with a Monday 12:00 meeting scheduled. No strategic commitments were made, no new information was disclosed about the Staff IC doc or Johan's plans.",
+    "keyPoints": [
+      "Cognitive Dissonance — Work Celebrated While Excluded",
+      "ADHD Discrimination Thread — Pushed Further Than Before",
+      "Adrian's \"Both Things Can Be True\" Framework",
+      "Trust and Institutional Risk",
+      "Ollie Situation — Adrian's Coaching Introduction"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-d7e99022-4c21-4fef-943c-58e7a4949202",
+    "audioReference": {
+      "driveId": "1Lx1ZxbACvor4By7GXxlDljsaqFTlwASm",
+      "filename": "Adrian + Ben 20th Feb.m4a",
+      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      "mimeType": "audio/x-m4a",
+      "viewUrl": "https://drive.google.com/file/d/1Lx1ZxbACvor4By7GXxlDljsaqFTlwASm/view",
+      "previewUrl": "https://drive.google.com/file/d/1Lx1ZxbACvor4By7GXxlDljsaqFTlwASm/preview",
+      "sizeBytes": 28076942,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "adrian"
+    }
+  },
+  {
+    "id": "conversation-53fe62ba-57da-4fce-b62d-7375b22ad112",
+    "date": "2026-02-20T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "Sixth HR Conversation — IC Channelling, Clause Dismissal & Stress Projection Admission",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren"
+    ],
+    "summary": "Johan pushed three distinct agendas in a conversation framed as a casual check-in before sportlov: (1) dismissing the clause concerns raised by the union as standard and unlikely to change, (2) pushing for the third consecutive time for Ben to provide monetary expectations, and (3) explicitly recommending that Ben not explore any roles outside the Staff IC role Adrian is defining — framing this as protective advice while simultaneously describing the reputational damage that would occur if Ben \"knocked on other doors.\"\n\nThe most legally significant moment came near the end, when Johan admitted that the negative perceptions driving the separation are \"their own stress and anxiety about things that then unfortunately have been projected to you\" — directly attributing the assessment basis to third-party emotional states rather than Ben's conduct or performance. This extends the Fifth HR Conversation's \"I'm confused\" / subjectivity admission into an explicit causal explanation: the perc...",
+    "keyPoints": [],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-9e561370-9109-4a79-998e-8b62d512cbcc",
+    "audioReference": {
+      "driveId": "1tOQgtu10k6-9HlSn4akaHbsiaKmWTFAn",
+      "filename": "Johan + Ben 20th Feb.m4a",
+      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
+      "mimeType": "audio/mp4",
+      "viewUrl": "https://drive.google.com/file/d/1tOQgtu10k6-9HlSn4akaHbsiaKmWTFAn/view",
+      "previewUrl": "https://drive.google.com/file/d/1tOQgtu10k6-9HlSn4akaHbsiaKmWTFAn/preview",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "hr"
+    }
+  },
+  {
+    "id": "conversation-fc88ed26-0d53-4923-8958-42b9e339192f",
+    "date": "2026-02-23T00:00:00Z",
+    "category": "1-on-1",
+    "title": "Adrian and Ben Conversation — 23rd Feb (Johan Escalation, T&S Interest, Strategic Disclosure)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "summary": "Mixed session: part strategic update, part venting, part coordination. Ben arrived late after dealing with union frustration. The conversation covered Johan's escalating procedural violations, Adrian's role boundaries, the T&S Engineering path via Sarah Hoyle, and planning for documented success criteria on the Staff IC role. Adrian confirmed he is not in strategic conversations with HR — he's executing instructions only. He has a meeting with Sarah Hoyle tonight (23 Feb), making this the most time-sensitive action item.\n\nBen was notably open about legal strategy reasoning in this conversation, which warrants monitoring.",
+    "keyPoints": [
+      "Johan's Escalating Process Violations",
+      "Adrian's Position — Honest Limits",
+      "T&S Engineering — Rising Priority",
+      "Staff IC Offer — Formal vs Informal",
+      "Strategic Disclosure — What Adrian Now Knows",
+      "Union Frustration — Escalation Pressure",
+      "Operational Evidence — Continued Knowledge Dependency"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-cff4fd64-6a69-4b80-8079-7917bfb95311",
+    "audioReference": {
+      "driveId": "1zvYns2BpQNpsljvtwqgLzFfCmBSaWk9y",
+      "filename": "Adrian + Ben 23rd Feb.m4a",
+      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+      "mimeType": "audio/x-m4a",
+      "viewUrl": "https://drive.google.com/file/d/1zvYns2BpQNpsljvtwqgLzFfCmBSaWk9y/view",
+      "previewUrl": "https://drive.google.com/file/d/1zvYns2BpQNpsljvtwqgLzFfCmBSaWk9y/preview",
+      "sizeBytes": 33898095,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "adrian"
+    }
+  },
+  {
+    "id": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "date": "2026-03-03T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "Seventh HR Conversation — Separation Agreement Withdrawal & Redeployment Formalisation",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren"
+    ],
+    "summary": "Johan proposed to withdraw the separation agreement and instead send Ben a formal redeployment offer with complete terms and conditions for the Staff IC role. This is the most significant structural shift in the negotiation since the initial separation agreement was presented — it removes one track from the table (temporarily) while formalising the other. Johan committed to keeping salary and equity \"unchanged\" as his default position, and confirmed he would put everything in writing.\n\nThe conversation was dominated by circular debate about the separation agreement's \"standard\" versus \"non-standard\" nature. Ben argued that the subjective, non-performance-based circumstances make the standard template inadequate; Johan argued that the template is universal and Ben has failed to articulate specific changes he wants. Johan made a significant admission — \"no separation mutual separation agreement is standard. What is the definition of standard?\" — which undermines his own repeated insis...",
+    "keyPoints": [],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-bb22e705-b2bb-4137-a26c-c8603cc07886",
+    "audioReference": {
+      "driveId": "1ipX3IM1ApYrfT9RlW8Bk071XKZmdigQS",
+      "filename": "Johan + Ben Mar 3rd.m4a",
+      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
+      "mimeType": "audio/mp4",
+      "viewUrl": "https://drive.google.com/file/d/1ipX3IM1ApYrfT9RlW8Bk071XKZmdigQS/view",
+      "previewUrl": "https://drive.google.com/file/d/1ipX3IM1ApYrfT9RlW8Bk071XKZmdigQS/preview",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "complete",
+      "stream": "hr"
+    }
+  },
+  {
+    "id": "conversation-7ab78d23-8e10-490c-8371-099cc7840888",
+    "date": "2026-03-11T00:00:00Z",
+    "category": "union-meeting",
+    "title": "Signal Messages -- Peter Toth (Local Unionen Club Chair)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-peter-toth"
+    ],
+    "summary": "Accuracy: All messages copied verbatim from Signal Desktop. Truncated messages marked with `*[Read more]*` as they appear in the source. Edits captured with `(edited)` marker only — pre-edit text not preserved by the export.\n\n**Timezone:** CEST (UTC+2) from 11 Mar–~10 Apr 2026 (Ben in Stockholm); AEST (UTC+10) from ~10 Apr–~6 May 2026 (Ben in Australia). Signal Desktop renders timestamps in the local time of the device that produced the export — preserved here verbatim. Peter is in Stockholm (CEST, UTC+2) for the full window; from ~10 Apr onward Peter's late-night Stockholm hours therefore appear as Ben's daytime AU hours and vice versa.\n\nNote on timestamps: Signal Desktop exports do NOT include UTC offsets — per-message timestamps are bare wall-clock strings. The CEST anchor for early March and the AEST anchor for mid-April onward were both confirmed by Ben (device location). Internal corroboration: Ben's \"I'm just on the train\" (27 Mar 10:34 AM, Stockholm commute), Ben's \"very lon...",
+    "keyPoints": [],
+    "decisions": [],
+    "actionItemIds": []
+  },
+  {
+    "id": "conversation-2f9cd0c8-df91-421a-a8c8-435b56418467",
+    "date": "2026-03-25T00:00:00Z",
+    "category": "1-on-1",
+    "title": "Fourth Adrian Conversation — Amendment Response Strategy & Counsel Concern",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-adrian-ford"
+    ],
+    "summary": "Ben called Adrian to get feedback on a draft email to Johan responding to the 24 Mar email where Johan characterised the amendment as \"just a role change,\" confirmed the comp review is \"now closed,\" and framed salary \"in context of new role.\" Ben is frustrated by what he sees as two months of HR stonewalling with no genuine offer on the table. He shared the draft email via WhatsApp for Adrian's live review.\n\nAdrian's core feedback was that the email has too much detail and won't land with Johan. He advised Ben to lead with one clear message: \"I think you believe you've given me an offer. I don't believe what you've given me constitutes an offer.\" Adrian distinguished between his \"Spotify hat\" (come help with the staff role, there's a genuine reset) and his \"Adrian hat\" (figure out what's best for you personally and optimise). He confirmed he has been having active conversations to ensure a genuine reset is in place and has heard zero termination talk internally.\n\nThe conversation's ...",
+    "keyPoints": [
+      "Amendment Does Not Constitute an Offer",
+      "Comp Review Exclusion",
+      "Narrative Control During Australia Absence",
+      "Email Draft Review — Adrian's Feedback",
+      "ADHD Accommodation Obligations",
+      "Delay Strategy and Consequences",
+      "Adrian's Concern About independent review Quality",
+      "Adrian's Role and Reset Commitment",
+      "AI-Assisted Analysis (Johan Persona)"
+    ],
+    "decisions": [],
+    "actionItemIds": [],
+    "transcriptId": "transcript-80035cfc-9ebb-4fd0-b3df-826b290e3c2b",
+    "audioReference": {
+      "driveId": "",
+      "filename": "",
+      "driveFolderId": "",
+      "mimeType": "",
+      "viewUrl": "",
+      "previewUrl": "",
+      "sizeBytes": null,
+      "durationSeconds": null,
+      "status": "pending-audio-upload",
+      "stream": "adrian",
+      "notes": "Vault summary + transcript synced to Drive; audio file still on Ben's device. Fill in the audio block once the recording is uploaded to the Adrian folder."
+    }
+  },
+  {
+    "id": "conversation-e06bf47b-8038-46a3-be0f-8c94c0dc030d",
+    "date": "2026-04-29T00:00:00Z",
+    "category": "union-meeting",
+    "title": "Analysis -- Peter Toth Signal Conversation (Local Unionen)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-peter-toth"
+    ],
+    "summary": "Signal messages between Ben and Peter Tóth (local Unionen club board member at Spotify), 11 Mar – 29 Apr 2026. Covers: ombudsman request process, evidence sharing, discrimination case pathway, MBL formal consultation, two HR negotiation meetings (14 Apr and 21 Apr), the shifting \"lack of work\" narrative, Ebba replacing Johan as HR contact, Ben's reorg documentation shared with the union, the silent denial of Ben's one-week vacation extension, and Ben's frustration with central Unionen's failure to challenge Spotify's process conduct.\n\nPeter initially misread Spotify's formal request as termination for arbetsbrist but corrected himself the same day — the consultation is about **moving Ben to the IC role**. Regional Unionen contact Stina was assigned 1 Apr (later acting as ombudsman) and \"convinced\" Ben has a viable discrimination case. At the 21 Apr HR follow-up, HR shifted their narrative again (\"lack of work\" caused by \"unforeseen changes due to the Jan reorg\") and acknowledged the...",
+    "keyPoints": [],
+    "decisions": [],
+    "actionItemIds": []
+  },
+  {
+    "id": "conversation-9d4f7a2e-1c83-4f6b-8e1a-72e5b9d8c401",
+    "date": "2026-05-07T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "Eighth HR Conversation — Ebba Returns; Process Coherence Challenged; Redeployment Offer Reissued",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "summary": "The eighth HR conversation marked Ebba's return as Ben's HR counterparty after roughly three months of Johan handling the case. The meeting was scheduled around the formal reissue of the redeployment offer (sent 6 May after MBL § 11/13 union negotiations concluded the previous week), and Ben has one week to respond. The session ran ~65 minutes and covered four overlapping threads: (1) why the process took so long, (2) the ADHD \"fatal flaw\" framing and its enduring effect on Ben's confidence to accept the role, (3) the absence of any concrete employer investment signal (no salary uplift, no incentive mix) accompanying the offer, and (4) what would need to change for Ben to feel he could safely accept.\n\nEbba's central narrative was that the delay was driven by MBL formalia: Spotify could not \"formally\" send a redeployment offer until union negotiations concluded, which dragged across four meetings. She conceded multiple procedural points against employer interest, including that the o...",
+    "keyPoints": [],
+    "decisions": [
+      "Ebba committed to speak to Johan after the call to relay Ben's interpretation of the ADHD framing. ([EXACT] \"I'll, I'll speak to Johan after this call just to verify that like the way he shared the message was interpreted in a very bad way, um, and just for him maybe to have that context that you also have ADHD.\" — note: Ebba initially seemed unaware Johan knew about Ben's ADHD; Ben corrected this, \"He knows I have ADHD... I told him in the meeting, and that's when he said these things.\")",
+      "Ebba committed to a follow-up meeting Monday 11 May 2026, before the one-week deadline expires (~14 May).",
+      "Ebba indicated openness to involving Adrian in a conversation about ADHD context.",
+      "Ben declined the offer to bring Johan back into a joint conversation. [EXACT] \"He doesn't need to explain anything. Like he's already said what he said.\"",
+      "The redeployment offer acceptance / rejection. Ben did not commit either way. The one-week deadline runs.",
+      "Any compensation conversation. Ebba did not engage substantively.",
+      "Any acknowledgment, retraction, or correction of the \"fatal flaw\" framing. Ebba consistently disclaimed knowledge but did not commit to any remedy.",
+      "Decide on the redeployment offer by ~14 May 2026.",
+      "Prepare for Monday 11 May follow-up with Ebba.",
+      "(Recommended, not committed in meeting) Consult independent review and union (Stina/Peter) on the procedural admissions captured before any acceptance.",
+      "Speak to Johan, relay Ben's interpretation.",
+      "Show up for Monday meeting with substance.",
+      "(Implicit) If Spotify wishes to address the underlying issues, this is the last operational window before the deadline forces a decision."
+    ],
+    "actionItemIds": []
+  }
+]

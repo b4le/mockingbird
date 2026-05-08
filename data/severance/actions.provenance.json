@@ -1,0 +1,744 @@
+{
+  "action-4C-1": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-4C-1",
+    "content_hash": "d8eb85c547a9f16b",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-4C-2": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-4C-2",
+    "content_hash": "a9d074b22b2c448a",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-4C-3": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-4C-3",
+    "content_hash": "7c6e81177614e56a",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-4C-4": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-4C-4",
+    "content_hash": "1f9bea9a96f8bc15",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-4C-5": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-4C-5",
+    "content_hash": "b42fd79061aa178e",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-1": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-1",
+    "content_hash": "0549fe6137c2f9ad",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-2": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-2",
+    "content_hash": "4781d9c1227f9ec8",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-3": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-3",
+    "content_hash": "f85187f93fe27889",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-4": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-4",
+    "content_hash": "1614deafb165f30a",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-5": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-5",
+    "content_hash": "698952e443dd5dab",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-6": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-6",
+    "content_hash": "0e41f4df8243c0bb",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-7": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-7",
+    "content_hash": "01f2d41022137602",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-8": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-8",
+    "content_hash": "416d117d7c1e7605",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-7C-9": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-7C-9",
+    "content_hash": "532095fab9cd093b",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-AM-1": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-AM-1",
+    "content_hash": "9ca712b943c63367",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-AM-2": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-AM-2",
+    "content_hash": "c645390f22e3c414",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-mp-7": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-mp-7",
+    "content_hash": "c30d2e0113e588cc",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-mp-9": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-mp-9",
+    "content_hash": "8eae7d370ac8355c",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-mp-10": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-mp-10",
+    "content_hash": "fa29d1ab4c74b42a",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-lp-13": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-lp-13",
+    "content_hash": "84c33ce66528afda",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-1": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-1",
+    "content_hash": "7d9105c288d8655b",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-2": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-2",
+    "content_hash": "bd7d1fa63d508b2f",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-3": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-3",
+    "content_hash": "fd16760615973476",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-4": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-4",
+    "content_hash": "3cc0b6a109aaebb7",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-5": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-5",
+    "content_hash": "b22397d2113f9986",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-6": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-6",
+    "content_hash": "2c5a5fcfc1a6e30a",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-7": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-7",
+    "content_hash": "f8d4ae780c3cb845",
+    "extracted_at": "2026-05-07T14:30:42Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-8": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-8",
+    "content_hash": "bdd92c026b00e2d7",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-9": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-9",
+    "content_hash": "851e82aa459ffe88",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S4-10": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S4-10",
+    "content_hash": "b889daf392f67e5e",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S11-1": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S11-1",
+    "content_hash": "2a7bff3b4effc5fa",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S11-2": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S11-2",
+    "content_hash": "28118561b1002495",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S11-3": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S11-3",
+    "content_hash": "bb6f47d5a78b6153",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S17-4": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S17-4",
+    "content_hash": "a42477dc477962fb",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S17-5": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S17-5",
+    "content_hash": "9fd44fbb9a1ced4f",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S17-6": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S17-6",
+    "content_hash": "98a5c823d62ee7f3",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S17-7": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S17-7",
+    "content_hash": "f9113a75e52a8fb7",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S17-8": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S17-8",
+    "content_hash": "7ff620a4b790f1c4",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S26-1": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S26-1",
+    "content_hash": "f93cc6d98e56df99",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S26-2": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S26-2",
+    "content_hash": "c250eba233e7589b",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S26-3": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S26-3",
+    "content_hash": "91f1d0a939b32efc",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "action-S26-4": {
+    "source_file": "local-state/todo-register.md",
+    "source_section": "list_item:action-S26-4",
+    "content_hash": "cc04944129171d89",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "parse_actions"
+  },
+  "TODO-001": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-001:HIGH PRIORITY",
+    "content_hash": "7dcc22deb0329bfe",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-002": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-002:HIGH PRIORITY",
+    "content_hash": "d1f9a0847823d636",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-003": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-003:HIGH PRIORITY",
+    "content_hash": "c247fcde4d6a8e46",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-004": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-004:HIGH PRIORITY",
+    "content_hash": "46be1f644999bca0",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-005": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-005:HIGH PRIORITY",
+    "content_hash": "f1f6204cb768e8e9",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-006": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-006:HIGH PRIORITY",
+    "content_hash": "2fc00966a5cc3f19",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-007": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-007:HIGH PRIORITY",
+    "content_hash": "47ea5a5db63927b8",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-008": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-008:HIGH PRIORITY",
+    "content_hash": "e4b637e7d752cc72",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-009": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-009:FOURTH HR CONVERSATION (2026-02-04) — ACTION ITEMS",
+    "content_hash": "0e82afa2cee67d91",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-010": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-010:FOURTH HR CONVERSATION (2026-02-04) — ACTION ITEMS",
+    "content_hash": "e34bd23bbd21d546",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-011": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-011:FOURTH HR CONVERSATION (2026-02-04) — ACTION ITEMS",
+    "content_hash": "0779cc396ad216bc",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-012": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-012:FOURTH HR CONVERSATION (2026-02-04) — ACTION ITEMS",
+    "content_hash": "0d897bd73fce9a8f",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-013": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-013:FOURTH HR CONVERSATION (2026-02-04) — ACTION ITEMS",
+    "content_hash": "ef823712860241fd",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-014": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-014:FOURTH HR CONVERSATION (2026-02-04) — ACTION ITEMS",
+    "content_hash": "1692cd4c0674737f",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-015": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-015:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "c9d36be69437bf7a",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-016": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-016:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "e7c0fbd579103632",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-017": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-017:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "294afd59c9a3afbf",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-018": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-018:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "13411995f20c5a0e",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-019": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-019:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "3945a49e24c47969",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-020": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-020:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "5b936204dc202447",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-021": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-021:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "570eb2a9519f93f7",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-022": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-022:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "f396ea5239f7f67c",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-023": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-023:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "f6d2f17e9b1dc89d",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-024": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-024:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "076be41c9fdb3a00",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-025": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-025:SEVENTH HR CONVERSATION (2026-03-03) — ACTION ITEMS",
+    "content_hash": "da510326bcb2b5a1",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-026": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-026:MEDIUM PRIORITY",
+    "content_hash": "75f7c920e4a051ad",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-027": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-027:MEDIUM PRIORITY",
+    "content_hash": "4ec3d6f7add900a3",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-028": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-028:MEDIUM PRIORITY",
+    "content_hash": "d07906cbee5352d2",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-029": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-029:MEDIUM PRIORITY",
+    "content_hash": "0dc61908fadc2e79",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-030": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-030:MEDIUM PRIORITY",
+    "content_hash": "e6394287295deaec",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-031": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-031:MEDIUM PRIORITY",
+    "content_hash": "06c14d149897c7f6",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-032": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-032:LOW PRIORITY",
+    "content_hash": "5afb4ad0f489fb92",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-033": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-033:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "f2bea682a250a681",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-034": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-034:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "faba730095d54e93",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-035": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-035:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "d72360cdce067e94",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-036": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-036:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "78f3f94cf87739c4",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-037": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-037:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "454f4409bc0f6b4b",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-038": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-038:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "c45a1f88c38c884f",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-039": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-039:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "6e7780351cf5b4f4",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-040": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-040:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "3f18ad0cf2e304b5",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-041": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-041:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "be11a1407a801b7d",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-042": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-042:SESSION 4 (2026-03-04) — ACTION ITEMS",
+    "content_hash": "35b2a02728b1389a",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-043": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-043:COMPLETED",
+    "content_hash": "95c3be955de6ea7b",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-044": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-044:COMPLETED",
+    "content_hash": "5dea894455a7a6e0",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-045": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-045:COMPLETED",
+    "content_hash": "c6ae429d28af70a3",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-046": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-046:COMPLETED",
+    "content_hash": "626262c73e835e4c",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-047": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-047:COMPLETED",
+    "content_hash": "ac91144390d0e4e4",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-048": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-048:COMPLETED",
+    "content_hash": "dff93d3734caeb4a",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-049": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-049:COMPLETED",
+    "content_hash": "af2068b8a7902f48",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-050": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-050:COMPLETED",
+    "content_hash": "7d23553cc8bdf3f2",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-051": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-051:COMPLETED",
+    "content_hash": "0245536193c6aab5",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-052": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-052:COMPLETED",
+    "content_hash": "50bd0d3f9d9a58ff",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-053": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-053:COMPLETED",
+    "content_hash": "1a47979b4d66c9db",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-054": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-054:COMPLETED",
+    "content_hash": "a8281ade4910dde1",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-055": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-055:COMPLETED",
+    "content_hash": "efc4cfe37cd4cc01",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-056": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-056:COMPLETED",
+    "content_hash": "888858684c462801",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-057": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-057:COMPLETED",
+    "content_hash": "cdb9f0439ea7d700",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-058": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-058:COMPLETED",
+    "content_hash": "68ae290f9856ad4c",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-059": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-059:COMPLETED",
+    "content_hash": "5e4a3fc562b71d62",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-060": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-060:COMPLETED",
+    "content_hash": "62c808564a802dbb",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-061": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-061:Ben direct input — calibration session 2026-03-09",
+    "content_hash": "d628069c068fc23a",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-062": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-062:Ben direct input — calibration session 2026-03-09",
+    "content_hash": "a0c9376f69a74dc7",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-063": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-063:Ben direct input — calibration session 2026-03-09",
+    "content_hash": "674fb04abe936013",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  },
+  "TODO-064": {
+    "source_file": "sources/todos/deadlines.md",
+    "source_section": "deadlines:TODO-064:Ben direct input — calibration session 2026-03-09",
+    "content_hash": "897150b9f7d0499c",
+    "extracted_at": "2026-05-07T14:30:43Z",
+    "parser": "_parse_deadlines_md"
+  }
+}

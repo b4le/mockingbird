@@ -1,0 +1,331 @@
+{
+  "timeline-2021-12-15-81530f": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-001",
+    "content_hash": "12aefca1171f21ff",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2025-11-11-46e49e": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-002",
+    "content_hash": "b56e060f6935ebf5",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2025-12-01-752bb7": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-017",
+    "content_hash": "8b8a73c5db94eeb7",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-01-26-b73e40": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-010",
+    "content_hash": "535cab7d9aa772ff",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-01-26-6b1af2": {
+    "source_file": "sources/conversations/hr/first-hr-conversation.md",
+    "source_section": "derived:conversation-e04bddae-94ab-4e96-b523-bbc7e66e2359",
+    "content_hash": "36907e066feca0f5",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-01-26-c059ed": {
+    "source_file": "sources/conversations/hr/hr-email-exchange-proposed-mutual-separation-agreement.md",
+    "source_section": "derived:conversation-cf2d8d48-def9-46f1-9252-fe418418bb65",
+    "content_hash": "9fbbcb4e474d67d6",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-01-27-c380bf": {
+    "source_file": "sources/conversations/union/unionen-initial-2026-01-27.md",
+    "source_section": "derived:conversation-af5fc9d8-1095-4801-bf3e-97d6fc1e8391",
+    "content_hash": "7c16cdd7f37075dc",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-01-28-0738d2": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-011",
+    "content_hash": "5deb406f2f7112cd",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-01-29-ba1599": {
+    "source_file": "sources/conversations/hr/second-hr-conversation.md",
+    "source_section": "derived:conversation-0f9537cb-d470-4694-9b37-cdb3f800b9ed",
+    "content_hash": "111e9fb70cffcc16",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-02-a63a04": {
+    "source_file": "sources/conversations/hr/third-hr-conversation.md",
+    "source_section": "derived:conversation-65b33afc-fd07-4c49-8c34-eefa79392b1f",
+    "content_hash": "9acc2f491b7241c2",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-04-b0ece1": {
+    "source_file": "sources/conversations/hr/fourth-hr-conversation.md",
+    "source_section": "derived:conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+    "content_hash": "6fb07ef287418f1c",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-05-df99ba": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-004",
+    "content_hash": "bcc0c34b689fd378",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-05-a00511": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-014",
+    "content_hash": "c4d21332858ae019",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-05-9672c7": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-018",
+    "content_hash": "0f5e3dd45b06fb78",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-05-48548d": {
+    "source_file": "local-state/legal/SUMMARY.md",
+    "source_section": "row:1",
+    "content_hash": "19ff93784b196b89",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-11-b32f9b": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-005",
+    "content_hash": "0056a4b9d05e79c5",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-11-8a6f22": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-11.md",
+    "source_section": "derived:conversation-d738b9e8-5b43-498c-8bb6-0ae6396d6d31",
+    "content_hash": "890b5e2f4d0019f4",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-11-2e09a7": {
+    "source_file": "sources/conversations/hr/fifth-hr-conversation.md",
+    "source_section": "derived:conversation-83edc54e-3404-4b56-981d-c0327d7c1ae4",
+    "content_hash": "a39d3a860c1166ec",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-16-7b9190": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-16.md",
+    "source_section": "derived:conversation-3c3a6604-e5b3-49d5-8581-1b0ca5a15ede",
+    "content_hash": "6b7755aa26be5000",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-17-2f6f2d": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-012",
+    "content_hash": "c703a4f5c6ac1dc2",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-17-273d81": {
+    "source_file": "sources/conversations/nico/nico-and-ben-2026-02-17.md",
+    "source_section": "derived:conversation-9083817f-8a0e-4bbf-b80e-394cf8897139",
+    "content_hash": "5b60776f8d33a6ac",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-18-6eddd9": {
+    "source_file": "sources/conversations/marqia/marqia-and-ben-2026-02-18.md",
+    "source_section": "derived:conversation-b637de2d-3c49-4e28-865d-0d516a59c1b2",
+    "content_hash": "d97f254553951896",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-19-b8bfdd": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-19.md",
+    "source_section": "derived:conversation-dc91f505-291b-4b37-b777-1ada290ff2bd",
+    "content_hash": "3fa275310353c17b",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-20-bb05ec": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-006",
+    "content_hash": "b1d0605385becb2c",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-20-536aab": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-013",
+    "content_hash": "f9c2aa1280ccb988",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-20-2594db": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-20.md",
+    "source_section": "derived:conversation-ca46ebd0-241a-47d8-a537-20b5c697f348",
+    "content_hash": "0a8b47334bbe477e",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-20-355c8a": {
+    "source_file": "sources/conversations/hr/sixth-hr-conversation.md",
+    "source_section": "derived:conversation-53fe62ba-57da-4fce-b62d-7375b22ad112",
+    "content_hash": "61c8bd9c5e2c6608",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-23-58eeae": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-23.md",
+    "source_section": "derived:conversation-fc88ed26-0d53-4923-8958-42b9e339192f",
+    "content_hash": "f8f8ce5989343e20",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-03-7b96d2": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-007",
+    "content_hash": "081568d8e3cbe590",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-03-f80666": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-008",
+    "content_hash": "91ff98e76a0fc140",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-03-742794": {
+    "source_file": "sources/conversations/hr/seventh-hr-conversation.md",
+    "source_section": "derived:conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "content_hash": "be60f81dc7e0a10a",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-04-0128ec": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-015",
+    "content_hash": "21c3d466b4411726",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-06-02f652": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-019",
+    "content_hash": "6611c53e34f280c8",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-09-6bbe18": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-020",
+    "content_hash": "ea080606ac0a7088",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-11-c48a00": {
+    "source_file": "sources/conversations/union/peter-toth-local-unionen.md",
+    "source_section": "derived:conversation-7ab78d23-8e10-490c-8371-099cc7840888",
+    "content_hash": "49700a61eb5cf127",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-25-b3f4fd": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-03-25.md",
+    "source_section": "derived:conversation-2f9cd0c8-df91-421a-a8c8-435b56418467",
+    "content_hash": "fe74ca45b8f501a3",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-27-b590a5": {
+    "source_file": "local-state/legal/SUMMARY.md",
+    "source_section": "row:2",
+    "content_hash": "ec28eace05021c69",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-04-28-c90cc1": {
+    "source_file": "local-state/legal/SUMMARY.md",
+    "source_section": "row:3",
+    "content_hash": "3c9cdd1ab6971e58",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-04-29-86d912": {
+    "source_file": "sources/conversations/union/peter-toth-local-unionen-analysis.md",
+    "source_section": "derived:conversation-e06bf47b-8038-46a3-be0f-8c94c0dc030d",
+    "content_hash": "9cc3a60fdd1e7026",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-05-07-591af1": {
+    "source_file": "sources/conversations/hr/eighth-hr-conversation.md",
+    "source_section": "derived:conversation-9d4f7a2e-1c83-4f6b-8e1a-72e5b9d8c401",
+    "content_hash": "fcc0631ddc06c8d6",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-06-01-3c0f0e": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-009",
+    "content_hash": "7fd431ba424971e2",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-06-06-161272": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-021",
+    "content_hash": "3bba8cb0a993f37a",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-06-06-d7251a": {
+    "source_file": "local-state/legal/SUMMARY.md",
+    "source_section": "row:4",
+    "content_hash": "fb6494a296721f86",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-07-01-ebb9ec": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-016",
+    "content_hash": "b4c76e16c1da476d",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-12-15-526c58": {
+    "source_file": "local-state/legal/SUMMARY.md",
+    "source_section": "row:5",
+    "content_hash": "f896dbbe635d3467",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2027-03-01-66a6d8": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:TIM-003",
+    "content_hash": "069e55a2bfd6cfdc",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2027-03-01-327ae9": {
+    "source_file": "Severance/facts/timeline.md",
+    "source_section": "yaml:CIT-001",
+    "content_hash": "a0e336c5f92759f2",
+    "extracted_at": "2026-05-07T15:16:03Z",
+    "parser": "build_timeline"
+  }
+}

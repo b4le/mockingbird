@@ -1,0 +1,6 @@
+# Mockingbird is published as a private-by-obscurity showcase.
+# All pages contain real names and case detail; we want zero search
+# indexing. If a crawler honours robots.txt, this is enough; the
+# noindex meta tag in the root layout covers the rest.
+User-agent: *
+Disallow: /

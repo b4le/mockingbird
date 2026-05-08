@@ -75,6 +75,34 @@ npm run build
 npx serve out
 ```
 
+### Real-world example: `severance`
+
+`data/severance/` is the publishable copy of a real workplace dispute project, included to give visitors a meaningful example. It contains real names and is **published as a private-by-obscurity showcase** — not as open data:
+
+- `public/robots.txt` blocks all crawlers.
+- The root layout emits `<meta name="robots" content="noindex,nofollow,nocache">` so even cooperating bots that ignore robots.txt drop the page.
+- `getDefaultProject()` in `src/lib/projects.ts` prefers `severance` over `demo` so the URL root lands on the real example.
+
+These controls deter casual discovery; they do not provide access control. Anyone with the URL can still read everything. If you need real access control (auth, allowlist, expiring links), GitHub Pages is the wrong host — see follow-ups below.
+
+### Syncing severance from atticus-finch exports
+
+`data/severance/` is the **tracked** copy. The atticus-finch exporter writes to `data/local/` (gitignored) on every run; we deliberately do **not** auto-sync, so each publish is an explicit act:
+
+```bash
+scripts/sync-severance.sh           # diff first, prompt before applying
+scripts/sync-severance.sh --apply   # apply without prompting
+```
+
+The script rsyncs `data/local/` → `data/severance/`, then runs `scripts/normalise-severance.mjs` to handle known drift between the exporter and the Mockingbird schemas (e.g. `ActionItem.status = "open"` → `"todo"`, dropping dangling cross-collection IDs). Each transform in the normaliser is documented inline with the exporter issue it works around. Review the resulting `git diff data/severance` before committing.
+
+`getProjects()` in `src/lib/projects.ts` filters out `data/local/` via `EXCLUDED_PROJECT_FOLDERS` so the staging copy never appears in the project selector or gets rendered into static pages, even when present locally.
+
+### Future hardening
+
+- **Per-stakeholder anonymisation flag.** Add `Stakeholder.anonymised: boolean` so individuals only marginally involved (e.g. mentioned once in a transcript) can be hidden behind a pseudonym while main actors stay named. Requires changes in both Mockingbird (schema + render-time substitution) and the atticus-finch exporter (source of truth).
+- **Real access control.** GitHub Pages serves everything publicly. To gate access, options include: (a) Cloudflare Pages + Cloudflare Access (free, email-based allowlist), (b) Vercel + Vercel Authentication (paid), (c) a thin auth-gated proxy in front of the static bundle, (d) a client-side password gate (security theatre, but raises the bar against URL leakage).
+
 ## License
 
 MIT

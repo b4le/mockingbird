@@ -1,0 +1,79 @@
+{
+  "email-spotify-hr-19bfa273eca78c37": {
+    "source_file": "local-state/emails/spotify-hr/2026-01-26-ebba-proposed-mutual-separation-agreement.md",
+    "source_section": "email:19bfa273eca78c37",
+    "content_hash": "7bad6a9192c5d9e2",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-spotify-hr-local-2026-02-05-johan-confidential-next-steps": {
+    "source_file": "local-state/emails/spotify-hr/2026-02-05-johan-confidential-regarding-our-discussion-and-next-steps.md",
+    "source_section": "email:local-2026-02-05-johan-confidential-next-steps",
+    "content_hash": "04628440a75d3192",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-union-unionen-19c6bac92712ede7": {
+    "source_file": "local-state/emails/union-unionen/2026-02-17-ben-jose-manuel-or-helena-borg-jodelsohn.md",
+    "source_section": "email:19c6bad57ee45b81",
+    "content_hash": "4fd1c25e088b1b58",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19cb3626889619a2": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-03-03-ben-referral-from-asa-gotthardsson-employment.md",
+    "source_section": "email:19cb365f2cfd3669",
+    "content_hash": "3e0d465e6332c48f",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19cdd3a1fc1e4006": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-03-11-ben-ben-purslow-situation-brief-and.md",
+    "source_section": "email:19cdd4b946937c42",
+    "content_hash": "24d0898209eba86d",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19cdd4cfbefdd2d0": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-03-11-sten-autosvar-ben-purslow-situation-brief.md",
+    "source_section": "email:19cdd4cfbefdd2d0",
+    "content_hash": "53bc8d038e2d6c8e",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-amendment-19cfb5c675bae6f7": {
+    "source_file": "local-state/emails/amendment/2026-03-17-ben-re-personal-and-confidential-amendment.md",
+    "source_section": "email:19cfb5c675bae6f7",
+    "content_hash": "4c857cc149f2da84",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19cfb99254816c9c": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-03-17-sten-sligt-delay.md",
+    "source_section": "email:19cfb99254816c9c",
+    "content_hash": "9cc7cd1d4954fa24",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19cfc5c0b6627e38": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-03-17-sten-engagement-letter.md",
+    "source_section": "email:19cfc5c0b6627e38",
+    "content_hash": "e212f956655b2408",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-union-unionen-19d2b29a9ca188c6": {
+    "source_file": "local-state/emails/union-unionen/2026-03-26-ben-member-query-potential-disability-discrimination.md",
+    "source_section": "email:19d2b29a9ca188c6",
+    "content_hash": "6893edbf2ce017c8",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19d3cb038377d4fa": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-03-30-ben-formal-consultation-next-steps.md",
+    "source_section": "email:19d3cb038377d4fa",
+    "content_hash": "262c74e41b0a3c6b",
+    "extracted_at": "2026-05-07T14:30:46Z",
+    "parser": "parse_communications"
+  }
+}

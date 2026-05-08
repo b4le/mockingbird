@@ -1,0 +1,715 @@
+[
+  {
+    "id": "email-spotify-hr-19bfa273eca78c37",
+    "channel": "email",
+    "date": "2026-01-26T11:52:00Z",
+    "subject": "HR Separation (Spotify/Johan Sellgren)",
+    "participantIds": [
+      "stakeholder-ebba",
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren",
+      "stakeholder-helena-borg-jodelsohn"
+    ],
+    "actionItemIds": [],
+    "claimIds": [
+      "claim-CLM-001",
+      "claim-CLM-003",
+      "claim-CLM-004",
+      "claim-CLM-005",
+      "claim-CLM-006",
+      "claim-CLM-007"
+    ],
+    "evidenceIds": [
+      "evidence-ADM-007",
+      "evidence-ADM-009",
+      "evidence-ADM-011",
+      "evidence-ADM-016",
+      "evidence-ADM-017",
+      "evidence-COM-004",
+      "evidence-COM-007",
+      "evidence-COM-008",
+      "evidence-PRO-006",
+      "evidence-PRO-012",
+      "evidence-RDP-007",
+      "evidence-RDP-008"
+    ],
+    "riskIds": [
+      "risk-RISK-013",
+      "risk-RISK-019",
+      "risk-RISK-024"
+    ],
+    "conversationIds": [],
+    "summary": "HR Separation (Spotify/Johan Sellgren)",
+    "messages": [
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-0",
+        "date": "2026-01-26T11:52:00Z",
+        "senderId": "stakeholder-ebba",
+        "bodyPreview": "Hi again Ben,\n\nThanks for meeting with me.\n\nPlease see proposed mutual separation agreement attached, as well as more\ninformation regarding the outplacement support. Regarding a follow up call\ntomorrow - would 1:30pm work?\n\nBest,\nEbba"
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-1",
+        "date": "2026-01-27T12:50:16Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Ebba,\n\nHope you're doing alright given he circumstances. I'd appreciate it if we\ncould put in some time later this week (Thursday or Friday) to touch base.\nI've been helping organise a few things as I just got back Monday and\npeople need support too.\nWith the reorganisation announcements tomorrow and today there's a lot of\nworried people so I'm focussing on:\n1) rallying the changes in AI, we've been prepping for a while and they're\njust panicking when for us, it's just a continuation\n2) he..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-2",
+        "date": "2026-01-27T16:36:39Z",
+        "senderId": "stakeholder-ebba",
+        "bodyPreview": "Hi Ben,\n\nThanks for the note, and I appreciate you sharing the context.\n\nI also want to acknowledge the care you’re showing for the team during\ntimes of change and many unknowns. At the same time, as Adrian and I shared\nin our conversation, we’d strongly encourage you to shift your focus to\nyourself at this point. With the reorg communication going out, it’s\nimportant that we use our time to focus on what the path forward will look\nlike for you. As discussed, the purpose of reconnecting is to..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-3",
+        "date": "2026-01-30T10:59:17Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Ebba,\n\nThank you for the time yesterday. Our conversation gave me a lot to process.\n\nMy partner is taking today off so we can properly evaluate the personal and\nfinancial implications of the current proposal on our life here in Sweden.\nI am also currently waiting for Unionen to get back to me on the initial\ntext of the agreement. They seem to be taking longer than expected to\nreview the legal ramifications (and I’m no expert on legal text!), so I’ll\nbe calling them today to check on their..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-4",
+        "date": "2026-01-30T13:55:00Z",
+        "senderId": "stakeholder-ebba",
+        "bodyPreview": "Hi Ben,\n\nThanks for sharing your questions. I’ve shared them with Adrian and will\nalign with him regarding the assessment.\n\nRegarding your question on the nature of the proposed separation, I can\nconfirm that this is being treated as a leadership decision, with them\nconsidering a mutual separation agreement as the preferred option.\n\nPlease take some time over the weekend to consider the settlement\nagreement, I fully understand it's a big decision for you and your partner."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-5",
+        "date": "2026-02-03T10:31:09Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Ebba,\n\nWriting to follow up on our last conversation. I haven’t yet received the\nwritten clarifications regarding the nature of the separation and the\nassessment methodology used for the new organization. As we discussed,\nhaving these facts in writing is essential for me and my Unionen\nrepresentative to review the proposal fairly.\n\nTo help us move forward, I need to request that my formal *2025 Talent\nSnapshot* be finalised and shared with me. I understand the company-wide\ndeadline was Jan..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-6",
+        "date": "2026-02-06T15:08:01Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nMoving this conversation to my personal email thread (where I was\npreviously communicating with Ebba) to ensure I have persistent access to\nour correspondence. Please ensure all future correspondence regarding this\nmatter is directed to this address (benpurslow@gmail.com).\n\nThank you for the written clarification. It is helpful to have your\nconfirmation that this is *\"not a retrospective audit of my technical track\nrecord\"* but rather a forward-looking leadership decision. This con..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-7",
+        "date": "2026-02-12T14:24:14Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nThank you for the conversation yesterday. I appreciate the open\nconversation and the direction we're heading. I wanted to capture what we\ndiscussed so we're aligned on next steps.\n\nAgreed next steps from yesterday:\n\n   1. We agreed to explore both the mutual separation agreement and\n   potential IC redeployment in parallel, rather than sequentially. Both\n   tracks remain open.\n   2. I will work on identifying areas where my skills and experience align\n   with business needs in an I..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-8",
+        "date": "2026-02-13T08:21:46Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "Hi Ben,\n\nThanks for the summary. The steps reflect my view well, and I have nothing\nto add. Let's maintain momentum during next week and I once again encourage\nyou to focus on yourself.\n\nHere is the response to your questions in the agreement.\n\nThis is our standard agreement, so we’re not in a position to modify it but\nI’ll provided more details below in blue so you have more context in\nwritten on how it will work in practice:\n\nClause 2.1: Benefits and holiday pay need to be specified, in par..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-9",
+        "date": "2026-02-20T13:12:53Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "Hi Ben,\n\nThanks again for the conversation. I want to briefly recap where we landed\nto ensure we’re aligned.\n\n*1. The role (discussion with Adrian on Monday)*\nYou shared concerns that perception and past track record might work\nagainst you and impact your ability to succeed in the role.\n\nMy advice: first align fully with Adrian on expectations, scope, and what\nsuccess looks like. If you decide to move forward, we should do so with\nclear intent to make it successful - including agreeing upfron..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-10",
+        "date": "2026-02-24T10:11:28Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nThanks for the recap, helpful to have things in writing. A couple of points\nI want to clarify so we're working from the same understanding."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-11",
+        "date": "2026-02-24T10:21:15Z",
+        "senderId": "stakeholder-helena-borg-jodelsohn",
+        "bodyPreview": "Hi Ben!\n\nThank you for your email.\n\nYou may refer to any one of us. If none of us are available, another advisor will always take over.\nI wish you a nice day!\n\nHälsningar\n\nHelena Borg Jodelsohn \nFacklig Rådgivare\n\nUnionen\n\nKontaktinformation och öppettider\nwww.unionen.se/kontakt<http://www.unionen.se/kontakt>\n\nFå krafter utöver det vanliga. På jobbet.\n\nVill du få ökat inflytande/möjlighet att påverka på din arbetsplats? Här kan du läsa om att bilda klubb: Påverka på jobbet – bli förtroendeval..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-12",
+        "date": "2026-02-26T16:55:07Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "Hi Ben,\n\nI missed this e-mail. Sorry for the delay.\n\nThat is correct. It's a redeployment offer that Adrian wants to align with\nyou. It's the role at hand or the seperation agreement.\n\nAlso wanna remind you that I am confident the formalities in the agreement\nwill be sorted so appreciate if you can also get back to me on the monetary\naspect. As long as it's still an option.\n\nThank you\n\n-------------------\nJohan Sellgren | HR Business Partner, Experience Mission\n| sellgren@spotify.com | Regeri..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-13",
+        "date": "2026-03-04T12:13:20Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nI've been reflecting on our conversation yesterday. I wanted to capture a\nfew things in writing so we're aligned on where we are now.\n\nYou proposed to withdraw the separation agreement, which was a process\nSpotify initiated. I understand that's your current position, and I've\nnoted it. I'd expect that conversation could be revisited if circumstances\nchange on either side.\n\nAdrian and I have had productive conversations about scope, and I'm engaged\nwith that process. What I have at..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-14",
+        "date": "2026-03-04T16:00:12Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "Hi Ben,\n\nFollowing up on our conversations, we can offer you the role of *Staff\nEngineer*, reporting to Adrian Ford as outlined and discussed.\n\nYou’ll find the main responsibilities outlined in the attached job\ndescription,\n<https://docs.google.com/document/d/1evbcJarKpawJXH4qB6JdTaXqv3yP5xCvYLJS305ipe8/edit?tab=t.0#heading=h.g54jz8lsravl>\nbut as you onboard to the role, you and Adrian will need to define\nobjectives and focus areas together.\n\nThe role is full-time and based either at Urban Es..."
+      },
+      {
+        "id": "email-spotify-hr-19bfa273eca78c37-msg-15",
+        "date": "2026-03-09T16:13:26Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nThanks for your email on 4 March. I've been reviewing it and have a\nfew questions before I can give you a considered response.\n\nWhen we last spoke, you mentioned I'd work out the success criteria\nwith Adrian to avoid the subjectivity of my current situation. We'd\ndiscussed it but I haven't received anything official yet, and with\nhim out until 16 March I'm not clear on how that gets resolved\nbeforehand. I'd want a proper understanding of what success looks\nlike, something concrete..."
+      }
+    ],
+    "tags": [
+      "inbound",
+      "category:spotify-hr"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-spotify-hr-local-2026-02-05-johan-confidential-next-steps",
+    "channel": "email",
+    "date": "2026-02-05T16:01:00Z",
+    "subject": "confidential: regarding our discussion and next steps",
+    "participantIds": [
+      "stakeholder-johan-sellgren",
+      "stakeholder-ben-purslow"
+    ],
+    "actionItemIds": [],
+    "claimIds": [
+      "claim-CLM-001",
+      "claim-CLM-002",
+      "claim-CLM-009"
+    ],
+    "evidenceIds": [
+      "evidence-ADM-001",
+      "evidence-DIS-001",
+      "evidence-DIS-002",
+      "evidence-DIS-003"
+    ],
+    "riskIds": [
+      "risk-RISK-008",
+      "risk-RISK-016"
+    ],
+    "conversationIds": [],
+    "summary": "confidential: regarding our discussion and next steps",
+    "messages": [
+      {
+        "id": "email-spotify-hr-local-2026-02-05-johan-confidential-next-steps-msg-0",
+        "date": "2026-02-05T16:01:00Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "<!-- Sent to Spotify work address — not in Gmail archive. Source: local-state/conversations/hr/hr-communications-work-email-feb-5th.md. This is the ONLY email where Spotify names \"feedback\" in writing. Three factors (operational approach, communication style, leadership alignment) are the entire stated basis for separation — all unsubstantiated, no prior formal process, no gap analysis. -->\n\nHi Ben,\n\nThank you for our meeting yesterday. I appreciate the open discussion and,\nas we touched upon..."
+      }
+    ],
+    "tags": [
+      "inbound",
+      "category:spotify-hr"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-union-unionen-19c6bac92712ede7",
+    "channel": "email",
+    "date": "2026-02-17T12:57:27Z",
+    "subject": "Jose Manuel or Helena Borg Jodelsohn - (Benjamin Purslow - Spotify)",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-helena-borg-jodelsohn"
+    ],
+    "actionItemIds": [],
+    "claimIds": [
+      "claim-CLM-007"
+    ],
+    "evidenceIds": [
+      "evidence-ADM-021",
+      "evidence-PRO-001"
+    ],
+    "riskIds": [
+      "risk-RISK-021"
+    ],
+    "conversationIds": [],
+    "summary": "Jose Manuel or Helena Borg Jodelsohn - (Benjamin Purslow - Spotify)",
+    "messages": [
+      {
+        "id": "email-union-unionen-19c6bac92712ede7-msg-0",
+        "date": "2026-02-17T12:57:27Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Jose / Helena,\n\nI hope you're both well. I'm writing with two things: a development on the agreement clauses, and a follow-up on my earlier email that I haven't heard back on yet.\n\n1. Employer's Response to Clause Feedback\n\nI forwarded Helena's clause observations to Spotify HR (Johan Sellgren, HRBP). His response came on the 13th February. Summary below — I'd appreciate your formal counter-positions on each, particularly the flat rejections and the competitor clause.\n\nClause 2.1 (Benefits..."
+      }
+    ],
+    "tags": [
+      "outbound",
+      "category:union-unionen"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-legal-privileged-19cb3626889619a2",
+    "channel": "email",
+    "date": "2026-03-03T11:12:08Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19cb3626889619a2-msg-0",
+        "date": "2026-03-03T11:12:08Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cb3626889619a2-msg-1",
+        "date": "2026-03-03T19:53:31Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cb3626889619a2-msg-2",
+        "date": "2026-03-04T09:00:03Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cb3626889619a2-msg-3",
+        "date": "2026-03-04T11:17:45Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cb3626889619a2-msg-4",
+        "date": "2026-03-04T12:31:26Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cb3626889619a2-msg-5",
+        "date": "2026-03-11T14:08:15Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "outbound",
+      "privileged"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-legal-privileged-19cdd3a1fc1e4006",
+    "channel": "email",
+    "date": "2026-03-11T14:27:23Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-0",
+        "date": "2026-03-11T14:27:23Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-1",
+        "date": "2026-03-12T08:05:09Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-2",
+        "date": "2026-03-12T18:09:11Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-3",
+        "date": "2026-03-12T19:24:46Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-4",
+        "date": "2026-03-16T20:29:41Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-5",
+        "date": "2026-03-16T20:36:15Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-6",
+        "date": "2026-03-16T21:47:50Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-7",
+        "date": "2026-03-16T22:18:59Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-8",
+        "date": "2026-03-20T11:26:50Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-9",
+        "date": "2026-03-20T12:40:44Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-10",
+        "date": "2026-03-20T15:46:47Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-11",
+        "date": "2026-03-26T15:43:01Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cdd3a1fc1e4006-msg-12",
+        "date": "2026-03-26T16:49:22Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "outbound",
+      "privileged"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-legal-privileged-19cdd4cfbefdd2d0",
+    "channel": "email",
+    "date": "2026-03-11T14:28:53Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19cdd4cfbefdd2d0-msg-0",
+        "date": "2026-03-11T14:28:53Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "inbound",
+      "privileged"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-amendment-19cfb5c675bae6f7",
+    "channel": "email",
+    "date": "2026-03-17T10:34:09Z",
+    "subject": "Amendment to Employment Contract",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-johan-sellgren",
+      "stakeholder-adrian-ford"
+    ],
+    "actionItemIds": [],
+    "claimIds": [
+      "claim-CLM-003",
+      "claim-CLM-004",
+      "claim-CLM-010",
+      "claim-CLM-012"
+    ],
+    "evidenceIds": [
+      "evidence-ADM-020",
+      "evidence-PRO-008",
+      "evidence-PRO-009",
+      "evidence-PRO-011",
+      "evidence-PRO-013",
+      "evidence-RDP-003",
+      "evidence-RDP-009"
+    ],
+    "riskIds": [
+      "risk-RISK-009",
+      "risk-RISK-010",
+      "risk-RISK-019",
+      "risk-RISK-020",
+      "risk-RISK-024"
+    ],
+    "conversationIds": [],
+    "summary": "Amendment to Employment Contract",
+    "messages": [
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-0",
+        "date": "2026-03-17T10:34:09Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nThanks for sending this. I'm forwarding it to my personal email as I've previously requested, so that I have a permanent record of the document.\n\nI'll review it and come back with any questions.\n\nThanks,\nBen"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-1",
+        "date": "2026-03-17T13:14:45Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-2",
+        "date": "2026-03-17T13:41:36Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-3",
+        "date": "2026-03-23T20:02:21Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nThanks for sending through the amendment. I've had a chance to review it and have two points I need addressed.\n\n1. I've done the work with Adrian to understand the practical need here and what I'd need to do to make this transition work. But the amendment is a role change on paper and nothing more. There's nothing in it that acknowledges the broader context, nothing that reflects what Spotify is committing to in practice, and no indication of what HR's role and responsibilities are..."
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-4",
+        "date": "2026-03-24T14:04:48Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "Thanks for your note - happy to clarify.\n\n1. The amendment reflects the formal role change, similar to how your employment contract outlines the framework of employment rather than operational details. It is not intended to capture broader context or internal ways of working. There are no changes to your employment terms beyond the role itself, and HR will continue to support the transition in line with standard practice.\n\n2. In relation to the March compensation review, we assessed your sala..."
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-5",
+        "date": "2026-03-26T14:07:38Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hey Johan,\n\nThanks for coming back to my questions. You've confirmed the amendment is a role change on paper with no changes beyond the title, and that the comp review is closed with my salary unchanged. I note that but it confirms we're on different pages about what constitutes an offer, and I think that's why it feels like we're each delayed on the other. For example, I raised compensation on 9th March; it took until now to get a response, by which point the review window had closed.\n\nSo le..."
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-6",
+        "date": "2026-03-26T14:31:24Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "Hi Ben,\n\nThanks for outlining your perspective. I understand that you're looking for a more holistic view of what this transition entails.\n\nLet me address your points directly:\n\n- Compensation - As mentioned, compensation has been assessed in relation to the *new* role. This assessment is based on the scope and level of the Staff Engineer role and aligns with our internal benchmarks. In your case, the outcome is well positioned within - and above - the expected range for this level. When chan..."
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-7",
+        "date": "2026-03-26T14:36:17Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "I realise I mixed up the days and that it's already Thursday, my apologies. We can extend the timeline until end of business tomorrow.\n\nIf we're not able to reach an agreement, we would need to explore next steps, which may include consultation with your union (if applicable). In that case, I'd appreciate it if you could confirm whether you're a member and, if so, which union you belong to.\n\nThank you"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-8",
+        "date": "2026-03-26T16:55:13Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-9",
+        "date": "2026-03-27T07:55:52Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-10",
+        "date": "2026-03-27T11:51:45Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-11",
+        "date": "2026-03-27T13:06:23Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nI had hoped we'd been working toward a mutually beneficial outcome this week, and that we were close to aligning on something that reflected both the contribution I've made to Content Platform and the role you're asking me to step into. Your response suggests otherwise — there's been no acknowledgement of what I've delivered, and nothing on the table beyond a title change.\n\nGiven that you've raised the possibility of involving my union, it's clear we're further apart than I thought..."
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-12",
+        "date": "2026-03-27T14:09:03Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nI had hoped we'd been working toward a mutually beneficial outcome this week, and that we were close to aligning on something that reflected both the contribution I've made to Content Platform and the role you're asking me to step into. Your response suggests otherwise, there's been no acknowledgement of what I've delivered, and nothing on the table beyond a title change.\n\nGiven that you've raised the possibility of involving my union, it's clear we're further apart than I thought...."
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-13",
+        "date": "2026-03-27T14:48:19Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-14",
+        "date": "2026-03-27T15:38:28Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Johan,\n\nI had hoped we'd been working toward a mutually beneficial outcome this week, and that we were close to aligning on something that reflected both the contribution I've made to Content Platform and the role you're asking me to step into. Your response suggests otherwise; there's been no acknowledgement of what I've delivered, and nothing on the table beyond a title change.\n\nGiven that you've raised the possibility of involving my union, it's clear we're further apart than I thought...."
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-15",
+        "date": "2026-03-27T17:28:45Z",
+        "senderId": "stakeholder-johan-sellgren",
+        "bodyPreview": "Hi -\n\nWe will be sending a formal consultation request to the union start of next week to initiate the formal process. All to ensure we move things forward and eventually find a way foward. Since you are on vacation and an Easter break for all of us soon it will be time for you to consult with unionen and the local club. They know the procedure.\n\nJohan"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-16",
+        "date": "2026-03-30T05:14:00Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-17",
+        "date": "2026-03-30T06:53:39Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-18",
+        "date": "2026-03-30T14:29:03Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-amendment-19cfb5c675bae6f7-msg-19",
+        "date": "2026-03-30T14:46:08Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "outbound",
+      "category:amendment",
+      "mixed-privilege"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-legal-privileged-19cfb99254816c9c",
+    "channel": "email",
+    "date": "2026-03-17T11:40:39Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19cfb99254816c9c-msg-0",
+        "date": "2026-03-17T11:40:39Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cfb99254816c9c-msg-1",
+        "date": "2026-03-17T11:59:32Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19cfb99254816c9c-msg-2",
+        "date": "2026-03-17T12:20:46Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "inbound",
+      "privileged"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-legal-privileged-19cfc5c0b6627e38",
+    "channel": "email",
+    "date": "2026-03-17T15:13:30Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19cfc5c0b6627e38-msg-0",
+        "date": "2026-03-17T15:13:30Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "inbound",
+      "privileged"
+    ],
+    "hasAttachments": false,
+    "externalParticipants": []
+  },
+  {
+    "id": "email-union-unionen-19d2b29a9ca188c6",
+    "channel": "email",
+    "date": "2026-03-26T17:20:43Z",
+    "subject": "Member query - potential disability discrimination during redeployment process",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-helena-borg-jodelsohn"
+    ],
+    "actionItemIds": [],
+    "claimIds": [
+      "claim-CLM-001",
+      "claim-CLM-002",
+      "claim-CLM-004",
+      "claim-CLM-007"
+    ],
+    "evidenceIds": [
+      "evidence-DIS-001",
+      "evidence-DIS-002",
+      "evidence-PRO-001",
+      "evidence-RDP-007",
+      "evidence-RDP-009"
+    ],
+    "riskIds": [
+      "risk-RISK-008",
+      "risk-RISK-021",
+      "risk-RISK-024"
+    ],
+    "conversationIds": [],
+    "summary": "Member query - potential disability discrimination during redeployment process",
+    "messages": [
+      {
+        "id": "email-union-unionen-19d2b29a9ca188c6-msg-0",
+        "date": "2026-03-26T17:20:43Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi,\n\nI'm a Unionen member (since March 2023) and I'd like advice on whether what's happened during my current HR process may constitute discrimination.\n\nI'm a Senior Engineering Manager at Spotify, being redeployed to a Staff Engineer (IC) role. The reasoning I was given for the role change was feedback about how I communicate and that I \"go too deep into root cause problems\" — both of which are traits directly associated with my ADHD.\n\nOn 5 February, during the fourth HR conversation about t..."
+      }
+    ],
+    "tags": [
+      "outbound",
+      "category:union-unionen"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-legal-privileged-19d3cb038377d4fa",
+    "channel": "email",
+    "date": "2026-03-30T03:01:15Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19d3cb038377d4fa-msg-0",
+        "date": "2026-03-30T03:01:15Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "outbound",
+      "privileged"
+    ],
+    "hasAttachments": false
+  }
+]

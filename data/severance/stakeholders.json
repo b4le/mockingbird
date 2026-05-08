@@ -1,0 +1,187 @@
+[
+  {
+    "id": "stakeholder-johan-sellgren",
+    "name": "Johan Sellgren",
+    "role": "HRBP",
+    "organisation": "Spotify HR",
+    "initials": "JS",
+    "colour": "#EF4444",
+    "notes": "Johan called Ben by the wrong name three times (Dan, David, David) in a 79-minute Fourth HR Conversation meeting.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-adrian-ford",
+    "name": "Adrian Ford",
+    "role": "Ben's manager",
+    "organisation": "Spotify Engineering",
+    "initials": "AF",
+    "colour": "#10B981",
+    "notes": "Adrian Ford is Ben's manager and internal advocate. Departing ~June 2026 (VERBAL ONLY — no written confirmation). On leave 6-16 Mar 2026. Was told NOT to engage with Ben on redeployment — evidence of deliberate isolation (corroborated by Marqia, verbal, confidential). Was tasked with defining 'what success looks like in 6 months' for Ben's redeployed role but NEVER COMPLETED this — creating a structural gap where any role acceptance leaves Ben subject to the same subjective evaluation that triggered the separation process. Acknowledged being 'limited in what I can do' — constraints placed on his engagement.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-helena-borg-jodelsohn",
+    "name": "Helena Borg Jodelsohn",
+    "role": "Unionen rep",
+    "organisation": "Unionen",
+    "initials": "HJ",
+    "colour": "#8B5CF6",
+    "notes": "Helena Borg Jodelsohn is the Unionen representative. Email: medlemsservice.uppsagning@unionen.se. WRITTEN OFF — provided clause feedback but cannot help further without formal case. Clause review and escalation advisory shifted to independent review (independent review). TODO-022 and TODO-031 closed as shifted to independent review. Ombudsman and central representation paths remain open separately.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-sarah-hoyle",
+    "name": "Sarah Hoyle",
+    "role": "T&S Engineering",
+    "organisation": "Spotify T&S",
+    "initials": "SH",
+    "colour": "#F59E0B",
+    "notes": "Sarah Hoyle is in T&S Engineering. Priority redeployment target but DEFERRED — T&S not ready as R&D org, reorg planned. Interested in Ben + Lex Beattie as team. Reassess H2 2026.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-marqia-williams",
+    "name": "Marqia Williams",
+    "role": "Eng Director",
+    "organisation": "Spotify Engineering",
+    "initials": "MW",
+    "colour": "#F97316",
+    "notes": "Marqia Williams is Eng Director. Structural obstacle. Received 14 direct reports from Ben without notification. Confirmed team trust at 'zero'. Told 'there will be no handover' and that Ben is on garden leave (neither true). 'Any role in Content Platform would absolutely cause confusion' — blocks all CP IC paths.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-babar",
+    "name": "Babar",
+    "role": "VP",
+    "organisation": "Spotify Leadership",
+    "initials": "BA",
+    "colour": "#EC4899",
+    "notes": "Babar is VP who blocks Content Platform redeployment. Primary decision-maker in separation. Had met Ben only once.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-ben-purslow",
+    "name": "Ben Purslow",
+    "role": "Senior Engineering Manager",
+    "organisation": "Spotify",
+    "initials": "BP",
+    "colour": "#3B82F6",
+    "notes": "Ben Purslow — UK and Australian dual citizen. Swedish Permanent Residency (Article 18.1 'Brexit visa'). ADHD diagnosed ~May 2024, disclosed to managers (Adrian Ford, James Jacoby) prior to formal written disclosure to Johan Sellgren 6 Feb 2026. Unionen member since March 2023.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-ebba",
+    "name": "Ebba",
+    "role": "HR",
+    "organisation": "Spotify HR",
+    "initials": "EB",
+    "colour": "#6366F1",
+    "notes": "Ebba was the previous HRBP. Replaced by Johan Sellgren. Johan contradicted her framing: 'Ebba should not frame it like that, so I don't know where that came from.'",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-bianca",
+    "name": "Bianca",
+    "role": "Stakeholder",
+    "organisation": "Spotify",
+    "initials": "BI",
+    "colour": "#6B7280",
+    "notes": "Bianca is a single point of failure for VLOP preparation, new systems, and legal compliance reporting. Attributes AI onboarding work explicitly to Ben.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-atelach",
+    "name": "Atelach",
+    "role": "Stakeholder",
+    "organisation": "Spotify",
+    "initials": "AT",
+    "colour": "#6B7280",
+    "notes": "Atelach is the new Senior Director showcasing AI onboarding work as headline CP demo — work that flows directly from Ben's DEF roadmap and 'compounding thinking'.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-oliver-spall",
+    "name": "Oliver Spall",
+    "role": "Stakeholder",
+    "organisation": "Spotify",
+    "initials": "OS",
+    "colour": "#84CC16",
+    "notes": "Oliver Spall (Ollie) had a clean GPM-to-IC transition with zero concern raised — comparator for differential treatment argument. Johan's non-response when raised is itself evidential.",
+    "aliases": [
+      "Ollie",
+      "Oli"
+    ]
+  },
+  {
+    "id": "stakeholder-lex-beattie",
+    "name": "Lex Beattie",
+    "role": "Stakeholder",
+    "organisation": "Spotify T&S",
+    "initials": "LB",
+    "colour": "#0EA5E9",
+    "notes": "Lex Beattie is identified as advocate for T&S path. Sarah Hoyle sees Ben + Lex as strong team.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-bruno",
+    "name": "Bruno",
+    "role": "Stakeholder",
+    "organisation": "Spotify",
+    "initials": "BR",
+    "colour": "#6B7280",
+    "notes": "Bruno is representing other team members regarding blocked CoCaM promotions.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-peter-toth",
+    "name": "Peter Toth",
+    "role": "Union Representative",
+    "organisation": "Unionen (Local Club)",
+    "initials": "PT",
+    "colour": "#14B8A6",
+    "notes": "Peter Toth is the local Unionen club representative (chair) at Spotify. Active ally providing support via Signal messages. Connected Ben with Stina (regional ombudsman). Confirmed discrimination case path.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-jose-manuel",
+    "name": "Jose Manuel",
+    "role": "Union Representative",
+    "organisation": "Unionen",
+    "initials": "JM",
+    "colour": "#A855F7",
+    "notes": "Jose Manuel is a Unionen case handler (intake). Handled Ben's initial Unionen intake case via phone consultation on 27 Jan 2026. Superseded by Helena Borg Jodelsohn for the separation matter.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-nico-giagnoni",
+    "name": "Nico Giagnoni",
+    "role": "Stakeholder",
+    "organisation": "Spotify",
+    "initials": "NG",
+    "colour": "#6B7280",
+    "notes": "Nico Giagnoni is a Staff Engineer on Content Platform. Subject of HR's disputed 'complaint against Ben' framing — Nico explicitly denied personal grievance on 17 Feb 2026 and clarified his concern was role clarity, not Ben. Important peer-level comparator and collaborator (VLOP, policy enforcement governance work). Dealing with serious knee injury (surgery + immobilisation) during the same period.",
+    "aliases": [
+      "Nico"
+    ]
+  },
+  {
+    "id": "stakeholder-stina",
+    "name": "Stina",
+    "role": "Union Representative",
+    "organisation": "Unionen",
+    "initials": "ST",
+    "colour": "#D946EF",
+    "notes": "Stina is a Unionen ombudsman (regional) connected to Ben via Peter Toth. Confirmed discrimination case path for Ben. Primary escalation contact at Unionen beyond local-club support.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-privileged",
+    "name": "[Privileged]",
+    "role": "Redacted (legal privilege)",
+    "organisation": "[Redacted]",
+    "initials": "--",
+    "colour": "#6B7280",
+    "notes": "Redacted placeholder for privileged communications.",
+    "aliases": []
+  }
+]
