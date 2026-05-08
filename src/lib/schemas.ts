@@ -409,21 +409,13 @@ export const TranscriptSchema = z.object({
 });
 
 /**
- * Schema is exported but NOT wired to a loader.
- *
- * Two layers of drift block wiring today:
- * 1. `data/local/snippets.json` records carry exporter-generated
- *    `conversationId` values (e.g. `conversation-bf3bd223-...`) that do
- *    not match any `Conversation.id` in the same project. No join is
- *    currently safe.
- * 2. The on-disk shape and this schema are not yet aligned — JSON records
- *    carry `exhibitIds`/`claimIds` keys absent from the schema, while
- *    `exhibitMapping` (required here) is absent from the JSON. Until the
- *    atticus-finch exporter and this schema are reconciled, wiring this
- *    loader would fail `loadValidated` at startup.
- *
- * Track resolution in b4le/atticus-finch#71 (snippet shape + linkage
- * reconciliation).
+ * Schema is exported but NOT yet wired to a loader. The companion
+ * loader `getSnippets` and invariant `checkSnippetBackref` are being
+ * added in a separate packet (M2 of this session). The upstream drift
+ * (atticus-finch #71 — snippet shape + linkage reconciliation) is now
+ * resolved: the exporter emits `exhibitMapping` correctly and snippet
+ * `conversationId` values match real `Conversation.id`. The issue
+ * should be closed once this comment lands.
  */
 export const SnippetSchema = z.object({
   id: z.string(),
