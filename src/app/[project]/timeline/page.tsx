@@ -7,8 +7,15 @@ export default async function TimelinePage({
   params: Promise<{ project: string }>;
 }) {
   const { project } = await params;
-  const { timeline, stakeholders, conversations, communications, actions, claims } =
-    await getProjectBundle(project);
+  const {
+    timeline,
+    stakeholders,
+    conversations,
+    communications,
+    actions,
+    claims,
+    transcripts,
+  } = await getProjectBundle(project);
 
   return (
     <TimelinePageClient
@@ -18,6 +25,7 @@ export default async function TimelinePage({
       communications={communications}
       actions={actions}
       claims={claims}
+      transcripts={transcripts}
     />
   );
 }

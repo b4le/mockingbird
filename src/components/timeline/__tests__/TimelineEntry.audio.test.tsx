@@ -80,6 +80,7 @@ describe("TimelineEntry audio indicator", () => {
         stakeholderMap={stakeholderMap}
         conversations={[conversationWithAudio]}
         communications={[]}
+        transcriptByConversationId={new Map()}
         onStakeholderClick={() => {}}
       />,
     );
@@ -95,6 +96,7 @@ describe("TimelineEntry audio indicator", () => {
         stakeholderMap={stakeholderMap}
         conversations={[conversationWithAudio]}
         communications={[]}
+        transcriptByConversationId={new Map()}
         onStakeholderClick={() => {}}
       />,
     );
@@ -121,6 +123,7 @@ describe("TimelineEntry audio indicator", () => {
         stakeholderMap={stakeholderMap}
         conversations={[conversationNoAudio]}
         communications={[]}
+        transcriptByConversationId={new Map()}
         onStakeholderClick={() => {}}
       />,
     );

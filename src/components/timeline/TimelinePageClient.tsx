@@ -15,6 +15,7 @@ import type {
   Communication,
   ActionItem,
   Claim,
+  Transcript,
 } from "@/types";
 
 interface TimelinePageClientProps {
@@ -24,6 +25,7 @@ interface TimelinePageClientProps {
   communications: Communication[];
   actions: ActionItem[];
   claims: Claim[];
+  transcripts: Transcript[];
 }
 
 export function TimelinePageClient({
@@ -33,6 +35,7 @@ export function TimelinePageClient({
   communications,
   actions,
   claims,
+  transcripts,
 }: TimelinePageClientProps) {
   const [selectedTypes, setSelectedTypes] = useState<Set<TimelineEventType>>(
     new Set()
@@ -47,6 +50,14 @@ export function TimelinePageClient({
     () => buildStakeholderMap(stakeholders),
     [stakeholders]
   );
+
+  const transcriptByConversationId = useMemo(() => {
+    const map = new Map<string, Transcript>();
+    for (const t of transcripts) {
+      if (t.conversationId) map.set(t.conversationId, t);
+    }
+    return map;
+  }, [transcripts]);
 
   const filtered = useMemo(() => {
     let result = [...events].sort(
@@ -107,6 +118,7 @@ export function TimelinePageClient({
                     stakeholderMap={stakeholderMap}
                     conversations={conversations}
                     communications={communications}
+                    transcriptByConversationId={transcriptByConversationId}
                     onStakeholderClick={setDialogStakeholder}
                   />
                 ))}

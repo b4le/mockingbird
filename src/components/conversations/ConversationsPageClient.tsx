@@ -12,6 +12,7 @@ import { ConversationsFilters } from "./ConversationsFilters";
 import { ConversationDetail } from "./ConversationDetail";
 import { buildStakeholderMap } from "@/lib/stakeholders";
 import { resolveIds } from "@/lib/collections";
+import { resolveAudioReference } from "@/lib/audio-reference";
 import { parseDate } from "@/lib/dates";
 import {
   CONVERSATION_FALLBACK_ICON,
@@ -152,6 +153,10 @@ export function ConversationsPageClient({
               const mediumLabel = conv.medium
                 ? CONVERSATION_MEDIUM_LABELS[conv.medium]
                 : CONVERSATION_FALLBACK_LABEL;
+              const audioReference = resolveAudioReference(
+                conv,
+                transcriptByConversationId.get(conv.id) ?? null,
+              );
               return (
                 <Card
                   key={conv.id}
@@ -190,7 +195,7 @@ export function ConversationsPageClient({
                           <span className="text-xs text-muted-foreground">
                             <DateDisplay date={conv.date} />
                           </span>
-                          {conv.audioReference && <AudioReferenceIndicator />}
+                          {audioReference && <AudioReferenceIndicator />}
                         </div>
                       </div>
                     </div>

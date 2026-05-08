@@ -15,6 +15,7 @@ export default async function CommunicationsPage({
     claims,
     evidence,
     risks,
+    transcripts,
   } = await getProjectBundle(project);
 
   return (
@@ -26,6 +27,7 @@ export default async function CommunicationsPage({
       claims={claims}
       evidence={evidence}
       risks={risks}
+      transcripts={transcripts}
     />
   );
 }

@@ -16,6 +16,7 @@ import {
   COMMUNICATION_CHANNEL_ICONS,
   COMMUNICATION_CHANNEL_LABELS,
 } from "@/lib/constants";
+import { resolveAudioReference } from "@/lib/audio-reference";
 import type {
   ActionItem,
   Claim,
@@ -25,6 +26,7 @@ import type {
   EvidenceItem,
   Risk,
   Stakeholder,
+  Transcript,
 } from "@/types";
 
 /**
@@ -92,6 +94,7 @@ interface CommunicationDetailProps {
   claimMap: ReadonlyMap<string, Claim>;
   evidenceMap: ReadonlyMap<string, EvidenceItem>;
   riskMap: ReadonlyMap<string, Risk>;
+  transcriptByConversationId: ReadonlyMap<string, Transcript>;
   onStakeholderClick: (s: Stakeholder) => void;
 }
 
@@ -103,6 +106,7 @@ export function CommunicationDetail({
   claimMap,
   evidenceMap,
   riskMap,
+  transcriptByConversationId,
   onStakeholderClick,
 }: CommunicationDetailProps) {
   const trackedParticipants = resolveIds(
@@ -389,26 +393,32 @@ export function CommunicationDetail({
                     Conversations
                   </p>
                   <ul className="space-y-2 text-sm">
-                    {linkedConversations.map((c) => (
-                      <li key={c.id} className="flex flex-col gap-1.5">
-                        <div className="flex items-center gap-1.5">
-                          <span className="line-clamp-1">{c.title}</span>
-                          {/*
-                           * Discoverability cue: chip-level "has recording"
-                           * indicator. The compact player below provides
-                           * the actual affordance.
-                           */}
-                          {c.audioReference && <AudioReferenceIndicator />}
-                        </div>
-                        {c.audioReference && (
-                          <AudioReferencePlayer
-                            audioReference={c.audioReference}
-                            variant="compact"
-                            className="ml-0"
-                          />
-                        )}
-                      </li>
-                    ))}
+                    {linkedConversations.map((c) => {
+                      const audioReference = resolveAudioReference(
+                        c,
+                        transcriptByConversationId.get(c.id) ?? null,
+                      );
+                      return (
+                        <li key={c.id} className="flex flex-col gap-1.5">
+                          <div className="flex items-center gap-1.5">
+                            <span className="line-clamp-1">{c.title}</span>
+                            {/*
+                             * Discoverability cue: chip-level "has recording"
+                             * indicator. The compact player below provides
+                             * the actual affordance.
+                             */}
+                            {audioReference && <AudioReferenceIndicator />}
+                          </div>
+                          {audioReference && (
+                            <AudioReferencePlayer
+                              audioReference={audioReference}
+                              variant="compact"
+                              className="ml-0"
+                            />
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}

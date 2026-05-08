@@ -112,6 +112,7 @@ describe('expandable-row a11y — every role="button" surface has a non-empty ar
         stakeholderMap={new Map([["s1", stakeholder]])}
         conversations={[conversation]}
         communications={[]}
+        transcriptByConversationId={new Map()}
         onStakeholderClick={() => {}}
       />,
     );
@@ -145,6 +146,7 @@ describe('expandable-row a11y — every role="button" surface has a non-empty ar
         claims={[]}
         evidence={[]}
         risks={[]}
+        transcripts={[]}
       />,
     );
     const btns = container.querySelectorAll('[role="button"]');

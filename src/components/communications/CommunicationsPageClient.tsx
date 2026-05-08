@@ -25,6 +25,7 @@ import type {
   EvidenceItem,
   Risk,
   Stakeholder,
+  Transcript,
 } from "@/types";
 
 interface CommunicationsPageClientProps {
@@ -35,6 +36,7 @@ interface CommunicationsPageClientProps {
   claims: Claim[];
   evidence: EvidenceItem[];
   risks: Risk[];
+  transcripts: Transcript[];
 }
 
 export function CommunicationsPageClient({
@@ -45,6 +47,7 @@ export function CommunicationsPageClient({
   claims,
   evidence,
   risks,
+  transcripts,
 }: CommunicationsPageClientProps) {
   const [selectedChannel, setSelectedChannel] =
     useState<CommunicationChannel | null>(null);
@@ -80,6 +83,13 @@ export function CommunicationsPageClient({
     () => new Map(risks.map((r) => [r.id, r])),
     [risks],
   );
+  const transcriptByConversationId = useMemo(() => {
+    const map = new Map<string, Transcript>();
+    for (const t of transcripts) {
+      if (t.conversationId) map.set(t.conversationId, t);
+    }
+    return map;
+  }, [transcripts]);
 
   const filtered = useMemo(() => {
     let result = [...communications].sort(
@@ -216,6 +226,7 @@ export function CommunicationsPageClient({
                 claimMap={claimMap}
                 evidenceMap={evidenceMap}
                 riskMap={riskMap}
+                transcriptByConversationId={transcriptByConversationId}
                 onStakeholderClick={setDialogStakeholder}
               />
             ) : (
