@@ -94,7 +94,7 @@ scripts/sync-severance.sh           # diff first, prompt before applying
 scripts/sync-severance.sh --apply   # apply without prompting
 ```
 
-The script rsyncs `data/local/` → `data/severance/`, then runs `scripts/normalise-severance.mjs` to handle known drift between the exporter and the Mockingbird schemas (e.g. `ActionItem.status = "open"` → `"todo"`, dropping dangling cross-collection IDs). Each transform in the normaliser is documented inline with the exporter issue it works around. Review the resulting `git diff data/severance` before committing.
+The script rsyncs `data/local/` → `data/severance/` and stops there. Drift between the exporter and the Mockingbird schemas is now caught at validation time: zod schemas in `src/lib/schemas.ts` enforce per-record shape, and the cross-collection invariants in `src/lib/invariants.ts` (gated by `CI=true npm run build`) flag dangling references. The historical `normalise-severance.mjs` shim has been retired — atticus-finch's incremental reconciler keeps cross-refs clean upstream. Review the resulting `git diff data/severance` before committing.
 
 `getProjects()` in `src/lib/projects.ts` filters out `data/local/` via `EXCLUDED_PROJECT_FOLDERS` so the staging copy never appears in the project selector or gets rendered into static pages, even when present locally.
 
