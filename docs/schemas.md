@@ -62,7 +62,7 @@ Top of `src/lib/schemas.ts` declares enum schemas used across multiple entities:
 
 `HttpsUrlSchema` is the same idea for URL fields on `AudioReferenceSchema`: `z.string().url()` with an `https://` prefix refinement, OR the literal empty string for the `pending-audio-upload` sentinel.
 
-`uniqueIdArray(element, entityName)` (schemas.ts:572 area) wraps any element schema in `z.array(...).refine(...)` with a uniqueness check on `id`. Every top-level collection loaded via `src/lib/data.ts` is a `ReadonlyArray<{ id: string }>` whose `id` must be unique — duplicate ids would silently produce duplicate React keys and ambiguous resolver lookups. Centralised here to keep the policy consistent across all collection loaders.
+`uniqueIdArray(element, entityName)` (schemas.ts:586) wraps any element schema in `z.array(...).refine(...)` with a uniqueness check on `id`. Every top-level collection loaded via `src/lib/data.ts` is a `ReadonlyArray<{ id: string }>` whose `id` must be unique — duplicate ids would silently produce duplicate React keys and ambiguous resolver lookups. Centralised here to keep the policy consistent across all collection loaders.
 
 ---
 
@@ -106,7 +106,7 @@ The decision: provenance metadata belongs to the producer's audit trail (who/whe
 
 ### CommMessageSchema
 
-- **File**: src/lib/schemas.ts (around line 225)
+- **File**: src/lib/schemas.ts:229
 - **Purpose**: Per-message record inside a `Communication`, with a discriminated union ensuring exactly one of `senderId` (internal) or `externalSender` (external) is set.
 - **Wired by**: indirect — via `CommunicationSchema.messages`. No standalone loader.
 - **TS interface**: `CommMessage` in `src/types/index.ts`.
@@ -162,7 +162,7 @@ A `CommMessage` is one message inside a `Communication` thread. Either an intern
 
 ### CommunicationSchema
 
-- **File**: src/lib/schemas.ts (around line 252)
+- **File**: src/lib/schemas.ts:256
 - **Purpose**: One email/Slack/Signal/etc. thread, including its messages, attachments, and the five **required** backref arrays that downstream invariant checks consume.
 - **Wired by**: `getCommunications` in `src/lib/data.ts:114`.
 - **TS interface**: `Communication` in `src/types/index.ts`.
@@ -232,7 +232,7 @@ A `Communication` is one written-channel thread. Treat the five `*Ids` arrays as
 
 ### StakeholderSchema
 
-- **File**: src/lib/schemas.ts (around line 282)
+- **File**: src/lib/schemas.ts:291
 - **Purpose**: One person record (internal stakeholder or non-external participant) that downstream collections resolve via `participantIds`, `ownerId`, `raisedById`, `speakerId`, and similar foreign-key-style fields.
 - **Wired by**: `getStakeholders` in `src/lib/data.ts:94`.
 - **TS interface**: `Stakeholder` in `src/types/index.ts`.
@@ -278,7 +278,7 @@ A `Stakeholder` is "a person who shows up in the data". Optional fields exist be
 
 ### AudioReferenceStatusSchema
 
-- **File**: src/lib/schemas.ts (around line 314)
+- **File**: src/lib/schemas.ts:323
 - **Purpose**: Enum of the four lifecycle states for an `AudioReference` — `complete`, `pending-summary`, `pending-vault-sync`, `pending-audio-upload`.
 - **Wired by**: inline; used by `AudioReferenceSchema.status` and via `Audio/Conversation/Transcript` schemas.
 - **TS interface**: `AudioReferenceStatus` in `src/types/index.ts`.
@@ -311,7 +311,7 @@ Enum values only; no field shape.
 
 ### AudioReferenceSchema
 
-- **File**: src/lib/schemas.ts (around line 345)
+- **File**: src/lib/schemas.ts:354
 - **Purpose**: Drive-backed audio pointer with status-conditional `driveId` rules and `https://`-only URL hardening on `viewUrl` / `previewUrl` (defence against `javascript:` / `data:` schemes).
 - **Wired by**: composed into `ConversationSchema.audioReference` and `TranscriptSchema.audioReference`. No standalone loader; reaches `data.ts` via those parents.
 - **TS interface**: `AudioReference` in `src/types/index.ts`.
@@ -368,7 +368,7 @@ When `status` is `complete` (or absent), all the strings carry meaningful values
 
 ### TranscriptCueSchema
 
-- **File**: src/lib/schemas.ts (around line 378)
+- **File**: src/lib/schemas.ts:387
 - **Purpose**: One transcript cue with start/end timing in ms, bounded speaker label, optional resolved `speakerId`, and 10k-bounded text.
 - **Wired by**: indirect — via `TranscriptSchema.cues`. No standalone loader.
 - **TS interface**: `TranscriptCue` in `src/types/index.ts`.
@@ -409,7 +409,7 @@ Cues are atomic units of transcript. Keep the bounds tight — `text` at 10k cha
 
 ### TranscriptSchema
 
-- **File**: src/lib/schemas.ts (around line 389)
+- **File**: src/lib/schemas.ts:398
 - **Purpose**: Full transcript with cues, optional `speakerMap` (≤50 entries), and optional `audioReference`.
 - **Wired by**: `getTranscripts` in `src/lib/data.ts:180`.
 - **TS interface**: `Transcript` in `src/types/index.ts`.
@@ -472,7 +472,7 @@ A `Transcript` row is a transcript plus its audio. The `speakerMap` is optional 
 
 ### SnippetSchema
 
-- **File**: src/lib/schemas.ts (around line 421)
+- **File**: src/lib/schemas.ts:431
 - **Purpose**: One audio snippet (Top-20 clip) with backrefs to its parent Conversation, Communication, and optionally the Evidence rows it supports.
 - **Wired by**: `getSnippets` in `src/lib/data.ts:203` — **orphan status resolved**. The schema is now fully wired with two complementary invariant checks (`checkSnippetBackref` and `checkConversationSnippetIds`).
 - **TS interface**: `Snippet` in `src/types/index.ts`.
@@ -540,7 +540,7 @@ Snippets are user-facing audio bookmarks linking back to their parent conversati
 
 ### ConversationSchema
 
-- **File**: src/lib/schemas.ts (around line 445)
+- **File**: src/lib/schemas.ts:455
 - **Purpose**: One meeting / 1:1 record. `participantIds` and `actionItemIds` are load-bearing required arrays.
 - **Wired by**: `getConversations` in `src/lib/data.ts:104`.
 - **TS interface**: `Conversation` in `src/types/index.ts`.
@@ -602,7 +602,7 @@ A `Conversation` is a meeting record. Snippets, transcript joins, and audio refe
 
 ### ActionItemSchema
 
-- **File**: src/lib/schemas.ts (around line 467)
+- **File**: src/lib/schemas.ts:479
 - **Purpose**: Todo row with a polymorphic `sourceEntity` pointer (Conversation OR Communication, or neither). Refined by `sourceEntityBothOrNeither`.
 - **Wired by**: `getActions` in `src/lib/data.ts:124`.
 - **TS interface**: `ActionItem` in `src/types/index.ts`.
@@ -664,7 +664,7 @@ Actions point back to where they were raised. The refine prevents a stale "type 
 
 ### RiskSchema
 
-- **File**: src/lib/schemas.ts (around line 484)
+- **File**: src/lib/schemas.ts:496
 - **Purpose**: Risk register row. Uses `NullableIsoDateSchema` for `createdDate`/`updatedDate` to reject empty-string dates at ingestion.
 - **Wired by**: `getRisks` in `src/lib/data.ts:132`.
 - **TS interface**: `Risk` in `src/types/index.ts`.
@@ -722,7 +722,7 @@ A `Risk` mirrors the entries an analyst would keep in a risk register. Dates use
 
 ### ClaimSchema
 
-- **File**: src/lib/schemas.ts (around line 497)
+- **File**: src/lib/schemas.ts:510
 - **Purpose**: An assertion with its linked evidence ids and the stakeholder who raised it.
 - **Wired by**: `getClaims` in `src/lib/data.ts:140`.
 - **TS interface**: `Claim` in `src/types/index.ts`.
@@ -773,7 +773,7 @@ A `Claim` is a single assertion. Status reflects how well it is supported. Evide
 
 ### EvidenceItemSchema
 
-- **File**: src/lib/schemas.ts (around line 507)
+- **File**: src/lib/schemas.ts:521
 - **Purpose**: One evidence row with a polymorphic `sourceEntity` pointer (same refine as `ActionItem`) and `NullableIsoDateSchema` for `date`.
 - **Wired by**: `getEvidence` in `src/lib/data.ts:148`.
 - **TS interface**: `EvidenceItem` in `src/types/index.ts`.
@@ -834,7 +834,7 @@ A `Claim` is a single assertion. Status reflects how well it is supported. Evide
 
 ### TimelineEventSchema
 
-- **File**: src/lib/schemas.ts (around line 523)
+- **File**: src/lib/schemas.ts:537
 - **Purpose**: Timeline marker with a polymorphic `linkedEntity` pointer.
 - **Wired by**: `getTimeline` in `src/lib/data.ts:156`.
 - **TS interface**: `TimelineEvent` in `src/types/index.ts`.
@@ -887,7 +887,7 @@ A `Claim` is a single assertion. Status reflects how well it is supported. Evide
 
 ### ProjectStateSchema
 
-- **File**: src/lib/schemas.ts (around line 534)
+- **File**: src/lib/schemas.ts:548
 - **Purpose**: Project header — overall status, phase, and a metrics array rendered in the dashboard.
 - **Wired by**: `getProjectState` in `src/lib/data.ts:164`.
 - **TS interface**: `ProjectState` in `src/types/index.ts`.
@@ -937,7 +937,7 @@ None today.
 
 ### SessionMetaSchema
 
-- **File**: src/lib/schemas.ts (around line 551)
+- **File**: src/lib/schemas.ts:565
 - **Purpose**: Session metadata — when the data was last regenerated, by what version, and any notes.
 - **Wired by**: `getSession` in `src/lib/data.ts:170`.
 - **TS interface**: `SessionMeta` in `src/types/index.ts`.
