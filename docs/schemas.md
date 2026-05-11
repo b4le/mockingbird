@@ -14,6 +14,7 @@ Read this alongside:
 - [2. Shared enums and the `uniqueIdArray` helper](#2-shared-enums-and-the-uniqueidarray-helper)
 - [3. Schema-coupling cheat sheet](#3-schema-coupling-cheat-sheet)
 - [4. Provenance JSON files](#4-provenance-json-files)
+- [5. Tracked dataset stability (`data/severance/`)](#5-tracked-dataset-stability-dataseverance)
 - [Schemas](#schemas)
   - [CommMessageSchema](#commmessageschema)
   - [CommunicationSchema](#communicationschema)
@@ -125,6 +126,41 @@ If you add a new check against an optional-array field, follow the explicit-guar
 `data/local/*.provenance.json` (actions, claims, communications, conversations, evidence, risks, snippets, stakeholders, timeline, transcripts) are **producer-side artifacts** emitted by the atticus-finch exporter. They are **intentionally not loaded** by the consumer — Mockingbird ships no schema and no loader for them.
 
 The decision: provenance metadata belongs to the producer's audit trail (who/when/which source rendered each row). Wiring it into the consumer's validated bundle would duplicate that responsibility and require schema work that buys the UI nothing. A future contributor who reads these files in the data dir should leave them alone, not write a `ProvenanceSchema`.
+
+---
+
+## 5. Tracked dataset stability (`data/severance/`)
+
+`data/severance/` is a **frozen demo snapshot at `dataVersion: "1.0.0"`**, deliberately decoupled from the producer's current output. It is the public-facing dataset that ships to GitHub Pages for discoverability; pinning it gives the demo a stable URL surface and removes the dataset from the blast radius of every producer change.
+
+By contrast, `data/local/` (gitignored) tracks whatever the atticus-finch exporter last wrote — including the `1.1.0` dual-emit removal — and is the working copy used during development. `scripts/sync-severance.sh` is the **only** supported path from one to the other, and running it is a deliberate publish act, not an automatic side-effect of running the exporter.
+
+### Consequence
+
+The schema audit doc above (`docs/schemas.md`, the section you're reading) describes the **schemas the loaders validate against**, which is the latest version of every shape. `data/severance/` may therefore look *behind* the docs at any given moment — that is by design, not drift. The drift checks in `src/lib/invariants.ts` still run against whichever dataset is loaded, so `data/severance/` is internally consistent at `1.0.0`; it just isn't trying to catch up to `1.1.0`.
+
+### When to re-export
+
+Re-exporting `data/severance/` to a newer schema is a **separate, deliberate decision** — not a maintenance chore triggered by every producer bump. Reasons that justify a re-export:
+
+- The demo is showcasing a feature that only exists in the newer schema (e.g. inline transcript cues vs. separate `transcriptId`).
+- A required field was added to the schema that the loader cannot synthesize from `1.0.0` data, breaking validation.
+- Stakeholder demos surface confusion from the version mismatch.
+
+Reasons that do **not** justify a re-export:
+
+- "It's older than the docs." Yes — see above.
+- "The schema-audit doc mentions a newer field." The audit describes the *current* shape; the snapshot is allowed to lag.
+- "Tests would be stricter if we updated." Tests run against fixtures in `src/lib/__tests__/fixtures.ts`, not the public demo dataset.
+
+If a re-export is warranted, the workflow is cross-repo:
+
+1. `cd ~/atticus-finch && python scripts/export_mockingbird.py --target severance --out ~/mockingbird/data/severance/`
+2. Verify `jq '.dataVersion' data/severance/session.json` returns the expected new version.
+3. Commit in mockingbird with a clear message; QA at least one severance route before pushing.
+4. Update the `dataVersion` reference in this section.
+
+Do **not** hand-edit JSON in `data/severance/` to match what you wish the producer output looked like. Always go through the export script — see `AGENTS.md` "Handling drift output" for why consumer-side patches mask producer bugs.
 
 ---
 

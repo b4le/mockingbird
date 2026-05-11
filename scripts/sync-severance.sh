@@ -45,7 +45,16 @@ fi
 
 echo "Diff between data/local/ (source) and data/severance/ (tracked):"
 echo
-diff -rq "$SRC" "$DST" || true
+# `diff` exit codes: 0 = identical, 1 = differences (expected here), 2+ = real
+# error (missing binary, permission, broken pipe). A bare `|| true` swallows
+# rc 2+ and silently presents the user with an "Apply this diff?" prompt for a
+# diff they never saw — see PR #29 follow-up Item 1.
+diff_rc=0
+diff -rq "$SRC" "$DST" || diff_rc=$?
+if (( diff_rc >= 2 )); then
+  echo "error: diff failed (rc=$diff_rc) — aborting before prompt." >&2
+  exit "$diff_rc"
+fi
 echo
 
 if [[ "$apply" -eq 0 ]]; then
