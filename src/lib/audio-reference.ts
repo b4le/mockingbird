@@ -4,7 +4,7 @@ import type { AudioReference, Conversation, Transcript } from "@/types";
  * Single source of truth for resolving the `AudioReference` to render for a
  * given Conversation. When a Transcript exists for the conversation it owns
  * the recording; otherwise the Conversation's own field is the fallback for
- * audio-only or legacy rows. See `Conversation.audioReference` and
+ * audio-only sessions. See `Conversation.audioReference` and
  * `Transcript.audioReference` JSDoc for the policy this encodes.
  *
  * The `transcript` argument accepts both `null` (explicit "no transcript
@@ -13,8 +13,13 @@ import type { AudioReference, Conversation, Transcript } from "@/types";
  *
  * Pure: relies only on its arguments and returns a reference; no I/O.
  * Consumers should call this instead of reaching into either field
- * directly so the policy can change (e.g. when atticus-finch#70 stops
- * dual-emitting) without UI churn.
+ * directly so the policy stays centralised. atticus-finch#70 has shipped
+ * (the exporter no longer dual-emits onto Conversation when a Transcript
+ * exists), so the `conversation.audioReference` fallback below is now
+ * only reached for audio-only sessions — currently exactly one row
+ * (`conversation-d738b9e8-…`). The fallback remains load-bearing until
+ * that last audio-only case is paired with a Transcript or migrated;
+ * do not simplify to `transcript?.audioReference` alone.
  */
 export function resolveAudioReference(
   conversation: Conversation,

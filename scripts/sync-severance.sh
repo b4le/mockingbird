@@ -16,6 +16,23 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SRC="$ROOT/data/local"
 DST="$ROOT/data/severance"
 
+# Parse optional --apply flag.
+apply=0
+if [[ "${1:-}" == "--apply" ]]; then
+  apply=1
+  shift
+fi
+
+# Reject any trailing positional arguments.
+if [[ $# -gt 0 ]]; then
+  echo "error: unexpected argument(s): $*" >&2
+  echo "usage: $(basename "$0") [--apply]" >&2
+  exit 2
+fi
+
+# Handle Ctrl-C during the interactive prompt: exit 130 (SIGINT convention).
+trap 'echo; echo "aborted."; exit 130' INT
+
 if [[ ! -d "$SRC" ]]; then
   echo "error: $SRC does not exist — run the atticus-finch export first." >&2
   exit 1
@@ -31,11 +48,11 @@ echo
 diff -rq "$SRC" "$DST" || true
 echo
 
-if [[ "${1:-}" != "--apply" ]]; then
+if [[ "$apply" -eq 0 ]]; then
   read -r -p "Apply this diff to data/severance/? [y/N] " reply
   case "$reply" in
     y|Y|yes|YES) ;;
-    *) echo "aborted."; exit 0 ;;
+    *) echo "aborted."; exit 1 ;;
   esac
 fi
 

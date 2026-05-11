@@ -1,11 +1,18 @@
 import { describe, it, expect } from "vitest";
 import {
+  ActionItemSchema,
   AudioReferenceSchema,
+  ClaimSchema,
+  CommMessageSchema,
   CommunicationSchema,
   ConversationSchema,
   EvidenceItemSchema,
+  ProjectStateSchema,
   RiskSchema,
+  SessionMetaSchema,
   SnippetSchema,
+  StakeholderSchema,
+  TimelineEventSchema,
   TranscriptCueSchema,
   TranscriptSchema,
 } from "@/lib/schemas";
@@ -713,5 +720,390 @@ describe("CommunicationSchema attachment metadata", () => {
     expect(result.success).toBe(true);
     if (!result.success) return;
     expect(result.data.messages[0]?.attachments?.[0]?.size).toBe(165_351);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// StakeholderSchema — minimal happy + optional-field omission edge.
+// ---------------------------------------------------------------------------
+
+describe("StakeholderSchema", () => {
+  const baseStakeholder = {
+    id: "s1",
+    name: "Alice",
+    role: "Engineer",
+    organisation: "Acme",
+    initials: "AA",
+    colour: "#abcdef",
+  };
+
+  it("accepts a stakeholder with only required fields", () => {
+    const parsed = StakeholderSchema.parse(baseStakeholder);
+    expect(parsed.id).toBe("s1");
+    expect(parsed.email).toBeUndefined();
+    expect(parsed.phone).toBeUndefined();
+    expect(parsed.avatarUrl).toBeUndefined();
+    expect(parsed.notes).toBeUndefined();
+  });
+
+  it("accepts a stakeholder with all optional fields populated", () => {
+    const parsed = StakeholderSchema.parse({
+      ...baseStakeholder,
+      email: "alice@acme.test",
+      phone: "+44 7000 000000",
+      avatarUrl: "https://example.test/a.png",
+      notes: "primary contact",
+    });
+    expect(parsed.notes).toBe("primary contact");
+  });
+
+  it("rejects a stakeholder missing a required field (initials)", () => {
+    const { initials: _initials, ...rest } = baseStakeholder;
+    void _initials;
+    expect(() => StakeholderSchema.parse(rest)).toThrow();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// ActionItemSchema — sourceEntityBothOrNeither refine assertions.
+// ---------------------------------------------------------------------------
+
+describe("ActionItemSchema sourceEntity refine", () => {
+  const baseAction = {
+    id: "a1",
+    title: "t",
+    description: "d",
+    status: "todo" as const,
+    priority: "high" as const,
+    ownerId: "s1",
+    createdDate: "2024-01-01",
+    dueDate: null,
+    completedDate: null,
+    tags: [],
+  };
+
+  it("accepts both sourceEntity fields null", () => {
+    const parsed = ActionItemSchema.parse({
+      ...baseAction,
+      sourceEntityId: null,
+      sourceEntityType: null,
+    });
+    expect(parsed.sourceEntityId).toBeNull();
+    expect(parsed.sourceEntityType).toBeNull();
+  });
+
+  it("accepts both sourceEntity fields set", () => {
+    const parsed = ActionItemSchema.parse({
+      ...baseAction,
+      sourceEntityId: "conv-1",
+      sourceEntityType: "conversation",
+    });
+    expect(parsed.sourceEntityId).toBe("conv-1");
+    expect(parsed.sourceEntityType).toBe("conversation");
+  });
+
+  it("rejects sourceEntityId set without sourceEntityType (half pointer)", () => {
+    expect(() =>
+      ActionItemSchema.parse({
+        ...baseAction,
+        sourceEntityId: "conv-1",
+        sourceEntityType: null,
+      }),
+    ).toThrow(/sourceEntityId and sourceEntityType must both be null or both be set/);
+  });
+
+  it("rejects sourceEntityType set without sourceEntityId (half pointer)", () => {
+    expect(() =>
+      ActionItemSchema.parse({
+        ...baseAction,
+        sourceEntityId: null,
+        sourceEntityType: "communication",
+      }),
+    ).toThrow(/sourceEntityId and sourceEntityType must both be null or both be set/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// EvidenceItemSchema — sourceEntityBothOrNeither refine assertions (mirrors
+// ActionItem). Date-rejection coverage already lives above.
+// ---------------------------------------------------------------------------
+
+describe("EvidenceItemSchema sourceEntity refine", () => {
+  const baseEvidence = {
+    id: "e1",
+    title: "t",
+    description: "d",
+    source: "s",
+    sourceType: "document" as const,
+    strength: "strong" as const,
+    date: null,
+    url: null,
+    claimIds: [],
+  };
+
+  it("accepts both sourceEntity fields null", () => {
+    const parsed = EvidenceItemSchema.parse({
+      ...baseEvidence,
+      sourceEntityId: null,
+      sourceEntityType: null,
+    });
+    expect(parsed.sourceEntityId).toBeNull();
+  });
+
+  it("accepts both sourceEntity fields set", () => {
+    const parsed = EvidenceItemSchema.parse({
+      ...baseEvidence,
+      sourceEntityId: "comm-1",
+      sourceEntityType: "communication",
+    });
+    expect(parsed.sourceEntityType).toBe("communication");
+  });
+
+  it("rejects sourceEntityId set without sourceEntityType", () => {
+    expect(() =>
+      EvidenceItemSchema.parse({
+        ...baseEvidence,
+        sourceEntityId: "comm-1",
+        sourceEntityType: null,
+      }),
+    ).toThrow(/sourceEntityId and sourceEntityType must both be null or both be set/);
+  });
+
+  it("rejects sourceEntityType set without sourceEntityId", () => {
+    expect(() =>
+      EvidenceItemSchema.parse({
+        ...baseEvidence,
+        sourceEntityId: null,
+        sourceEntityType: "conversation",
+      }),
+    ).toThrow(/sourceEntityId and sourceEntityType must both be null or both be set/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// ClaimSchema — happy + rejection.
+// ---------------------------------------------------------------------------
+
+describe("ClaimSchema", () => {
+  it("accepts a minimal claim", () => {
+    const parsed = ClaimSchema.parse({
+      id: "cl1",
+      assertion: "X happened",
+      category: "fact",
+      status: "supported",
+      evidenceIds: [],
+      raisedById: "s1",
+      date: "2024-01-01",
+    });
+    expect(parsed.id).toBe("cl1");
+    expect(parsed.evidenceIds).toEqual([]);
+  });
+
+  it("rejects an unknown status", () => {
+    const result = ClaimSchema.safeParse({
+      id: "cl1",
+      assertion: "X",
+      category: "c",
+      status: "maybe",
+      evidenceIds: [],
+      raisedById: "s1",
+      date: "2024-01-01",
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// TimelineEventSchema — happy + rejection.
+// ---------------------------------------------------------------------------
+
+describe("TimelineEventSchema", () => {
+  it("accepts a minimal event", () => {
+    const parsed = TimelineEventSchema.parse({
+      id: "te1",
+      date: "2024-01-01",
+      type: "milestone",
+      title: "Kickoff",
+      description: "d",
+      stakeholderIds: [],
+      linkedEntityId: null,
+      linkedEntityType: null,
+    });
+    expect(parsed.type).toBe("milestone");
+    expect(parsed.linkedEntityId).toBeNull();
+  });
+
+  it("rejects an unknown event type", () => {
+    const result = TimelineEventSchema.safeParse({
+      id: "te1",
+      date: "2024-01-01",
+      type: "not-a-real-type",
+      title: "t",
+      description: "d",
+      stakeholderIds: [],
+      linkedEntityId: null,
+      linkedEntityType: null,
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// ProjectStateSchema — happy + rejection.
+// ---------------------------------------------------------------------------
+
+describe("ProjectStateSchema", () => {
+  it("accepts a minimal project state with one metric", () => {
+    const parsed = ProjectStateSchema.parse({
+      projectName: "p",
+      status: "on-track",
+      statusMessage: "all good",
+      lastUpdated: "2024-01-01",
+      metrics: [
+        { label: "Done", value: 1, total: 10, unit: "items" },
+      ],
+      phase: "discovery",
+      phaseProgress: 0.25,
+    });
+    expect(parsed.metrics).toHaveLength(1);
+    expect(parsed.metrics[0]?.total).toBe(10);
+  });
+
+  it("rejects an unknown project status", () => {
+    const result = ProjectStateSchema.safeParse({
+      projectName: "p",
+      status: "exploding",
+      statusMessage: "",
+      lastUpdated: "2024-01-01",
+      metrics: [],
+      phase: "discovery",
+      phaseProgress: 0,
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// SessionMetaSchema — happy + rejection.
+// ---------------------------------------------------------------------------
+
+describe("SessionMetaSchema", () => {
+  it("accepts a fully populated session meta record", () => {
+    const parsed = SessionMetaSchema.parse({
+      lastUpdated: "2024-01-01",
+      dataVersion: "1.2.3",
+      generatedBy: "atticus-finch/export_mockingbird.py",
+      notes: "smoke run",
+    });
+    expect(parsed.dataVersion).toBe("1.2.3");
+  });
+
+  it("rejects a session meta record missing a required field", () => {
+    const result = SessionMetaSchema.safeParse({
+      lastUpdated: "2024-01-01",
+      dataVersion: "1.2.3",
+      // generatedBy intentionally omitted
+      notes: "smoke run",
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// CommMessageSchema — explicit preflight assertions on both-set / neither-set.
+// The preflight produces a human-readable first-failure message; a regression
+// to a plain `invalid_union` would still fail-out but with a much noisier
+// payload. Assert the message text directly so the bug surface is visible.
+// ---------------------------------------------------------------------------
+
+describe("CommMessageSchema preflight messages", () => {
+  it("rejects a message with BOTH senderId and externalSender set", () => {
+    const result = CommMessageSchema.safeParse({
+      id: "m1",
+      date: "2024-01-01",
+      senderId: "s1",
+      externalSender: { name: "Outsider" },
+      bodyPreview: "hi",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(
+        result.error.issues.some((i) =>
+          /both are set/.test(i.message),
+        ),
+      ).toBe(true);
+    }
+  });
+
+  it("rejects a message with NEITHER senderId nor externalSender set", () => {
+    const result = CommMessageSchema.safeParse({
+      id: "m1",
+      date: "2024-01-01",
+      bodyPreview: "hi",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(
+        result.error.issues.some((i) =>
+          /neither is set/.test(i.message),
+        ),
+      ).toBe(true);
+    }
+  });
+
+  it("accepts an internal-sender message", () => {
+    const parsed = CommMessageSchema.parse({
+      id: "m1",
+      date: "2024-01-01",
+      senderId: "s1",
+      bodyPreview: "hi",
+    });
+    expect(parsed.id).toBe("m1");
+  });
+
+  it("accepts an external-sender message", () => {
+    const parsed = CommMessageSchema.parse({
+      id: "m1",
+      date: "2024-01-01",
+      externalSender: { name: "Outsider" },
+      bodyPreview: "hi",
+    });
+    expect(parsed.id).toBe("m1");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Schema-coupling assertions — these fields are REQUIRED because downstream
+// invariant checks dereference them without a presence guard. If a future
+// change relaxes them to `.optional()`, these tests fail loudly instead of
+// the check crashing at runtime. See `docs/schemas.md` §3.
+// ---------------------------------------------------------------------------
+
+describe("schema-coupling: required arrays", () => {
+  it("RiskSchema rejects omitted actionIds (consumed by checkRiskActionIds)", () => {
+    const result = RiskSchema.safeParse({
+      id: "r1",
+      title: "t",
+      description: "d",
+      status: "open",
+      severity: "high",
+      likelihood: "medium",
+      mitigationPlan: "m",
+      createdDate: null,
+      updatedDate: null,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("ClaimSchema rejects omitted evidenceIds (consumed by checkClaimEvidenceIds)", () => {
+    const result = ClaimSchema.safeParse({
+      id: "cl1",
+      assertion: "X happened",
+      category: "fact",
+      status: "supported",
+      raisedById: "s1",
+      date: "2024-01-01",
+    });
+    expect(result.success).toBe(false);
   });
 });

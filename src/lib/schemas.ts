@@ -26,6 +26,10 @@ import type {
  * its matching interface. If you update an interface, update the schema (and
  * vice versa) and the assertion will fail loudly at build time until they
  * match again.
+ *
+ * See `docs/schemas.md` for the per-schema reference: field rationale, the
+ * load-bearing required-array coupling cheat sheet, examples, and modification
+ * guidance for both human contributors and AI agents.
  */
 
 // ---------------------------------------------------------------------------
@@ -267,10 +271,15 @@ export const CommunicationSchema = z
      * Optional — legacy records may omit it.
      */
     hasAttachments: z.boolean().optional(),
+    // SCHEMA-COUPLING: required by checkActionBackref in invariants.ts
     actionItemIds: z.array(z.string()),
+    // SCHEMA-COUPLING: required by checkCommunicationClaimIds in invariants.ts
     claimIds: z.array(z.string()),
+    // SCHEMA-COUPLING: required by checkEvidenceBackref in invariants.ts
     evidenceIds: z.array(z.string()),
+    // SCHEMA-COUPLING: required by checkCommunicationRiskIds in invariants.ts
     riskIds: z.array(z.string()),
+    // SCHEMA-COUPLING: required by checkCommunicationConversationIds in invariants.ts
     conversationIds: z.array(z.string()),
     tags: z.array(z.string()).optional(),
   })
@@ -334,13 +343,14 @@ const HttpsUrlSchema = z
   .or(z.literal(""));
 
 /**
- * Ownership policy: when a Conversation has a Transcript row and that
- * Transcript carries `audioReference`, the Transcript's copy is the source
- * of truth. Any `audioReference` on the parent Conversation is denormalised
- * back-compat (or applies only to the audio-only case where no Transcript
- * exists). Consumers should prefer `Transcript.audioReference` when both
- * are present. See the matching JSDoc on `Conversation.audioReference` /
- * `Transcript.audioReference` in `src/types/index.ts`.
+ * Ownership policy: `Transcript.audioReference` is the source of truth when
+ * a Transcript row exists for the conversation. `Conversation.audioReference`
+ * is only set on audio-only sessions (no Transcript row). The exporter no
+ * longer dual-emits onto the Conversation when a Transcript exists
+ * (atticus-finch#70 shipped); the consumer-side `resolveAudioReference`
+ * helper still falls back to the Conversation field for the remaining
+ * audio-only case. See the matching JSDoc on `Conversation.audioReference`
+ * and `Transcript.audioReference` in `src/types/index.ts`.
  */
 export const AudioReferenceSchema = z
   .object({
@@ -396,6 +406,7 @@ export const TranscriptSchema = z.object({
   durationSeconds: z.number().nonnegative().nullable(),
   cueCount: z.number().int().nonnegative(),
   hasCues: z.boolean(),
+  // SCHEMA-COUPLING: required by checkTranscriptSpeakers in invariants.ts
   cues: z.array(TranscriptCueSchema),
   sourceFile: z.string(),
   audioReference: AudioReferenceSchema.optional(),
@@ -446,10 +457,12 @@ export const ConversationSchema = z.object({
   id: z.string(),
   date: NullableIsoDateSchema,
   title: z.string(),
+  // SCHEMA-COUPLING: required by checkConversationParticipantIds in invariants.ts
   participantIds: z.array(z.string()),
   summary: z.string(),
   keyPoints: z.array(z.string()),
   decisions: z.array(z.string()),
+  // SCHEMA-COUPLING: required by checkConversationActionIds + checkActionBackref in invariants.ts
   actionItemIds: z.array(z.string()),
   medium: MediumSchema.optional(),
   /**
@@ -460,6 +473,9 @@ export const ConversationSchema = z.object({
   transcript: z.string().optional(),
   transcriptId: z.string().optional(),
   snippetIds: z.array(z.string()).optional(),
+  // Only set on audio-only sessions; never on conversations with a paired
+  // Transcript (atticus-finch#70). See `Conversation.audioReference` JSDoc
+  // in `src/types/index.ts` for the migration plan.
   audioReference: AudioReferenceSchema.optional(),
   category: z.enum(["1-on-1", "hr-meeting", "union-meeting"]).optional(),
 });
@@ -489,6 +505,7 @@ export const RiskSchema = z.object({
   severity: PrioritySchema,
   likelihood: PrioritySchema,
   mitigationPlan: z.string(),
+  // SCHEMA-COUPLING: required by checkRiskActionIds in invariants.ts
   actionIds: z.array(z.string()),
   createdDate: NullableIsoDateSchema,
   updatedDate: NullableIsoDateSchema,
@@ -499,6 +516,7 @@ export const ClaimSchema = z.object({
   assertion: z.string(),
   category: z.string(),
   status: ClaimStatusSchema,
+  // SCHEMA-COUPLING: required by checkClaimEvidenceIds in invariants.ts
   evidenceIds: z.array(z.string()),
   raisedById: z.string(),
   date: z.string(),
