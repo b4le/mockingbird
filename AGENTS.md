@@ -6,6 +6,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Cross-collection invariants
 
+> Per-schema reference (fields, examples, load-bearing coupling cheat sheet, and modification guidance for humans + AI agents) lives in [`docs/schemas.md`](docs/schemas.md).
+
 Per-collection shape is enforced by zod schemas in `src/lib/schemas.ts`. Some consistency rules span two or more collections (e.g. an action's `sourceEntityId` must appear in its parent's `actionItemIds`) and cannot be expressed at the schema layer, because each JSON file is loaded independently by `loadValidated`. Those cross-collection checks live in `src/lib/invariants.ts`:
 
 - `checkActionBackref(report, actions, communications, conversations)` — mirrors every action's origin into its parent's linked-items list.
