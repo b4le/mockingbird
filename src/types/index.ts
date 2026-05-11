@@ -219,11 +219,15 @@ export interface Conversation {
   transcriptId?: string;
   snippetIds?: string[];
   /**
-   * Owned by `Conversation` only when the conversation has audio but no
-   * Transcript row (e.g. legacy or audio-only sessions). When `transcriptId`
-   * is set and that Transcript carries `audioReference`, the Transcript's
-   * copy is the source of truth — Conversation's value, if present, is
-   * denormalised back-compat and may be removed in a future cleanup.
+   * Only set on audio-only sessions; never on conversations with a paired
+   * Transcript. The atticus-finch exporter no longer dual-emits this field
+   * when a Transcript row exists (atticus-finch#70 shipped); the live
+   * dataset retains exactly one audio-only conversation
+   * (`conversation-d738b9e8-…`) where this field remains the source of
+   * truth for the underlying recording. The field will be removed once
+   * that last audio-only case is paired with a Transcript or otherwise
+   * migrated. See `Transcript.audioReference` for the paired-Transcript
+   * case.
    */
   audioReference?: AudioReference;
   category?: '1-on-1' | 'hr-meeting' | 'union-meeting';
@@ -354,8 +358,10 @@ export interface Transcript {
   sourceFile: string;
   /**
    * Source of truth for the underlying audio when a Transcript exists.
-   * Mirrors any `audioReference` on the parent Conversation; consumers
-   * should prefer this field when both are present.
+   * The exporter no longer dual-emits `audioReference` onto the parent
+   * Conversation in this case (atticus-finch#70), so this field stands
+   * alone for transcript-paired sessions. The audio-only fallback on
+   * `Conversation.audioReference` remains for sessions with no Transcript.
    */
   audioReference?: AudioReference;
   /** Raw speaker label → Stakeholder.id; cheap resolution map at render time. */
