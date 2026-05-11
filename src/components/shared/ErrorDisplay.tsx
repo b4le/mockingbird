@@ -21,6 +21,9 @@ export function ErrorDisplay({
   // SSR/ISR, a thrown server-component error would surface here and
   // `error.message` could leak filesystem paths or stack details. Render the
   // hashed `error.digest` in production and reserve raw messages for dev DX.
+  // Note: `NODE_ENV === "test"` (vitest default) falls through to the dev
+  // branch — intentional, so component tests can assert dev behaviour without
+  // having to stub the env for every case.
   const isProduction = process.env.NODE_ENV === "production";
   const detail = isProduction
     ? error.digest

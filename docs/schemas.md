@@ -153,9 +153,9 @@ Reasons that do **not** justify a re-export:
 - "The schema-audit doc mentions a newer field." The audit describes the *current* shape; the snapshot is allowed to lag.
 - "Tests would be stricter if we updated." Tests run against fixtures in `src/lib/__tests__/fixtures.ts`, not the public demo dataset.
 
-If a re-export is warranted, the workflow is cross-repo:
+If a re-export is warranted, the workflow is cross-repo (adjust paths to your local checkout):
 
-1. `cd ~/atticus-finch && python scripts/export_mockingbird.py --target severance --out ~/mockingbird/data/severance/`
+1. `cd path/to/atticus-finch && python scripts/export_mockingbird.py --target severance --out path/to/mockingbird/data/severance/`
 2. Verify `jq '.dataVersion' data/severance/session.json` returns the expected new version.
 3. Commit in mockingbird with a clear message; QA at least one severance route before pushing.
 4. Update the `dataVersion` reference in this section.
