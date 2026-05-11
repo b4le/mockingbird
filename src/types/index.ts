@@ -195,6 +195,8 @@ export interface AudioReference {
   durationSeconds: number | null;
   status?: AudioReferenceStatus;
   notes?: string;
+  /** Free-form: vocabulary not bounded; stakeholder/scope names may grow. */
+  stream?: string;
 }
 
 export interface Conversation {
@@ -224,6 +226,7 @@ export interface Conversation {
    * denormalised back-compat and may be removed in a future cleanup.
    */
   audioReference?: AudioReference;
+  category?: '1-on-1' | 'hr-meeting' | 'union-meeting';
 }
 
 export interface ActionItem {

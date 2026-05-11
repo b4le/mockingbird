@@ -301,13 +301,12 @@ export const StakeholderSchema = z.object({
 // `z.lazy` forward refs) and keeps the bidirectional `_AssertX` drift
 // checks at the bottom of the file strict.
 //
-// `Transcript` is now fully wired: loaded by `getTranscripts` in
+// `Transcript` is fully wired: loaded by `getTranscripts` in
 // `src/lib/data.ts` and policed by `checkConversationTranscriptId`,
 // `checkTranscriptConversationId`, and `checkTranscriptSpeakers` in
-// `src/lib/invariants.ts`. `Snippet` is still NOT wired — when a
-// `getSnippets` loader is added, add the corresponding
-// `checkSnippetBackref` invariant alongside the transcript ones (see
-// AGENTS.md for the pattern). See
+// `src/lib/invariants.ts`. `Snippet` is also fully wired: loaded by
+// `getSnippets` and policed by `checkSnippetBackref` (snippet → parent)
+// plus `checkConversationSnippetIds` (parent → snippet). See
 // `docs/mockingbird-zod-audio-reference-spec.md` §4 for the
 // `AudioReference` shape rationale.
 // ---------------------------------------------------------------------------
@@ -361,6 +360,8 @@ export const AudioReferenceSchema = z
     durationSeconds: z.number().int().nonnegative().nullable(),
     status: AudioReferenceStatusSchema.optional(),
     notes: z.string().optional(),
+    // free-form: vocabulary not bounded; stakeholder/scope names may grow
+    stream: z.string().optional(),
   })
   .superRefine((ref, ctx) => {
     // For non-pending-audio-upload statuses, require a real Drive ID.
@@ -409,21 +410,13 @@ export const TranscriptSchema = z.object({
 });
 
 /**
- * Schema is exported but NOT wired to a loader.
- *
- * Two layers of drift block wiring today:
- * 1. `data/local/snippets.json` records carry exporter-generated
- *    `conversationId` values (e.g. `conversation-bf3bd223-...`) that do
- *    not match any `Conversation.id` in the same project. No join is
- *    currently safe.
- * 2. The on-disk shape and this schema are not yet aligned — JSON records
- *    carry `exhibitIds`/`claimIds` keys absent from the schema, while
- *    `exhibitMapping` (required here) is absent from the JSON. Until the
- *    atticus-finch exporter and this schema are reconciled, wiring this
- *    loader would fail `loadValidated` at startup.
- *
- * Track resolution in b4le/atticus-finch#71 (snippet shape + linkage
- * reconciliation).
+ * Schema is fully wired: loaded by `getSnippets` in `src/lib/data.ts`
+ * and policed by `checkSnippetBackref` (snippet → parent: conversation,
+ * communication, evidence) and `checkConversationSnippetIds` (parent →
+ * snippet). The upstream drift (atticus-finch #71 — snippet shape +
+ * linkage reconciliation) is resolved: the exporter emits
+ * `exhibitMapping` correctly and snippet `conversationId` values match
+ * real `Conversation.id`.
  */
 export const SnippetSchema = z.object({
   id: z.string(),
@@ -468,6 +461,7 @@ export const ConversationSchema = z.object({
   transcriptId: z.string().optional(),
   snippetIds: z.array(z.string()).optional(),
   audioReference: AudioReferenceSchema.optional(),
+  category: z.enum(["1-on-1", "hr-meeting", "union-meeting"]).optional(),
 });
 
 export const ActionItemSchema = z

@@ -3,7 +3,9 @@ import type {
   Communication,
   Conversation,
   Risk,
+  Snippet,
   Stakeholder,
+  TimelineEvent,
   Transcript,
 } from "@/types";
 
@@ -70,6 +72,30 @@ import type {
  * (not flagged) and presence must be narrowed before the dereference. If
  * `cues` is ever relaxed to optional, `checkTranscriptSpeakers` needs an
  * explicit guard.
+ *
+ * It also applies to {@link checkRiskActionIds} and
+ * {@link checkClaimEvidenceIds}: both iterate `risk.actionIds` /
+ * `claim.evidenceIds` without a presence guard. `Risk.actionIds` is
+ * REQUIRED in `RiskSchema` and `Claim.evidenceIds` is REQUIRED in
+ * `ClaimSchema` — if either is relaxed to optional, the matching check
+ * needs an explicit guard too.
+ *
+ * {@link checkTimelineLinkedEntity} guards on `linkedEntityId` /
+ * `linkedEntityType` because both are `.nullable()` in
+ * `TimelineEventSchema`. The schema permits the half-pointer state
+ * (id-without-type or vice versa) — the check reports it explicitly
+ * rather than crashing.
+ *
+ * {@link checkSnippetBackref} guards on `snippet.evidenceIds` because the
+ * field is `.optional()` in `SnippetSchema`. `conversationId` and
+ * `communicationId` are `.nullable()` (always present), so the null
+ * branch is the skip case rather than a presence guard.
+ *
+ * {@link checkConversationSnippetIds} guards on `conv.snippetIds` because
+ * the field is `.optional()` in `ConversationSchema`. This is the second
+ * optional-array exception (alongside `checkSnippetBackref`'s
+ * `evidenceIds`); all other array-iterating checks above rely on a
+ * REQUIRED schema field and dereference without a presence guard.
  */
 
 // ---------------------------------------------------------------------------
@@ -293,6 +319,46 @@ export function checkConversationActionIds(
       if (!actionIds.has(id)) {
         report(
           `[backref-drift] conversation ${conv.id} references missing action ${id}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Conversation.snippetIds`.
+ *
+ * Every id listed under a conversation's linked snippets must resolve to
+ * a real `Snippet`. Drift here means a snippet was deleted upstream but
+ * the linking conversation was not updated — the snippet card would
+ * silently dead-end in the UI's "linked snippets" list with no warning.
+ * The complementary one-directional check (`snippet.conversationId`
+ * resolves to a real Conversation) lives in {@link checkSnippetBackref};
+ * this is the inbound counterpart and catches a different class of drift.
+ *
+ * Schema coupling: `Conversation.snippetIds` is `.optional()` in
+ * `ConversationSchema`, so this is the optional-array companion to the
+ * required-array pattern (see {@link checkConversationActionIds} for the
+ * required-array variant). Absence is the skip case (not a violation);
+ * presence is narrowed before iteration via the explicit guard.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkConversationSnippetIds(
+  report: (msg: string) => void,
+  conversations: Conversation[],
+  snippets: { id: string }[],
+): void {
+  const snippetIds = new Set(snippets.map((s) => s.id));
+  for (const conv of conversations) {
+    // Schema coupling: `conv.snippetIds` is OPTIONAL in ConversationSchema —
+    // explicit presence guard required (unlike the required-array checks).
+    if (!conv.snippetIds) continue;
+    for (const id of conv.snippetIds) {
+      if (!snippetIds.has(id)) {
+        report(
+          `[backref-drift] conversation ${conv.id} references missing snippet ${id}`,
         );
       }
     }
@@ -537,3 +603,204 @@ export function checkCommunicationConversationIds(
     }
   }
 }
+
+/**
+ * Cross-collection consistency check for `Risk.actionIds`.
+ *
+ * Every id listed under a risk's linked actions must resolve to a real
+ * `ActionItem`. Drift here means an action was deleted or renamed without
+ * updating the risks that reference it — the linked-action chip would
+ * silently disappear from the UI's risk detail with no warning. Used to
+ * be silently smoothed over by the atticus-finch normaliser; checking it
+ * directly now that the normaliser is retired.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkRiskActionIds(
+  report: (msg: string) => void,
+  risks: Risk[],
+  actions: { id: string }[],
+): void {
+  const actionIds = new Set(actions.map((a) => a.id));
+  for (const risk of risks) {
+    // Schema coupling: `risk.actionIds` is required by RiskSchema.
+    // See top-of-file "Schema coupling" note before relaxing the schema.
+    for (const id of risk.actionIds) {
+      if (!actionIds.has(id)) {
+        report(
+          `[backref-drift] risk ${risk.id} references missing action ${id}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Claim.evidenceIds`.
+ *
+ * Every id listed under a claim's linked evidence must resolve to a real
+ * `EvidenceItem`. Drift here means evidence was deleted or renamed
+ * without updating the claims that cite it — the supporting-evidence
+ * chip would silently disappear from the UI's claim detail, weakening a
+ * claim with no warning. Used to be silently smoothed over by the
+ * atticus-finch normaliser; checking it directly now that the
+ * normaliser is retired.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkClaimEvidenceIds(
+  report: (msg: string) => void,
+  claims: Claim[],
+  evidence: { id: string }[],
+): void {
+  const evidenceIds = new Set(evidence.map((e) => e.id));
+  for (const claim of claims) {
+    // Schema coupling: `claim.evidenceIds` is required by ClaimSchema.
+    // See top-of-file "Schema coupling" note before relaxing the schema.
+    for (const id of claim.evidenceIds) {
+      if (!evidenceIds.has(id)) {
+        report(
+          `[backref-drift] claim ${claim.id} references missing evidence ${id}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `TimelineEvent.linkedEntityId` /
+ * `linkedEntityType`.
+ *
+ * Both fields are `.nullable()` in `TimelineEventSchema`, so the schema
+ * permits three legal shapes: (1) both null — the timeline event has no
+ * linked entity, no-op for this check; (2) both set — the id must
+ * resolve to a real entity of the named type; (3) one set, one null —
+ * the "half pointer" state, illegal at the cross-collection level even
+ * though zod accepts each field in isolation. Drift here means the UI's
+ * "Open linked entity" affordance would either dead-end on a missing id
+ * or render against the wrong collection.
+ *
+ * The `linkedEntityType` enum is dispatched to one of five lookup sets
+ * (conversation / communication / action / claim / risk). Stakeholders
+ * are NOT a permitted target — `LinkedEntityTypeSchema` does not include
+ * them — so they are intentionally excluded from the lookups parameter.
+ * Used to be silently smoothed over by the atticus-finch normaliser;
+ * checking it directly now that the normaliser is retired.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkTimelineLinkedEntity(
+  report: (msg: string) => void,
+  timeline: TimelineEvent[],
+  lookups: {
+    conversations: Conversation[];
+    communications: Communication[];
+    actions: { id: string }[];
+    risks: { id: string }[];
+    claims: { id: string }[];
+  },
+): void {
+  const idSets: Record<NonNullable<TimelineEvent["linkedEntityType"]>, Set<string>> = {
+    conversation: new Set(lookups.conversations.map((c) => c.id)),
+    communication: new Set(lookups.communications.map((c) => c.id)),
+    action: new Set(lookups.actions.map((a) => a.id)),
+    risk: new Set(lookups.risks.map((r) => r.id)),
+    claim: new Set(lookups.claims.map((c) => c.id)),
+  };
+
+  for (const event of timeline) {
+    const idNull = event.linkedEntityId === null;
+    const typeNull = event.linkedEntityType === null;
+
+    if (idNull && typeNull) continue;
+
+    if (idNull !== typeNull) {
+      report(
+        `[backref-drift] timeline event ${event.id} has mismatched linkedEntity (id=${
+          event.linkedEntityId === null ? "null" : event.linkedEntityId
+        }, type=${event.linkedEntityType === null ? "null" : event.linkedEntityType})`,
+      );
+      continue;
+    }
+
+    // Both non-null — narrow and dispatch.
+    const type = event.linkedEntityType as NonNullable<
+      TimelineEvent["linkedEntityType"]
+    >;
+    const id = event.linkedEntityId as string;
+    if (!idSets[type].has(id)) {
+      report(
+        `[backref-drift] timeline event ${event.id} references missing ${type} ${id}`,
+      );
+    }
+  }
+}
+
+/**
+ * Cross-collection consistency check for `Snippet` linkage.
+ *
+ * Snippets are short audio clips lifted from a parent conversation or
+ * communication. Three independent links are validated here:
+ *
+ * 1. `Snippet.conversationId` (nullable) — when set, must resolve to a
+ *    real `Conversation`. Drift here would render an "Open
+ *    conversation" link that dead-ends.
+ * 2. `Snippet.communicationId` (nullable) — same, against
+ *    `Communication`.
+ * 3. `Snippet.evidenceIds` (optional array) — every id must resolve to
+ *    a real `EvidenceItem`. The field is `.optional()` in
+ *    `SnippetSchema`, so absence is the skip case (not a violation);
+ *    presence is narrowed before iteration via the explicit guard.
+ *
+ * The atticus-finch exporter previously emitted snippet linkage that
+ * the mockingbird normaliser silently smoothed over (issue #71). The
+ * exporter is now correct upstream — this check exists to catch any
+ * future regressions at the ingestion boundary.
+ *
+ * Pure function of its inputs: the `report` callback (produced by
+ * {@link createReporter}) encapsulates the strict/warn policy.
+ */
+export function checkSnippetBackref(
+  report: (msg: string) => void,
+  snippets: Snippet[],
+  conversations: Conversation[],
+  communications: Communication[],
+  evidence: { id: string }[],
+): void {
+  const conversationIds = new Set(conversations.map((c) => c.id));
+  const communicationIds = new Set(communications.map((c) => c.id));
+  const evidenceIds = new Set(evidence.map((e) => e.id));
+
+  for (const snippet of snippets) {
+    if (
+      snippet.conversationId !== null &&
+      !conversationIds.has(snippet.conversationId)
+    ) {
+      report(
+        `[backref-drift] snippet ${snippet.id} references missing conversation ${snippet.conversationId}`,
+      );
+    }
+    if (
+      snippet.communicationId !== null &&
+      !communicationIds.has(snippet.communicationId)
+    ) {
+      report(
+        `[backref-drift] snippet ${snippet.id} references missing communication ${snippet.communicationId}`,
+      );
+    }
+    // Schema coupling: `snippet.evidenceIds` is OPTIONAL in SnippetSchema —
+    // explicit presence guard required (unlike the required-array checks).
+    if (!snippet.evidenceIds) continue;
+    for (const id of snippet.evidenceIds) {
+      if (!evidenceIds.has(id)) {
+        report(
+          `[backref-drift] snippet ${snippet.id} references missing evidence ${id}`,
+        );
+      }
+    }
+  }
+}
+

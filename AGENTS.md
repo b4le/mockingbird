@@ -25,6 +25,18 @@ The same coupling applies to the three checks added for Finding 5:
 - `checkCommunicationRiskIds` iterates `comm.riskIds` without a presence guard — same constraint on `Communication.riskIds`.
 - `checkCommunicationConversationIds` iterates `comm.conversationIds` without a presence guard — same constraint on `Communication.conversationIds`.
 
+The same coupling applies to the post-normaliser-retirement checks:
+
+- `checkRiskActionIds` iterates `risk.actionIds` without a presence guard — safe only while `Risk.actionIds` is REQUIRED in `RiskSchema`. If relaxed to optional, reintroduce `if (!risk.actionIds) continue;`.
+- `checkClaimEvidenceIds` iterates `claim.evidenceIds` without a presence guard — same constraint on `Claim.evidenceIds` in `ClaimSchema`.
+
+**Optional-array exceptions.** Two checks intentionally diverge from the required-array pattern because their target field is `.optional()` in the schema, and absence is a legal "not opted in" state rather than drift:
+
+- `checkSnippetBackref` guards on `snippet.evidenceIds` with an explicit `if (!snippet.evidenceIds) continue;` — `Snippet.evidenceIds` is `.optional()` in `SnippetSchema`. The check still iterates `conversationId` / `communicationId` (both `.nullable()`, always present, with the null branch as the skip case).
+- `checkConversationSnippetIds` guards on `conv.snippetIds` with an explicit `if (!conv.snippetIds) continue;` — `Conversation.snippetIds` is `.optional()` in `ConversationSchema`. The complementary inbound check to `checkSnippetBackref`.
+
+If a new check targets an optional-array field, follow the same explicit-guard pattern and document it alongside these two. If a new check targets a required-array field, follow the no-guard pattern of the others above and add the schema-coupling comment.
+
 ### Adding a new cross-collection check
 
 Follow the same pattern:

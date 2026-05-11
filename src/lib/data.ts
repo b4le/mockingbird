@@ -11,6 +11,7 @@ import type {
   ProjectState,
   Risk,
   SessionMeta,
+  Snippet,
   Stakeholder,
   TimelineEvent,
   Transcript,
@@ -24,6 +25,7 @@ import {
   ProjectStateSchema,
   RiskSchema,
   SessionMetaSchema,
+  SnippetSchema,
   StakeholderSchema,
   TimelineEventSchema,
   TranscriptSchema,
@@ -31,13 +33,18 @@ import {
 } from "@/lib/schemas";
 import {
   checkActionBackref,
+  checkClaimEvidenceIds,
   checkCommunicationClaimIds,
   checkCommunicationConversationIds,
   checkCommunicationRiskIds,
   checkConversationActionIds,
   checkConversationParticipantIds,
+  checkConversationSnippetIds,
   checkConversationTranscriptId,
   checkEvidenceBackref,
+  checkRiskActionIds,
+  checkSnippetBackref,
+  checkTimelineLinkedEntity,
   checkTranscriptConversationId,
   checkTranscriptSpeakers,
   createReporter,
@@ -186,6 +193,27 @@ export async function getTranscripts(
   );
 }
 
+/**
+ * Loads `<project>/snippets.json` if present and validates it. Returns an
+ * empty array when the file does not exist — snippets are an opt-in
+ * collection (only the `severance` project ships them today; `demo` and
+ * projects without curated audio clips have no file). Mirrors the
+ * presence-check pattern used by {@link getTranscripts}.
+ */
+export async function getSnippets(project: string): Promise<Snippet[]> {
+  const filePath = path.join(process.cwd(), "data", project, "snippets.json");
+  try {
+    await fs.access(filePath);
+  } catch {
+    return [];
+  }
+  return loadValidated(
+    project,
+    "snippets.json",
+    uniqueIdArray(SnippetSchema, "Snippet"),
+  );
+}
+
 export interface ProjectBundle {
   state: ProjectState;
   session: SessionMeta;
@@ -198,6 +226,7 @@ export interface ProjectBundle {
   evidence: EvidenceItem[];
   timeline: TimelineEvent[];
   transcripts: Transcript[];
+  snippets: Snippet[];
 }
 
 /**
@@ -229,6 +258,7 @@ export async function getProjectBundle(
     evidence,
     timeline,
     transcripts,
+    snippets,
   ] = await Promise.all([
     getProjectState(project),
     getSession(project),
@@ -241,6 +271,7 @@ export async function getProjectBundle(
     getEvidence(project),
     getTimeline(project),
     getTranscripts(project),
+    getSnippets(project),
   ]);
   const reporter = createReporter(process.env.CI === "true");
   checkActionBackref(reporter.report, actions, communications, conversations);
@@ -257,6 +288,23 @@ export async function getProjectBundle(
   checkConversationTranscriptId(reporter.report, conversations, transcripts);
   checkTranscriptConversationId(reporter.report, transcripts, conversations);
   checkTranscriptSpeakers(reporter.report, transcripts, stakeholders);
+  checkRiskActionIds(reporter.report, risks, actions);
+  checkClaimEvidenceIds(reporter.report, claims, evidence);
+  checkTimelineLinkedEntity(reporter.report, timeline, {
+    conversations,
+    communications,
+    actions,
+    risks,
+    claims,
+  });
+  checkSnippetBackref(
+    reporter.report,
+    snippets,
+    conversations,
+    communications,
+    evidence,
+  );
+  checkConversationSnippetIds(reporter.report, conversations, snippets);
   reporter.flush();
   return {
     state,
@@ -270,5 +318,6 @@ export async function getProjectBundle(
     evidence,
     timeline,
     transcripts,
+    snippets,
   };
 }

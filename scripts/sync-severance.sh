@@ -40,6 +40,4 @@ if [[ "${1:-}" != "--apply" ]]; then
 fi
 
 rsync -a --delete "$SRC/" "$DST/"
-echo "raw copy applied; running schema normalisation..."
-node "$ROOT/scripts/normalise-severance.mjs"
 echo "synced. review with 'git diff data/severance' before committing."

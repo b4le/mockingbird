@@ -409,6 +409,60 @@ describe("audioReference field on Conversation and Transcript", () => {
       "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
     );
   });
+
+  it("AudioReferenceSchema accepts a stream string", () => {
+    const parsed = AudioReferenceSchema.parse({
+      ...populatedAudioReference,
+      stream: "adrian-1on1",
+    });
+    expect(parsed.stream).toBe("adrian-1on1");
+  });
+
+  it("AudioReferenceSchema accepts an undefined stream", () => {
+    const parsed = AudioReferenceSchema.parse(populatedAudioReference);
+    expect(parsed.stream).toBeUndefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Conversation.category enum
+// ---------------------------------------------------------------------------
+
+describe("ConversationSchema.category enum", () => {
+  const minimalConversation = {
+    id: "conv-cat",
+    date: "2026-02-11",
+    title: "t",
+    participantIds: [],
+    summary: "",
+    keyPoints: [],
+    decisions: [],
+    actionItemIds: [],
+  };
+
+  it.each(["1-on-1", "hr-meeting", "union-meeting"] as const)(
+    "accepts category %s",
+    (category) => {
+      const parsed = ConversationSchema.parse({
+        ...minimalConversation,
+        category,
+      });
+      expect(parsed.category).toBe(category);
+    },
+  );
+
+  it("rejects an unknown category value", () => {
+    const result = ConversationSchema.safeParse({
+      ...minimalConversation,
+      category: "random-string",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts an undefined category (optional)", () => {
+    const parsed = ConversationSchema.parse(minimalConversation);
+    expect(parsed.category).toBeUndefined();
+  });
 });
 
 // ---------------------------------------------------------------------------
