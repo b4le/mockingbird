@@ -10,7 +10,13 @@
       "stakeholder-johan-sellgren",
       "stakeholder-helena-borg-jodelsohn"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "TODO-050",
+      "action-4C-2",
+      "action-7C-2",
+      "action-7C-7",
+      "action-S11-3"
+    ],
     "claimIds": [
       "claim-CLM-001",
       "claim-CLM-003",
@@ -38,7 +44,16 @@
       "risk-RISK-019",
       "risk-RISK-024"
     ],
-    "conversationIds": [],
+    "conversationIds": [
+      "conversation-0f9537cb-d470-4694-9b37-cdb3f800b9ed",
+      "conversation-53fe62ba-57da-4fce-b62d-7375b22ad112",
+      "conversation-65b33afc-fd07-4c49-8c34-eefa79392b1f",
+      "conversation-83edc54e-3404-4b56-981d-c0327d7c1ae4",
+      "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+      "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+      "conversation-cf2d8d48-def9-46f1-9252-fe418418bb65",
+      "conversation-e04bddae-94ab-4e96-b523-bbc7e66e2359"
+    ],
     "summary": "HR Separation (Spotify/Johan Sellgren)",
     "messages": [
       {
@@ -153,7 +168,10 @@
       "stakeholder-johan-sellgren",
       "stakeholder-ben-purslow"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "action-4C-3",
+      "action-7C-1"
+    ],
     "claimIds": [
       "claim-CLM-001",
       "claim-CLM-002",
@@ -169,7 +187,9 @@
       "risk-RISK-008",
       "risk-RISK-016"
     ],
-    "conversationIds": [],
+    "conversationIds": [
+      "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434"
+    ],
     "summary": "confidential: regarding our discussion and next steps",
     "messages": [
       {
@@ -194,7 +214,12 @@
       "stakeholder-ben-purslow",
       "stakeholder-helena-borg-jodelsohn"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "TODO-022",
+      "TODO-031",
+      "TODO-039",
+      "action-S4-7"
+    ],
     "claimIds": [
       "claim-CLM-007"
     ],
@@ -205,7 +230,9 @@
     "riskIds": [
       "risk-RISK-021"
     ],
-    "conversationIds": [],
+    "conversationIds": [
+      "conversation-af5fc9d8-1095-4801-bf3e-97d6fc1e8391"
+    ],
     "summary": "Jose Manuel or Helena Borg Jodelsohn - (Benjamin Purslow - Spotify)",
     "messages": [
       {
@@ -229,7 +256,10 @@
     "participantIds": [
       "stakeholder-privileged"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "TODO-001",
+      "TODO-007"
+    ],
     "claimIds": [],
     "evidenceIds": [],
     "riskIds": [],
@@ -287,7 +317,10 @@
     "participantIds": [
       "stakeholder-privileged"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "TODO-007",
+      "TODO-061"
+    ],
     "claimIds": [],
     "evidenceIds": [],
     "riskIds": [],
@@ -387,7 +420,10 @@
     "participantIds": [
       "stakeholder-privileged"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "TODO-061",
+      "action-S17-5"
+    ],
     "claimIds": [],
     "evidenceIds": [],
     "riskIds": [],
@@ -417,7 +453,15 @@
       "stakeholder-johan-sellgren",
       "stakeholder-adrian-ford"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "TODO-019",
+      "TODO-025",
+      "action-7C-5",
+      "action-7C-9",
+      "action-AM-2",
+      "action-S17-6",
+      "action-S26-1"
+    ],
     "claimIds": [
       "claim-CLM-003",
       "claim-CLM-004",
@@ -440,7 +484,10 @@
       "risk-RISK-020",
       "risk-RISK-024"
     ],
-    "conversationIds": [],
+    "conversationIds": [
+      "conversation-2f9cd0c8-df91-421a-a8c8-435b56418467",
+      "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1"
+    ],
     "summary": "Amendment to Employment Contract",
     "messages": [
       {
@@ -579,7 +626,10 @@
     "participantIds": [
       "stakeholder-privileged"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "action-S17-5",
+      "action-S17-7"
+    ],
     "claimIds": [],
     "evidenceIds": [],
     "riskIds": [],
@@ -619,7 +669,10 @@
     "participantIds": [
       "stakeholder-privileged"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "action-S17-5",
+      "action-S26-3"
+    ],
     "claimIds": [],
     "evidenceIds": [],
     "riskIds": [],
@@ -649,7 +702,13 @@
       "stakeholder-ben-purslow",
       "stakeholder-helena-borg-jodelsohn"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "TODO-039",
+      "TODO-062",
+      "TODO-063",
+      "action-S26-2",
+      "action-S4-7"
+    ],
     "claimIds": [
       "claim-CLM-001",
       "claim-CLM-002",
@@ -668,7 +727,10 @@
       "risk-RISK-021",
       "risk-RISK-024"
     ],
-    "conversationIds": [],
+    "conversationIds": [
+      "conv-union-undated-5a2e74",
+      "conv-union-undated-abfb7f"
+    ],
     "summary": "Member query - potential disability discrimination during redeployment process",
     "messages": [
       {
@@ -692,7 +754,10 @@
     "participantIds": [
       "stakeholder-privileged"
     ],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "TODO-007",
+      "action-S26-3"
+    ],
     "claimIds": [],
     "evidenceIds": [],
     "riskIds": [],
@@ -711,5 +776,253 @@
       "privileged"
     ],
     "hasAttachments": false
+  },
+  {
+    "id": "email-union-unionen-19d3caf81d8afb8c",
+    "channel": "email",
+    "date": "2026-03-30T06:00:00Z",
+    "subject": "Unionen Chef member — formal consultation initiated by Spotify, request for Chefsombudsman",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-peter-toth"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "Unionen Chef member — formal consultation initiated by Spotify, request for Chefsombudsman",
+    "messages": [
+      {
+        "id": "email-union-unionen-19d3caf81d8afb8c-msg-0",
+        "date": "2026-03-30T06:00:00Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi,\n\nI'm writing because my HRBP, Johan Sellgren, informed me in the evening of\nFriday 27 March that Spotify will be sending a formal consultation request\nto Unionen \"start of next week\" to initiate what he described as \"the\nformal process.\" I want to ensure you have my perspective before that\nrequest arrives.\n\nI'm copying Peter Toth, the local union representative at Spotify, who is\naware of the situation.\n\nI'm a Unionen Chef member (Senior Engineering Manager with personnel\nresponsibility)...."
+      },
+      {
+        "id": "email-union-unionen-19d3caf81d8afb8c-msg-1",
+        "date": "2026-03-30T11:25:21Z",
+        "senderId": "stakeholder-peter-toth",
+        "bodyPreview": "Hello!\nJust confirming that Ben has been in touch with me about his case. I\nsupport his request for help from an ombudsman.\n\nBest regards,\nPéter Tóth\nchair of the Unionen club at Spotify"
+      }
+    ],
+    "tags": [
+      "outbound",
+      "category:union-unionen"
+    ],
+    "hasAttachments": false,
+    "externalParticipants": [
+      {
+        "name": "Unionen Chef"
+      }
+    ]
+  },
+  {
+    "id": "email-union-unionen-19dfc39c8ba9de1a",
+    "channel": "email",
+    "date": "2026-05-06T07:38:45Z",
+    "subject": "Follow-up on Ben's case",
+    "participantIds": [
+      "stakeholder-peter-toth",
+      "stakeholder-ben-purslow",
+      "stakeholder-helena-borg-jodelsohn"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "Follow-up on Ben's case",
+    "messages": [
+      {
+        "id": "email-union-unionen-19dfc39c8ba9de1a-msg-0",
+        "date": "2026-05-06T07:38:45Z",
+        "senderId": "stakeholder-peter-toth",
+        "bodyPreview": "Hi Stina! (and Ben who is in CC)\nThank you again for the great support in Ben's case.\nHe would like to talk to you about the offer he has now received. Would you\nhave time for a chat with him?\n\nPlease let me know if either of you would like someone from the club board\nin the meeting too.\n\nFor context, we met with HR yesterday and ended the negotiation in\ndisagreement, as discussed. We told them that we do not intend to pursue\nthe case, and that we do not object to the role offered, but that g..."
+      },
+      {
+        "id": "email-union-unionen-19dfc39c8ba9de1a-msg-1",
+        "date": "2026-05-06T12:19:11Z",
+        "externalSender": {
+          "name": "Stina Hallberg",
+          "email": "stina.hallberg@unionen.se"
+        },
+        "bodyPreview": "Hi Both of you,\nDo I understand it right -Ben, do you only want to talk about the offer and the terms?\nI´m asking because I’ve come down with something, so I won’t be able to talk to you for a while. If it’s just about the terms and, for example, whether they’re reasonable, our Rådgivning is really good at that.\n\nI’m sorry I can’t be of more help right now.\n\nKindest regards\nStina"
+      },
+      {
+        "id": "email-union-unionen-19dfc39c8ba9de1a-msg-2",
+        "date": "2026-05-06T13:42:27Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Stina,\n\nSo sorry to hear you're unwell, hope you're feeling much better soon. Is\nthere anyone else at Unionen I could speak with in the meantime, ideally\nsomeone who handles ADHD or neurodiversity discrimination cases? I'd like\nto take this off your plate so you can rest.\n\nA bit of context for whoever picks this up: the role itself isn't the\nissue. I co-wrote it with my manager, it's a transition from a manager role\nto an IC role, and honestly I'd been thinking about that move anyway.\nPete..."
+      },
+      {
+        "id": "email-union-unionen-19dfc39c8ba9de1a-msg-3",
+        "date": "2026-05-07T13:11:40Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi!\n\nI'm just forwarding this message to central Unionen as Stina Hallberg is\nout sick and I could do with some more immediate support. I appreciate the\ntiming here is tight, I only just got back from being away for a month so\nI'm sorry this wasn't raised sooner.\n\nNote: I chatted to HR today and the individual didn't seem aware that I\nhave ADHD or that this conversation had happened.\n\nIf I don't hear back by Monday I'll call up to at least cover some of the\nbasic rights I have.\n\nCheers,\nBen"
+      },
+      {
+        "id": "email-union-unionen-19dfc39c8ba9de1a-msg-4",
+        "date": "2026-05-07T14:18:52Z",
+        "externalSender": {
+          "name": "Stina Hallberg",
+          "email": "stina.hallberg@unionen.se"
+        },
+        "bodyPreview": "Hi Ben,\nI apologize for the late response. I understand your situation, and I can assure you that we have expertise in discrimination cases regardless of the grounds involved.\nYou have many good questions, and I suggest we handle this in the following way:\nYou accept the offer. The alternative is that you may be dismissed due to redundancy, which, if I understand correctly, is not what you want. Accepting the offer is not the same as accepting that you have been discriminated against.\nIn the..."
+      }
+    ],
+    "tags": [
+      "inbound",
+      "category:union-unionen"
+    ],
+    "hasAttachments": false,
+    "externalParticipants": [
+      {
+        "name": "Stina Hallberg",
+        "email": "stina.hallberg@unionen.se",
+        "organisation": "Unionen"
+      }
+    ]
+  },
+  {
+    "id": "email-legal-privileged-19dfd41bd6e38c22",
+    "channel": "email",
+    "date": "2026-05-06T12:57:20Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19dfd41bd6e38c22-msg-0",
+        "date": "2026-05-06T12:57:20Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19dfd41bd6e38c22-msg-1",
+        "date": "2026-05-06T13:09:14Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19dfd41bd6e38c22-msg-2",
+        "date": "2026-05-07T07:56:59Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19dfd41bd6e38c22-msg-3",
+        "date": "2026-05-07T10:48:03Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      },
+      {
+        "id": "email-legal-privileged-19dfd41bd6e38c22-msg-4",
+        "date": "2026-05-08T08:35:24Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "outbound",
+      "privileged"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-legal-privileged-19e01ea533809f60",
+    "channel": "email",
+    "date": "2026-05-07T10:09:39Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19e01ea533809f60-msg-0",
+        "date": "2026-05-07T10:09:39Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "inbound",
+      "privileged"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-legal-privileged-19e01eac818fceb8",
+    "channel": "email",
+    "date": "2026-05-07T10:10:21Z",
+    "subject": "[PRIVILEGED]",
+    "participantIds": [
+      "stakeholder-privileged"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "[PRIVILEGED]",
+    "messages": [
+      {
+        "id": "email-legal-privileged-19e01eac818fceb8-msg-0",
+        "date": "2026-05-07T10:10:21Z",
+        "senderId": "stakeholder-privileged",
+        "bodyPreview": "[PRIVILEGED — legal counsel communication]"
+      }
+    ],
+    "tags": [
+      "inbound",
+      "privileged"
+    ],
+    "hasAttachments": false
+  },
+  {
+    "id": "email-spotify-hr-19e1674d5c70b6be",
+    "channel": "email",
+    "date": "2026-05-11T09:53:23Z",
+    "subject": "Notes from last Thursday, ahead of this afternoon",
+    "participantIds": [
+      "stakeholder-ben-purslow"
+    ],
+    "actionItemIds": [],
+    "claimIds": [],
+    "evidenceIds": [],
+    "riskIds": [],
+    "conversationIds": [],
+    "summary": "Notes from last Thursday, ahead of this afternoon",
+    "messages": [
+      {
+        "id": "email-spotify-hr-19e1674d5c70b6be-msg-0",
+        "date": "2026-05-11T09:53:23Z",
+        "senderId": "stakeholder-ben-purslow",
+        "bodyPreview": "Hi Ebba,\n\nThanks again for making the time last Thursday in person, and for today's\nfollow-up. I appreciated the openness of the conversation.\n\nA few points to put on paper while they're fresh, in case I've\nmisremembered. First, when I showed you the amendment Johan had labelled\nthe 'formal redeployment offer' in his 16 March email, you acknowledged it\nwasn't the right way to do it and that union consultation should have come\nfirst. Second, you mentioned HR wasn't to reach out to me during th..."
+      }
+    ],
+    "tags": [
+      "outbound",
+      "category:spotify-hr"
+    ],
+    "hasAttachments": false,
+    "externalParticipants": [
+      {
+        "name": "Ebba Krusenstierna"
+      }
+    ]
   }
 ]
