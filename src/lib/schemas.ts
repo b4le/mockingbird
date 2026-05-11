@@ -26,6 +26,10 @@ import type {
  * its matching interface. If you update an interface, update the schema (and
  * vice versa) and the assertion will fail loudly at build time until they
  * match again.
+ *
+ * See `docs/schemas.md` for the per-schema reference: field rationale, the
+ * load-bearing required-array coupling cheat sheet, examples, and modification
+ * guidance for both human contributors and AI agents.
  */
 
 // ---------------------------------------------------------------------------
@@ -267,10 +271,15 @@ export const CommunicationSchema = z
      * Optional — legacy records may omit it.
      */
     hasAttachments: z.boolean().optional(),
+    // SCHEMA-COUPLING: required by checkActionBackref in invariants.ts:197
     actionItemIds: z.array(z.string()),
+    // SCHEMA-COUPLING: required by checkCommunicationClaimIds in invariants.ts:525
     claimIds: z.array(z.string()),
+    // SCHEMA-COUPLING: required by checkEvidenceBackref in invariants.ts:259
     evidenceIds: z.array(z.string()),
+    // SCHEMA-COUPLING: required by checkCommunicationRiskIds in invariants.ts:556
     riskIds: z.array(z.string()),
+    // SCHEMA-COUPLING: required by checkCommunicationConversationIds in invariants.ts:588
     conversationIds: z.array(z.string()),
     tags: z.array(z.string()).optional(),
   })
@@ -396,6 +405,7 @@ export const TranscriptSchema = z.object({
   durationSeconds: z.number().nonnegative().nullable(),
   cueCount: z.number().int().nonnegative(),
   hasCues: z.boolean(),
+  // SCHEMA-COUPLING: required by checkTranscriptSpeakers in invariants.ts:474
   cues: z.array(TranscriptCueSchema),
   sourceFile: z.string(),
   audioReference: AudioReferenceSchema.optional(),
@@ -446,10 +456,12 @@ export const ConversationSchema = z.object({
   id: z.string(),
   date: NullableIsoDateSchema,
   title: z.string(),
+  // SCHEMA-COUPLING: required by checkConversationParticipantIds in invariants.ts:379
   participantIds: z.array(z.string()),
   summary: z.string(),
   keyPoints: z.array(z.string()),
   decisions: z.array(z.string()),
+  // SCHEMA-COUPLING: required by checkConversationActionIds + checkActionBackref in invariants.ts:309, 197
   actionItemIds: z.array(z.string()),
   medium: MediumSchema.optional(),
   /**
@@ -489,6 +501,7 @@ export const RiskSchema = z.object({
   severity: PrioritySchema,
   likelihood: PrioritySchema,
   mitigationPlan: z.string(),
+  // SCHEMA-COUPLING: required by checkRiskActionIds in invariants.ts:620
   actionIds: z.array(z.string()),
   createdDate: NullableIsoDateSchema,
   updatedDate: NullableIsoDateSchema,
@@ -499,6 +512,7 @@ export const ClaimSchema = z.object({
   assertion: z.string(),
   category: z.string(),
   status: ClaimStatusSchema,
+  // SCHEMA-COUPLING: required by checkClaimEvidenceIds in invariants.ts:653
   evidenceIds: z.array(z.string()),
   raisedById: z.string(),
   date: z.string(),
