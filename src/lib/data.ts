@@ -183,8 +183,13 @@ export async function getTranscripts(
   const filePath = path.join(process.cwd(), "data", project, "transcripts.json");
   try {
     await fs.access(filePath);
-  } catch {
-    return [];
+  } catch (err) {
+    // Narrow the swallow to ENOENT: a missing file is a legitimate "opt-in
+    // collection not present" state. Anything else (EACCES, EIO, …) is real
+    // infra failure and must surface as a loader error rather than masquerade
+    // as an empty page.
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw err;
   }
   return loadValidated(
     project,
@@ -204,8 +209,12 @@ export async function getSnippets(project: string): Promise<Snippet[]> {
   const filePath = path.join(process.cwd(), "data", project, "snippets.json");
   try {
     await fs.access(filePath);
-  } catch {
-    return [];
+  } catch (err) {
+    // See `getTranscripts` above — only ENOENT means "opt-in collection not
+    // present". All other errnos (EACCES, EIO, …) are re-thrown so they
+    // surface as real loader errors.
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw err;
   }
   return loadValidated(
     project,
