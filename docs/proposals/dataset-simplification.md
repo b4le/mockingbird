@@ -36,28 +36,30 @@ Wiring a loader against the current misaligned linkage would either fail `loadVa
 
 ### Finding 2 — AudioReference duplication
 
-**Status:** Ownership policy documented, de-duplication deferred
+**Status:** Producer dual-emit cut shipped (atticus-finch#70); field retained for the last audio-only conversation. Not yet fully resolved.
 
 **Why:**
 
-`AudioReference` appears on both `Conversation` (`src/types/index.ts:225`) and `Transcript` (`src/types/index.ts:356`). For conversations that have a transcript row, both records carry the same 8-field block (visible in `data/demo/conversations.json` and `data/demo/transcripts.json` for `c2`). For audio-only sessions with no transcript (e.g. demo record `c5`), only `Conversation.audioReference` is set.
+`AudioReference` appears on both `Conversation` and `Transcript` (`src/types/index.ts`). Historically, conversations with a paired Transcript carried the same 8-field block on both records; audio-only sessions (no Transcript) carried it only on `Conversation`.
 
-Removing the duplication requires the atticus-finch exporter to stop emitting `Conversation.audioReference` when a Transcript row exists — a cross-repo coordination that is out of scope for this PR.
+The producer side of the de-duplication has shipped: [b4le/atticus-finch#70](https://github.com/b4le/atticus-finch/issues/70) stopped emitting `Conversation.audioReference` when a Transcript row exists. The field has **not** been removed from the schema or interface, because the live dataset still contains one audio-only conversation (`conversation-d738b9e8-5b43-498c-8bb6-0ae6396d6d31`) with no paired Transcript — `Conversation.audioReference` remains the source of truth for that row, and is the only remaining case keeping the field alive on `Conversation`.
 
 **Ownership policy (canonical rule):**
 
-- `Transcript` owns `audioReference` when a Transcript row exists for the conversation.
-- `Conversation` owns `audioReference` for audio-only sessions (no Transcript row).
-- Consumers must prefer `Transcript.audioReference` when both are present; fall back to `Conversation.audioReference` only when no Transcript row is found.
+- `Transcript` owns `audioReference` when a Transcript row exists for the conversation. The exporter no longer dual-emits onto `Conversation` in this case.
+- `Conversation` owns `audioReference` for audio-only sessions (no Transcript row). This is the only remaining case keeping the field alive on `Conversation`.
+- `resolveAudioReference` in `src/lib/audio-reference.ts` encodes both branches; the conversation-fallback path is now only reached for audio-only sessions.
 
-**This PR:**
+**This PR (mockingbird#27):**
 
-- Add JSDoc to `Conversation.audioReference` (`src/types/index.ts:225`) and `Transcript.audioReference` (`src/types/index.ts:356`) stating the ownership rule above and the preferred lookup path.
+- Tighten JSDoc on `Conversation.audioReference` (and the corresponding `ConversationSchema` field) to state: "Only set on audio-only sessions; never on conversations with a paired Transcript."
+- Refresh `Transcript.audioReference` JSDoc and `AudioReferenceSchema` JSDoc to reflect that producer dual-emit is gone.
+- Annotate `resolveAudioReference` to explain the surviving fallback is the audio-only branch.
 - No shape changes.
 
 **Follow-up:**
 
-[b4le/atticus-finch#70](https://github.com/b4le/atticus-finch/issues/70) — stop emitting `Conversation.audioReference` when the corresponding `Transcript` row already carries it. Bump `dataVersion` on the consumer side once the exporter stops dual-emitting.
+Keep mockingbird#27 open until the last audio-only conversation is paired with a Transcript or otherwise migrated. Once zero audio-only conversations remain, `Conversation.audioReference` can be dropped from the schema and interface in a follow-up PR (with a consumer-side `dataVersion` bump).
 
 ---
 

@@ -334,13 +334,14 @@ const HttpsUrlSchema = z
   .or(z.literal(""));
 
 /**
- * Ownership policy: when a Conversation has a Transcript row and that
- * Transcript carries `audioReference`, the Transcript's copy is the source
- * of truth. Any `audioReference` on the parent Conversation is denormalised
- * back-compat (or applies only to the audio-only case where no Transcript
- * exists). Consumers should prefer `Transcript.audioReference` when both
- * are present. See the matching JSDoc on `Conversation.audioReference` /
- * `Transcript.audioReference` in `src/types/index.ts`.
+ * Ownership policy: `Transcript.audioReference` is the source of truth when
+ * a Transcript row exists for the conversation. `Conversation.audioReference`
+ * is only set on audio-only sessions (no Transcript row). The exporter no
+ * longer dual-emits onto the Conversation when a Transcript exists
+ * (atticus-finch#70 shipped); the consumer-side `resolveAudioReference`
+ * helper still falls back to the Conversation field for the remaining
+ * audio-only case. See the matching JSDoc on `Conversation.audioReference`
+ * and `Transcript.audioReference` in `src/types/index.ts`.
  */
 export const AudioReferenceSchema = z
   .object({
@@ -460,6 +461,9 @@ export const ConversationSchema = z.object({
   transcript: z.string().optional(),
   transcriptId: z.string().optional(),
   snippetIds: z.array(z.string()).optional(),
+  // Only set on audio-only sessions; never on conversations with a paired
+  // Transcript (atticus-finch#70). See `Conversation.audioReference` JSDoc
+  // in `src/types/index.ts` for the migration plan.
   audioReference: AudioReferenceSchema.optional(),
   category: z.enum(["1-on-1", "hr-meeting", "union-meeting"]).optional(),
 });
