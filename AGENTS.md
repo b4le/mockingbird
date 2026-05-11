@@ -28,6 +28,8 @@ When a `[backref-drift] ...` message appears, it means a consumer-side invariant
 
 ### Schema coupling (load-bearing)
 
+> Authority: the inline `// SCHEMA-COUPLING:` comments in `src/lib/schemas.ts` are the authoritative source for which fields are load-bearing. The cheat sheet in `docs/schemas.md` §3 and the notes below are derived projections — if they conflict, trust the inline comments.
+
 The backref checks dereference `comm.actionItemIds.includes(...)` and `comm.evidenceIds.includes(...)` without a presence guard. That's only safe because `Communication.actionItemIds` and `Communication.evidenceIds` are declared REQUIRED (not `.optional()`) in `CommunicationSchema`. If a future change relaxes those fields back to optional, the checks will crash with `Cannot read properties of undefined (reading 'includes')` instead of cleanly reporting drift — strictly worse than before. Keep the fields required, or reintroduce explicit `if (!comm.actionItemIds) continue;` guards in `checkActionBackref` / `checkEvidenceBackref`. The same rule applies to any new backref check that consumes a "required array" field.
 
 The same coupling applies to the three checks added for Finding 5:

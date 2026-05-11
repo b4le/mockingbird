@@ -44,6 +44,7 @@ next-env.d.ts
 /.claude/
 /local-state/
 /.playwright-mcp/
+/.full-review/
 
 # local npm cache (workaround for root-owned ~/.npm)
 /.npm-cache/
