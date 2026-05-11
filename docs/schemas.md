@@ -8,6 +8,30 @@ Read this alongside:
 - `src/lib/invariants.ts` — the cross-collection backref checks that consume the required arrays.
 - `src/types/index.ts` — the TypeScript interfaces; the `_AssertX` block at the bottom of `schemas.ts` enforces bidirectional assignability.
 
+## Contents
+
+- [1. The `_AssertX` drift-check block](#1-the-_assertx-drift-check-block)
+- [2. Shared enums and the `uniqueIdArray` helper](#2-shared-enums-and-the-uniqueidarray-helper)
+- [3. Schema-coupling cheat sheet](#3-schema-coupling-cheat-sheet)
+- [4. Provenance JSON files](#4-provenance-json-files)
+- [Schemas](#schemas)
+  - [CommMessageSchema](#commmessageschema)
+  - [CommunicationSchema](#communicationschema)
+  - [StakeholderSchema](#stakeholderschema)
+  - [AudioReferenceStatusSchema](#audioreferencestatusschema)
+  - [AudioReferenceSchema](#audioreferenceschema)
+  - [TranscriptCueSchema](#transcriptcueschema)
+  - [TranscriptSchema](#transcriptschema)
+  - [SnippetSchema](#snippetschema)
+  - [ConversationSchema](#conversationschema)
+  - [ActionItemSchema](#actionitemschema)
+  - [RiskSchema](#riskschema)
+  - [ClaimSchema](#claimschema)
+  - [EvidenceItemSchema](#evidenceitemschema)
+  - [TimelineEventSchema](#timelineeventschema)
+  - [ProjectStateSchema](#projectstateschema)
+  - [SessionMetaSchema](#sessionmetaschema)
+
 ---
 
 ## 1. The `_AssertX` drift-check block
@@ -68,27 +92,29 @@ Top of `src/lib/schemas.ts` declares enum schemas used across multiple entities:
 
 ## 3. Schema-coupling cheat sheet
 
+The inline `// SCHEMA-COUPLING:` comments in `src/lib/schemas.ts` are the authoritative source; this table is a derived lookup index. If they conflict, trust the inline comments.
+
 These fields are declared **REQUIRED** in their schema (no `.optional()`) because a downstream invariant check dereferences them without a presence guard. Relaxing any of them to optional will crash the check with `Cannot read properties of undefined (reading 'includes')` instead of cleanly reporting drift.
 
-| Schema | Field | Consuming check | File:line |
-|--------|-------|-----------------|-----------|
-| `CommunicationSchema` | `actionItemIds` | `checkActionBackref` | invariants.ts:197 |
-| `CommunicationSchema` | `evidenceIds` | `checkEvidenceBackref` | invariants.ts:259 |
-| `CommunicationSchema` | `claimIds` | `checkCommunicationClaimIds` | invariants.ts:525 |
-| `CommunicationSchema` | `riskIds` | `checkCommunicationRiskIds` | invariants.ts:556 |
-| `CommunicationSchema` | `conversationIds` | `checkCommunicationConversationIds` | invariants.ts:588 |
-| `ConversationSchema` | `actionItemIds` | `checkConversationActionIds`, `checkActionBackref` | invariants.ts:309, 197 |
-| `ConversationSchema` | `participantIds` | `checkConversationParticipantIds` | invariants.ts:379 |
-| `TranscriptSchema` | `cues` | `checkTranscriptSpeakers` | invariants.ts:474 |
-| `RiskSchema` | `actionIds` | `checkRiskActionIds` | invariants.ts:620 |
-| `ClaimSchema` | `evidenceIds` | `checkClaimEvidenceIds` | invariants.ts:653 |
+| Schema | Field | Consuming check | Source |
+|--------|-------|-----------------|--------|
+| `CommunicationSchema` | `actionItemIds` | `checkActionBackref` | invariants.ts |
+| `CommunicationSchema` | `evidenceIds` | `checkEvidenceBackref` | invariants.ts |
+| `CommunicationSchema` | `claimIds` | `checkCommunicationClaimIds` | invariants.ts |
+| `CommunicationSchema` | `riskIds` | `checkCommunicationRiskIds` | invariants.ts |
+| `CommunicationSchema` | `conversationIds` | `checkCommunicationConversationIds` | invariants.ts |
+| `ConversationSchema` | `actionItemIds` | `checkConversationActionIds`, `checkActionBackref` | invariants.ts |
+| `ConversationSchema` | `participantIds` | `checkConversationParticipantIds` | invariants.ts |
+| `TranscriptSchema` | `cues` | `checkTranscriptSpeakers` | invariants.ts |
+| `RiskSchema` | `actionIds` | `checkRiskActionIds` | invariants.ts |
+| `ClaimSchema` | `evidenceIds` | `checkClaimEvidenceIds` | invariants.ts |
 
 **Optional-array exceptions** — these fields ARE `.optional()` and the consuming check guards explicitly with `if (!field) continue;`. Absence is a legal "not opted in" state, not drift:
 
 | Schema | Field | Guarding check |
 |--------|-------|----------------|
-| `SnippetSchema` | `evidenceIds` | `checkSnippetBackref` (invariants.ts:766) |
-| `ConversationSchema` | `snippetIds` | `checkConversationSnippetIds` (invariants.ts:348) |
+| `SnippetSchema` | `evidenceIds` | `checkSnippetBackref` (invariants.ts) |
+| `ConversationSchema` | `snippetIds` | `checkConversationSnippetIds` (invariants.ts) |
 
 If you add a new check against an optional-array field, follow the explicit-guard pattern. If you add a check against a required-array field, follow the no-guard pattern and add a `// SCHEMA-COUPLING:` comment pointing at the consuming check.
 

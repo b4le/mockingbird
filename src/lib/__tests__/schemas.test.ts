@@ -1071,3 +1071,39 @@ describe("CommMessageSchema preflight messages", () => {
     expect(parsed.id).toBe("m1");
   });
 });
+
+// ---------------------------------------------------------------------------
+// Schema-coupling assertions — these fields are REQUIRED because downstream
+// invariant checks dereference them without a presence guard. If a future
+// change relaxes them to `.optional()`, these tests fail loudly instead of
+// the check crashing at runtime. See `docs/schemas.md` §3.
+// ---------------------------------------------------------------------------
+
+describe("schema-coupling: required arrays", () => {
+  it("RiskSchema rejects omitted actionIds (consumed by checkRiskActionIds)", () => {
+    const result = RiskSchema.safeParse({
+      id: "r1",
+      title: "t",
+      description: "d",
+      status: "open",
+      severity: "high",
+      likelihood: "medium",
+      mitigationPlan: "m",
+      createdDate: null,
+      updatedDate: null,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("ClaimSchema rejects omitted evidenceIds (consumed by checkClaimEvidenceIds)", () => {
+    const result = ClaimSchema.safeParse({
+      id: "cl1",
+      assertion: "X happened",
+      category: "fact",
+      status: "supported",
+      raisedById: "s1",
+      date: "2024-01-01",
+    });
+    expect(result.success).toBe(false);
+  });
+});

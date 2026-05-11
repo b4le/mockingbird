@@ -25,8 +25,6 @@ export function resolveAudioReference(
   conversation: Conversation,
   transcript: Transcript | null | undefined,
 ): AudioReference | undefined {
-  // Fallback to `conversation.audioReference` is the audio-only branch
-  // (no paired Transcript). See JSDoc above.
   return transcript?.audioReference ?? conversation.audioReference;
 }
 
