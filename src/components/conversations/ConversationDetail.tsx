@@ -299,7 +299,14 @@ function TranscriptTab({
   );
 
   return (
-    <div className="h-[28rem]">
+    // Responsive panel height (issue #15). The detail panel sits inside a
+    // grid column (md:col-span-1 lg:col-span-2 in ConversationsPageClient),
+    // not a bounded flex column, so we can't use `flex-1 min-h-0` here —
+    // the panel has to declare its own height bounds. `clamp` gives us a
+    // mobile-safe cap (~20rem floor), a viewport-proportional preferred
+    // (60vh), and a desktop ceiling (40rem) so the panel grows on tall
+    // screens without dominating short ones.
+    <div className="h-[clamp(20rem,60vh,40rem)]">
       <TranscriptPanel
         transcript={transcript}
         flatTranscript={flatTranscript}

@@ -173,7 +173,12 @@ export const TranscriptToolbar = forwardRef<
         </div>
       ) : null}
       {onFollowAudioChange ? (
-        <label className="flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground select-none">
+        // Hidden on <md to reduce mobile toolbar density (issue #16). The
+        // Follow-audio toggle defaults on and rarely needs flipping on a
+        // small screen; the help button at md+ uses the same hiding
+        // pattern. If user research surfaces a need to toggle on mobile,
+        // promote this into the kebab/overflow pattern instead of un-hiding.
+        <label className="hidden md:flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground select-none">
           <input
             type="checkbox"
             checked={followAudio ?? false}

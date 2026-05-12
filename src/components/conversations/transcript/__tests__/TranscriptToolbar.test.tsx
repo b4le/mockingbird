@@ -67,6 +67,25 @@ describe("TranscriptToolbar", () => {
     expect(queryByLabelText("Open search")).toBeNull();
   });
 
+  it("hides the Follow-audio toggle on mobile via responsive classes", () => {
+    // Issue #16: Follow-audio defaults on and rarely needs flipping on a
+    // small screen, so the label is suppressed below md to reduce
+    // toolbar density. Matches the help-button hide pattern.
+    const { getByLabelText } = render(
+      <TranscriptToolbar
+        onFollowAudioChange={() => {}}
+        followAudio
+      />,
+    );
+    const checkbox = getByLabelText(/follow audio/i);
+    // The visible label wraps the input; its parent <label> carries the
+    // responsive classes.
+    const label = checkbox.closest("label");
+    expect(label).not.toBeNull();
+    expect(label?.className).toContain("hidden");
+    expect(label?.className).toContain("md:flex");
+  });
+
   it("hides the help button on mobile via responsive classes", () => {
     const { getByLabelText } = render(
       <TranscriptToolbar onOpenHelp={() => {}} />,

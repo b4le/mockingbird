@@ -82,7 +82,12 @@ export function TranscriptCue({
       <span
         aria-hidden="true"
         className={cn(
-          "mt-0.5 shrink-0 select-none font-mono text-[10px] tabular-nums text-muted-foreground",
+          // Hidden on <sm to reduce per-cue visual density on small mobile
+          // viewports (issue #16). Screen readers still get the timestamp
+          // via the parent button's aria-label, so visual hiding doesn't
+          // regress accessibility. At sm+ the span is inline and reveals
+          // on hover/focus (or stays visible when active / on touch md+).
+          "hidden sm:inline mt-0.5 shrink-0 select-none font-mono text-[10px] tabular-nums text-muted-foreground",
           "opacity-0 group-hover/cue:opacity-100 group-focus-visible/cue:opacity-100 max-md:opacity-100",
           isActive && "opacity-100",
         )}
