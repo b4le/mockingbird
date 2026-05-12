@@ -135,8 +135,13 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
     rerender({ idx: 2 });
     rerender({ idx: 3 });
     rerender({ idx: 4 });
-    // Long pause before idx 5 -> announce its text.
+    // Long pause before idx 5 -> announce its text. The cue-advance effect
+    // defers the setState through a setTimeout(0); flush pending timers so the
+    // announcement lands before we assert.
     rerender({ idx: 5 });
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
     expect(result.current.message).toBe("After a long pause.");
   });
 
@@ -161,6 +166,12 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
     rerender({ idx: 3 });
     expect(result.current.message).toBe(first);
     rerender({ idx: 4 });
+    expect(result.current.message).toBe(first);
+    // Even after flushing deferred timers, no announcement should land —
+    // neither trigger fired.
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
     expect(result.current.message).toBe(first);
   });
 
@@ -192,8 +203,11 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
     rerender({ idx: 3 });
     rerender({ idx: 4 });
     expect(result.current.message).toContain("Ben");
-    // idx 5 divisible by 5 -> announce cue 5's text.
+    // idx 5 divisible by 5 -> announce cue 5's text (after the deferred flush).
     rerender({ idx: 5 });
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
     expect(result.current.message).toBe("Sentence 5.");
   });
 
@@ -217,6 +231,11 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
     expect(result.current.message).toContain("Ben");
     rerender({ idx: 1 });
     // Speaker-change wins; message is the speaker announcement, not the raw cue text.
+    // Flush any deferred timers to verify the cue-advance effect didn't sneak in
+    // a stale announcement after the speaker effect fired.
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
     expect(result.current.message).toContain("Adrian");
     expect(result.current.message).not.toBe("A new voice arrives.");
   });
@@ -239,8 +258,11 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
       { initialProps: { idx: 0 } },
     );
     expect(result.current.message).toContain("Ben");
-    // Long pause triggers cue-text announcement on idx 1.
+    // Long pause triggers cue-text announcement on idx 1 (after deferred flush).
     rerender({ idx: 1 });
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
     const msg = result.current.message;
     expect(msg.endsWith("…")).toBe(true);
     // Default truncation is 100 — total length is at most 100.
@@ -268,6 +290,9 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
       { initialProps: { idx: 0 } },
     );
     rerender({ idx: 1 });
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
     expect(result.current.message).toBe("abcdefghi…");
   });
 
@@ -292,6 +317,9 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
     );
     expect(result.current.message).toContain("Ben");
     rerender({ idx: 1 });
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
     expect(result.current.message).toBe("Second.");
   });
 
@@ -318,6 +346,9 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
     expect(first).toContain("Ben");
     for (let i = 1; i <= 6; i++) {
       rerender({ idx: i });
+      act(() => {
+        vi.advanceTimersByTime(0);
+      });
       // With Nth disabled and tight gaps, no further announcements fire.
       expect(result.current.message).toBe(first);
     }

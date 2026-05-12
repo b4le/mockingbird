@@ -179,8 +179,21 @@ export function useSpeakerChangeAnnouncer({
 
     if (!pauseTriggered && !nthTriggered) return;
 
-    lastAnnouncedCueIndexRef.current = activeCueIndex;
-    setMessage(truncate(activeCue.text, maxLength));
+    // Defer the setState to the next macrotask so we avoid the
+    // `react-hooks/set-state-in-effect` lint (and the cascading-render hazard
+    // it guards against). The speaker effect above uses the same deferral via
+    // its debounce timer; mirroring that here keeps the two effects' timing
+    // model consistent.
+    const indexAtScheduleTime = activeCueIndex;
+    const cueAtScheduleTime = activeCue;
+    const handle = setTimeout(() => {
+      lastAnnouncedCueIndexRef.current = indexAtScheduleTime;
+      setMessage(truncate(cueAtScheduleTime.text, maxLength));
+    }, 0);
+
+    return () => {
+      clearTimeout(handle);
+    };
   }, [
     activeCueIndex,
     activeCue,
