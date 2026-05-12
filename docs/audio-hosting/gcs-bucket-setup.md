@@ -136,8 +136,11 @@ gcloud storage buckets update "gs://${BUCKET}" \
 
 Notes:
 
-- `Range` is a CORS-safelisted request header in modern browsers, so it does not need to appear in any `Access-Control-Allow-Headers` (you do not configure request-allowed headers via the `responseHeader` array — that array names *response* headers the browser is allowed to read).
-- We list `Content-Range` and `Accept-Ranges` in `responseHeader` so the audio element can read them after a 206 response.
+- GCS's `responseHeader` field has a **dual role** in its CORS implementation, which is easy to misread:
+  1. It acts as the allowlist evaluated against `Access-Control-Request-Headers` in preflights (the role typically served by `Access-Control-Allow-Headers` in other CORS implementations).
+  2. It also populates `Access-Control-Expose-Headers` on actual responses, controlling which response headers JS can read.
+- `Range` is a CORS-safelisted request header in modern browsers, so browsers do not include it in `Access-Control-Request-Headers` — no need to list it in `responseHeader` to satisfy role (1).
+- We list `Content-Range` and `Accept-Ranges` in `responseHeader` to satisfy role (2): the audio element needs to read them from 206 responses for range-based playback.
 - `maxAgeSeconds: 3600` caches preflights for one hour — safe for read-only static content.
 - Docs: https://cloud.google.com/storage/docs/cross-origin and https://cloud.google.com/storage/docs/using-cors
 
@@ -325,19 +328,27 @@ Docs on testing CORS: https://cloud.google.com/storage/docs/using-cors#troublesh
 The actual listing path that anonymous callers hit is the GCS XML API, not the JSON API. Test it:
 
 ```bash
+# Status-code-only check (unambiguous pass/fail):
+curl -sw '%{http_code}\n' -o /dev/null "https://storage.googleapis.com/${BUCKET}?list-type=2"
+
+# For the body (inspect the XML <Contents> entries):
 curl -s "https://storage.googleapis.com/${BUCKET}?list-type=2" | head -40
 ```
 
-**Expected: this WILL return XML containing every `<Contents>` entry in the bucket.** That is the documented behaviour of `roles/storage.objectViewer` — it is not a misconfiguration. The actual obscurity protection is the unguessable bucket name, per Step 4.
+**Expected: HTTP 200, with an XML body containing every `<Contents>` entry in the bucket.** That is the documented behaviour of `roles/storage.objectViewer` — it is not a misconfiguration. The actual obscurity protection is the unguessable bucket name, per Step 4.
 
 If you also want to verify the JSON API path returns 401/403 (it does — but note this does **not** test the actual listing path):
 
 ```bash
 # Belt-and-braces only — does not test the actual listing path.
+# Status-code-only check:
+curl -sw '%{http_code}\n' -o /dev/null "https://storage.googleapis.com/storage/v1/b/${BUCKET}/o"
+
+# For the body (inspect the JSON error):
 curl -s "https://storage.googleapis.com/storage/v1/b/${BUCKET}/o" | head -20
 ```
 
-Expected: a JSON 401 or 403 (`Anonymous caller does not have storage.objects.list`). The JSON API gates on `storage.buckets.get` which `allUsers` lacks. The XML API does not — that is the path to verify.
+Expected: HTTP 401 or 403, with a JSON error body (`Anonymous caller does not have storage.objects.list`). The JSON API gates on `storage.buckets.get` which `allUsers` lacks. The XML API does not — that is the path to verify.
 
 ---
 
