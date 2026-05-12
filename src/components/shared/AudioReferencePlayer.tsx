@@ -98,7 +98,7 @@ export function AudioReferencePlayer({
   // element. Using a callback ref (instead of `useEffect` keyed on
   // `audioRef.current`) is the React-idiomatic way to subscribe to a
   // DOM node's lifecycle, and it correctly fires when the element
-  // appears/disappears via showPlayer or compact-expand toggling.
+  // appears/disappears via the streamUrl gate or compact-expand toggling.
   const setAudioRef = useCallback(
     (node: HTMLAudioElement | null) => {
       const previous = audioRef.current;
@@ -115,8 +115,7 @@ export function AudioReferencePlayer({
     },
     [registry],
   );
-  // Detach when the component unmounts so a parent provider doesn't
-  // keep listening to a node that's about to be removed from the DOM.
+  // Handles the "parent unmounts mid-playback while <audio> is still mounted" case — the ref callback already clears the registry when <audio> alone unmounts.
   useEffect(() => {
     return () => {
       if (registry && audioRef.current) {
@@ -132,10 +131,16 @@ export function AudioReferencePlayer({
   // element has already fired its error handler, skip rendering the
   // player and surface the Drive link only. `previewUrl` is NOT a
   // valid `<audio>` source — it returns Drive's HTML iframe page.
-  const hasStreamUrl =
+  // Hoisted to a local so TS narrows `streamUrl` to `string` inside
+  // the `{!audioFailed && streamUrl !== undefined && ...}` branch
+  // below (a boolean intermediate didn't carry narrowing across the
+  // JSX boundary).
+  const streamUrl =
     typeof audioReference.streamUrl === "string" &&
-    audioReference.streamUrl !== "";
-  const showPlayer = hasStreamUrl && !audioFailed;
+    audioReference.streamUrl !== ""
+      ? audioReference.streamUrl
+      : undefined;
+  const hasStreamUrl = streamUrl !== undefined;
   const hasViewUrl = audioReference.viewUrl !== "";
   // When audio playback fails (or no streamUrl is available at all),
   // the link becomes the primary affordance and gets a slightly more
@@ -157,12 +162,12 @@ export function AudioReferencePlayer({
           {STATUS_LABELS[status as Exclude<AudioReferenceStatus, "complete">]}
         </Badge>
       )}
-      {showPlayer && (
+      {!audioFailed && streamUrl !== undefined && (
         <audio
           ref={setAudioRef}
           controls
           preload="none"
-          src={audioReference.streamUrl}
+          src={streamUrl}
           title={audioReference.filename}
           aria-label={`Recording: ${audioReference.filename}`}
           onError={() => setAudioFailed(true)}
