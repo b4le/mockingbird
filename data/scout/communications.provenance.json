@@ -1,0 +1,16 @@
+{
+  "email-hr-19bfa273eca78c37": {
+    "source_file": "local-state/emails/hr/2026-01-26-msg-00.md",
+    "source_section": "email:19bfa273eca78c37",
+    "content_hash": "7846d95e88dfe611",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_communications"
+  },
+  "email-union-19c03f4807374ebf": {
+    "source_file": "local-state/emails/union/2026-01-28-msg-00.md",
+    "source_section": "email:19c04dce635f8568",
+    "content_hash": "2483e40555e1701b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_communications"
+  }
+}

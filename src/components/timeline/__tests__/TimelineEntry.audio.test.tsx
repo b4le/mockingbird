@@ -30,6 +30,7 @@ const audioRef: AudioReference = {
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view?usp=drive_link",
   previewUrl:
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+  streamUrl: "https://storage.googleapis.com/mockingbird-audio/test-hash.m4a",
   sizeBytes: 53896450,
   durationSeconds: null,
   status: "complete",

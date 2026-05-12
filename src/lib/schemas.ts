@@ -301,6 +301,19 @@ export const AudioReferenceSchema = z
     // stays required-string while accepting the absent-recording case.
     viewUrl: HttpsUrlSchema,
     previewUrl: HttpsUrlSchema,
+    // Direct audio URL the <audio src> binds to. Optional during the
+    // Drive→GCS migration; uses an `https://`-only refinement (same as
+    // viewUrl/previewUrl) because it is also rendered into the DOM (as
+    // an `<audio src>` attribute, where dangerous schemes would still
+    // execute). No empty-string sentinel here: if streamUrl is absent,
+    // omit the key — the player branches on `streamUrl !== undefined`.
+    streamUrl: z
+      .string()
+      .url()
+      .refine((s) => s.startsWith("https://"), {
+        message: "URL must use https://",
+      })
+      .optional(),
     sizeBytes: z.number().int().nonnegative().nullable(),
     durationSeconds: z.number().int().nonnegative().nullable(),
     status: AudioReferenceStatusSchema.optional(),

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "stakeholder-johan-sellgren",
+    "name": "Johan Sellgren",
+    "role": "HRBP",
+    "organisation": "Spotify HR",
+    "initials": "JS",
+    "colour": "#EF4444",
+    "notes": "Primary HR contact. Pushing separation.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-adrian-ford",
+    "name": "Adrian Ford",
+    "role": "Ben's manager",
+    "organisation": "Spotify Engineering",
+    "initials": "AF",
+    "colour": "#10B981",
+    "notes": "Internal advocate. Departing ~June 2026.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-helena-borg-jodelsohn",
+    "name": "Helena Borg Jodelsohn",
+    "role": "Unionen rep",
+    "organisation": "Unionen",
+    "initials": "HJ",
+    "colour": "#8B5CF6",
+    "notes": "Email: medlemsservice.uppsagning@unionen.se",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-sarah-hoyle",
+    "name": "Sarah Hoyle",
+    "role": "T&S Engineering",
+    "organisation": "Spotify T&S",
+    "initials": "SH",
+    "colour": "#F59E0B",
+    "notes": "Priority redeployment target.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-marqia-williams",
+    "name": "Marqia Williams",
+    "role": "Eng Director",
+    "organisation": "Spotify Engineering",
+    "initials": "MW",
+    "colour": "#F97316",
+    "notes": "Structural obstacle. Given misinformation about Ben.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-babar",
+    "name": "Babar",
+    "role": "VP",
+    "organisation": "Spotify Leadership",
+    "initials": "BA",
+    "colour": "#EC4899",
+    "notes": "Blocks Content Platform redeployment.",
+    "aliases": []
+  },
+  {
+    "id": "stakeholder-ben-purslow",
+    "name": "Ben Purslow",
+    "role": "Senior Engineering Manager",
+    "organisation": "Spotify",
+    "initials": "BP",
+    "colour": "#3B82F6",
+    "notes": "Project principal. SEM at Spotify Content Platform.",
+    "aliases": []
+  }
+]

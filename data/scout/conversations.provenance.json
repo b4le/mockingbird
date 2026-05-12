@@ -1,0 +1,170 @@
+{
+  "conv-hr-20260126-7b96b4": {
+    "source_file": "sources/conversations/hr/hr-email-exchange-proposed-mutual-separation-agreement.md",
+    "source_section": "whole_file:conv-hr-20260126-7b96b4",
+    "content_hash": "d279fbdb454b83e3",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-union-20260127-5072c9": {
+    "source_file": "sources/conversations/union/unionen-initial-2026-01-27.md",
+    "source_section": "whole_file:conv-union-20260127-5072c9",
+    "content_hash": "ee8531df9162cea6",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-20260205-890208": {
+    "source_file": "sources/conversations/hr/hr-communications-work-email.md",
+    "source_section": "whole_file:conv-hr-20260205-890208",
+    "content_hash": "b4a2eda747c92688",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-20260210-a667fe": {
+    "source_file": "sources/conversations/hr/hr-slack-conversation-talent-snapshot.md",
+    "source_section": "whole_file:conv-hr-20260210-a667fe",
+    "content_hash": "dc43acf0863055e4",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-adrian-20260211-b3066c": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-11.md",
+    "source_section": "whole_file:conv-adrian-20260211-b3066c",
+    "content_hash": "b3cb010c4c124c5a",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-adrian-20260216-a3db0e": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-16.md",
+    "source_section": "whole_file:conv-adrian-20260216-a3db0e",
+    "content_hash": "7dc9fd0436836400",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-marqia-20260218-0bf4dd": {
+    "source_file": "sources/conversations/marqia/marqia-and-ben-2026-02-18.md",
+    "source_section": "whole_file:conv-marqia-20260218-0bf4dd",
+    "content_hash": "bd7c33db45df9dcd",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-adrian-20260219-df700c": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-19.md",
+    "source_section": "whole_file:conv-adrian-20260219-df700c",
+    "content_hash": "088ddb5e2723f10e",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-adrian-20260220-0cdc60": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-20.md",
+    "source_section": "whole_file:conv-adrian-20260220-0cdc60",
+    "content_hash": "975a90ff11c519b4",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-adrian-20260223-14318c": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-23.md",
+    "source_section": "whole_file:conv-adrian-20260223-14318c",
+    "content_hash": "8729cd5930768310",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-20260303-24a58f": {
+    "source_file": "sources/conversations/hr/_index.md",
+    "source_section": "whole_file:conv-hr-20260303-24a58f",
+    "content_hash": "60cb7fe3353535a9",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-20260303-954446": {
+    "source_file": "sources/conversations/hr/seventh-hr-conversation.md",
+    "source_section": "whole_file:conv-hr-20260303-954446",
+    "content_hash": "4ada27e946552ee2",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-adrian-20260325-e667b4": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-03-25.md",
+    "source_section": "whole_file:conv-adrian-20260325-e667b4",
+    "content_hash": "a2fc40223ee3ad93",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-union-20260429-5a2e74": {
+    "source_file": "sources/conversations/union/peter-toth-local-unionen.md",
+    "source_section": "whole_file:conv-union-20260429-5a2e74",
+    "content_hash": "6a2bd937f74bd93b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-5ff0c7": {
+    "source_file": "local-state/conversations/hr/fifth-hr-conversation.md",
+    "source_section": "whole_file:conv-hr-undated-5ff0c7",
+    "content_hash": "4d8814ffc1c9424e",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-9a255d": {
+    "source_file": "local-state/conversations/hr/first-hr-conversation.md",
+    "source_section": "whole_file:conv-hr-undated-9a255d",
+    "content_hash": "be8de21b46a65b7b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-4ad035": {
+    "source_file": "local-state/conversations/hr/fourth-hr-conversation.md",
+    "source_section": "whole_file:conv-hr-undated-4ad035",
+    "content_hash": "8037672258d6eda7",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-cf6872": {
+    "source_file": "local-state/conversations/hr/hr-email-exchange-proposed-mutual-separation-agreement-jan-feb-2026-summary.md",
+    "source_section": "whole_file:conv-hr-undated-cf6872",
+    "content_hash": "7411c145bada3136",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-fe16a8": {
+    "source_file": "local-state/conversations/hr/hr-slack-conversation-talent-snapshot-10th-feb-2026.md",
+    "source_section": "whole_file:conv-hr-undated-fe16a8",
+    "content_hash": "b1127b381de98102",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-2f4c18": {
+    "source_file": "local-state/conversations/hr/second-hr-conversation.md",
+    "source_section": "whole_file:conv-hr-undated-2f4c18",
+    "content_hash": "a639143534fbb29c",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-fbce73": {
+    "source_file": "local-state/conversations/hr/seventh-hr-conversation-separation-agreement-withdrawal-redeployment-formalisation-summary.md",
+    "source_section": "whole_file:conv-hr-undated-fbce73",
+    "content_hash": "42dec188372cb1c7",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-eebb3d": {
+    "source_file": "local-state/conversations/hr/sixth-hr-conversation.md",
+    "source_section": "whole_file:conv-hr-undated-eebb3d",
+    "content_hash": "44acac867eded16c",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-hr-undated-be7af9": {
+    "source_file": "local-state/conversations/hr/third-hr-conversation.md",
+    "source_section": "whole_file:conv-hr-undated-be7af9",
+    "content_hash": "37a0a8998e8536d4",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  },
+  "conv-union-undated-ed957d": {
+    "source_file": "local-state/conversations/union/first-unionen-conversation.md",
+    "source_section": "whole_file:conv-union-undated-ed957d",
+    "content_hash": "357098db3f171b9d",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_conversations"
+  }
+}

@@ -1,0 +1,166 @@
+[
+  {
+    "id": "timeline-2026-01-26-3670a2",
+    "date": "2026-01-26T00:00:00Z",
+    "type": "conversation",
+    "title": "id: conversation-cf2d8d48-def9-46f1-9252-fe418418bb65",
+    "description": "This thread documents the email correspondence between Ben Purslow and Spotify HR (first Ebba Krusenstierna, then Johan Sellgren) regarding a proposed mutual separation agreement initiated by the comp",
+    "stakeholderIds": [
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conv-hr-20260126-7b96b4",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-01-27-1b5bce",
+    "date": "2026-01-27T00:00:00Z",
+    "type": "conversation",
+    "title": "id: conversation-af5fc9d8-1095-4801-bf3e-97d6fc1e8391",
+    "description": "Summary: Union Call with José Manuel\nKey points from the conversation:\nYou explained your situation: 4 years at Spotify as a Senior Engineering Manager (leading ~40 engineers), given severance notice ",
+    "stakeholderIds": [],
+    "linkedEntityId": "conv-union-20260127-5072c9",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-05-89e5ed",
+    "date": "2026-02-05T00:00:00Z",
+    "type": "conversation",
+    "title": "id: conversation-c5fe914a-6b6e-4943-9c3c-2e074047f814",
+    "description": "Ben Purslow <benpurslow@spotify.com> \nconfidential: regarding our discussion and next steps \n1 message \nJohan Sellgren <sellgren@spotify.com> Thu, Feb 5, 2026 at 4:01 PM To: Ben Purslow <benpurslow@sp",
+    "stakeholderIds": [
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conv-hr-20260205-890208",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-10-ff804d",
+    "date": "2026-02-10T00:00:00Z",
+    "type": "conversation",
+    "title": "id: conversation-d9be5f7b-c854-442d-976e-5522370ae5b6",
+    "description": "Conversation Record: Johan Sellgren (HRBP) — Slack Exchange #2\nDate\n\tTuesday, 10 February 2026\n\tChannel\n\tSlack Direct Message\n\tParticipants\n\tJohan Sellgren (HRBP, Experience Mission), Ben Purslow (SEM",
+    "stakeholderIds": [
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conv-hr-20260210-a667fe",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-11-a19d01",
+    "date": "2026-02-11T00:00:00Z",
+    "type": "conversation",
+    "title": "id: conversation-d738b9e8-5b43-498c-8bb6-0ae6396d6d31",
+    "description": "Adrian & Ben Conversation Summary — 11 February 2026\nContext: Hybrid \"Pub Adrian\" / \"Spotify Adrian\" conversation immediately after the Fifth HR conversation with Johan (same day). The most candid and",
+    "stakeholderIds": [
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conv-adrian-20260211-b3066c",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-16-7b9190",
+    "date": "2026-02-16T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian and Ben Conversation — 16th Feb (Redeployment Progress & Operational Tension)",
+    "description": "This was a progress update and debrief conversation covering both redeployment tracks and emerging operational problems. The headline is that Adrian has secured approval for a Staff IC engineering rol",
+    "stakeholderIds": [
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conv-adrian-20260216-a3db0e",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-18-6eddd9",
+    "date": "2026-02-18T00:00:00Z",
+    "type": "conversation",
+    "title": "Marqia and Ben Conversation — 18th Feb (Replacement Structure Dynamics & CP Blocking Risk)",
+    "description": "This was an emotionally charged but strategically significant 1-on-1 initiated by mutual curiosity about each other's situation. The conversation operated on two levels: a surface-level check-in about",
+    "stakeholderIds": [
+      "stakeholder-marqia-williams"
+    ],
+    "linkedEntityId": "conv-marqia-20260218-0bf4dd",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-19-b8bfdd",
+    "date": "2026-02-19T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian and Ben Conversation — 19th Feb (Staff IC Doc Incoming, Adrian Departure Confirmed)",
+    "description": "This was a wide-ranging strategic conversation that operated as Adrian's most explicit coaching session to date. The dynamic has shifted from Adrian-as-advocate (\"I'll build the role\") to Adrian-as-ou",
+    "stakeholderIds": [
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conv-adrian-20260219-df700c",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-20-2594db",
+    "date": "2026-02-20T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian and Ben Conversation — 20th Feb (Emotional Check-in, ADHD Discrimination Articulated)",
+    "description": "This was an unplanned emotional check-in, not a strategic conversation. Ben called Adrian feeling stressed and wound up after a day of cognitive dissonance — watching Atelach showcase AI onboarding wo",
+    "stakeholderIds": [
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conv-adrian-20260220-0cdc60",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-02-23-58eeae",
+    "date": "2026-02-23T00:00:00Z",
+    "type": "conversation",
+    "title": "Adrian and Ben Conversation — 23rd Feb (Johan Escalation, T&S Interest, Strategic Disclosure)",
+    "description": "Mixed session: part strategic update, part venting, part coordination. Ben arrived late after dealing with union frustration. The conversation covered Johan's escalating procedural violations, Adrian'",
+    "stakeholderIds": [
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conv-adrian-20260223-14318c",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-03-03-0eacbe",
+    "date": "2026-03-03T00:00:00Z",
+    "type": "conversation",
+    "title": "id: conversation-f7fb8698-8bf9-4750-a4ed-200a91256f2c",
+    "description": "HR Conversations — Index\nLast Updated: 2026-03-03\n\nPurpose\nChronological record of all HR/HRBP conversations regarding separation.\nStart here for: Johan interactions, Ebba history, separation process ",
+    "stakeholderIds": [
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conv-hr-20260303-24a58f",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-03-03-22a80e",
+    "date": "2026-03-03T00:00:00Z",
+    "type": "conversation",
+    "title": "id: conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "description": "Johan proposed to withdraw the separation agreement and instead send Ben a formal redeployment offer with complete terms and conditions for the Staff IC role. This is the most significant structural s",
+    "stakeholderIds": [
+      "stakeholder-johan-sellgren"
+    ],
+    "linkedEntityId": "conv-hr-20260303-954446",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-03-25-b3f4fd",
+    "date": "2026-03-25T00:00:00Z",
+    "type": "conversation",
+    "title": "Fourth Adrian Conversation — Amendment Response Strategy & Counsel Concern",
+    "description": "Ben called Adrian to get feedback on a draft email to Johan responding to the 24 Mar email where Johan characterised the amendment as \"just a role change,\" confirmed the comp review is \"now closed,\" a",
+    "stakeholderIds": [
+      "stakeholder-adrian-ford"
+    ],
+    "linkedEntityId": "conv-adrian-20260325-e667b4",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-04-29-c48a00",
+    "date": "2026-04-29T00:00:00Z",
+    "type": "conversation",
+    "title": "Signal Messages -- Peter Toth (Local Unionen Club Chair)",
+    "description": "Signal messages between Ben and Peter Toth (local Unionen club board member at Spotify), 11 Mar -- 25 Apr 2026. Covers: ombudsman request process, evidence sharing, discrimination case pathway, MBL fo",
+    "stakeholderIds": [],
+    "linkedEntityId": "conv-union-20260429-5a2e74",
+    "linkedEntityType": "conversation"
+  }
+]

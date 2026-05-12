@@ -1,0 +1,443 @@
+{
+  "evidence-ADM-001": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-001",
+    "content_hash": "6655ed6c47159969",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-002": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-002",
+    "content_hash": "9f88821e5d73082e",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-003": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-003",
+    "content_hash": "8e074b19ae4d1c44",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-004": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-004",
+    "content_hash": "6ec95edf29560297",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-005": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-005",
+    "content_hash": "08e0dca529e5c57f",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-006": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-006",
+    "content_hash": "839c6dd5b3c8b7a9",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-007": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-007",
+    "content_hash": "eafe547d98144fb1",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-008": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-008",
+    "content_hash": "329035a8f256e561",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-009": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-009",
+    "content_hash": "2dc4278f6290c2f6",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-010": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-010",
+    "content_hash": "569a06621dd12b77",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-011": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-011",
+    "content_hash": "a1a3f75a6528ef1b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-012": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-012",
+    "content_hash": "fb9777b12fe2c05b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-013": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-013",
+    "content_hash": "5fa529d99973f56f",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-014": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-014",
+    "content_hash": "4d49a68565cc8a5e",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-015": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-015",
+    "content_hash": "cc900fc939a101ae",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-016": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-016",
+    "content_hash": "987e4f80855b2463",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-017": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-017",
+    "content_hash": "600ee25450090005",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-018": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-018",
+    "content_hash": "3dbb06a3f5b6c812",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-019": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-019",
+    "content_hash": "9437a498ad1aad7d",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-020": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-020",
+    "content_hash": "f571f912b7dc0425",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-ADM-021": {
+    "source_file": "sources/evidence/admissions.md",
+    "source_section": "yaml:ADM-021",
+    "content_hash": "b2f370c5a47e18b0",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-COM-001": {
+    "source_file": "sources/evidence/communications.md",
+    "source_section": "yaml:COM-001",
+    "content_hash": "1dbfcf6e1cf736cd",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-COM-002": {
+    "source_file": "sources/evidence/communications.md",
+    "source_section": "yaml:COM-002",
+    "content_hash": "5520092f61646009",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-COM-003": {
+    "source_file": "sources/evidence/communications.md",
+    "source_section": "yaml:COM-003",
+    "content_hash": "4f84ea90f55d3565",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-COM-004": {
+    "source_file": "sources/evidence/communications.md",
+    "source_section": "yaml:COM-004",
+    "content_hash": "87f5214a02728971",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-COM-005": {
+    "source_file": "sources/evidence/communications.md",
+    "source_section": "yaml:COM-005",
+    "content_hash": "8630c11a0afabbfb",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-COM-006": {
+    "source_file": "sources/evidence/communications.md",
+    "source_section": "yaml:COM-006",
+    "content_hash": "879eda190b35287a",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-COM-007": {
+    "source_file": "sources/evidence/communications.md",
+    "source_section": "yaml:COM-007",
+    "content_hash": "2f5837a84d35b285",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-COM-008": {
+    "source_file": "sources/evidence/communications.md",
+    "source_section": "yaml:COM-008",
+    "content_hash": "51591fd370b2e884",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-DIS-001": {
+    "source_file": "sources/evidence/discrimination.md",
+    "source_section": "yaml:DIS-001",
+    "content_hash": "3748cd86b6776bc8",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-DIS-002": {
+    "source_file": "sources/evidence/discrimination.md",
+    "source_section": "yaml:DIS-002",
+    "content_hash": "1ff963c1529f554d",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-DIS-003": {
+    "source_file": "sources/evidence/discrimination.md",
+    "source_section": "yaml:DIS-003",
+    "content_hash": "73b21ab16739ce5d",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-DIS-004": {
+    "source_file": "sources/evidence/discrimination.md",
+    "source_section": "yaml:DIS-004",
+    "content_hash": "8011670dba165f05",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-001": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-001",
+    "content_hash": "9e0b69600bba04e0",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-002": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-002",
+    "content_hash": "95eeb65f3f84e88d",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-006": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-006",
+    "content_hash": "a231f014f7a0bbbd",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-007": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-007",
+    "content_hash": "0bfb6837956d5c37",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-008": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-008",
+    "content_hash": "e21952431d760fb8",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-009": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-009",
+    "content_hash": "ba9ad285aaff0159",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-010": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-010",
+    "content_hash": "8de213a6dec376ec",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-011": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-011",
+    "content_hash": "b130995b32c2f057",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-012": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-012",
+    "content_hash": "b40990dc2332b778",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-PRO-013": {
+    "source_file": "sources/evidence/procedural.md",
+    "source_section": "yaml:PRO-013",
+    "content_hash": "51df88540f9f2555",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-001": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-001",
+    "content_hash": "1f50db6ddae5ab2b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-002": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-002",
+    "content_hash": "faa56bbc9f603453",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-003": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-003",
+    "content_hash": "3d93bfe2721b82cf",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-004": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-004",
+    "content_hash": "bd244e804fd7d822",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-005": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-005",
+    "content_hash": "4dfa759a707a420a",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-006": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-006",
+    "content_hash": "0160d18cca43d665",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-007": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-007",
+    "content_hash": "1bc6762950af9c04",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-008": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-008",
+    "content_hash": "c360751543a15fe8",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-009": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-009",
+    "content_hash": "afcd079e52ef7e3d",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-RDP-010": {
+    "source_file": "sources/evidence/redeployment.md",
+    "source_section": "yaml:RDP-010",
+    "content_hash": "704c54206b374b90",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-001": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-001",
+    "content_hash": "5601d255af90a14b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-002": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-002",
+    "content_hash": "9e7732f2b9db64e9",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-003": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-003",
+    "content_hash": "ac8b834d95c50c89",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-004": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-004",
+    "content_hash": "0f226f8ecbe3c0f5",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-005": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-005",
+    "content_hash": "9c0f71d6010a15c1",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-006": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-006",
+    "content_hash": "93dc3ddf08cead2a",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-007": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-007",
+    "content_hash": "30202bd1f78f886a",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-008": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-008",
+    "content_hash": "6e1880dbd736f8f1",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-009": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-009",
+    "content_hash": "b99089f6a284d1c9",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  },
+  "evidence-WRK-010": {
+    "source_file": "sources/evidence/work-environment.md",
+    "source_section": "yaml:WRK-010",
+    "content_hash": "93bb0ffe9fca01b7",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_evidence"
+  }
+}

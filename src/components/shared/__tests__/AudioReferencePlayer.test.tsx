@@ -18,8 +18,9 @@ import type { AudioReference, AudioReferenceStatus } from "@/types";
 
 // Fixture shapes follow `data/audio-manifest.json` conventions: real
 // Drive IDs (>=20 chars) and the standard view/preview URL templates the
-// Atticus exporter produces. Empty strings are reserved for the
-// pending-audio-upload status — see spec §5.
+// Atticus exporter produces, plus the post-migration `streamUrl` (a GCS
+// HTTPS URL — what the `<audio src>` actually binds to). Empty strings
+// are reserved for the pending-audio-upload status — see spec §5.
 const completeRef: AudioReference = {
   driveId: "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
   filename: "Adrian + Ben 11th Feb.m4a",
@@ -29,6 +30,8 @@ const completeRef: AudioReference = {
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view?usp=drive_link",
   previewUrl:
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+  streamUrl:
+    "https://storage.googleapis.com/mockingbird-audio/adrian-ben-11th-feb.m4a",
   sizeBytes: 53896450,
   durationSeconds: null,
   status: "complete",
@@ -50,7 +53,10 @@ describe("AudioReferencePlayer", () => {
     );
     const audio = container.querySelector("audio");
     expect(audio).not.toBeNull();
-    expect(audio?.getAttribute("src")).toBe(completeRef.previewUrl);
+    // The src binds to streamUrl (the GCS direct audio URL), NOT
+    // previewUrl (Drive's HTML iframe-embed URL). See type-level
+    // doc on AudioReference for the rationale.
+    expect(audio?.getAttribute("src")).toBe(completeRef.streamUrl);
     expect(audio?.getAttribute("title")).toBe(completeRef.filename);
     expect(audio?.getAttribute("preload")).toBe("none");
     expect(audio?.hasAttribute("controls")).toBe(true);
@@ -63,9 +69,35 @@ describe("AudioReferencePlayer", () => {
       mimeType: "",
       viewUrl: "",
       previewUrl: "",
+      streamUrl: undefined,
     });
     const { container } = render(<AudioReferencePlayer audioReference={ref} />);
     expect(container.querySelector("audio")).toBeNull();
+  });
+
+  it("does not render an audio element when streamUrl is absent, but keeps the Drive link visible", () => {
+    // Legacy / pre-GCS-migration shape: a real Drive recording is
+    // available (status=complete, viewUrl populated) but no streamUrl
+    // has been provisioned yet. The player should NOT bind <audio>
+    // to previewUrl (which returns Drive's HTML preview, not audio),
+    // and should still surface the "Open in Drive" link as the
+    // recovery path.
+    const refWithoutStream: AudioReference = {
+      driveId: completeRef.driveId,
+      filename: completeRef.filename,
+      driveFolderId: completeRef.driveFolderId,
+      mimeType: completeRef.mimeType,
+      viewUrl: completeRef.viewUrl,
+      previewUrl: completeRef.previewUrl,
+      sizeBytes: completeRef.sizeBytes,
+      durationSeconds: completeRef.durationSeconds,
+      status: completeRef.status,
+    };
+    const { container, getByRole } = render(
+      <AudioReferencePlayer audioReference={refWithoutStream} />,
+    );
+    expect(container.querySelector("audio")).toBeNull();
+    expect(getByRole("link", { name: /open in drive/i })).not.toBeNull();
   });
 
   it.each([
@@ -83,6 +115,7 @@ describe("AudioReferencePlayer", () => {
               mimeType: "",
               viewUrl: "",
               previewUrl: "",
+              streamUrl: undefined,
             })
           : refWithStatus(status);
       const { getByRole } = render(<AudioReferencePlayer audioReference={ref} />);
@@ -109,6 +142,7 @@ describe("AudioReferencePlayer", () => {
       mimeType: completeRef.mimeType,
       viewUrl: completeRef.viewUrl,
       previewUrl: completeRef.previewUrl,
+      streamUrl: completeRef.streamUrl,
       sizeBytes: completeRef.sizeBytes,
       durationSeconds: completeRef.durationSeconds,
     };
@@ -145,26 +179,27 @@ describe("AudioReferencePlayer", () => {
       mimeType: "",
       viewUrl: "",
       previewUrl: "",
+      streamUrl: undefined,
     });
     const { queryByRole } = render(<AudioReferencePlayer audioReference={ref} />);
     expect(queryByRole("link")).toBeNull();
   });
 
-  it("on audio onError, hides the audio element and keeps the link visible", () => {
+  it("on audio onError, surfaces an inline error banner advertising the Drive fallback", () => {
     const { container, getByRole } = render(
       <AudioReferencePlayer audioReference={completeRef} />,
     );
     const audio = container.querySelector("audio");
     expect(audio).not.toBeNull();
 
-    // Simulate Drive returning 403 (auth failure) — the spec §5 fallback
-    // path. After the synthetic error event, the audio element should
-    // unmount and the Drive link should remain so the user can fall
-    // back to opening the file in Drive directly.
     fireEvent.error(audio!);
 
-    expect(container.querySelector("audio")).toBeNull();
-    expect(getByRole("link", { name: /open in drive/i })).not.toBeNull();
+    // The replacement for the silent unmount: a visible alert banner
+    // tells the user the audio failed and points them at the Drive
+    // link. role="alert" lets screen readers announce it.
+    const alert = getByRole("alert");
+    expect(alert).not.toBeNull();
+    expect(alert.textContent?.toLowerCase()).toContain("failed");
   });
 
   describe("compact variant", () => {
@@ -266,7 +301,7 @@ describe("AudioReferencePlayer", () => {
       );
       const audio = container.querySelector("audio");
       expect(audio).not.toBeNull();
-      expect(audio?.getAttribute("src")).toBe(completeRef.previewUrl);
+      expect(audio?.getAttribute("src")).toBe(completeRef.streamUrl);
       expect(getByRole("link", { name: /open in drive/i })).not.toBeNull();
     });
   });

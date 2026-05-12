@@ -1,0 +1,100 @@
+{
+  "timeline-2026-01-26-3670a2": {
+    "source_file": "sources/conversations/hr/hr-email-exchange-proposed-mutual-separation-agreement.md",
+    "source_section": "derived:conv-hr-20260126-7b96b4",
+    "content_hash": "ee3bd797c683c8d1",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-01-27-1b5bce": {
+    "source_file": "sources/conversations/union/unionen-initial-2026-01-27.md",
+    "source_section": "derived:conv-union-20260127-5072c9",
+    "content_hash": "b445f5fdd95aba62",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-05-89e5ed": {
+    "source_file": "sources/conversations/hr/hr-communications-work-email.md",
+    "source_section": "derived:conv-hr-20260205-890208",
+    "content_hash": "d42cd9862800884a",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-10-ff804d": {
+    "source_file": "sources/conversations/hr/hr-slack-conversation-talent-snapshot.md",
+    "source_section": "derived:conv-hr-20260210-a667fe",
+    "content_hash": "b0a6c2e8cfdf3a40",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-11-a19d01": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-11.md",
+    "source_section": "derived:conv-adrian-20260211-b3066c",
+    "content_hash": "9b49aa7a2d910d69",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-16-7b9190": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-16.md",
+    "source_section": "derived:conv-adrian-20260216-a3db0e",
+    "content_hash": "9ebd1f05541bc911",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-18-6eddd9": {
+    "source_file": "sources/conversations/marqia/marqia-and-ben-2026-02-18.md",
+    "source_section": "derived:conv-marqia-20260218-0bf4dd",
+    "content_hash": "e56bf5b650309887",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-19-b8bfdd": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-19.md",
+    "source_section": "derived:conv-adrian-20260219-df700c",
+    "content_hash": "11dfc40a871c92c2",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-20-2594db": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-20.md",
+    "source_section": "derived:conv-adrian-20260220-0cdc60",
+    "content_hash": "e7e6240c13a61f02",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-02-23-58eeae": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-23.md",
+    "source_section": "derived:conv-adrian-20260223-14318c",
+    "content_hash": "3b337f1ea9117c54",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-03-0eacbe": {
+    "source_file": "sources/conversations/hr/_index.md",
+    "source_section": "derived:conv-hr-20260303-24a58f",
+    "content_hash": "f06703d8d628c706",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-03-22a80e": {
+    "source_file": "sources/conversations/hr/seventh-hr-conversation.md",
+    "source_section": "derived:conv-hr-20260303-954446",
+    "content_hash": "442b55fd8327a90f",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-03-25-b3f4fd": {
+    "source_file": "sources/conversations/adrian/adrian-and-ben-2026-03-25.md",
+    "source_section": "derived:conv-adrian-20260325-e667b4",
+    "content_hash": "16aeced5b15dc0d1",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  },
+  "timeline-2026-04-29-c48a00": {
+    "source_file": "sources/conversations/union/peter-toth-local-unionen.md",
+    "source_section": "derived:conv-union-20260429-5a2e74",
+    "content_hash": "17ae6d9ccfb93390",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "build_timeline"
+  }
+}

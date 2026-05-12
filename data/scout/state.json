@@ -1,0 +1,34 @@
+{
+  "projectName": "Severance Situation",
+  "status": "at-risk",
+  "statusMessage": "29/89 actions complete (32%). 25 open risks.",
+  "lastUpdated": "2026-04-29T14:19:58Z",
+  "phase": "Phase: MBL Consultation & Redeployment",
+  "phaseProgress": 32,
+  "metrics": [
+    {
+      "label": "Actions Complete",
+      "value": 29,
+      "total": 89,
+      "unit": "items"
+    },
+    {
+      "label": "Risks Open",
+      "value": 25,
+      "total": 25,
+      "unit": "items"
+    },
+    {
+      "label": "Claims Supported",
+      "value": 6,
+      "total": 12,
+      "unit": "claims"
+    },
+    {
+      "label": "Evidence Items",
+      "value": 18,
+      "total": null,
+      "unit": "items"
+    }
+  ]
+}

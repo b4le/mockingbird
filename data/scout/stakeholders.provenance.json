@@ -1,0 +1,44 @@
+{
+  "stakeholder-johan-sellgren": {
+    "source_file": "CLAUDE.md",
+    "source_section": "row:stakeholder-johan-sellgren",
+    "content_hash": "16eb83dd7d4936f0",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_stakeholders"
+  },
+  "stakeholder-adrian-ford": {
+    "source_file": "CLAUDE.md",
+    "source_section": "row:stakeholder-adrian-ford",
+    "content_hash": "3b611c253f7d9daf",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_stakeholders"
+  },
+  "stakeholder-helena-borg-jodelsohn": {
+    "source_file": "CLAUDE.md",
+    "source_section": "row:stakeholder-helena-borg-jodelsohn",
+    "content_hash": "ca55a978c661ba8d",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_stakeholders"
+  },
+  "stakeholder-sarah-hoyle": {
+    "source_file": "CLAUDE.md",
+    "source_section": "row:stakeholder-sarah-hoyle",
+    "content_hash": "804c102f86f04655",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_stakeholders"
+  },
+  "stakeholder-marqia-williams": {
+    "source_file": "CLAUDE.md",
+    "source_section": "row:stakeholder-marqia-williams",
+    "content_hash": "31dba688f072f8fb",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_stakeholders"
+  },
+  "stakeholder-babar": {
+    "source_file": "CLAUDE.md",
+    "source_section": "row:stakeholder-babar",
+    "content_hash": "f404e20cb176159c",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_stakeholders"
+  }
+}

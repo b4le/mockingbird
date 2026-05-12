@@ -72,6 +72,9 @@ const audioReference: AudioReference = {
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view?usp=drive_link",
   previewUrl:
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+  // Post-migration GCS direct-audio URL — what <audio src> binds to.
+  streamUrl:
+    "https://storage.googleapis.com/mockingbird-audio/architecture-decision.m4a",
   sizeBytes: null,
   durationSeconds: null,
   status: "complete",
@@ -162,7 +165,32 @@ describe("ConversationDetail", () => {
     const { container } = renderDetail({ audioReference });
     const audio = container.querySelector("audio");
     expect(audio).not.toBeNull();
-    expect(audio?.getAttribute("src")).toBe(audioReference.previewUrl);
+    // Bound to streamUrl (the GCS direct-audio URL), not previewUrl
+    // (Drive's HTML iframe-embed URL).
+    expect(audio?.getAttribute("src")).toBe(audioReference.streamUrl);
+  });
+
+  it("does not render the audio player when audioReference has no streamUrl", () => {
+    // Legacy / pre-migration shape: a Drive recording exists but
+    // streamUrl hasn't been provisioned yet. The detail panel must
+    // NOT render an <audio> element (binding to previewUrl would
+    // fetch HTML, not audio); the user falls back to the
+    // "Open in Drive" link.
+    const refWithoutStream: AudioReference = {
+      driveId: audioReference.driveId,
+      filename: audioReference.filename,
+      driveFolderId: audioReference.driveFolderId,
+      mimeType: audioReference.mimeType,
+      viewUrl: audioReference.viewUrl,
+      previewUrl: audioReference.previewUrl,
+      sizeBytes: audioReference.sizeBytes,
+      durationSeconds: audioReference.durationSeconds,
+      status: audioReference.status,
+    };
+    const { container } = renderDetail({
+      audioReference: refWithoutStream,
+    });
+    expect(container.querySelector("audio")).toBeNull();
   });
 
   it("renders linked actions when the user opens the Linked tab", () => {

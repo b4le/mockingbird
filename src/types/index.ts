@@ -102,8 +102,20 @@ export interface Stakeholder {
  * conversation's stem. Optional — not every Conversation has a recording.
  *
  * `viewUrl` opens Drive's full-page viewer in a new tab.
- * `previewUrl` is the embeddable variant (use in an <iframe> or <audio>).
- * The exporter computes both from `driveId` so the UI does not need to.
+ *
+ * `previewUrl` is Drive's iframe-embed URL — it returns an HTML preview
+ * page, NOT raw audio bytes. It is suitable for `<iframe src>` only.
+ * Binding it to `<audio src>` does NOT work: the browser receives HTML
+ * instead of audio and the element fires `error`. Kept for back-compat
+ * (the legacy data shape) and reused by the Drive→GCS migration script
+ * to recover the file id; do not reach for it from playback code.
+ *
+ * `streamUrl` is the direct audio URL the `<audio>` element binds to —
+ * an `https://` URL whose response Content-Type is `audio/...`. Populated
+ * by the Drive→GCS migration once the file has been republished to a
+ * GCS bucket with the correct MIME type. Optional today: legacy entries
+ * still in flight have only `previewUrl`, and the player gracefully
+ * degrades (no playback control, "Open in Drive" link still shown).
  *
  * `sizeBytes` and `durationSeconds` are nullable — populated only when
  * the manifest carries them. Treat them as best-effort metadata.
@@ -133,8 +145,19 @@ export interface AudioReference {
   filename: string;
   driveFolderId: string;
   mimeType: string;
+  /**
+   * Drive iframe-embed URL — returns HTML, not raw audio. Suitable for
+   * `<iframe>` only. NEVER bind to `<audio src>` — see type-level doc.
+   */
   viewUrl: string;
   previewUrl: string;
+  /**
+   * Direct audio URL bound to `<audio src>`. `https://` URL whose
+   * response Content-Type is `audio/...`. Optional during the
+   * Drive→GCS migration; absent entries gracefully degrade to a
+   * link-only affordance.
+   */
+  streamUrl?: string;
   sizeBytes: number | null;
   durationSeconds: number | null;
   status?: AudioReferenceStatus;

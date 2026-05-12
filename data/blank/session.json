@@ -1,0 +1,6 @@
+{
+  "lastUpdated": "2026-04-23T00:00:00Z",
+  "dataVersion": "1.0.0",
+  "generatedBy": "mockingbird-blank",
+  "notes": "Reference blank dataset. Copy this directory (e.g. `cp -r data/blank data/<your-project>`) to scaffold a new project."
+}

@@ -1,0 +1,145 @@
+[
+  {
+    "id": "claim-CLM-001",
+    "assertion": "Direct discrimination under Diskrimineringslagen based on ADHD disability",
+    "category": "Discrimination",
+    "status": "supported",
+    "evidenceIds": [
+      "evidence-DIS-001",
+      "evidence-ADM-001",
+      "evidence-ADM-016",
+      "evidence-ADM-010",
+      "evidence-RDP-002"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-002",
+    "assertion": "Bristande tillganglighet — failure to provide reasonable accessibility measures for ADHD",
+    "category": "Discrimination",
+    "status": "supported",
+    "evidenceIds": [
+      "evidence-DIS-002",
+      "evidence-DIS-003"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-003",
+    "assertion": "Termination without sakliga skal — no valid legal grounds under LAS",
+    "category": "Employment Protection",
+    "status": "supported",
+    "evidenceIds": [
+      "evidence-ADM-007",
+      "evidence-ADM-016",
+      "evidence-ADM-002"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-004",
+    "assertion": "Undischarged redeployment obligation (omplaceringsskyldighet)",
+    "category": "Employment Protection",
+    "status": "supported",
+    "evidenceIds": [
+      "evidence-RDP-007",
+      "evidence-RDP-009",
+      "evidence-ADM-014"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-005",
+    "assertion": "Fingerad arbetsbrist (sham redundancy)",
+    "category": "Employment Protection",
+    "status": "unverified",
+    "evidenceIds": [
+      "evidence-WRK-005",
+      "evidence-RDP-002",
+      "evidence-ADM-015",
+      "evidence-WRK-006"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-006",
+    "assertion": "Provocerad uppsagning (constructive dismissal)",
+    "category": "Employment Protection",
+    "status": "unverified",
+    "evidenceIds": [
+      "evidence-ADM-015",
+      "evidence-WRK-006",
+      "evidence-RDP-002",
+      "evidence-DIS-001",
+      "evidence-RDP-003"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-007",
+    "assertion": "MBL violation — failure to negotiate before material employment changes",
+    "category": "Procedural",
+    "status": "unverified",
+    "evidenceIds": [
+      "evidence-PRO-001"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-008",
+    "assertion": "Ogiltigforklaring backstop — employment continues during invalidity proceedings",
+    "category": "Employment Protection",
+    "status": "unverified",
+    "evidenceIds": [],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-009",
+    "assertion": "GDPR / DSL health data misuse — ADHD information processed for incompatible purpose",
+    "category": "Discrimination",
+    "status": "unverified",
+    "evidenceIds": [
+      "evidence-DIS-002",
+      "evidence-DIS-001"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-010",
+    "assertion": "Unreasonable termination agreement clauses under AvtL 36 and 38",
+    "category": "Contract",
+    "status": "supported",
+    "evidenceIds": [],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-011",
+    "assertion": "Equity recovery under Stock Options T&C 15.4 — unfair dismissal opens equity claim",
+    "category": "Contract",
+    "status": "unverified",
+    "evidenceIds": [],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  },
+  {
+    "id": "claim-CLM-012",
+    "assertion": "Employment Agreement 12.2 — role change requires mutual written consent",
+    "category": "Contract",
+    "status": "supported",
+    "evidenceIds": [
+      "evidence-PRO-013"
+    ],
+    "raisedById": "stakeholder-ben-purslow",
+    "date": "2026-03-09T00:00:00Z"
+  }
+]

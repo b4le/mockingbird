@@ -1,0 +1,100 @@
+{
+  "transcript-adrian-adrian-and-ben-2026-02-16": {
+    "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-02-16-transcript.md",
+    "source_section": "transcript:transcript-adrian-adrian-and-ben-2026-02-16",
+    "content_hash": "263bac7ba9d3d38f",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-adrian-adrian-and-ben-2026-02-19": {
+    "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-02-19-transcript.md",
+    "source_section": "transcript:transcript-adrian-adrian-and-ben-2026-02-19",
+    "content_hash": "8bdc25cee09048a8",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-adrian-adrian-and-ben-2026-02-20": {
+    "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-02-20-transcript.md",
+    "source_section": "transcript:transcript-adrian-adrian-and-ben-2026-02-20",
+    "content_hash": "1a52446ce4013fd9",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-adrian-adrian-and-ben-2026-02-23": {
+    "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-02-23-transcript.md",
+    "source_section": "transcript:transcript-adrian-adrian-and-ben-2026-02-23",
+    "content_hash": "876607c4a1767ed2",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-adrian-adrian-and-ben-2026-03-25": {
+    "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-03-25-transcript.md",
+    "source_section": "transcript:transcript-adrian-adrian-and-ben-2026-03-25",
+    "content_hash": "17acd612ae5bab58",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-hr-fifth-hr-conversation": {
+    "source_file": "sources/transcripts/hr/fifth-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-hr-fifth-hr-conversation",
+    "content_hash": "26cd7b9da4e3d780",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-hr-first-hr-conversation": {
+    "source_file": "sources/transcripts/hr/first-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-hr-first-hr-conversation",
+    "content_hash": "1c4babdb3d609fe6",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-hr-fourth-hr-conversation": {
+    "source_file": "sources/transcripts/hr/fourth-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-hr-fourth-hr-conversation",
+    "content_hash": "7043bc84f062b34e",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-hr-second-hr-conversation": {
+    "source_file": "sources/transcripts/hr/second-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-hr-second-hr-conversation",
+    "content_hash": "895437e99cd3dd74",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-hr-seventh-hr-conversation": {
+    "source_file": "sources/transcripts/hr/seventh-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-hr-seventh-hr-conversation",
+    "content_hash": "925d61a885c76f89",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-hr-sixth-hr-conversation": {
+    "source_file": "sources/transcripts/hr/sixth-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-hr-sixth-hr-conversation",
+    "content_hash": "4a31093e14bc7284",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-hr-third-hr-conversation": {
+    "source_file": "sources/transcripts/hr/third-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-hr-third-hr-conversation",
+    "content_hash": "e6475b6d4f578d6b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-marqia-marqia-and-ben-2026-02-18": {
+    "source_file": "sources/transcripts/marqia/marqia-and-ben-2026-02-18-transcript.md",
+    "source_section": "transcript:transcript-marqia-marqia-and-ben-2026-02-18",
+    "content_hash": "1459385c5e57307b",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-union-unionen-initial-2026-01-27": {
+    "source_file": "sources/transcripts/union/unionen-initial-2026-01-27-transcript.md",
+    "source_section": "transcript:transcript-union-unionen-initial-2026-01-27",
+    "content_hash": "18a7d1902a90b929",
+    "extracted_at": "2026-04-29T14:19:58Z",
+    "parser": "parse_transcripts"
+  }
+}

@@ -337,6 +337,49 @@ describe("AudioReferenceSchema", () => {
       AudioReferenceSchema.parse({ ...completeRef, previewUrl: badUrl }),
     ).toThrow();
   });
+
+  // ---------------------------------------------------------------------
+  // streamUrl — direct audio URL (GCS) the <audio src> binds to.
+  // Optional during the Drive→GCS migration; same `https://`-only
+  // refinement as viewUrl/previewUrl since it is also rendered into
+  // the DOM as an `src` attribute.
+  // ---------------------------------------------------------------------
+
+  it("accepts a populated streamUrl when present (post-migration shape)", () => {
+    const parsed = AudioReferenceSchema.parse({
+      ...completeRef,
+      streamUrl:
+        "https://storage.googleapis.com/mockingbird-audio/adrian-ben-11th-feb.m4a",
+    });
+    expect(parsed.streamUrl).toBe(
+      "https://storage.googleapis.com/mockingbird-audio/adrian-ben-11th-feb.m4a",
+    );
+  });
+
+  it("accepts an entry with streamUrl omitted (legacy / pre-migration shape)", () => {
+    const parsed = AudioReferenceSchema.parse(completeRef);
+    expect(parsed.streamUrl).toBeUndefined();
+  });
+
+  it("rejects a non-URL streamUrl", () => {
+    expect(() =>
+      AudioReferenceSchema.parse({
+        ...completeRef,
+        streamUrl: "not-a-url",
+      }),
+    ).toThrow();
+  });
+
+  it.each([
+    "javascript:alert(1)",
+    "data:audio/mpeg;base64,AAAA",
+    "file:///etc/passwd",
+    "http://insecure.example.com/audio.mp3",
+  ])("rejects non-https streamUrl scheme: %s", (badUrl) => {
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, streamUrl: badUrl }),
+    ).toThrow();
+  });
 });
 
 describe("audioReference field on Conversation and Transcript", () => {
