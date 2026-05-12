@@ -202,7 +202,8 @@
       "sizeBytes": 53896450,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "adrian"
+      "stream": "adrian",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/0e683774870fed98.m4a"
     }
   },
   {

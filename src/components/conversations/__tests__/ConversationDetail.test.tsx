@@ -72,6 +72,8 @@ const audioReference: AudioReference = {
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view?usp=drive_link",
   previewUrl:
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+  streamUrl:
+    "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/0e683774870fed98.m4a",
   sizeBytes: null,
   durationSeconds: null,
   status: "complete",
@@ -162,7 +164,10 @@ describe("ConversationDetail", () => {
     const { container } = renderDetail({ audioReference });
     const audio = container.querySelector("audio");
     expect(audio).not.toBeNull();
-    expect(audio?.getAttribute("src")).toBe(audioReference.previewUrl);
+    // <audio src> binds to streamUrl (the GCS direct audio URL), NOT
+    // previewUrl (Drive's HTML iframe-embed URL). See type-level doc
+    // on AudioReference.
+    expect(audio?.getAttribute("src")).toBe(audioReference.streamUrl);
   });
 
   it("renders linked actions when the user opens the Linked tab", () => {
