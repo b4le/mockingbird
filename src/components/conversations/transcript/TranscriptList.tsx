@@ -144,7 +144,7 @@ export const TranscriptList = forwardRef<
                 width: "100%",
                 transform: `translateY(${virtualItem.start}px)`,
               }}
-              className="px-3"
+              className="px-3 pb-3"
             >
               <TranscriptTurn
                 turn={turn}
