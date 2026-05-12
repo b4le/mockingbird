@@ -22,19 +22,7 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-12481391-8c86-4e03-8177-1e8c2c63b88c",
-    "audioReference": {
-      "driveId": "1zwpGWbpQBITGZWS92RuymhR1Nubw32MI",
-      "filename": "Ebba + Ben 26th Jan.m4a",
-      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
-      "mimeType": "audio/mp4",
-      "viewUrl": "https://drive.google.com/file/d/1zwpGWbpQBITGZWS92RuymhR1Nubw32MI/view",
-      "previewUrl": "https://drive.google.com/file/d/1zwpGWbpQBITGZWS92RuymhR1Nubw32MI/preview",
-      "sizeBytes": null,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "hr"
-    }
+    "transcriptId": "transcript-12481391-8c86-4e03-8177-1e8c2c63b88c"
   },
   {
     "id": "conversation-cf2d8d48-def9-46f1-9252-fe418418bb65",
@@ -107,19 +95,7 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-89dd08ff-6acc-4b0b-99dc-be6808e2e2b6",
-    "audioReference": {
-      "driveId": "1Lk_efLy4eYGIBmxr2s93MXWT3YZNagPq",
-      "filename": "Ebba + Ben 29th Jan.m4a",
-      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
-      "mimeType": "audio/mp4",
-      "viewUrl": "https://drive.google.com/file/d/1Lk_efLy4eYGIBmxr2s93MXWT3YZNagPq/view",
-      "previewUrl": "https://drive.google.com/file/d/1Lk_efLy4eYGIBmxr2s93MXWT3YZNagPq/preview",
-      "sizeBytes": null,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "hr"
-    }
+    "transcriptId": "transcript-89dd08ff-6acc-4b0b-99dc-be6808e2e2b6"
   },
   {
     "id": "conversation-65b33afc-fd07-4c49-8c34-eefa79392b1f",
@@ -134,19 +110,7 @@
     "keyPoints": [],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-ec7870a8-ec94-4713-ad5a-8101392e06a4",
-    "audioReference": {
-      "driveId": "1agfd_ybRfyw_82-zyZ9KAI9E35_pd4HJ",
-      "filename": "Ebba + Ben 2nd Feb.m4a",
-      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
-      "mimeType": "audio/mp4",
-      "viewUrl": "https://drive.google.com/file/d/1agfd_ybRfyw_82-zyZ9KAI9E35_pd4HJ/view",
-      "previewUrl": "https://drive.google.com/file/d/1agfd_ybRfyw_82-zyZ9KAI9E35_pd4HJ/preview",
-      "sizeBytes": null,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "hr"
-    }
+    "transcriptId": "transcript-ec7870a8-ec94-4713-ad5a-8101392e06a4"
   },
   {
     "id": "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
@@ -174,7 +138,13 @@
       "Redeployment burden reversal. Johan asked Ben to identify his own redeployment options rather than the employer conducting a comprehensive search as required under LAS S 7."
     ],
     "decisions": [],
-    "actionItemIds": [],
+    "actionItemIds": [
+      "action-4C-1",
+      "action-4C-2",
+      "action-4C-3",
+      "action-4C-4",
+      "action-4C-5"
+    ],
     "transcriptId": "transcript-95b4a0e2-9d1f-4ec9-bf64-98fc6a2a9161",
     "snippetIds": [
       "snippet-4hr-01",
@@ -207,19 +177,7 @@
       "snippet-4hr-30",
       "snippet-4hr-31",
       "snippet-4hr-33"
-    ],
-    "audioReference": {
-      "driveId": "1pdd9UNL4SO7bG7bUp8a7c3uR4M64J0Cs",
-      "filename": "Johan + Ben 4th Feb.m4a",
-      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
-      "mimeType": "audio/mp4",
-      "viewUrl": "https://drive.google.com/file/d/1pdd9UNL4SO7bG7bUp8a7c3uR4M64J0Cs/view",
-      "previewUrl": "https://drive.google.com/file/d/1pdd9UNL4SO7bG7bUp8a7c3uR4M64J0Cs/preview",
-      "sizeBytes": null,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "hr"
-    }
+    ]
   },
   {
     "id": "conversation-d738b9e8-5b43-498c-8bb6-0ae6396d6d31",
@@ -266,19 +224,7 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-e99130a7-3b7b-44f7-b118-f367c44dca0d",
-    "audioReference": {
-      "driveId": "1rUUXM9LGEn3PNoJOBzvZUe4rXyxprVo8",
-      "filename": "Johan + Ben 11th Feb.m4a",
-      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
-      "mimeType": "audio/mp4",
-      "viewUrl": "https://drive.google.com/file/d/1rUUXM9LGEn3PNoJOBzvZUe4rXyxprVo8/view",
-      "previewUrl": "https://drive.google.com/file/d/1rUUXM9LGEn3PNoJOBzvZUe4rXyxprVo8/preview",
-      "sizeBytes": null,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "hr"
-    }
+    "transcriptId": "transcript-e99130a7-3b7b-44f7-b118-f367c44dca0d"
   },
   {
     "id": "conversation-3c3a6604-e5b3-49d5-8581-1b0ca5a15ede",
@@ -301,19 +247,7 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-9e0f0eb9-f788-4a63-b2a4-31eee786b938",
-    "audioReference": {
-      "driveId": "1QCLFjbXagQzO2IS_cyy_JgL7zkzGd50F",
-      "filename": "Adrian + Ben 16th Feb.m4a",
-      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
-      "mimeType": "audio/x-m4a",
-      "viewUrl": "https://drive.google.com/file/d/1QCLFjbXagQzO2IS_cyy_JgL7zkzGd50F/view",
-      "previewUrl": "https://drive.google.com/file/d/1QCLFjbXagQzO2IS_cyy_JgL7zkzGd50F/preview",
-      "sizeBytes": 36868997,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "adrian"
-    }
+    "transcriptId": "transcript-9e0f0eb9-f788-4a63-b2a4-31eee786b938"
   },
   {
     "id": "conversation-9083817f-8a0e-4bbf-b80e-394cf8897139",
@@ -357,19 +291,7 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-b63958f8-1ce8-4407-b1e7-51ac94fd3193",
-    "audioReference": {
-      "driveId": "19pjxBzcryGe93RMlSVobQ4t3TYcgeQDG",
-      "filename": "Marqia + Ben 18th Feb.m4a",
-      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
-      "mimeType": "audio/x-m4a",
-      "viewUrl": "https://drive.google.com/file/d/19pjxBzcryGe93RMlSVobQ4t3TYcgeQDG/view",
-      "previewUrl": "https://drive.google.com/file/d/19pjxBzcryGe93RMlSVobQ4t3TYcgeQDG/preview",
-      "sizeBytes": 41238923,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "marqia"
-    }
+    "transcriptId": "transcript-b63958f8-1ce8-4407-b1e7-51ac94fd3193"
   },
   {
     "id": "conversation-dc91f505-291b-4b37-b777-1ada290ff2bd",
@@ -392,19 +314,7 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-5ddaf74b-eb34-4a3a-bdc9-028cef07dfca",
-    "audioReference": {
-      "driveId": "1HYyJA0FosNC0wEcA8JB1RGKY_mygRFZc",
-      "filename": "Adrian + Ben 19th Feb.m4a",
-      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
-      "mimeType": "audio/x-m4a",
-      "viewUrl": "https://drive.google.com/file/d/1HYyJA0FosNC0wEcA8JB1RGKY_mygRFZc/view",
-      "previewUrl": "https://drive.google.com/file/d/1HYyJA0FosNC0wEcA8JB1RGKY_mygRFZc/preview",
-      "sizeBytes": 41936652,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "adrian"
-    }
+    "transcriptId": "transcript-5ddaf74b-eb34-4a3a-bdc9-028cef07dfca"
   },
   {
     "id": "conversation-ca46ebd0-241a-47d8-a537-20b5c697f348",
@@ -425,19 +335,7 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-d7e99022-4c21-4fef-943c-58e7a4949202",
-    "audioReference": {
-      "driveId": "1Lx1ZxbACvor4By7GXxlDljsaqFTlwASm",
-      "filename": "Adrian + Ben 20th Feb.m4a",
-      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
-      "mimeType": "audio/x-m4a",
-      "viewUrl": "https://drive.google.com/file/d/1Lx1ZxbACvor4By7GXxlDljsaqFTlwASm/view",
-      "previewUrl": "https://drive.google.com/file/d/1Lx1ZxbACvor4By7GXxlDljsaqFTlwASm/preview",
-      "sizeBytes": 28076942,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "adrian"
-    }
+    "transcriptId": "transcript-d7e99022-4c21-4fef-943c-58e7a4949202"
   },
   {
     "id": "conversation-53fe62ba-57da-4fce-b62d-7375b22ad112",
@@ -452,19 +350,7 @@
     "keyPoints": [],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-9e561370-9109-4a79-998e-8b62d512cbcc",
-    "audioReference": {
-      "driveId": "1tOQgtu10k6-9HlSn4akaHbsiaKmWTFAn",
-      "filename": "Johan + Ben 20th Feb.m4a",
-      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
-      "mimeType": "audio/mp4",
-      "viewUrl": "https://drive.google.com/file/d/1tOQgtu10k6-9HlSn4akaHbsiaKmWTFAn/view",
-      "previewUrl": "https://drive.google.com/file/d/1tOQgtu10k6-9HlSn4akaHbsiaKmWTFAn/preview",
-      "sizeBytes": null,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "hr"
-    }
+    "transcriptId": "transcript-9e561370-9109-4a79-998e-8b62d512cbcc"
   },
   {
     "id": "conversation-fc88ed26-0d53-4923-8958-42b9e339192f",
@@ -487,19 +373,7 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-cff4fd64-6a69-4b80-8079-7917bfb95311",
-    "audioReference": {
-      "driveId": "1zvYns2BpQNpsljvtwqgLzFfCmBSaWk9y",
-      "filename": "Adrian + Ben 23rd Feb.m4a",
-      "driveFolderId": "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
-      "mimeType": "audio/x-m4a",
-      "viewUrl": "https://drive.google.com/file/d/1zvYns2BpQNpsljvtwqgLzFfCmBSaWk9y/view",
-      "previewUrl": "https://drive.google.com/file/d/1zvYns2BpQNpsljvtwqgLzFfCmBSaWk9y/preview",
-      "sizeBytes": 33898095,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "adrian"
-    }
+    "transcriptId": "transcript-cff4fd64-6a69-4b80-8079-7917bfb95311"
   },
   {
     "id": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
@@ -513,34 +387,19 @@
     "summary": "Johan proposed to withdraw the separation agreement and instead send Ben a formal redeployment offer with complete terms and conditions for the Staff IC role. This is the most significant structural shift in the negotiation since the initial separation agreement was presented — it removes one track from the table (temporarily) while formalising the other. Johan committed to keeping salary and equity \"unchanged\" as his default position, and confirmed he would put everything in writing.\n\nThe conversation was dominated by circular debate about the separation agreement's \"standard\" versus \"non-standard\" nature. Ben argued that the subjective, non-performance-based circumstances make the standard template inadequate; Johan argued that the template is universal and Ben has failed to articulate specific changes he wants. Johan made a significant admission — \"no separation mutual separation agreement is standard. What is the definition of standard?\" — which undermines his own repeated insis...",
     "keyPoints": [],
     "decisions": [],
-    "actionItemIds": [],
-    "transcriptId": "transcript-bb22e705-b2bb-4137-a26c-c8603cc07886",
-    "audioReference": {
-      "driveId": "1ipX3IM1ApYrfT9RlW8Bk071XKZmdigQS",
-      "filename": "Johan + Ben Mar 3rd.m4a",
-      "driveFolderId": "1cyZ6tTVT_KwhHLaUJv9VYZ37ccG8P2MC",
-      "mimeType": "audio/mp4",
-      "viewUrl": "https://drive.google.com/file/d/1ipX3IM1ApYrfT9RlW8Bk071XKZmdigQS/view",
-      "previewUrl": "https://drive.google.com/file/d/1ipX3IM1ApYrfT9RlW8Bk071XKZmdigQS/preview",
-      "sizeBytes": null,
-      "durationSeconds": null,
-      "status": "complete",
-      "stream": "hr"
-    }
-  },
-  {
-    "id": "conversation-7ab78d23-8e10-490c-8371-099cc7840888",
-    "date": "2026-03-11T00:00:00Z",
-    "category": "union-meeting",
-    "title": "Signal Messages -- Peter Toth (Local Unionen Club Chair)",
-    "participantIds": [
-      "stakeholder-ben-purslow",
-      "stakeholder-peter-toth"
+    "actionItemIds": [
+      "action-7C-1",
+      "action-7C-2",
+      "action-7C-3",
+      "action-7C-4",
+      "action-7C-5",
+      "action-7C-6",
+      "action-7C-7",
+      "action-7C-8",
+      "action-7C-9",
+      "action-S4-2"
     ],
-    "summary": "Accuracy: All messages copied verbatim from Signal Desktop. Truncated messages marked with `*[Read more]*` as they appear in the source. Edits captured with `(edited)` marker only — pre-edit text not preserved by the export.\n\n**Timezone:** CEST (UTC+2) from 11 Mar–~10 Apr 2026 (Ben in Stockholm); AEST (UTC+10) from ~10 Apr–~6 May 2026 (Ben in Australia). Signal Desktop renders timestamps in the local time of the device that produced the export — preserved here verbatim. Peter is in Stockholm (CEST, UTC+2) for the full window; from ~10 Apr onward Peter's late-night Stockholm hours therefore appear as Ben's daytime AU hours and vice versa.\n\nNote on timestamps: Signal Desktop exports do NOT include UTC offsets — per-message timestamps are bare wall-clock strings. The CEST anchor for early March and the AEST anchor for mid-April onward were both confirmed by Ben (device location). Internal corroboration: Ben's \"I'm just on the train\" (27 Mar 10:34 AM, Stockholm commute), Ben's \"very lon...",
-    "keyPoints": [],
-    "decisions": [],
-    "actionItemIds": []
+    "transcriptId": "transcript-bb22e705-b2bb-4137-a26c-c8603cc07886"
   },
   {
     "id": "conversation-2f9cd0c8-df91-421a-a8c8-435b56418467",
@@ -565,31 +424,18 @@
     ],
     "decisions": [],
     "actionItemIds": [],
-    "transcriptId": "transcript-80035cfc-9ebb-4fd0-b3df-826b290e3c2b",
-    "audioReference": {
-      "driveId": "",
-      "filename": "",
-      "driveFolderId": "",
-      "mimeType": "",
-      "viewUrl": "",
-      "previewUrl": "",
-      "sizeBytes": null,
-      "durationSeconds": null,
-      "status": "pending-audio-upload",
-      "stream": "adrian",
-      "notes": "Vault summary + transcript synced to Drive; audio file still on Ben's device. Fill in the audio block once the recording is uploaded to the Adrian folder."
-    }
+    "transcriptId": "transcript-80035cfc-9ebb-4fd0-b3df-826b290e3c2b"
   },
   {
-    "id": "conversation-e06bf47b-8038-46a3-be0f-8c94c0dc030d",
-    "date": "2026-04-29T00:00:00Z",
+    "id": "conversation-08036a6a-8fe3-4130-8ffc-d40b610e2572",
+    "date": "2026-04-13T00:00:00Z",
     "category": "union-meeting",
-    "title": "Analysis -- Peter Toth Signal Conversation (Local Unionen)",
+    "title": "Summary: Union Call with Stina (Ombudsman)",
     "participantIds": [
       "stakeholder-ben-purslow",
-      "stakeholder-peter-toth"
+      "stakeholder-stina"
     ],
-    "summary": "Signal messages between Ben and Peter Tóth (local Unionen club board member at Spotify), 11 Mar – 29 Apr 2026. Covers: ombudsman request process, evidence sharing, discrimination case pathway, MBL formal consultation, two HR negotiation meetings (14 Apr and 21 Apr), the shifting \"lack of work\" narrative, Ebba replacing Johan as HR contact, Ben's reorg documentation shared with the union, the silent denial of Ben's one-week vacation extension, and Ben's frustration with central Unionen's failure to challenge Spotify's process conduct.\n\nPeter initially misread Spotify's formal request as termination for arbetsbrist but corrected himself the same day — the consultation is about **moving Ben to the IC role**. Regional Unionen contact Stina was assigned 1 Apr (later acting as ombudsman) and \"convinced\" Ben has a viable discrimination case. At the 21 Apr HR follow-up, HR shifted their narrative again (\"lack of work\" caused by \"unforeseen changes due to the Jan reorg\") and acknowledged the...",
+    "summary": "- notes from call with Stina (ombudsman at Unionen)\nThe timing\nThey have a right to do this while Ben is on vacation. Even if they could have handled the process in a more considerate way.\nThey cannot send out the offer before we conclude the negotiation, and we cannot conclude the negotiation before we’ve understood the reorganization properly.\nWe can say we want to get a grip on the MBL part (see “The reorg” below) first, and then deal with the consequences. This is our job.\nYou can always adjourn and ask for more information.\nStina will be quite busy this week.\nIf there are relevant vacant positions, they only have to offer him one of them, and if he declines, he can be terminated due to lack of work.\nThey will probably not want to pivot to personal reasons, that makes it much more difficult for them to pursue.\nIf we have proof that the move is not for lack of work, but it’s more of a personal issue, and Bem wants us to pursue it:\nwe can pressure them to offer another role (eg. u...",
     "keyPoints": [],
     "decisions": [],
     "actionItemIds": []
@@ -620,6 +466,59 @@
       "Show up for Monday meeting with substance.",
       "(Implicit) If Spotify wishes to address the underlying issues, this is the last operational window before the deadline forces a decision."
     ],
+    "actionItemIds": [],
+    "transcriptId": "transcript-66947427-fe19-4f4f-8835-82664f0b5be3"
+  },
+  {
+    "id": "conversation-9966786b-4a3d-4f49-8bc0-543d69ef6cbd",
+    "date": "2026-05-11T00:00:00Z",
+    "category": "hr-meeting",
+    "title": "Ninth HR Conversation — Ebba Pivots to 'Business Decision, Not HR'; ADHD-Feedback Link Re-Litigated; Five Asks Largely Not Addressed; Ben Signals Tomorrow Reply",
+    "participantIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "summary": "The ninth HR conversation was the committed follow-up from the Eighth (2026-05-07), scheduled into the operational window before the redeployment-offer deadline (~14 May). It ran ~34 minutes, was opened by Ebba (Ben entered while the recording was already running), and was substantively framed by Ebba in the first thirty seconds with a single decisive move: she pre-empted Ben's prepared agenda by reframing the case as \"making the role redundant was a business decision. It was not an HR decision\", and attributing the IC redeployment outcome to \"Babar and Adrian sharing, putting this feedback with you\". This framing dominated the rest of the meeting. Of Ben's five priority asks (MBL outcome documentation, performance record alignment versus the 2025 Talent Snapshot, the SEM roles formal process, the Johan conversation timing, and post-acceptance practicalities), only the SEM-roles question was touched (and only via Ben's own Ollie comparator, which Ebba did not engage), and none recei...",
+    "keyPoints": [],
+    "decisions": [
+      "Ben will reply on the redeployment offer Tuesday 12 May 2026, before the ~14 May deadline. ([EXACT] \"I'll reply properly tomorrow\" (00:32:55), confirmed by Ebba: [EXACT] \"we'll hear from you tomorrow then, um, before... the deadline then. Yeah.\" (00:33:28))",
+      "The conversation concluded without formal acceptance or rejection of the offer in the meeting itself.",
+      "All five of Ben's priority asks from pre-meeting record v11 (MBL outcome documentation, performance record alignment vs 2025 Talent Snapshot, SEM roles formal process, Johan conversation timing, post-acceptance practicalities). See Section 11 for explicit per-ask coverage.",
+      "Any concrete remedy on the ADHD-feedback framing.",
+      "Any compensation conversation. Not raised by either party.",
+      "Any specific learnings or process changes that Spotify will share with Ben (Ebba: \"we are discussing internally. Uh, it wouldn't be anything shared\").",
+      "Any commitment to bring Johan back into a joint conversation (Ebba did not offer; Ben did not request).",
+      "Any HR-side accommodation discussion. The generic \"we have a lot of workplace accommodations\" from the Eighth was not repeated.",
+      "Reply on the offer 12 May 2026.",
+      "Send vigilance email crystallising Admission #1 (pre-MBL omission as institutional learning) — ideally before or simultaneous with offer reply.",
+      "Brief independent review on the new admissions (especially #1, #2, #6, #8) before sending reply.",
+      "Decide on response strategy: accept / accept with reservation of rights / reject / seek extension.",
+      "(Implicit) Receive Ben's offer response by deadline.",
+      "(No substantive commitments made by Ebba in this meeting beyond passive receipt of the reply.)"
+    ],
+    "actionItemIds": [],
+    "transcriptId": "transcript-ce680e77-8629-4bd0-9df2-38797afbc50a"
+  },
+  {
+    "id": "conv-union-undated-abfb7f",
+    "date": null,
+    "category": "union-meeting",
+    "title": "title: Analysis -- Peter Toth Signal Conversation (Local Unionen)",
+    "participantIds": [],
+    "summary": "---\ntitle: Analysis -- Peter Toth Signal Conversation (Local Unionen)\nid: conversation-e06bf47b-8038-46a3-be0f-8c94c0dc030d\ntype: analysis\nsource_log: peter-toth-local-unionen.md\nparticipants:\n  - ben\n  - peter-toth\nname_swedish: Péter Tóth\nclassification: union\ncovers_through: 2026-04-29\nlast_refreshed: 2026-04-30\nthemes:\n  - Ombudsman request process (Mar)\n  - Discrimination case pathway (Mar)\n  - ADHD disclosure evidence shared (26 Mar)\n  - MBL formal consultation initiated -- IC role change subject (30 Mar)\n  - Arbetsbrist claim challenged (Apr)\n  - Stina (regional ombudsman) assigned 1 Apr; discrimination case viable\n  - HR initial meeting 14 Apr -- no coherent 'lack of work' narrative\n  - Vacation extension denied without notification (~22 Apr)\n  - HR follow-up reported 23 Apr ('unforeseen changes from Jan reorg' narrative; process 'flawed and confusing')\n  - Johan handoff to Ebba on HR side (23 Apr)\n  - Recording HR meetings raised as transparency safeguard (22-24 Apr)\n  - \"P...",
+    "keyPoints": [],
+    "decisions": [],
+    "actionItemIds": []
+  },
+  {
+    "id": "conv-union-undated-5a2e74",
+    "date": null,
+    "category": "union-meeting",
+    "title": "id: conversation-7ab78d23-8e10-490c-8371-099cc7840888",
+    "participantIds": [],
+    "summary": "---\nid: conversation-7ab78d23-8e10-490c-8371-099cc7840888\ntitle: Signal Messages -- Peter Toth (Local Unionen Club Chair)\ntype: conversation\nchannel: signal\nparticipants:\n  - ben\n  - peter-toth\nname_swedish: Péter Tóth\nclassification: union\ndate_range:\n  - 2026-03-11\n  - 2026-05-07\naccuracy: \"[EXACT] -- copied verbatim from Signal Desktop export captured 2026-04-29 (anchor for relative date markers)\"\nthemes:\n  - Ombudsman request process (Mar)\n  - Discrimination case pathway (Mar)\n  - ADHD disclosure evidence shared (26 Mar)\n  - MBL formal consultation initiated -- IC role change subject (30 Mar)\n  - Arbetsbrist claim challenged (Apr)\n  - Stina (regional ombudsman) assigned 1 Apr; discrimination case viable\n  - HR initial meeting 14 Apr -- no coherent 'lack of work' narrative\n  - Vacation extension denied without notification (~22 Apr)\n  - HR follow-up reported 23 Apr ('unforeseen changes from Jan reorg' narrative; process 'flawed and confusing')\n  - Johan handoff to Ebba on HR side...",
+    "keyPoints": [],
+    "decisions": [],
     "actionItemIds": []
   }
 ]

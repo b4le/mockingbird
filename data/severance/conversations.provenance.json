@@ -3,140 +3,154 @@
     "source_file": "sources/conversations/hr/first-hr-conversation.md",
     "source_section": "whole_file:conversation-e04bddae-94ab-4e96-b523-bbc7e66e2359",
     "content_hash": "462059058ad61022",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
     "parser": "parse_conversations"
   },
   "conversation-cf2d8d48-def9-46f1-9252-fe418418bb65": {
     "source_file": "sources/conversations/hr/hr-email-exchange-proposed-mutual-separation-agreement.md",
     "source_section": "whole_file:conversation-cf2d8d48-def9-46f1-9252-fe418418bb65",
     "content_hash": "37c42f139ff68ee4",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-af5fc9d8-1095-4801-bf3e-97d6fc1e8391": {
     "source_file": "sources/conversations/union/unionen-initial-2026-01-27.md",
     "source_section": "whole_file:conversation-af5fc9d8-1095-4801-bf3e-97d6fc1e8391",
     "content_hash": "46d866b503bc504c",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-0f9537cb-d470-4694-9b37-cdb3f800b9ed": {
     "source_file": "sources/conversations/hr/second-hr-conversation.md",
     "source_section": "whole_file:conversation-0f9537cb-d470-4694-9b37-cdb3f800b9ed",
     "content_hash": "92a11bfcb502f2eb",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-65b33afc-fd07-4c49-8c34-eefa79392b1f": {
     "source_file": "sources/conversations/hr/third-hr-conversation.md",
     "source_section": "whole_file:conversation-65b33afc-fd07-4c49-8c34-eefa79392b1f",
     "content_hash": "10b923a943d1e76e",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434": {
     "source_file": "sources/conversations/hr/fourth-hr-conversation.md",
     "source_section": "whole_file:conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
     "content_hash": "5b340acd9c20a33a",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-d738b9e8-5b43-498c-8bb6-0ae6396d6d31": {
     "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-11.md",
     "source_section": "whole_file:conversation-d738b9e8-5b43-498c-8bb6-0ae6396d6d31",
     "content_hash": "18ef198b92b054cf",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
     "parser": "parse_conversations"
   },
   "conversation-83edc54e-3404-4b56-981d-c0327d7c1ae4": {
     "source_file": "sources/conversations/hr/fifth-hr-conversation.md",
     "source_section": "whole_file:conversation-83edc54e-3404-4b56-981d-c0327d7c1ae4",
     "content_hash": "ac033e63fbd69df2",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
     "parser": "parse_conversations"
   },
   "conversation-3c3a6604-e5b3-49d5-8581-1b0ca5a15ede": {
     "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-16.md",
     "source_section": "whole_file:conversation-3c3a6604-e5b3-49d5-8581-1b0ca5a15ede",
     "content_hash": "d5ad44a6092e2c45",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
     "parser": "parse_conversations"
   },
   "conversation-9083817f-8a0e-4bbf-b80e-394cf8897139": {
     "source_file": "sources/conversations/nico/nico-and-ben-2026-02-17.md",
     "source_section": "whole_file:conversation-9083817f-8a0e-4bbf-b80e-394cf8897139",
     "content_hash": "bae9c7cdabfe5277",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-b637de2d-3c49-4e28-865d-0d516a59c1b2": {
     "source_file": "sources/conversations/marqia/marqia-and-ben-2026-02-18.md",
     "source_section": "whole_file:conversation-b637de2d-3c49-4e28-865d-0d516a59c1b2",
     "content_hash": "c944485306124450",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-dc91f505-291b-4b37-b777-1ada290ff2bd": {
     "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-19.md",
     "source_section": "whole_file:conversation-dc91f505-291b-4b37-b777-1ada290ff2bd",
     "content_hash": "f3d4b1938a3434c3",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
     "parser": "parse_conversations"
   },
   "conversation-ca46ebd0-241a-47d8-a537-20b5c697f348": {
     "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-20.md",
     "source_section": "whole_file:conversation-ca46ebd0-241a-47d8-a537-20b5c697f348",
     "content_hash": "5ff01524f64c61ab",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
     "parser": "parse_conversations"
   },
   "conversation-53fe62ba-57da-4fce-b62d-7375b22ad112": {
     "source_file": "sources/conversations/hr/sixth-hr-conversation.md",
     "source_section": "whole_file:conversation-53fe62ba-57da-4fce-b62d-7375b22ad112",
     "content_hash": "da77980beddda50c",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-fc88ed26-0d53-4923-8958-42b9e339192f": {
     "source_file": "sources/conversations/adrian/adrian-and-ben-2026-02-23.md",
     "source_section": "whole_file:conversation-fc88ed26-0d53-4923-8958-42b9e339192f",
     "content_hash": "2e469d82d87331de",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
     "parser": "parse_conversations"
   },
   "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1": {
     "source_file": "sources/conversations/hr/seventh-hr-conversation.md",
     "source_section": "whole_file:conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
     "content_hash": "93f86efa93ab6a05",
-    "extracted_at": "2026-05-07T15:16:02Z",
-    "parser": "parse_conversations"
-  },
-  "conversation-7ab78d23-8e10-490c-8371-099cc7840888": {
-    "source_file": "sources/conversations/union/peter-toth-local-unionen.md",
-    "source_section": "whole_file:conversation-7ab78d23-8e10-490c-8371-099cc7840888",
-    "content_hash": "7ed236572eaf371d",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-2f9cd0c8-df91-421a-a8c8-435b56418467": {
     "source_file": "sources/conversations/adrian/adrian-and-ben-2026-03-25.md",
     "source_section": "whole_file:conversation-2f9cd0c8-df91-421a-a8c8-435b56418467",
     "content_hash": "d7c851480705cbbf",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
     "parser": "parse_conversations"
   },
-  "conversation-e06bf47b-8038-46a3-be0f-8c94c0dc030d": {
-    "source_file": "sources/conversations/union/peter-toth-local-unionen-analysis.md",
-    "source_section": "whole_file:conversation-e06bf47b-8038-46a3-be0f-8c94c0dc030d",
-    "content_hash": "ddc2dd8a3fd94ab8",
-    "extracted_at": "2026-05-07T15:16:02Z",
+  "conversation-08036a6a-8fe3-4130-8ffc-d40b610e2572": {
+    "source_file": "sources/conversations/union/unionen-stina-2026-04-13.md",
+    "source_section": "whole_file:conversation-08036a6a-8fe3-4130-8ffc-d40b610e2572",
+    "content_hash": "3c0b9efda199f750",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   },
   "conversation-9d4f7a2e-1c83-4f6b-8e1a-72e5b9d8c401": {
     "source_file": "sources/conversations/hr/eighth-hr-conversation.md",
     "source_section": "whole_file:conversation-9d4f7a2e-1c83-4f6b-8e1a-72e5b9d8c401",
     "content_hash": "6078d6dbb871c49c",
-    "extracted_at": "2026-05-07T15:16:02Z",
+    "extracted_at": "2026-05-11T22:05:14Z",
+    "parser": "parse_conversations"
+  },
+  "conversation-9966786b-4a3d-4f49-8bc0-543d69ef6cbd": {
+    "source_file": "sources/conversations/hr/ninth-hr-conversation.md",
+    "source_section": "whole_file:conversation-9966786b-4a3d-4f49-8bc0-543d69ef6cbd",
+    "content_hash": "b580f3a21ac511a6",
+    "extracted_at": "2026-05-11T22:05:15Z",
+    "parser": "parse_conversations"
+  },
+  "conv-union-undated-abfb7f": {
+    "source_file": "sources/conversations/union/peter-toth-local-unionen-analysis.md",
+    "source_section": "whole_file:conv-union-undated-abfb7f",
+    "content_hash": "600bd76a484c1139",
+    "extracted_at": "2026-05-11T22:05:15Z",
+    "parser": "parse_conversations"
+  },
+  "conv-union-undated-5a2e74": {
+    "source_file": "sources/conversations/union/peter-toth-local-unionen.md",
+    "source_section": "whole_file:conv-union-undated-5a2e74",
+    "content_hash": "d05934cdec9ca492",
+    "extracted_at": "2026-05-11T22:05:15Z",
     "parser": "parse_conversations"
   }
 }

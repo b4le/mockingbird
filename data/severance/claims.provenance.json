@@ -3,84 +3,84 @@
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-001",
     "content_hash": "24920488b27fd4ec",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:30Z",
     "parser": "parse_claims"
   },
   "claim-CLM-002": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-002",
     "content_hash": "d640a9be2741a4d0",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:30Z",
     "parser": "parse_claims"
   },
   "claim-CLM-003": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-003",
     "content_hash": "43dc06b842aa8511",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:30Z",
     "parser": "parse_claims"
   },
   "claim-CLM-004": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-004",
     "content_hash": "3fa4c6b58ea45e6a",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:30Z",
     "parser": "parse_claims"
   },
   "claim-CLM-005": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-005",
     "content_hash": "f48851338e84dae9",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_claims"
   },
   "claim-CLM-006": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-006",
     "content_hash": "d873e0d86a6bbf50",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_claims"
   },
   "claim-CLM-007": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-007",
     "content_hash": "2687530ad0391baa",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_claims"
   },
   "claim-CLM-008": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-008",
     "content_hash": "8d3e64f55c57ddec",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_claims"
   },
   "claim-CLM-009": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-009",
     "content_hash": "5935aecd06367073",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_claims"
   },
   "claim-CLM-010": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-010",
     "content_hash": "af0ac821e1f2d0b8",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_claims"
   },
   "claim-CLM-011": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-011",
     "content_hash": "7d2e929432b75c4c",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_claims"
   },
   "claim-CLM-012": {
     "source_file": "sources/legal/claims.md",
     "source_section": "yaml:CLM-012",
     "content_hash": "67121eca97cce196",
-    "extracted_at": "2026-05-07T14:30:45Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_claims"
   }
 }

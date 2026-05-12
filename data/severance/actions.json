@@ -1,17 +1,2019 @@
 [
   {
-    "id": "action-skipped-output-leak",
-    "title": "Leak in skipped output",
-    "description": "Manual entry on a file outputs_to_regen will not include this run.",
+    "id": "action-4C-1",
+    "title": "Do NOT provide counter-offer to Johan — redirect instead",
+    "description": "Source: Fourth HR Conversation (2026-02-05). Ben agreed during the conversation to provide a counter-offer on the separation package. HIGH-risk drift. Do not provide any number. If Johan follows up: \"I've reflected and I'd prefer Spotify to present a revised offer that reflects my contributions and circumstances.\" Holds for conversations 5 and 6. Status: OPEN. Seventh HR Conversation update (2026-03-03): Johan is withdrawing the separation agreement — this supersedes the counter-offer redirect. ",
+    "status": "done",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-02-05T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-03T00:00:00Z",
+    "tags": [
+      "email",
+      "hr-conversation",
+      "johan",
+      "separation"
+    ],
+    "sourceEntityId": "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-4C-2",
+    "title": "Send comprehensive vigilance email to Johan — cover five admissions",
+    "description": "Source: Fourth HR Conversation (2026-02-05). Single email confirming: (a) Separation is NOT a performance case. (b) No redundancy basis applies. (c) Request for written reasoning Johan committed to providing. (d) \"One of the best\" admission. (e) Refusal to document admission (fear of review). Status: HELD — pending independent review input. Seventh HR Conversation update (2026-03-03): ADD TO VIGILANCE EMAIL — Johan's \"no agreement is standard\" admission. Crystallise this before Johan's written terms arrive. T",
+    "status": "blocked",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-02-05T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "email",
+      "hr-conversation",
+      "johan",
+      "separation",
+      "vigilance"
+    ],
+    "sourceEntityId": "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-4C-3",
+    "title": "Send separate ADHD-specific vigilance email to Johan",
+    "description": "Source: Fourth HR Conversation (2026-02-05). Flag Johan's \"a limiting fatal flaw that will hold you back\" and \"It's not fair towards you to ask you to stretch yourself and grow in those areas because there are limitations there.\" Ask: \"I want to understand what you meant — are you saying my ADHD is a reason for this decision?\" Status: HELD — pending independent review input.",
+    "status": "blocked",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-02-05T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "email",
+      "hr-conversation",
+      "johan",
+      "vigilance"
+    ],
+    "sourceEntityId": "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-4C-4",
+    "title": "Identify 2-4 redeployment areas / problem spaces and submit to Johan",
+    "description": "Source: Fourth HR Conversation (2026-02-05). Johan's \"homework\" for Plan B. Frame submission: \"I'm voluntarily proposing these areas to support what I understand to be Spotify's obligation to comprehensively explore redeployment.\" Areas to consider: T&S Engineering (Sarah Hoyle — Adrian meeting confirmed 23 Feb), CoreX SEM (WATCHING), Staff IC Supply role. Marqia/CP paths BLOCKED. Status: OPEN.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-02-05T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "adrian",
+      "hr-conversation",
+      "johan",
+      "marqia",
+      "redeployment",
+      "sarah"
+    ],
+    "sourceEntityId": "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-4C-5",
+    "title": "Share Fourth HR Conversation recording and key quotes with independent legal consultation",
+    "description": "Source: Fourth HR Conversation (2026-02-05). Supplements existing item #1 (engage independent legal review). Share recording and transcript of Fourth HR Conversation. Priority items for review: \"fatal flaw\" language, \"not performance, not redundancy\" admission, refusal to document, termination agreement clauses before ~3 March terms conversation. Status: OPEN. UPDATE 2026-03-25: independent review briefed via comprehensive brief. Recording not yet explicitly shared — confirm with independent review.",
+    "status": "in-progress",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-02-05T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "clause",
+      "hr-conversation"
+    ],
+    "sourceEntityId": "conversation-bf3bd223-d21b-45a2-8e9b-acc6da731434",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-1",
+    "title": "Draft written clarification re \"turning the page\" — Ben confirms this was a genuine mutual agreement. No correction need",
+    "description": "Seventh HR Conversation (2026-03-03). Johan stated accepting IC role requires Ben to \"turn the page\" and \"perform at your best.\" Ben said \"I agree\" [EXACT]. Risk Register #16 retired — genuine mutual agreement, not a waiver. Status: CLOSED.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "hr-conversation",
+      "johan",
+      "risk-16"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-2",
+    "title": "Draft response to separation agreement withdrawal when Johan's email arrives",
+    "description": "Seventh HR Conversation (2026-03-03). Johan withdrawing separation agreement. Response must confirm: (a) withdrawal is Spotify's unilateral decision, (b) accepting IC role does not constitute waiver of rights or pending matters, (c) separation discussion may be reopened by either party. Status: SUPERSEDED — handled via S17-6 and amendment response.",
+    "status": "done",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "amendment",
+      "email",
+      "hr-conversation",
+      "johan",
+      "separation"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-3",
+    "title": "Draft vigilance email re: \"no agreement is standard\" admission",
+    "description": "Seventh HR Conversation (2026-03-03). Johan admitted that no agreement is standard. Crystallise before Johan's written terms arrive. Add to comprehensive vigilance email (4C-2) as sixth admission. Status: OPEN.",
+    "status": "blocked",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "email",
+      "hr-conversation",
+      "johan",
+      "vigilance"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-4",
+    "title": "Update Strategic State: Track 1 (Separation) PAUSED, Track 2 (Redeployment) PRIMARY",
+    "description": "Source: Seventh HR Conversation (2026-03-03). Reflects Johan's withdrawal of separation agreement and verbal commitment to full IC terms. Update 10-bullet summary, strategic principles, and track status. Status: OPEN.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "hr-conversation",
+      "johan",
+      "redeployment",
+      "separation"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-5",
+    "title": "Review formal redeployment offer against verbal commitments",
+    "description": "Seventh HR Conversation (2026-03-03), Sections 4.1, 9B. Verify formal offer includes ALL required elements: salary (confirmed \"unchanged\"), equity treatment (confirmed \"unchanged\"), reporting line, contract type, probation conditions, success criteria, duration. Compare against Johan's verbal commitments. Status: SUPERSEDED — amendment received, review in progress.",
+    "status": "done",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "amendment",
+      "hr-conversation",
+      "johan",
+      "redeployment"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-6",
+    "title": "Monitor for immigration/foreign status exploitation",
+    "description": "Source: Seventh HR Conversation (2026-03-03), Section 3, Statement #4. Ben's \"I am not from Sweden\" disclosure creates inference risk re: immigration dependency. Monitor ALL future communications from Johan and Spotify for any reference to Ben's foreign status, personal circumstances, or life-altering decisions. If referenced, document immediately and escalate. See Risk Register #15. Status: ACTIVE.",
+    "status": "in-progress",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "hr-conversation",
+      "immigration",
+      "johan",
+      "risk-15"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-7",
+    "title": "Draft vigilance email re: employer-initiated separation acknowledgment",
+    "description": "Seventh HR Conversation (2026-03-03), Section 5A, Admission #3. Johan stated \"we initiated the separation termination agreement, and that of course will always be part of the history and the baggage here.\" Include in vigilance email alongside 4C-2 items. Status: OPEN.",
+    "status": "blocked",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "email",
+      "hr-conversation",
+      "johan",
+      "separation",
+      "vigilance"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-8",
+    "title": "Continue union clause review regardless of separation withdrawal",
+    "description": "Source: Seventh HR Conversation (2026-03-03), Section 10. Separation agreement withdrawal does NOT change the need for clause review. Ensure union review continues in background. Do not allow withdrawal to stall this track. When review complete, Ben can reopen separation with concrete proposals as Johan requested. Status: SUPERSEDED — transferred to independent review.",
+    "status": "done",
+    "priority": "low",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "clause",
+      "hr-conversation",
+      "johan",
+      "separation"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-7C-9",
+    "title": "Insist on objective success criteria in IC offer",
+    "description": "Seventh HR Conversation (2026-03-03), Section 9C, Risk #4. Johan's \"perform at your best in the new settings\" establishes a vague performance expectation. Combined with existing perception problems and ADHD coaching framing, this could create conditions for future personliga skäl termination. Insist on clear, objective, SMART criteria. Status: SUPERSEDED — amendment received, defect documented.",
+    "status": "done",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "amendment",
+      "hr-conversation",
+      "johan",
+      "risk-04"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-AM-1",
+    "title": "Monitor T&S reorg progress",
+    "description": "Sarah Hoyle confirmed T&S not ready to operate as real R&D org. Reorg planned — timing unknown. Maintain Lex Beattie relationship as inside advocate. Reassess H2 2026. Do NOT pressure Sarah. Source: Adrian meeting (2026-03-03). Cross-ref: Risk #18. Status: STANDING.",
+    "status": "in-progress",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "adrian",
+      "hr-conversation",
+      "risk-18",
+      "sarah"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-AM-2",
+    "title": "Verify formal IC offer matches verbal commitments when received",
+    "description": "Adrian confirmed salary \"the same\" but no other details. When formal written offer arrives, verify: salary, equity vesting, contract type, reporting line, probation period, success criteria, duration/review date. No coaching/mentoring conditions mentioned. Source: Adrian meeting (2026-03-03). Cross-ref: Risk #10, TODO 7C-5. Status: PENDING.",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-03T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "adrian",
+      "hr-conversation",
+      "risk-10"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-mp-7",
+    "title": "Document UI configuration regression",
+    "description": "CoCaM teams still stuck on reporting interfaces Ben solved mid-2025 (OSA/DSA, UK/AU law). Staff Engineers + Oli blocked. Supports \"irreplaceable institutional knowledge\" argument.",
     "status": "todo",
     "priority": "medium",
     "ownerId": "stakeholder-ben-purslow",
-    "createdDate": "2026-03-10T00:00:00Z",
+    "createdDate": "2026-02-22T00:00:00Z",
     "dueDate": null,
     "completedDate": null,
-    "tags": [],
+    "tags": [
+      "medium-priority"
+    ],
     "sourceEntityId": null,
-    "sourceEntityType": null,
-    "conversationId": null
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-mp-9",
+    "title": "Document \"garden leave misinformation\"",
+    "description": "Marqia told Ben is on garden leave (false). Evidence of narrative construction.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-02-22T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "marqia",
+      "medium-priority"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-mp-10",
+    "title": "Create financial summary Google Doc",
+    "description": "Vesting calculations, salary projections, scenario modelling for different exit dates.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-02-22T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "medium-priority"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-lp-13",
+    "title": "When new email threads emerge",
+    "description": "(e.g. Marqia, Sarah, Adrian via email), add to Master Index EMAIL THREADS section.",
+    "status": "todo",
+    "priority": "low",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-02-22T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "adrian",
+      "email",
+      "low-priority",
+      "marqia",
+      "sarah"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-1",
+    "title": "Draft March 4 email to Johan — DONE: Email sent 4 Mar 2026.",
+    "description": "Draft March 4 email to Johan — DONE: Email sent 4 Mar 2026. Apply counter-pressure. Key messages: characterise HR's failures (zero roles surfaced, zero iteration on terms, zero engagement), signal no rush, reference leadership's decision not Ben's, challenge single-role framing. Tone: \"Collaborative Realism\" with harder edges. DO NOT disclose: private consultations, immigration status, financial expectations, Unionen situation. See Email Talking Points in Strategic State Session 4 Delta.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "email",
+      "immigration",
+      "johan",
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-2",
+    "title": "Prepare for Thursday private consultation — DONE: Consultation occurred. Superseded by independent review engagement 5 Mar.",
+    "description": "Prepare for Thursday private consultation — DONE: Consultation occurred. Superseded by independent review engagement 5 Mar. Compile: timeline of events (Jan 29 notification → Adrian told not to engage → zero HR engagement → single role from Adrian Feb 2026), key documents (Employment Agreement, Proposed Termination, HR email exchange, 7th HR transcript), evidence inventory (6 contradictions, 5 admissions, pressure pattern). Key questions: Is redeployment formal? Ramifications of declining? Australi",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "adrian",
+      "comp-review",
+      "email",
+      "redeployment",
+      "session-4"
+    ],
+    "sourceEntityId": "conversation-c5203e98-96b4-4042-8d86-82295b5aa1d1",
+    "sourceEntityType": "conversation"
+  },
+  {
+    "id": "action-S4-3",
+    "title": "Document HR zero-engagement on roles — PARTIALLY DONE: HR zero-engagement pattern documented.",
+    "description": "Document HR zero-engagement on roles — PARTIALLY DONE: HR zero-engagement pattern documented. Evidence summary: HR has surfaced ZERO roles across 4 conversations and 12+ emails. All role identification from Ben and Adrian. Adrian created the single IC role independently — not an HR process. No job postings shared, no conversations about available positions, no matching exercise conducted. Document for use in characterising HR failure and delay narrative. UPDATE 2026-03-25: HR zero-engagement pat",
+    "status": "in-progress",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "adrian",
+      "amendment",
+      "email",
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-4",
+    "title": "Research available SEM/PPM roles + promotion cycle opportunities — PARTIALLY DONE: T&S deferred, CoreX watching.",
+    "description": "Research available SEM/PPM roles + promotion cycle opportunities — PARTIALLY DONE: T&S deferred, CoreX watching. Identify the 3 SEM roles and PPM role that exist. Research current promotion cycle: each business case for Staff/SEM promotion = redeployment opportunity under LAS. Document that these are being suppressed or ignored by HR. Use to challenge artificial scarcity. Ben compiling evidence — will share. UPDATE 2026-03-25: T&S deferred. CoreX watching. Amendment locks in Staff Engineer IC.",
+    "status": "in-progress",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "amendment",
+      "redeployment",
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-5",
+    "title": "Build delay narrative timeline — DONE: Delay narrative established.",
+    "description": "Build delay narrative timeline — DONE: Delay narrative established. Construct timeline showing: Jan 29 separation notification → HR non-engagement → Adrian told not to engage → Adrian involved own initiative ~late Feb → zero roles from HR → zero iteration on terms → all pressure on Ben → March 3 Johan pressure meeting. Purpose: establish that delay is HR's fault, not Ben's. Use in email and future correspondence.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "adrian",
+      "email",
+      "johan",
+      "separation",
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-6",
+    "title": "Locate and cross-reference Adrian's admission re: told not to engage — Adrian told Ben he was instructed not to engage —",
+    "description": "Locate and cross-reference Adrian's admission re: told not to engage — Adrian told Ben he was instructed not to engage — captured in existing conversation transcripts. Corroborated by Marqia (verbal, confidential). Locate exact quote in transcript archive. Cross-reference with Evidence Archive entry. Assess how/whether to deploy — powerful evidence but sourcing is confidential verbal. Raises question: whether to share with independent review. Status: DONE — in independent review brief.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "adrian",
+      "marqia",
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-7",
+    "title": "Assess Unionen escalation viability",
+    "description": "Assess Unionen escalation viability Formal case creation is theoretically the nuclear option from Spotify's perspective (significant procedural burden and public record). However, Unionen has been largely unhelpful and unresponsive throughout — providing little to no substantive support. Escalation would require a messy ramp-up from a near-standing-start with them. Assess after Thursday: is formal case creation viable? What would it take to get Unionen to engage? Explore whether a different repr",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-8",
+    "title": "Australia contingency plan — DONE: Australia contingency established. Departing 28 Mar.",
+    "description": "Australia contingency plan — DONE: Australia contingency established. Departing 28 Mar. Establish before departure: no decisions required during travel, Ben remains available via email, acknowledge any formal offers in writing before leaving, absence ≠ disengagement. If formal offer arrives, acknowledge receipt and state review upon return.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "email",
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-9",
+    "title": "Counter Johan's \"not negotiating\" frame",
+    "description": "Counter Johan's \"not negotiating\" frame Johan said Ben hasn't been negotiating because he never gave a number. Counter-narrative: HR has not provided anything TO negotiate. No roles surfaced. No terms iterated. No reflection on process. The absence of negotiation is HR's failure, not Ben's. Prepare talking points for email and future conversations.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "email",
+      "johan",
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S4-10",
+    "title": "Confirm inclusion in March compensation review",
+    "description": "Confirm inclusion in March compensation review UPDATE 2026-03-11: Ben asked Johan in writing (9 Mar email) — unanswered as of 11 Mar. Adrian on leave until 16 Mar. Manager nomination window closes 20 Mar. Non-response is itself evidence of differential treatment. UPDATE 2026-03-25: Johan confirmed comp review 'now closed' in 24 Mar email. Exclusion confirmed in writing. Evidence captured. Spotify's annual compensation review is happening March 2026. High risk Ben gets excluded given limbo status",
+    "status": "done",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-04T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "adrian",
+      "comp-review",
+      "email",
+      "johan",
+      "separation",
+      "session-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S11-1",
+    "title": "Await and action independent review full review",
+    "description": "Await and action independent review full review Initial response received 12 Mar — independent review assessed IC offer has no explicit response deadline; Ben not in delay pending Johan's unanswered clarification questions. Full brief review scheduled Monday 16 Mar (today). Follow-up call to be arranged. Still pending: advice on vigilance emails (currently HELD), LAS 34 post-2022 implications for CLM-008, clause review of 2.5/3.2/3.3, and discrimination timing. Status: DONE — call happened 17 Mar.",
+    "status": "done",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-11T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "clause",
+      "discrimination",
+      "email",
+      "johan",
+      "session-11",
+      "vigilance"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S11-2",
+    "title": "Comp review deadline — escalate by 17 Mar if no Johan response",
+    "description": "Comp review deadline — escalate by 17 Mar if no Johan response Manager nomination window closes 20 Mar 2026. Ben asked Johan in writing 9 Mar (unanswered). Adrian on leave until 16 Mar. If no response from Johan by 17 Mar, escalate directly — document non-response as differential treatment evidence. Do not let the deadline pass silently. Status: CLOSED — comp review window closed 20 Mar. Johan confirmed 'now closed' in 24 Mar email.",
+    "status": "done",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-11T00:00:00Z",
+    "dueDate": "2026-03-17T00:00:00Z",
+    "completedDate": "2026-03-25T00:00:00Z",
+    "tags": [
+      "adrian",
+      "comp-review",
+      "email",
+      "johan",
+      "session-11"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S11-3",
+    "title": "Document Johan non-response to 9 Mar email",
+    "description": "Document Johan non-response to 9 Mar email Ben's 9 Mar email to Johan raised 3 open questions: (1) success criteria for IC role, (2) comp review inclusion, (3) §12.2 written consent requirement. Johan has not responded as of 11 Mar. Each day of non-response is evidence of HR non-engagement pattern. Log each day. If formal proceedings ever commence, this non-response period will be part of the delay attribution record. Status: MONITORING.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-11T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "comp-review",
+      "email",
+      "johan",
+      "session-11"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S17-4",
+    "title": "Request immigration lawyer referral from independent review",
+    "description": "Request immigration lawyer referral from independent review Ben's citizenship application (case 52056264, filed Nov 2025) faces June 2026 law change (5yr→8yr residence). Employment continuity through March 2027 is non-negotiable. independent review's engagement covers employment law only — immigration referral never raised. Add to next independent review email. Status: OPEN. Added: 2026-03-17.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-17T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "citizenship",
+      "email",
+      "immigration",
+      "session-17"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S17-5",
+    "title": "Assess independent review counsel quality",
+    "description": "Assess independent review counsel quality Ben sent 3 strategic questions on 20 March (amendment timing, protections, comp review leverage). Response requested by 25 March. If no substantive reply by then, factor into alternative counsel decision. See local-state/independent review-counsel-assessment.md for framework and triggers. Status: OVERDUE — independent review did not reply by 25 Mar deadline. 3 substantive questions (informal vs ultimatum, ADHD protections, comp review leverage) unanswered. Yellow flag reinforced. Alternati",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-17T00:00:00Z",
+    "dueDate": "2026-03-25T00:00:00Z",
+    "completedDate": null,
+    "tags": [
+      "amendment",
+      "comp-review",
+      "session-17"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S17-6",
+    "title": "Respond to Johan's 24 Mar amendment email — Johan requested acceptance by 26 Mar (soft deadline). Claims amendment is \"j",
+    "description": "Respond to Johan's 24 Mar amendment email — Johan requested acceptance by 26 Mar (soft deadline). Claims amendment is \"just a role change\", comp review \"now closed\", salary assessed \"in context of new role\". independent review has not advised on approach. Status: SUPERSEDED BY S26-1 — deadline extended to 27 Mar.",
+    "status": "done",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-17T00:00:00Z",
+    "dueDate": "2026-03-26T00:00:00Z",
+    "completedDate": "2026-03-27T00:00:00Z",
+    "tags": [
+      "amendment",
+      "comp-review",
+      "email",
+      "johan",
+      "session-17"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S17-7",
+    "title": "Alternative counsel assessment",
+    "description": "Alternative counsel assessment independent review missed 25 Mar response deadline. 13+ questions unanswered. 9/14 leverage points unengaged. Review independent review-counsel-assessment.md triggers. Assess: (a) one more chance with firm deadline, (b) begin sourcing alternative employment lawyer, (c) both in parallel. Australia trip (28 Mar) creates natural pause point. Status: OPEN. Added: 2026-03-25.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-17T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "session-17"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S17-8",
+    "title": "Immigration lawyer referral",
+    "description": "Immigration lawyer referral Never raised with independent review despite citizenship law change 6 Jun 2026 (5yr→8yr residence). Case 52056264. Raise in next communication with independent review or source independently. Status: OPEN. Added: 2026-03-25. Cross-ref: S17-4.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-17T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "citizenship",
+      "immigration",
+      "session-17"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S26-1",
+    "title": "Respond to Johan amendment deadline (EOB Fri 27 Mar)",
+    "description": "URGENT — Respond to Johan amendment deadline (EOB Fri 27 Mar) Johan rejected all three requests (comp, incentives, HR plan) in 26 Mar email. Must decide: accept amendment, let deadline pass, or reply with position. Union question also pending (see S26-2). Supersedes S17-6 (deadline extended from 26→27 Mar). Options: (a) accept amendment as-is, (b) let deadline pass silently, (c) substantive reply with position, (d) brief acknowledgment + defer to post-Australia. Must coordinate with S26-3 (independent review ",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-26T00:00:00Z",
+    "dueDate": "2026-03-27T00:00:00Z",
+    "completedDate": null,
+    "tags": [
+      "amendment",
+      "email",
+      "johan",
+      "session-26"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S26-2",
+    "title": "Answer Johan's union membership question",
+    "description": "URGENT — Answer Johan's union membership question First time union raised in writing by Johan. Confirming Unionen membership triggers MBL consultation obligation — adds procedural delay that benefits Ben. Must decide: (a) confirm membership (triggers MBL), (b) deflect, (c) delay answer. MBL consultation would require Spotify to consult with Unionen before finalising role change — procedural protection. Linked to S26-1 deadline. Status: OPEN — deadline EOB 27 Mar 2026. Added: 2026-03-26.",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-26T00:00:00Z",
+    "dueDate": "2026-03-27T00:00:00Z",
+    "completedDate": null,
+    "tags": [
+      "johan",
+      "mbl",
+      "session-26"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S26-3",
+    "title": "Update independent review on Johan exchange",
+    "description": "Update independent review on Johan exchange Forward today's email thread to independent review (Gmail thread 19cfb5c675bae6f7). Key developments: deadline extended to 27 Mar, union question raised in writing, comp review crystallised as closed. Ask for guidance on response strategy before Friday EOB. Test whether independent review engages on urgent deadline — de facto counsel quality test (cross-ref S17-5/S17-7). Status: OPEN. Added: 2026-03-26.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-26T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "comp-review",
+      "email",
+      "johan",
+      "session-26"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "action-S26-4",
+    "title": "Comp review exclusion — preserve evidence",
+    "description": "Comp review exclusion — preserve evidence Johan confirmed in writing (26 Mar) that salary assessed against new role, no change, cycle closed. Ben's 9 Mar raise question went unanswered until window closed. Archive Gmail thread. Cross-ref: S4-10, S11-2 (both now CLOSED/DONE). This written confirmation is the final evidence piece for differential treatment claim. Status: OPEN. Added: 2026-03-26.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-26T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "comp-review",
+      "johan",
+      "session-26"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-001",
+    "title": "Engage private employment lawyer (Stockholm).",
+    "description": "Engage private employment lawyer (Stockholm). Path B selected: independent review for tactical support while keeping Unionen Case in reserve. independent review Flemstroem / independent counsel engaged. Clause review of 2.5/3.2/3.3, evaluate IC redeployment terms, advise on discrimination leverage.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "clause-review",
+      "discrimination",
+      "high-priority"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-002",
+    "title": "Adrian-Sarah conversation outcome: T&S path DEFERRED.",
+    "description": "Adrian-Sarah conversation outcome: T&S path DEFERRED. Sarah said not the right time, reorg planned. Reassess H2 2026. Monitor via AM-1 and AM-2.",
+    "status": "done",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "adrian",
+      "high-priority",
+      "redeployment",
+      "sarah-hoyle",
+      "t-and-s"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-003",
+    "title": "Send reply to Johan (Staff IC terms request).",
+    "description": "Send reply to Johan (Staff IC terms request). Corrects misrepresentations, requests full IC terms (salary, equity, reporting structure), gets 'focus only on this role' restriction on record.",
+    "status": "done",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "high-priority",
+      "ic-terms",
+      "johan",
+      "sent"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-004",
+    "title": "Run lawyer candidate research.",
+    "description": "Run lawyer candidate research. Outreach to 4 firms. independent review Flemstroem replied and engaged. Others declined or no reply.",
+    "status": "done",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "high-priority",
+      "research"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-005",
+    "title": "Prepare post-sportlov response framework.",
+    "description": "Prepare post-sportlov response framework. Scenario landscape shifted: separation agreement being withdrawn (Track 1 PAUSED). Johan committed verbally to full T&C with unchanged salary/equity. New scenario (d): Johan's written terms don't match verbal commitments.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "high-priority",
+      "redeployment",
+      "response-framework",
+      "strategy"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-006",
+    "title": "ADHD discrimination deployment decision.",
+    "description": "ADHD discrimination deployment decision. Unionen confirmed clear discrimination (DL). Will act IF formal Case opened. Evidence doc ready. Decision tied to independent review engagement.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "adhd",
+      "discrimination",
+      "evidence",
+      "high-priority",
+      "unionen"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-007",
+    "title": "Create legal brief for independent review.",
+    "description": "Create legal brief for independent review. Covers timeline, 4 legal grounds (LAS/DL/MBL/redeployment), clause analysis, evidence inventory, financial impact, 7 questions.",
+    "status": "done",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "brief",
+      "completed",
+      "high-priority"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-008",
+    "title": "Adrian 'specifics' ask — deprioritised.",
+    "description": "Adrian 'specifics' ask — deprioritised. Revisit if Johan cites specific behavioural concerns post-sportlov.",
+    "status": "todo",
+    "priority": "low",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "adrian",
+      "behavioural",
+      "deprioritised",
+      "low-priority"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-009",
+    "title": "Do NOT provide counter-offer to Johan — redirect instead.",
+    "description": "Do NOT provide counter-offer to Johan — redirect instead. Superseded by separation agreement withdrawal. NEW ACTION: Draft response to withdrawal when Johan's email arrives confirming (a) withdrawal is Spotify's unilateral decision, (b) IC acceptance is not waiver of rights, (c) separation may be reopened by either party.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "4c-1",
+      "counter-offer",
+      "immediate",
+      "separation-withdrawal",
+      "vigilance"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-010",
+    "title": "Send comprehensive vigilance email to Johan covering five (now six) admissions: (a) separation not performance case, (b)",
+    "description": "Send comprehensive vigilance email to Johan covering five (now six) admissions: (a) separation not performance case, (b) no redundancy basis, (c) request written reasoning, (d) 'one of the best' reconciliation, (e) parallel tracks confirmed, (f) 'no agreement is standard' admission from 7th HR conversation. Held pending independent review review and approval. Not sent — deliberate hold.",
+    "status": "blocked",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "4c-2",
+      "admissions",
+      "email",
+      "johan",
+      "urgent",
+      "vigilance"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-011",
+    "title": "Send separate ADHD-specific vigilance email to Johan.",
+    "description": "Send separate ADHD-specific vigilance email to Johan. Flag 'a limiting fatal flaw' and 'not fair towards you to ask you to stretch' language. Ask for confirmation this is not informing the separation assessment. Held pending independent review review and approval. Not sent — deliberate hold.",
+    "status": "blocked",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "4c-3",
+      "adhd",
+      "discrimination",
+      "email",
+      "urgent",
+      "vigilance"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-012",
+    "title": "Identify 2-4 redeployment areas / problem spaces and submit to Johan.",
+    "description": "Identify 2-4 redeployment areas / problem spaces and submit to Johan. Areas: T&S Engineering (DEFERRED), CoreX SEM (WATCHING), Staff IC Supply role. Marqia/CP paths BLOCKED.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "4c-4",
+      "active",
+      "johan",
+      "redeployment",
+      "role-identification"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-013",
+    "title": "Share Fourth HR Conversation recording and key quotes with independent legal consultation (independent review Flemstroem).",
+    "description": "Share Fourth HR Conversation recording and key quotes with independent legal consultation (independent review Flemstroem). Priority: 'fatal flaw' language, 'not performance, not redundancy' admission, refusal to document.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "4c-5",
+      "active",
+      "evidence-sharing"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-014",
+    "title": "STANDING RULE: No further financial or personal disclosure in future conversations.",
+    "description": "STANDING RULE: No further financial or personal disclosure in future conversations. Ben already disclosed 2M SEK unvested equity, current offer 'quite small', immigration/citizenship pending. Further breach in 7th HR conversation with 'I am not from Sweden' statement. Standing rule with increased urgency.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "4c-6",
+      "containment",
+      "disclosure",
+      "financial",
+      "immigration",
+      "standing"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-015",
+    "title": "Draft written clarification that 'turning the page' = professional commitment to IC role, NOT waiver of rights or pendin",
+    "description": "Draft written clarification that 'turning the page' = professional commitment to IC role, NOT waiver of rights or pending matters. MUST send before accepting formal redeployment offer. See Risk #16. MOST TIME-CRITICAL — must be sent before accepting formal IC offer. Consider weaving into Johan reply rather than standalone email. Held for independent review review but should be prioritised.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "7c-1",
+      "before-offer",
+      "immediate",
+      "time-critical",
+      "turn-the-page",
+      "waiver-risk"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-016",
+    "title": "Draft response to separation agreement withdrawal when Johan's email arrives.",
+    "description": "Draft response to separation agreement withdrawal when Johan's email arrives. Confirm: (a) withdrawal is Spotify's unilateral decision, (b) IC acceptance is not waiver of rights/pending matters, (c) separation may be reopened by either party.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "7c-2",
+      "before-offer",
+      "email",
+      "immediate",
+      "separation-withdrawal"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-017",
+    "title": "Draft vigilance email re: 'no agreement is standard' admission from 7th HR conversation.",
+    "description": "Draft vigilance email re: 'no agreement is standard' admission from 7th HR conversation. Crystallise before Johan's written terms arrive. Add as sixth admission to comprehensive vigilance email (4C-2). Held pending independent review review and approval. Not sent — deliberate hold.",
+    "status": "blocked",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "7c-3",
+      "admission",
+      "email",
+      "urgent",
+      "vigilance"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-018",
+    "title": "Update Strategic State: Track 1 (Separation) PAUSED, Track 2 (Redeployment) PRIMARY.",
+    "description": "Update Strategic State: Track 1 (Separation) PAUSED, Track 2 (Redeployment) PRIMARY. Update 10-bullet summary, strategic principles, and track status.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "7c-4",
+      "active",
+      "strategic-state",
+      "track-update"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-019",
+    "title": "Review formal redeployment offer against verbal commitments when received.",
+    "description": "Review formal redeployment offer against verbal commitments when received. Verify: salary (confirmed 'unchanged'), equity treatment (confirmed 'unchanged'), reporting line, contract type, probation conditions, success criteria, duration. Flag discrepancies.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "7c-5",
+      "ic-terms",
+      "immediate",
+      "verification",
+      "when-offer-arrives"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-020",
+    "title": "Monitor for immigration/foreign status exploitation.",
+    "description": "Monitor for immigration/foreign status exploitation. Ben's 'I am not from Sweden' disclosure creates inference risk. Monitor ALL future communications from Johan and Spotify for any reference to foreign status or personal circumstances. If referenced, document and escalate.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "7c-6",
+      "active",
+      "immigration",
+      "monitoring",
+      "ongoing"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-021",
+    "title": "Draft vigilance email re: employer-initiated separation acknowledgment.",
+    "description": "Draft vigilance email re: employer-initiated separation acknowledgment. Johan stated 'we initiated the separation termination agreement, and that of course will always be part of the history and the baggage here.' Include in 7C-2 withdrawal response email. Held pending independent review review and approval. Not sent — deliberate hold.",
+    "status": "blocked",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "7c-7",
+      "email",
+      "employer-initiated",
+      "urgent",
+      "vigilance"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-022",
+    "title": "Continue union clause review (Unionen / Helena) regardless of separation withdrawal.",
+    "description": "Continue union clause review (Unionen / Helena) regardless of separation withdrawal. CLOSED — Helena written off. Clause review responsibility shifted to independent review (independent review). See TODO-001.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "7c-8",
+      "clause-review",
+      "closed",
+      "helena",
+      "unionen"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-023",
+    "title": "Insist on objective success criteria in IC offer.",
+    "description": "Insist on objective success criteria in IC offer. Johan's 'perform at your best in the new settings' is vague. Combined with perception problems and ADHD coaching framing, could create conditions for future personliga skael termination. Require clear, objective, measurable success criteria.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "7c-9",
+      "immediate",
+      "pip-risk",
+      "success-criteria",
+      "when-offer-arrives"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-024",
+    "title": "Monitor T&S reorg progress (STANDING).",
+    "description": "Monitor T&S reorg progress (STANDING). Sarah Hoyle confirmed T&S not ready. Maintain Lex Beattie relationship as inside advocate. Reassess H2 2026. Do NOT pressure Sarah.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "am-1",
+      "lex-beattie",
+      "monitoring",
+      "sarah-hoyle",
+      "standing",
+      "t-and-s"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-025",
+    "title": "Verify formal IC offer matches verbal commitments when received.",
+    "description": "Verify formal IC offer matches verbal commitments when received. Adrian confirmed salary 'the same' but no other details. Verify: salary, equity vesting, contract type, reporting line, probation period, success criteria, duration/review date.",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "am-2",
+      "ic-terms",
+      "urgent",
+      "verification",
+      "when-offer-arrives"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-026",
+    "title": "Document UI configuration regression.",
+    "description": "Document UI configuration regression. CoCaM teams still stuck on reporting interfaces Ben solved mid-2025 (OSA/DSA, UK/AU law). Supports 'irreplaceable institutional knowledge' argument.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "evidence",
+      "institutional-knowledge",
+      "medium-priority",
+      "reporting"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-027",
+    "title": "Add 're-openable offer' concept to Helena discussion list for terms negotiation strategy.",
+    "description": "Add 're-openable offer' concept to Helena discussion list for terms negotiation strategy. CLOSED — Helena written off. Concept can be raised with independent review instead.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "closed",
+      "helena",
+      "negotiation",
+      "unionen"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-028",
+    "title": "Document 'garden leave misinformation'.",
+    "description": "Document 'garden leave misinformation'. Marqia told Ben is on garden leave (false). Evidence of narrative construction.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "evidence",
+      "marqia",
+      "medium-priority",
+      "misinformation"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-029",
+    "title": "Create financial summary Google Doc.",
+    "description": "Create financial summary Google Doc. Vesting calculations, salary projections, scenario modelling for different exit dates.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "financial",
+      "medium-priority",
+      "modelling",
+      "vesting"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-030",
+    "title": "Answer remaining calibration questions.",
+    "description": "Answer remaining calibration questions. Calibration questions answered during independent review brief sessions (2026-03-10).",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "calibration",
+      "completed"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-031",
+    "title": "Continue union clause review (Unionen / Helena).",
+    "description": "Continue union clause review (Unionen / Helena). CLOSED — Helena written off. Clause review of 2.5/3.2/3.3 shifted to independent review. Duplicate of TODO-022.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "clause-review",
+      "closed",
+      "helena",
+      "unionen"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-032",
+    "title": "When new email threads emerge (Marqia, Sarah, Adrian via email), add to Master Index EMAIL THREADS section.",
+    "description": "When new email threads emerge (Marqia, Sarah, Adrian via email), add to Master Index EMAIL THREADS section.",
+    "status": "todo",
+    "priority": "low",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "email-threads",
+      "low-priority",
+      "maintenance",
+      "master-index"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-033",
+    "title": "Draft March 4 email to Johan.",
+    "description": "Draft March 4 email to Johan. Apply counter-pressure: characterise HR failures (zero roles surfaced, zero iteration on terms, zero engagement), signal no rush, reference leadership's decision not Ben's, challenge single-role framing. Tone: Collaborative Realism with harder edges.",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "counter-pressure",
+      "email",
+      "johan",
+      "s4-1",
+      "urgent"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-034",
+    "title": "Prepare for Thursday private consultation with independent review Flemstroem.",
+    "description": "Prepare for Thursday private consultation with independent review Flemstroem. Compile: timeline, key documents (Employment Agreement, Proposed Termination, HR email exchange, 7th HR transcript), evidence inventory (6 contradictions, 5 admissions, pressure pattern). Key questions: formal redeployment, declining ramifications, Australia vulnerability, when to go hardline, comp review exclusion.",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "consultation-prep",
+      "s4-2",
+      "urgent"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-035",
+    "title": "Document HR zero-engagement on roles.",
+    "description": "Document HR zero-engagement on roles. Evidence: HR has surfaced ZERO roles across 4 conversations and 12+ emails. All role identification from Ben and Adrian. No job postings shared, no matching exercise conducted.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "evidence",
+      "high-priority",
+      "hr-failure",
+      "s4-3",
+      "zero-engagement"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-036",
+    "title": "Research available SEM/PPM roles + promotion cycle opportunities.",
+    "description": "Research available SEM/PPM roles + promotion cycle opportunities. Identify 3 SEM roles and PPM role. Each promotion business case = redeployment opportunity under LAS. Document that these are being suppressed or ignored by HR.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "high-priority",
+      "promotion-cycle",
+      "redeployment",
+      "research",
+      "roles",
+      "s4-4"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-037",
+    "title": "Build delay narrative timeline.",
+    "description": "Build delay narrative timeline. Jan 26 separation notification -> HR non-engagement -> Adrian told not to engage -> Adrian involved own initiative ~late Feb -> zero roles from HR -> zero iteration on terms -> all pressure on Ben -> March 3 Johan pressure meeting. Establishes delay is HR's fault.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "delay-timeline",
+      "evidence",
+      "high-priority",
+      "narrative",
+      "s4-5"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-038",
+    "title": "Locate and cross-reference Adrian's admission re: told not to engage.",
+    "description": "Locate and cross-reference Adrian's admission re: told not to engage. Captured in existing transcripts. Corroborated by Marqia (verbal, confidential). Locate exact quote. Assess deployment — powerful evidence but sourcing is confidential verbal.",
+    "status": "todo",
+    "priority": "high",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "adrian",
+      "cross-reference",
+      "evidence",
+      "high-priority",
+      "isolation",
+      "s4-6"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-039",
+    "title": "Assess Unionen escalation viability.",
+    "description": "Assess Unionen escalation viability. Helena and local reps written off. Two remaining paths: (1) Union ombudsman — contact details obtained, Ben to reach out w/c 2026-03-09 to gauge interest in supporting or following up; (2) Central representation — request process available (recent email). Formal case creation remains reserve option.",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "central-representation",
+      "escalation",
+      "ombudsman",
+      "s4-7",
+      "unionen",
+      "urgent"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-040",
+    "title": "Australia contingency plan.",
+    "description": "Australia contingency plan. Establish before departure: no decisions required during travel, Ben remains available via email, acknowledge formal offers in writing before leaving, absence != disengagement.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "australia",
+      "contingency",
+      "medium-priority",
+      "s4-8",
+      "travel"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-041",
+    "title": "Counter Johan's 'not negotiating' frame.",
+    "description": "Counter Johan's 'not negotiating' frame. Johan said Ben hasn't been negotiating because he never gave a number. Counter-narrative: HR provided nothing TO negotiate. Prepare talking points.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "counter-narrative",
+      "medium-priority",
+      "negotiation",
+      "s4-9",
+      "talking-points"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-042",
+    "title": "Confirm inclusion in March compensation review.",
+    "description": "Confirm inclusion in March compensation review. Nomination window: March 2-20 (CLOSING SOON). Ben NOT officially included or excluded — in limbo. Adrian on leave until March 16 — who nominates Ben? Only 4 working days between Adrian's return and window close. If excluded, document as differential treatment. Any IC contract acceptance MUST account for comp review outcomes, especially equity allocation (salary adjustment + equity top-up).",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "cal-q4",
+      "compensation",
+      "differential-treatment",
+      "equity",
+      "march-review",
+      "s4-10",
+      "time-critical",
+      "urgent"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-043",
+    "title": "Build and deploy Master Index Maintenance Protocol.",
+    "description": "Build and deploy Master Index Maintenance Protocol.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "maintenance",
+      "master-index"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-044",
+    "title": "Upload Master Index to Drive.",
+    "description": "Upload Master Index to Drive.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "drive",
+      "master-index"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-045",
+    "title": "Process Adrian 16 Feb transcript.",
+    "description": "Process Adrian 16 Feb transcript.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "adrian",
+      "completed",
+      "transcript"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-046",
+    "title": "Extract Helena clause positions + Johan responses.",
+    "description": "Extract Helena clause positions + Johan responses.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "clause-review",
+      "completed",
+      "helena"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-047",
+    "title": "Restructure folders (Individual Conversations, In Progress, Adrian subfolder).",
+    "description": "Restructure folders (Individual Conversations, In Progress, Adrian subfolder).",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "folders",
+      "restructure"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-048",
+    "title": "Full Drive audit completed.",
+    "description": "Full Drive audit completed.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "audit",
+      "completed",
+      "drive"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-049",
+    "title": "Drive cleanup plan created.",
+    "description": "Drive cleanup plan created.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "cleanup",
+      "completed",
+      "drive"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-050",
+    "title": "Integrate live Gmail threads into Index and SKILL.md (HR thread + Union thread).",
+    "description": "Integrate live Gmail threads into Index and SKILL.md (HR thread + Union thread).",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "gmail",
+      "integration"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-051",
+    "title": "Process Adrian 19 Feb conversation.",
+    "description": "Process Adrian 19 Feb conversation. Summary + Transcript in Adrian subfolder. Risk Register updated (#7-#9).",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "adrian",
+      "completed",
+      "transcript"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-052",
+    "title": "Update Risk Register with entries #10 (scope doc not valid offer) and #11 (Johan pre-sportlov pressure).",
+    "description": "Update Risk Register with entries #10 (scope doc not valid offer) and #11 (Johan pre-sportlov pressure).",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "risk-register",
+      "update"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-053",
+    "title": "Slim down Claude Project files — SKILL.md + 3 auto-syncing Docs.",
+    "description": "Slim down Claude Project files — SKILL.md + 3 auto-syncing Docs.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "cleanup",
+      "completed",
+      "project-files"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-054",
+    "title": "Create Marqia subfolder under Individual Conversations.",
+    "description": "Create Marqia subfolder under Individual Conversations.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "folders",
+      "marqia"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-055",
+    "title": "Update Personal Context doc (19 Feb — Track 1/2 status, Marqia as Structural Obstacle, Nico neutral, reports reassignmen",
+    "description": "Update Personal Context doc (19 Feb — Track 1/2 status, Marqia as Structural Obstacle, Nico neutral, reports reassignment, 4 new evidence bullets).",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "personal-context",
+      "update"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-056",
+    "title": "Context Architecture — Migration Plan created (22 Feb).",
+    "description": "Context Architecture — Migration Plan created (22 Feb).",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "architecture",
+      "completed",
+      "migration"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-057",
+    "title": "Phase 1 extraction: Strategic State, Session Log, TODO Register created (22 Feb).",
+    "description": "Phase 1 extraction: Strategic State, Session Log, TODO Register created (22 Feb).",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "extraction",
+      "phase-1"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-058",
+    "title": "Process Adrian 23 Feb conversation.",
+    "description": "Process Adrian 23 Feb conversation. Summary + Transcript in Adrian subfolder. Johan escalation, T&S priority, strategic disclosure documented.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "adrian",
+      "completed",
+      "transcript"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-059",
+    "title": "Called Unionen (24 Feb) — confirmed discrimination assessment, learned Case requirement for further support.",
+    "description": "Called Unionen (24 Feb) — confirmed discrimination assessment, learned Case requirement for further support.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "discrimination",
+      "unionen"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-060",
+    "title": "Ben replied to Johan (23 Feb) — corrected 'agreed to a number' misrepresentation, requested full IC terms, got role rest",
+    "description": "Ben replied to Johan (23 Feb) — corrected 'agreed to a number' misrepresentation, requested full IC terms, got role restriction on record.",
+    "status": "done",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": "2026-03-09T00:00:00Z",
+    "tags": [
+      "completed",
+      "correction",
+      "email",
+      "johan"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-061",
+    "title": "Send brief and case details to independent review (independent review).",
+    "description": "Send brief and case details to independent review (independent review). PRIORITY action — independent review cannot proceed without it. Include: timeline, key documents, evidence inventory, clause analysis (2.5/3.2/3.3), strategic questions. Build on existing legal brief (TODO-007 completed).",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "brief",
+      "cal-q2",
+      "high-priority",
+      "urgent"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-062",
+    "title": "Reach out to union ombudsman this week (w/c 2026-03-09).",
+    "description": "Reach out to union ombudsman this week (w/c 2026-03-09). Contact details obtained. Gauge interest in supporting or following up on Ben's situation. Separate from Helena/local rep track which is dead.",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "cal-q2",
+      "ombudsman",
+      "outreach",
+      "unionen",
+      "urgent"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-063",
+    "title": "Request central union representation.",
+    "description": "Request central union representation. Email received about the process. Formal escalation option separate from local rep engagement.",
+    "status": "todo",
+    "priority": "medium",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "cal-q2",
+      "central-representation",
+      "medium-priority",
+      "unionen"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
+  },
+  {
+    "id": "TODO-064",
+    "title": "Ensure comp review equity allocation is included in new IC contract terms.",
+    "description": "Ensure comp review equity allocation is included in new IC contract terms. Ben must not accept IC offer without comp review outcomes (salary adjustment + equity top-up) being reflected. Nomination window closes March 20 — if excluded by default due to limbo status, document as differential treatment. Adrian returns March 16, leaving 4 working days for nomination.",
+    "status": "todo",
+    "priority": "critical",
+    "ownerId": "stakeholder-ben-purslow",
+    "createdDate": "2026-03-09T00:00:00Z",
+    "dueDate": null,
+    "completedDate": null,
+    "tags": [
+      "cal-q4",
+      "compensation",
+      "equity",
+      "ic-contract",
+      "time-critical",
+      "urgent"
+    ],
+    "sourceEntityId": null,
+    "sourceEntityType": null
   }
 ]

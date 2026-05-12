@@ -131,13 +131,13 @@ The decision: provenance metadata belongs to the producer's audit trail (who/whe
 
 ## 5. Tracked dataset stability (`data/severance/`)
 
-`data/severance/` is a **frozen demo snapshot at `dataVersion: "1.0.0"`**, deliberately decoupled from the producer's current output. It is the public-facing dataset that ships to GitHub Pages for discoverability; pinning it gives the demo a stable URL surface and removes the dataset from the blast radius of every producer change.
+`data/severance/` is a **tracked snapshot at `dataVersion: "1.1.0"`** — currently aligned with the schemas, but deliberately decoupled so it doesn't churn with every producer bump. It is the public-facing dataset that ships to GitHub Pages for discoverability; treating it as a snapshot (not a continuous mirror of `data/local/`) gives the demo a stable URL surface and keeps the dataset out of the blast radius of in-flight producer changes.
 
-By contrast, `data/local/` (gitignored) tracks whatever the atticus-finch exporter last wrote — including the `1.1.0` dual-emit removal — and is the working copy used during development. `scripts/sync-severance.sh` is the **only** supported path from one to the other, and running it is a deliberate publish act, not an automatic side-effect of running the exporter.
+By contrast, `data/local/` (gitignored) tracks whatever the atticus-finch exporter last wrote and is the working copy used during development. `scripts/sync-severance.sh` is the **only** supported path from one to the other, and running it is a deliberate publish act, not an automatic side-effect of running the exporter.
 
 ### Consequence
 
-The schema audit doc above (`docs/schemas.md`, the section you're reading) describes the **schemas the loaders validate against**, which is the latest version of every shape. `data/severance/` may therefore look *behind* the docs at any given moment — that is by design, not drift. The drift checks in `src/lib/invariants.ts` still run against whichever dataset is loaded, so `data/severance/` is internally consistent at `1.0.0`; it just isn't trying to catch up to `1.1.0`.
+The schema audit doc above (`docs/schemas.md`, the section you're reading) describes the **schemas the loaders validate against**, which is the latest version of every shape. `data/severance/` may at times lag behind the docs — that is by design, not drift. The drift checks in `src/lib/invariants.ts` still run against whichever dataset is loaded, so `data/severance/` is always internally consistent at whatever `dataVersion` it currently carries; it just isn't required to track the docs in lock-step.
 
 ### When to re-export
 
@@ -155,10 +155,12 @@ Reasons that do **not** justify a re-export:
 
 If a re-export is warranted, the workflow is cross-repo (adjust paths to your local checkout):
 
-1. `cd path/to/atticus-finch && python scripts/export_mockingbird.py --target severance --out path/to/mockingbird/data/severance/`
-2. Verify `jq '.dataVersion' data/severance/session.json` returns the expected new version.
-3. Commit in mockingbird with a clear message; QA at least one severance route before pushing.
-4. Update the `dataVersion` reference in this section.
+1. `cd path/to/atticus-finch && python scripts/export_mockingbird.py --full` — the exporter writes its canonical output under `<atticus-root>/export/mockingbird/` and **automatically syncs** the result into `<mockingbird-root>/data/local/`. There is no `--target` / `--out` flag for severance; the sync is built-in.
+2. `cd path/to/mockingbird && ./scripts/sync-severance.sh` — diffs `data/local/` against `data/severance/` and prompts before overwriting. Use `--apply` for non-interactive.
+3. Verify: `jq '.dataVersion' data/severance/session.json` returns the expected new version.
+4. Build: `GITHUB_PAGES=true npm run build` succeeds and prerenders the `/severance/*` routes.
+5. Commit in mockingbird with a clear message; QA at least one severance route before pushing.
+6. Update the `dataVersion` reference in this section.
 
 Do **not** hand-edit JSON in `data/severance/` to match what you wish the producer output looked like. Always go through the export script — see `AGENTS.md` "Handling drift output" for why consumer-side patches mask producer bugs.
 

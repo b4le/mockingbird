@@ -3,175 +3,175 @@
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-001",
     "content_hash": "59f9e84caad79813",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-002": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-002",
     "content_hash": "f2f19dd37e95ce47",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-003": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-003",
     "content_hash": "5a0972be6c7f5cb7",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-004": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-004",
     "content_hash": "72608a4b8810e0c1",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-005": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-005",
     "content_hash": "c21f310109b7f073",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-006": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-006",
     "content_hash": "7d73c60070e7068d",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-007": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-007",
     "content_hash": "99c172d056d14aad",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-008": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-008",
     "content_hash": "e81e4d12a324a34f",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-009": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-009",
     "content_hash": "c8b29a1ae42cf553",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-010": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-010",
     "content_hash": "60ecd8234a8590e7",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-011": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-011",
     "content_hash": "20377bc4a7b65278",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-012": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-012",
     "content_hash": "d560017018f3fb3c",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-013": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-013",
     "content_hash": "3fb3f7841ff44674",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-014": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-014",
     "content_hash": "3b05955a6024a085",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-015": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-015",
     "content_hash": "327efc1e9bdd3619",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-016": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-016",
     "content_hash": "f494bb5de7faa7e8",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-017": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-017",
     "content_hash": "f30a7904d6b669d3",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-018": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-018",
     "content_hash": "9fedd3159275e070",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-019": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-019",
     "content_hash": "06cc5ec2d5957e34",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-020": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-020",
     "content_hash": "4213f3bc2c49912f",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-021": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-021",
     "content_hash": "98ed678113744163",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-022": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-022",
     "content_hash": "0c3eb7f2d9376684",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-023": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-023",
     "content_hash": "ed42deee8ab98e94",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-024": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-024",
     "content_hash": "3a9cfec0a32ee1ea",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   },
   "risk-RISK-025": {
     "source_file": "sources/risks/risk-matrix.md",
     "source_section": "yaml:RISK-025",
     "content_hash": "944c33b59f213e88",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:31Z",
     "parser": "parse_risks"
   }
 }

@@ -3,98 +3,112 @@
     "source_file": "sources/transcripts/hr/first-hr-conversation-transcript.md",
     "source_section": "transcript:transcript-12481391-8c86-4e03-8177-1e8c2c63b88c",
     "content_hash": "1c4babdb3d609fe6",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:34Z",
     "parser": "parse_transcripts"
   },
   "transcript-e5c29cb0-ef5d-4eb0-9a81-3b69564d99dc": {
     "source_file": "sources/transcripts/union/unionen-initial-2026-01-27-transcript.md",
     "source_section": "transcript:transcript-e5c29cb0-ef5d-4eb0-9a81-3b69564d99dc",
     "content_hash": "18a7d1902a90b929",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:36Z",
     "parser": "parse_transcripts"
   },
   "transcript-89dd08ff-6acc-4b0b-99dc-be6808e2e2b6": {
     "source_file": "sources/transcripts/hr/second-hr-conversation-transcript.md",
     "source_section": "transcript:transcript-89dd08ff-6acc-4b0b-99dc-be6808e2e2b6",
     "content_hash": "895437e99cd3dd74",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:35Z",
     "parser": "parse_transcripts"
   },
   "transcript-ec7870a8-ec94-4713-ad5a-8101392e06a4": {
     "source_file": "sources/transcripts/hr/third-hr-conversation-transcript.md",
     "source_section": "transcript:transcript-ec7870a8-ec94-4713-ad5a-8101392e06a4",
     "content_hash": "e6475b6d4f578d6b",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:36Z",
     "parser": "parse_transcripts"
   },
   "transcript-95b4a0e2-9d1f-4ec9-bf64-98fc6a2a9161": {
     "source_file": "sources/transcripts/hr/fourth-hr-conversation-transcript.md",
     "source_section": "transcript:transcript-95b4a0e2-9d1f-4ec9-bf64-98fc6a2a9161",
     "content_hash": "7043bc84f062b34e",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:35Z",
     "parser": "parse_transcripts"
   },
   "transcript-e99130a7-3b7b-44f7-b118-f367c44dca0d": {
     "source_file": "sources/transcripts/hr/fifth-hr-conversation-transcript.md",
     "source_section": "transcript:transcript-e99130a7-3b7b-44f7-b118-f367c44dca0d",
     "content_hash": "26cd7b9da4e3d780",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:34Z",
     "parser": "parse_transcripts"
   },
   "transcript-9e0f0eb9-f788-4a63-b2a4-31eee786b938": {
     "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-02-16-transcript.md",
     "source_section": "transcript:transcript-9e0f0eb9-f788-4a63-b2a4-31eee786b938",
     "content_hash": "263bac7ba9d3d38f",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:33Z",
     "parser": "parse_transcripts"
   },
   "transcript-b63958f8-1ce8-4407-b1e7-51ac94fd3193": {
     "source_file": "sources/transcripts/marqia/marqia-and-ben-2026-02-18-transcript.md",
     "source_section": "transcript:transcript-b63958f8-1ce8-4407-b1e7-51ac94fd3193",
     "content_hash": "1459385c5e57307b",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:36Z",
     "parser": "parse_transcripts"
   },
   "transcript-5ddaf74b-eb34-4a3a-bdc9-028cef07dfca": {
     "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-02-19-transcript.md",
     "source_section": "transcript:transcript-5ddaf74b-eb34-4a3a-bdc9-028cef07dfca",
     "content_hash": "8bdc25cee09048a8",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:33Z",
     "parser": "parse_transcripts"
   },
   "transcript-9e561370-9109-4a79-998e-8b62d512cbcc": {
     "source_file": "sources/transcripts/hr/sixth-hr-conversation-transcript.md",
     "source_section": "transcript:transcript-9e561370-9109-4a79-998e-8b62d512cbcc",
     "content_hash": "4a31093e14bc7284",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:36Z",
     "parser": "parse_transcripts"
   },
   "transcript-d7e99022-4c21-4fef-943c-58e7a4949202": {
     "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-02-20-transcript.md",
     "source_section": "transcript:transcript-d7e99022-4c21-4fef-943c-58e7a4949202",
     "content_hash": "1a52446ce4013fd9",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:33Z",
     "parser": "parse_transcripts"
   },
   "transcript-cff4fd64-6a69-4b80-8079-7917bfb95311": {
     "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-02-23-transcript.md",
     "source_section": "transcript:transcript-cff4fd64-6a69-4b80-8079-7917bfb95311",
     "content_hash": "876607c4a1767ed2",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:33Z",
     "parser": "parse_transcripts"
   },
   "transcript-bb22e705-b2bb-4137-a26c-c8603cc07886": {
     "source_file": "sources/transcripts/hr/seventh-hr-conversation-transcript.md",
     "source_section": "transcript:transcript-bb22e705-b2bb-4137-a26c-c8603cc07886",
     "content_hash": "925d61a885c76f89",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:35Z",
     "parser": "parse_transcripts"
   },
   "transcript-80035cfc-9ebb-4fd0-b3df-826b290e3c2b": {
     "source_file": "sources/transcripts/adrian/adrian-and-ben-2026-03-25-transcript.md",
     "source_section": "transcript:transcript-80035cfc-9ebb-4fd0-b3df-826b290e3c2b",
     "content_hash": "17acd612ae5bab58",
-    "extracted_at": "2026-05-07T14:30:47Z",
+    "extracted_at": "2026-05-11T21:56:33Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-66947427-fe19-4f4f-8835-82664f0b5be3": {
+    "source_file": "sources/transcripts/hr/eighth-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-66947427-fe19-4f4f-8835-82664f0b5be3",
+    "content_hash": "a6317abfadb691e0",
+    "extracted_at": "2026-05-11T21:56:34Z",
+    "parser": "parse_transcripts"
+  },
+  "transcript-ce680e77-8629-4bd0-9df2-38797afbc50a": {
+    "source_file": "sources/transcripts/hr/ninth-hr-conversation-transcript.md",
+    "source_section": "transcript:transcript-ce680e77-8629-4bd0-9df2-38797afbc50a",
+    "content_hash": "4dc6a1d2d1549b95",
+    "extracted_at": "2026-05-11T21:56:35Z",
     "parser": "parse_transcripts"
   }
 }

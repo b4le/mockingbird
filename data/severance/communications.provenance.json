@@ -3,77 +3,119 @@
     "source_file": "local-state/emails/spotify-hr/2026-01-26-ebba-proposed-mutual-separation-agreement.md",
     "source_section": "email:19bfa273eca78c37",
     "content_hash": "7bad6a9192c5d9e2",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
     "parser": "parse_communications"
   },
   "email-spotify-hr-local-2026-02-05-johan-confidential-next-steps": {
     "source_file": "local-state/emails/spotify-hr/2026-02-05-johan-confidential-regarding-our-discussion-and-next-steps.md",
     "source_section": "email:local-2026-02-05-johan-confidential-next-steps",
     "content_hash": "04628440a75d3192",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
     "parser": "parse_communications"
   },
   "email-union-unionen-19c6bac92712ede7": {
     "source_file": "local-state/emails/union-unionen/2026-02-17-ben-jose-manuel-or-helena-borg-jodelsohn.md",
     "source_section": "email:19c6bad57ee45b81",
     "content_hash": "4fd1c25e088b1b58",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:33Z",
     "parser": "parse_communications"
   },
   "email-legal-privileged-19cb3626889619a2": {
     "source_file": "local-state/emails/legal-counsel-sten/2026-03-03-ben-referral-from-asa-gotthardsson-employment.md",
     "source_section": "email:19cb365f2cfd3669",
     "content_hash": "3e0d465e6332c48f",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
     "parser": "parse_communications"
   },
   "email-legal-privileged-19cdd3a1fc1e4006": {
     "source_file": "local-state/emails/legal-counsel-sten/2026-03-11-ben-ben-purslow-situation-brief-and.md",
     "source_section": "email:19cdd4b946937c42",
     "content_hash": "24d0898209eba86d",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
     "parser": "parse_communications"
   },
   "email-legal-privileged-19cdd4cfbefdd2d0": {
     "source_file": "local-state/emails/legal-counsel-sten/2026-03-11-sten-autosvar-ben-purslow-situation-brief.md",
     "source_section": "email:19cdd4cfbefdd2d0",
     "content_hash": "53bc8d038e2d6c8e",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
     "parser": "parse_communications"
   },
   "email-amendment-19cfb5c675bae6f7": {
     "source_file": "local-state/emails/amendment/2026-03-17-ben-re-personal-and-confidential-amendment.md",
     "source_section": "email:19cfb5c675bae6f7",
     "content_hash": "4c857cc149f2da84",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
     "parser": "parse_communications"
   },
   "email-legal-privileged-19cfb99254816c9c": {
     "source_file": "local-state/emails/legal-counsel-sten/2026-03-17-sten-sligt-delay.md",
     "source_section": "email:19cfb99254816c9c",
     "content_hash": "9cc7cd1d4954fa24",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
     "parser": "parse_communications"
   },
   "email-legal-privileged-19cfc5c0b6627e38": {
     "source_file": "local-state/emails/legal-counsel-sten/2026-03-17-sten-engagement-letter.md",
     "source_section": "email:19cfc5c0b6627e38",
     "content_hash": "e212f956655b2408",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
     "parser": "parse_communications"
   },
   "email-union-unionen-19d2b29a9ca188c6": {
     "source_file": "local-state/emails/union-unionen/2026-03-26-ben-member-query-potential-disability-discrimination.md",
     "source_section": "email:19d2b29a9ca188c6",
     "content_hash": "6893edbf2ce017c8",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:33Z",
     "parser": "parse_communications"
   },
   "email-legal-privileged-19d3cb038377d4fa": {
     "source_file": "local-state/emails/legal-counsel-sten/2026-03-30-ben-formal-consultation-next-steps.md",
     "source_section": "email:19d3cb038377d4fa",
     "content_hash": "262c74e41b0a3c6b",
-    "extracted_at": "2026-05-07T14:30:46Z",
+    "extracted_at": "2026-05-11T21:56:32Z",
+    "parser": "parse_communications"
+  },
+  "email-union-unionen-19d3caf81d8afb8c": {
+    "source_file": "local-state/emails/union-unionen/2026-03-30-ben-unionen-chef-formal-consultation-chefsombudsman.md",
+    "source_section": "email:19d3caf81d8afb8c-m1",
+    "content_hash": "7d47eba481429283",
+    "extracted_at": "2026-05-11T21:56:33Z",
+    "parser": "parse_communications"
+  },
+  "email-union-unionen-19dfc39c8ba9de1a": {
+    "source_file": "local-state/emails/union-unionen/2026-05-06-peter-follow-up-on-bens-case.md",
+    "source_section": "email:19dfc39c8ba9de1a-m1",
+    "content_hash": "e3473ead28102393",
+    "extracted_at": "2026-05-11T21:56:33Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19dfd41bd6e38c22": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-05-06-ben-spotify-offer-tue-12-may-deadline.md",
+    "source_section": "email:19dfd41bd6e38c22-m1",
+    "content_hash": "948b12e1e4349acb",
+    "extracted_at": "2026-05-11T21:56:32Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19e01ea533809f60": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-05-07-sten-sv-document-shared-redeployment-context.md",
+    "source_section": "email:19e01ea533809f60-m1",
+    "content_hash": "97ca4824c7a7d6fd",
+    "extracted_at": "2026-05-11T21:56:32Z",
+    "parser": "parse_communications"
+  },
+  "email-legal-privileged-19e01eac818fceb8": {
+    "source_file": "local-state/emails/legal-counsel-sten/2026-05-07-sten-meeting.md",
+    "source_section": "email:19e01eac818fceb8-m1",
+    "content_hash": "f7bd2548e850627e",
+    "extracted_at": "2026-05-11T21:56:32Z",
+    "parser": "parse_communications"
+  },
+  "email-spotify-hr-19e1674d5c70b6be": {
+    "source_file": "local-state/emails/spotify-hr/2026-05-11-ben-notes-from-last-thursday-ahead-of-this-afternoon.md",
+    "source_section": "email:19e1674d5c70b6be-m1",
+    "content_hash": "4ddf8440cb75e2f0",
+    "extracted_at": "2026-05-11T21:56:33Z",
     "parser": "parse_communications"
   }
 }

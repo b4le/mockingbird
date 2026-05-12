@@ -389,19 +389,6 @@
     "linkedEntityType": null
   },
   {
-    "id": "timeline-2026-03-11-c48a00",
-    "date": "2026-03-11T00:00:00Z",
-    "type": "conversation",
-    "title": "Signal Messages -- Peter Toth (Local Unionen Club Chair)",
-    "description": "Accuracy: All messages copied verbatim from Signal Desktop. Truncated messages marked with `*[Read more]*` as they appear in the source. Edits captured with `(edited)` marker only — pre-edit text not ",
-    "stakeholderIds": [
-      "stakeholder-ben-purslow",
-      "stakeholder-peter-toth"
-    ],
-    "linkedEntityId": "conversation-7ab78d23-8e10-490c-8371-099cc7840888",
-    "linkedEntityType": "conversation"
-  },
-  {
     "id": "timeline-2026-03-25-b3f4fd",
     "date": "2026-03-25T00:00:00Z",
     "type": "conversation",
@@ -425,6 +412,19 @@
     "linkedEntityType": null
   },
   {
+    "id": "timeline-2026-04-13-23e61d",
+    "date": "2026-04-13T00:00:00Z",
+    "type": "conversation",
+    "title": "Summary: Union Call with Stina (Ombudsman)",
+    "description": "- notes from call with Stina (ombudsman at Unionen)\nThe timing\nThey have a right to do this while Ben is on vacation. Even if they could have handled the process in a more considerate way.\nThey cannot",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-stina"
+    ],
+    "linkedEntityId": "conversation-08036a6a-8fe3-4130-8ffc-d40b610e2572",
+    "linkedEntityType": "conversation"
+  },
+  {
     "id": "timeline-2026-04-28-c90cc1",
     "date": "2026-04-28T00:00:00Z",
     "type": "milestone",
@@ -433,19 +433,6 @@
     "stakeholderIds": [],
     "linkedEntityId": null,
     "linkedEntityType": null
-  },
-  {
-    "id": "timeline-2026-04-29-86d912",
-    "date": "2026-04-29T00:00:00Z",
-    "type": "conversation",
-    "title": "Analysis -- Peter Toth Signal Conversation (Local Unionen)",
-    "description": "Signal messages between Ben and Peter Tóth (local Unionen club board member at Spotify), 11 Mar – 29 Apr 2026. Covers: ombudsman request process, evidence sharing, discrimination case pathway, MBL for",
-    "stakeholderIds": [
-      "stakeholder-ben-purslow",
-      "stakeholder-peter-toth"
-    ],
-    "linkedEntityId": "conversation-e06bf47b-8038-46a3-be0f-8c94c0dc030d",
-    "linkedEntityType": "conversation"
   },
   {
     "id": "timeline-2026-05-07-591af1",
@@ -458,6 +445,19 @@
       "stakeholder-ebba"
     ],
     "linkedEntityId": "conversation-9d4f7a2e-1c83-4f6b-8e1a-72e5b9d8c401",
+    "linkedEntityType": "conversation"
+  },
+  {
+    "id": "timeline-2026-05-11-aef912",
+    "date": "2026-05-11T00:00:00Z",
+    "type": "conversation",
+    "title": "Ninth HR Conversation — Ebba Pivots to 'Business Decision, Not HR'; ADHD-Feedback Link Re-Litigated; Five Asks Largely N",
+    "description": "The ninth HR conversation was the committed follow-up from the Eighth (2026-05-07), scheduled into the operational window before the redeployment-offer deadline (~14 May). It ran ~34 minutes, was open",
+    "stakeholderIds": [
+      "stakeholder-ben-purslow",
+      "stakeholder-ebba"
+    ],
+    "linkedEntityId": "conversation-9966786b-4a3d-4f49-8bc0-543d69ef6cbd",
     "linkedEntityType": "conversation"
   },
   {
