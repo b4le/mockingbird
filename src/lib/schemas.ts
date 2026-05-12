@@ -366,6 +366,13 @@ export const AudioReferenceSchema = z
     // stays required-string while accepting the absent-recording case.
     viewUrl: HttpsUrlSchema,
     previewUrl: HttpsUrlSchema,
+    // Direct, browser-playable audio URL (e.g. GCS object emitted by
+    // scripts/migrate_audio_to_gcs.py). Optional — the migration is
+    // incremental; entries without `streamUrl` degrade to a link-only
+    // render. Same https://-only hardening as viewUrl/previewUrl: bare
+    // z.string().url() would accept `javascript:` / `data:` schemes
+    // which would be XSS sinks if ever rendered into href.
+    streamUrl: HttpsUrlSchema.optional(),
     sizeBytes: z.number().int().nonnegative().nullable(),
     durationSeconds: z.number().int().nonnegative().nullable(),
     status: AudioReferenceStatusSchema.optional(),

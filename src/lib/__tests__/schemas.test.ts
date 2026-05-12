@@ -347,6 +347,60 @@ describe("AudioReferenceSchema", () => {
   });
 });
 
+// ---------------------------------------------------------------------------
+// AudioReferenceSchema.streamUrl — direct GCS audio URL (post-migration)
+// ---------------------------------------------------------------------------
+//
+// `streamUrl` is the browser-playable audio URL emitted by
+// `scripts/migrate_audio_to_gcs.py`. It is OPTIONAL because the migration
+// is incremental (not every Drive entry has been mirrored yet) and the
+// UI must degrade gracefully when it is absent. Same `https://`-only
+// hardening as `viewUrl`/`previewUrl` — defence against `javascript:` /
+// `data:` schemes that would be XSS sinks if rendered into `<a href>`.
+// ---------------------------------------------------------------------------
+
+describe("AudioReferenceSchema.streamUrl", () => {
+  const completeRef = {
+    driveId: "10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS",
+    filename: "Adrian + Ben 11th Feb.m4a",
+    driveFolderId: "1Q4wFg7jZTdNty03u2GJL54FZxfsdPE0m",
+    mimeType: "audio/x-m4a",
+    viewUrl:
+      "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view",
+    previewUrl:
+      "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+    sizeBytes: 53896450,
+    durationSeconds: null,
+  };
+
+  it("accepts a populated streamUrl pointing at a GCS object", () => {
+    const parsed = AudioReferenceSchema.parse({
+      ...completeRef,
+      streamUrl:
+        "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/0e683774870fed98.m4a",
+    });
+    expect(parsed.streamUrl).toBe(
+      "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/0e683774870fed98.m4a",
+    );
+  });
+
+  it("accepts an omitted streamUrl (legacy / pre-migration shape)", () => {
+    const parsed = AudioReferenceSchema.parse(completeRef);
+    expect(parsed.streamUrl).toBeUndefined();
+  });
+
+  it.each([
+    "javascript:alert(1)",
+    "data:audio/mp3;base64,AAAA",
+    "file:///etc/passwd",
+    "http://example.com/audio.m4a",
+  ])("rejects non-https streamUrl scheme: %s", (badUrl) => {
+    expect(() =>
+      AudioReferenceSchema.parse({ ...completeRef, streamUrl: badUrl }),
+    ).toThrow();
+  });
+});
+
 describe("audioReference field on Conversation and Transcript", () => {
   const minimalConversation = {
     id: "conv-1",

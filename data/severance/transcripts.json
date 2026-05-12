@@ -1342,7 +1342,8 @@
       "sizeBytes": null,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "hr"
+      "stream": "hr",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/5cff6d1e6bd3cbfc.m4a"
     }
   },
   {
@@ -3061,7 +3062,8 @@
       "sizeBytes": null,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "hr"
+      "stream": "hr",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/d5d8b5eb65ff9fb0.m4a"
     }
   },
   {
@@ -5421,7 +5423,8 @@
       "sizeBytes": null,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "hr"
+      "stream": "hr",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/11c0354d1aea80d4.m4a"
     }
   },
   {
@@ -13847,7 +13850,8 @@
       "sizeBytes": null,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "hr"
+      "stream": "hr",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/daaa76bb7f86c342.m4a"
     }
   },
   {
@@ -15655,7 +15659,8 @@
       "sizeBytes": null,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "hr"
+      "stream": "hr",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/24bae1e21cf63d1d.m4a"
     }
   },
   {
@@ -15686,7 +15691,8 @@
       "sizeBytes": 36868997,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "adrian"
+      "stream": "adrian",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/27fc3d2dca4d57dc.m4a"
     }
   },
   {
@@ -15717,7 +15723,8 @@
       "sizeBytes": 41238923,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "marqia"
+      "stream": "marqia",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/598a06b738c7630b.m4a"
     }
   },
   {
@@ -15748,7 +15755,8 @@
       "sizeBytes": 41936652,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "adrian"
+      "stream": "adrian",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/7d0e5ac3ef99c455.m4a"
     }
   },
   {
@@ -18042,7 +18050,8 @@
       "sizeBytes": null,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "hr"
+      "stream": "hr",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/cb7dd33ef91e34b7.m4a"
     }
   },
   {
@@ -18073,7 +18082,8 @@
       "sizeBytes": 28076942,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "adrian"
+      "stream": "adrian",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/a4842efe5828047f.m4a"
     }
   },
   {
@@ -18104,7 +18114,8 @@
       "sizeBytes": 33898095,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "adrian"
+      "stream": "adrian",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/9668421db7c7ec1d.m4a"
     }
   },
   {
@@ -19612,7 +19623,8 @@
       "sizeBytes": null,
       "durationSeconds": null,
       "status": "complete",
-      "stream": "hr"
+      "stream": "hr",
+      "streamUrl": "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/c2cd33b622e4dbf2.m4a"
     }
   },
   {

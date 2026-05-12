@@ -34,13 +34,19 @@ import type { AudioReference, AudioReferenceStatus } from "@/types";
  * Layout (`full`):
  *   1. Optional pending-state badge (rendered only when `status` is set
  *      and not `"complete"`).
- *   2. Native HTML5 `<audio>` element pointing at `previewUrl` (skipped
- *      for `pending-audio-upload` because both URLs are empty by
- *      contract — see spec §5).
+ *   2. Native HTML5 `<audio>` element pointing at `streamUrl`. Skipped
+ *      entirely when `streamUrl` is absent (the legacy / pre-migration
+ *      shape) — `previewUrl` is Drive's iframe-embed URL and returns
+ *      HTML, not audio bytes, so it must NOT be used for playback.
  *   3. "Open in Drive" link pointing at `viewUrl` as the secondary
  *      affordance, elevated to primary when the audio element fails
- *      (auth or network — Drive returns 403 for signed-out users; see
- *      spec §5 auth note).
+ *      (auth or network — GCS / Drive may return 403; see spec §5) or
+ *      when no `streamUrl` exists at all.
+ *   4. Inline error banner — when `<audio>` fires its `error` event
+ *      (e.g. 403, network drop, unsupported codec), the audio element
+ *      is hidden and a banner appears in its place, advertising the
+ *      "Open in Drive" link as the recovery path. The banner replaces
+ *      the silent unmount the component used to do.
  *
  * Spec: `docs/mockingbird-zod-audio-reference-spec.md` §5.
  */
@@ -71,8 +77,10 @@ export function AudioReferencePlayer({
   className,
 }: AudioReferencePlayerProps) {
   // One boolean — flips when the <audio> element fires `onError` (e.g.
-  // Drive returns 403 because the user isn't signed in). Spec §5 says
-  // to fall back to the view link in that case.
+  // GCS / Drive returns 403 because the user isn't signed in). Spec §5
+  // says to fall back to the view link in that case. We surface the
+  // failure as a visible inline banner (see body) rather than a silent
+  // unmount so users understand why the controls disappeared.
   const [audioFailed, setAudioFailed] = useState(false);
   // Compact variant starts collapsed; ignored when `variant === 'full'`.
   const [expanded, setExpanded] = useState(false);
@@ -119,13 +127,20 @@ export function AudioReferencePlayer({
 
   const status = audioReference.status ?? "complete";
   const showBadge = status !== "complete";
-  // Skip the player when the URL is empty (pending-audio-upload) or
-  // when the audio element has fired its error handler.
-  const showPlayer = audioReference.previewUrl !== "" && !audioFailed;
+  // The `<audio>` element is gated on a usable `streamUrl`. When the
+  // field is absent (legacy / pre-migration entries) or when the
+  // element has already fired its error handler, skip rendering the
+  // player and surface the Drive link only. `previewUrl` is NOT a
+  // valid `<audio>` source — it returns Drive's HTML iframe page.
+  const hasStreamUrl =
+    typeof audioReference.streamUrl === "string" &&
+    audioReference.streamUrl !== "";
+  const showPlayer = hasStreamUrl && !audioFailed;
   const hasViewUrl = audioReference.viewUrl !== "";
-  // When audio playback fails, the link becomes the primary affordance
-  // and gets a slightly more prominent treatment.
-  const linkIsPrimary = audioFailed;
+  // When audio playback fails (or no streamUrl is available at all),
+  // the link becomes the primary affordance and gets a slightly more
+  // prominent treatment so users notice the fallback path.
+  const linkIsPrimary = audioFailed || !hasStreamUrl;
 
   const body = (
     <div className="flex flex-col gap-2">
@@ -147,12 +162,24 @@ export function AudioReferencePlayer({
           ref={setAudioRef}
           controls
           preload="none"
-          src={audioReference.previewUrl}
+          src={audioReference.streamUrl}
           title={audioReference.filename}
           aria-label={`Recording: ${audioReference.filename}`}
           onError={() => setAudioFailed(true)}
           className="w-full"
         />
+      )}
+      {audioFailed && (
+        // Visible replacement for the previous silent unmount. Uses
+        // `role="alert"` so screen readers announce the failure when
+        // the banner enters the DOM. Copy intentionally points users
+        // at the "Open in Drive" link below as the recovery path.
+        <div
+          role="alert"
+          className="rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200"
+        >
+          Audio failed to load. Use the Open in Drive link below.
+        </div>
       )}
       {hasViewUrl && (
         <a

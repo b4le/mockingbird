@@ -30,6 +30,12 @@ const audioRef: AudioReference = {
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/view?usp=drive_link",
   previewUrl:
     "https://drive.google.com/file/d/10SFoR3TACZTsUgmoT86ZbRR5Ja20mBrS/preview",
+  // streamUrl is what the AudioReferencePlayer binds to <audio src>;
+  // present so the "player takes over" assertion below is genuinely
+  // exercising the embedded-player path (not silently falling through
+  // to the link-only branch).
+  streamUrl:
+    "https://storage.googleapis.com/mockingbird-audio-7b135254/audio/0e683774870fed98.m4a",
   sizeBytes: 53896450,
   durationSeconds: null,
   status: "complete",

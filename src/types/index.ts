@@ -158,8 +158,18 @@ export interface Stakeholder {
  * conversation's stem. Optional — not every Conversation has a recording.
  *
  * `viewUrl` opens Drive's full-page viewer in a new tab.
- * `previewUrl` is the embeddable variant (use in an <iframe> or <audio>).
- * The exporter computes both from `driveId` so the UI does not need to.
+ * `previewUrl` is Drive's iframe-embed URL — it returns an HTML page,
+ * NOT audio bytes. It is **not** a valid `<audio src>`; render it inside
+ * an `<iframe>` if you need Drive's player. For inline `<audio>` playback
+ * use `streamUrl` (populated for entries migrated to GCS).
+ *
+ * `streamUrl` (optional) is the direct, browser-playable audio URL — a
+ * GCS object emitted by `scripts/migrate_audio_to_gcs.py`. When present
+ * the UI binds it to `<audio src>`; when absent the player skips the
+ * `<audio>` element entirely and surfaces only the "Open in Drive" link.
+ * The exporter computes `viewUrl`/`previewUrl` from `driveId` so the UI
+ * does not need to; `streamUrl` is set by the migration script as a
+ * separate, optional, follow-up step.
  *
  * `sizeBytes` and `durationSeconds` are nullable — populated only when
  * the manifest carries them. Treat them as best-effort metadata.
@@ -191,6 +201,17 @@ export interface AudioReference {
   mimeType: string;
   viewUrl: string;
   previewUrl: string;
+  /**
+   * Direct, browser-playable audio URL — used by `<audio src>`.
+   * Populated by `scripts/migrate_audio_to_gcs.py` for entries that have
+   * been copied out of Drive into the project's GCS bucket. Optional
+   * because the migration is incremental: not every entry has been
+   * mirrored to GCS yet, and graceful degradation (link-only render)
+   * must still work. Semantically distinct from `stream` (editorial
+   * stream/scope categorisation) — `stream` is metadata, `streamUrl`
+   * is the technical playback URL.
+   */
+  streamUrl?: string;
   sizeBytes: number | null;
   durationSeconds: number | null;
   status?: AudioReferenceStatus;
