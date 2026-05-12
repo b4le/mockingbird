@@ -516,7 +516,7 @@ def migrate_one(
         return ManifestEntry(
             hash="<unknown-without-download>",
             ext=ext,
-            gcs_url=f"https://storage.googleapis.com/{bucket}/audio/<hash>.{ext}",
+            gcs_url=f"https://storage.googleapis.com/{bucket}/audio/dryrun-placeholder-hash.{ext}",
             size_bytes=0,
             content_type=content_type,
         )
