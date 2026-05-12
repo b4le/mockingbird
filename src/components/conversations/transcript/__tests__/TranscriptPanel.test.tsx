@@ -66,7 +66,9 @@ describe("TranscriptPanel", () => {
         speakerStakeholderMap={new Map()}
       />,
     );
-    expect(getByText(/no cues yet/i)).not.toBeNull();
+    expect(
+      getByText(/Cue-level navigation isn't available/i),
+    ).not.toBeNull();
   });
 
   it("renders the toolbar and at least one cue button when cues are present", () => {
