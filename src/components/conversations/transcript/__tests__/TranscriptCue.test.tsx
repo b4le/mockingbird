@@ -103,4 +103,62 @@ describe("TranscriptCue", () => {
     expect(nonCurrentMark?.className).toContain("yellow-200");
     expect(currentMark?.className).toContain("yellow-300");
   });
+
+  it("adds a ring to the current-match mark and not the non-current one", () => {
+    // The ring is the canonical find-in-page "this is the one" signal — see #17.
+    // It must appear only on the current match; non-current matches stay fill-only.
+    const { container: nonCurrent } = render(
+      <TranscriptCue
+        index={0}
+        text="hello world"
+        startMs={0}
+        searchRanges={[[0, 5]]}
+        isCurrentMatch={false}
+      />,
+    );
+    const { container: current } = render(
+      <TranscriptCue
+        index={1}
+        text="hello world"
+        startMs={0}
+        searchRanges={[[0, 5]]}
+        isCurrentMatch
+      />,
+    );
+    const nonCurrentMark = nonCurrent.querySelector("mark");
+    const currentMark = current.querySelector("mark");
+    expect(currentMark?.className).toContain("ring-1");
+    expect(currentMark?.className).toContain("ring-yellow-500");
+    expect(nonCurrentMark?.className).not.toContain("ring-1");
+    expect(nonCurrentMark?.className).not.toContain("ring-yellow");
+  });
+
+  it("includes dark-mode alpha overrides on both mark states", () => {
+    // Issue #17: dark-mode bg overrides keep the two states distinguishable
+    // against bg-card. Current uses dark:bg-yellow-500/40 + dark:ring-yellow-300;
+    // non-current drops to dark:bg-yellow-500/15.
+    const { container: nonCurrent } = render(
+      <TranscriptCue
+        index={0}
+        text="hello world"
+        startMs={0}
+        searchRanges={[[0, 5]]}
+        isCurrentMatch={false}
+      />,
+    );
+    const { container: current } = render(
+      <TranscriptCue
+        index={1}
+        text="hello world"
+        startMs={0}
+        searchRanges={[[0, 5]]}
+        isCurrentMatch
+      />,
+    );
+    const nonCurrentMark = nonCurrent.querySelector("mark");
+    const currentMark = current.querySelector("mark");
+    expect(currentMark?.className).toContain("dark:bg-yellow-500/40");
+    expect(currentMark?.className).toContain("dark:ring-yellow-300");
+    expect(nonCurrentMark?.className).toContain("dark:bg-yellow-500/15");
+  });
 });

@@ -21,9 +21,15 @@ function renderTextWithMarks(
   isCurrentMatch: boolean,
 ): ReactNode {
   if (!ranges || ranges.length === 0) return text;
+  // Two-state search match highlight. The ring on the current match is the
+  // canonical "this is the one" signal in find-in-page UIs (Chrome, Firefox).
+  // Dark-mode-specific alpha values keep both states distinguishable against
+  // bg-card in dark mode, where the prior alpha-only differentiator collapsed.
+  // See GitHub #17 and local-state/design-reviews/transcript-review-2026-04-29.md
+  // Issue 8.
   const markClass = isCurrentMatch
-    ? "bg-yellow-300 text-foreground rounded-sm px-0.5"
-    : "bg-yellow-200/60 text-foreground rounded-sm px-0.5";
+    ? "bg-yellow-300 ring-1 ring-yellow-500 text-foreground rounded-sm px-0.5 dark:bg-yellow-500/40 dark:ring-yellow-300"
+    : "bg-yellow-200/50 text-foreground rounded-sm px-0.5 dark:bg-yellow-500/15";
 
   const segments: ReactNode[] = [];
   let cursor = 0;
