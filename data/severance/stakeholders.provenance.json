@@ -3,112 +3,112 @@
     "source_file": "CLAUDE.md",
     "source_section": "row:stakeholder-johan-sellgren",
     "content_hash": "16eb83dd7d4936f0",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-adrian-ford": {
     "source_file": "CLAUDE.md",
     "source_section": "row:stakeholder-adrian-ford",
     "content_hash": "3b611c253f7d9daf",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-helena-borg-jodelsohn": {
     "source_file": "CLAUDE.md",
     "source_section": "row:stakeholder-helena-borg-jodelsohn",
     "content_hash": "ca55a978c661ba8d",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-sarah-hoyle": {
     "source_file": "CLAUDE.md",
     "source_section": "row:stakeholder-sarah-hoyle",
     "content_hash": "804c102f86f04655",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-marqia-williams": {
     "source_file": "CLAUDE.md",
     "source_section": "row:stakeholder-marqia-williams",
     "content_hash": "31dba688f072f8fb",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-babar": {
     "source_file": "CLAUDE.md",
     "source_section": "row:stakeholder-babar",
     "content_hash": "f404e20cb176159c",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-ebba": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Ebba",
     "content_hash": "00a7f37508055052",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-bianca": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Bianca",
     "content_hash": "aec9ed28ffe6b826",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-atelach": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Atelach",
     "content_hash": "d8705fdb9e5196d9",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-oliver-spall": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Oliver Spall",
     "content_hash": "c82eeb3c80db4ebb",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-lex-beattie": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Lex Beattie",
     "content_hash": "be0deef485c10cf1",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-bruno": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Bruno",
     "content_hash": "b6fcd5da9fa80403",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-peter-toth": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Peter Toth",
     "content_hash": "4c58d188d6d741e1",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-jose-manuel": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Jose Manuel",
     "content_hash": "1e749a55cff0a9f0",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-nico-giagnoni": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Nico Giagnoni",
     "content_hash": "7123bae66699b61d",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   },
   "stakeholder-stina": {
     "source_file": "Severance/facts/people.md",
     "source_section": "yaml:Stina",
     "content_hash": "d15e419dbdf4de0f",
-    "extracted_at": "2026-05-11T22:05:15Z",
+    "extracted_at": "2026-05-12T07:50:25Z",
     "parser": "parse_stakeholders"
   }
 }

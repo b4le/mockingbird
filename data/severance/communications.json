@@ -843,10 +843,7 @@
       {
         "id": "email-union-unionen-19dfc39c8ba9de1a-msg-1",
         "date": "2026-05-06T12:19:11Z",
-        "externalSender": {
-          "name": "Stina Hallberg",
-          "email": "stina.hallberg@unionen.se"
-        },
+        "senderId": "stakeholder-stina-hallberg",
         "bodyPreview": "Hi Both of you,\nDo I understand it right -Ben, do you only want to talk about the offer and the terms?\nI´m asking because I’ve come down with something, so I won’t be able to talk to you for a while. If it’s just about the terms and, for example, whether they’re reasonable, our Rådgivning is really good at that.\n\nI’m sorry I can’t be of more help right now.\n\nKindest regards\nStina"
       },
       {
@@ -864,10 +861,7 @@
       {
         "id": "email-union-unionen-19dfc39c8ba9de1a-msg-4",
         "date": "2026-05-07T14:18:52Z",
-        "externalSender": {
-          "name": "Stina Hallberg",
-          "email": "stina.hallberg@unionen.se"
-        },
+        "senderId": "stakeholder-stina-hallberg",
         "bodyPreview": "Hi Ben,\nI apologize for the late response. I understand your situation, and I can assure you that we have expertise in discrimination cases regardless of the grounds involved.\nYou have many good questions, and I suggest we handle this in the following way:\nYou accept the offer. The alternative is that you may be dismissed due to redundancy, which, if I understand correctly, is not what you want. Accepting the offer is not the same as accepting that you have been discriminated against.\nIn the..."
       }
     ],
@@ -875,14 +869,7 @@
       "inbound",
       "category:union-unionen"
     ],
-    "hasAttachments": false,
-    "externalParticipants": [
-      {
-        "name": "Stina Hallberg",
-        "email": "stina.hallberg@unionen.se",
-        "organisation": "Unionen"
-      }
-    ]
+    "hasAttachments": false
   },
   {
     "id": "email-legal-privileged-19dfd41bd6e38c22",
