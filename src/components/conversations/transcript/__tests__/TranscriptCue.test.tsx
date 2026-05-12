@@ -79,6 +79,20 @@ describe("TranscriptCue", () => {
     expect(marks[1].textContent).toBe("bar");
   });
 
+  it("hides the per-cue timestamp on <sm viewports", () => {
+    // Issue #16: the visible timestamp span is suppressed on small mobile
+    // viewports to reduce cue density. JS-DOM can't query media queries
+    // directly, but the responsive classes have to be present for the
+    // breakpoint behaviour to take effect at runtime.
+    const { container } = render(
+      <TranscriptCue index={0} text="Hello" startMs={0} />,
+    );
+    const timestampSpan = container.querySelector("span[aria-hidden=\"true\"]");
+    expect(timestampSpan).not.toBeNull();
+    expect(timestampSpan?.className).toContain("hidden");
+    expect(timestampSpan?.className).toContain("sm:inline");
+  });
+
   it("uses the stronger style class on the current-match cue's marks", () => {
     const { container: nonCurrent } = render(
       <TranscriptCue
