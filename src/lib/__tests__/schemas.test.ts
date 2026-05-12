@@ -389,6 +389,19 @@ describe("AudioReferenceSchema.streamUrl", () => {
     expect(parsed.streamUrl).toBeUndefined();
   });
 
+  it("rejects empty-string streamUrl", () => {
+    // Unlike viewUrl/previewUrl (which accept `""` as the
+    // pending-audio-upload sentinel), streamUrl signals "not migrated
+    // yet" through field absence. Empty string is meaningless here and
+    // must fail validation so hand-edited fixtures cannot smuggle a
+    // useless value past the schema.
+    const result = AudioReferenceSchema.safeParse({
+      ...completeRef,
+      streamUrl: "",
+    });
+    expect(result.success).toBe(false);
+  });
+
   it.each([
     "javascript:alert(1)",
     "data:audio/mp3;base64,AAAA",

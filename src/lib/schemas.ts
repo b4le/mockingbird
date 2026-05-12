@@ -372,7 +372,18 @@ export const AudioReferenceSchema = z
     // render. Same https://-only hardening as viewUrl/previewUrl: bare
     // z.string().url() would accept `javascript:` / `data:` schemes
     // which would be XSS sinks if ever rendered into href.
-    streamUrl: HttpsUrlSchema.optional(),
+    // No pending-upload sentinel for streamUrl: unlike viewUrl/previewUrl
+    // (which are required strings using `""` as the pending-audio-upload
+    // sentinel), streamUrl is optional and signals "not migrated yet"
+    // through field absence, not empty string. Inline shape mirrors
+    // HttpsUrlSchema minus the `.or(z.literal(""))` branch.
+    streamUrl: z
+      .string()
+      .url()
+      .refine((s) => s.startsWith("https://"), {
+        message: "URL must use https://",
+      })
+      .optional(),
     sizeBytes: z.number().int().nonnegative().nullable(),
     durationSeconds: z.number().int().nonnegative().nullable(),
     status: AudioReferenceStatusSchema.optional(),
