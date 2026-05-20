@@ -264,13 +264,6 @@ export const CommunicationSchema = z
     summary: z.string(),
     messages: z.array(CommMessageSchema),
     attachments: z.array(CommAttachmentSchema).optional(),
-    /**
-     * Producer-emitted convenience flag (atticus-finch
-     * `export_mockingbird.py`): `true` iff at least one non-privileged
-     * message in the Communication carries user-visible attachments.
-     * Optional — legacy records may omit it.
-     */
-    hasAttachments: z.boolean().optional(),
     // SCHEMA-COUPLING: required by checkActionBackref in invariants.ts
     actionItemIds: z.array(z.string()),
     // SCHEMA-COUPLING: required by checkCommunicationClaimIds in invariants.ts

@@ -687,7 +687,6 @@ describe("CommunicationSchema attachment metadata", () => {
           path: "local-state/emails/attachments/19bfa273eca78c37/Termination Agreement Ben Purslow.docx.pdf",
         },
       ],
-      hasAttachments: true,
     });
     expect(result.success).toBe(true);
     if (!result.success) return;
@@ -702,7 +701,6 @@ describe("CommunicationSchema attachment metadata", () => {
     expect(att?.path).toBe(
       "local-state/emails/attachments/19bfa273eca78c37/Termination Agreement Ben Purslow.docx.pdf",
     );
-    expect(result.data.hasAttachments).toBe(true);
   });
 
   it("accepts legacy attachments with only name (back-compat)", () => {
@@ -751,19 +749,6 @@ describe("CommunicationSchema attachment metadata", () => {
       attachments: [{ filename: "f.pdf", size: 1.5 }],
     });
     expect(result.success).toBe(false);
-  });
-
-  it("accepts hasAttachments: false (no attachments array)", () => {
-    const result = CommunicationSchema.safeParse({
-      ...baseCommunication,
-      hasAttachments: false,
-    });
-    expect(result.success).toBe(true);
-  });
-
-  it("accepts a Communication with no hasAttachments field (legacy demo data)", () => {
-    const result = CommunicationSchema.safeParse(baseCommunication);
-    expect(result.success).toBe(true);
   });
 
   it("accepts per-message attachments in producer shape", () => {

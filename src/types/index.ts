@@ -117,14 +117,6 @@ export interface Communication {
   summary: string;
   messages: CommMessage[];
   attachments?: CommAttachment[];
-  /**
-   * Producer-emitted convenience flag: `true` iff at least one
-   * non-privileged message in the Communication carries user-visible
-   * attachments. Optional — legacy records may omit it; consumers that
-   * need a derived flag should fall back to `attachments?.length > 0` or
-   * scanning `messages[].attachments`.
-   */
-  hasAttachments?: boolean;
   /** Linked actions: origin required, related extras OK. Required; empty array when none. */
   actionItemIds: string[];
   /** Linked claims: every id must resolve to a real Claim (checked by `checkCommunicationClaimIds` in src/lib/invariants.ts). Required; empty array when none. */

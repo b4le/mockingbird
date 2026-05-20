@@ -244,7 +244,6 @@ A `CommMessage` is one message inside a `Communication` thread. Either an intern
 | `summary` | yes | Producer-generated thread summary. |
 | `messages` | yes | `CommMessageSchema[]` with a refine enforcing unique `id` across messages. |
 | `attachments` | optional | Thread-level (vs per-message) attachments. |
-| `hasAttachments` | optional | Producer convenience flag — `true` iff any non-privileged message has a user-visible attachment. |
 | `actionItemIds` | **required (load-bearing)** | Mirrors `ActionItem.sourceEntityId`. Consumed by `checkActionBackref` without a presence guard. |
 | `claimIds` | **required (load-bearing)** | Consumed by `checkCommunicationClaimIds`. |
 | `evidenceIds` | **required (load-bearing)** | Mirrors `EvidenceItem.sourceEntityId`. Consumed by `checkEvidenceBackref`. |
