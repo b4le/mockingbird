@@ -111,17 +111,28 @@ const sourceEntityRefineMessage =
   "sourceEntityId and sourceEntityType must both be null or both be set";
 
 /**
- * Reusable schema for nullable ISO dates. `z.string().nullable()` alone
- * accepts `""`, which then flows past `DateDisplay`'s `=== null` guard and
- * renders as "Invalid Date" once `parseDate` reaches it. This helper
- * rejects empty strings (and any non-ISO-prefixed string) at the ingestion
- * boundary, forcing the exporter to emit real `null` for unknown dates.
- * Prefix regex so both `YYYY-MM-DD` and full ISO timestamps are accepted.
+ * Reusable schema for required ISO dates. Bare `z.string()` would accept
+ * `""`, which then flows past `DateDisplay`'s falsy guard and renders as
+ * "Invalid Date" once `parseDate` reaches it. This helper rejects empty
+ * strings (and any non-ISO-prefixed string) at the ingestion boundary,
+ * forcing the exporter to emit a real ISO timestamp. Prefix regex so both
+ * `YYYY-MM-DD` and full ISO timestamps are accepted.
+ *
+ * Used for creation/timeline anchors that the dataset-simplification
+ * policy declares non-nullable. The {@link NullableIsoDateSchema} sibling
+ * adds `.nullable()` for due/completed/updated timestamps where absence
+ * is a real state.
  */
-const NullableIsoDateSchema = z
+const IsoDateSchema = z
   .string()
-  .regex(/^\d{4}-\d{2}-\d{2}/, "date must be ISO-formatted (YYYY-MM-DD...) or null")
-  .nullable();
+  .regex(/^\d{4}-\d{2}-\d{2}/, "date must be ISO-formatted (YYYY-MM-DD...)");
+
+/**
+ * Nullable counterpart to {@link IsoDateSchema}. Same ISO-prefix check;
+ * adds `.nullable()` for due/completed/updated timestamps where absence
+ * is a legitimate state.
+ */
+const NullableIsoDateSchema = IsoDateSchema.nullable();
 
 // ---------------------------------------------------------------------------
 // Entity schemas
@@ -518,7 +529,7 @@ export const RiskSchema = z.object({
   mitigationPlan: z.string(),
   // SCHEMA-COUPLING: required by checkRiskActionIds in invariants.ts
   actionIds: z.array(z.string()),
-  createdDate: NullableIsoDateSchema,
+  createdDate: IsoDateSchema,
   updatedDate: NullableIsoDateSchema,
 });
 
@@ -541,7 +552,7 @@ export const EvidenceItemSchema = z
     source: z.string(),
     sourceType: EvidenceSourceTypeSchema,
     strength: EvidenceStrengthSchema,
-    date: NullableIsoDateSchema,
+    date: IsoDateSchema,
     url: z.string().nullable(),
     claimIds: z.array(z.string()),
     sourceEntityId: z.string().nullable(),

@@ -79,7 +79,7 @@ function makeRisk(id: string): Risk {
     likelihood: "medium",
     mitigationPlan: "m",
     actionIds: [],
-    createdDate: null,
+    createdDate: "2024-01-01",
     updatedDate: null,
   };
 }

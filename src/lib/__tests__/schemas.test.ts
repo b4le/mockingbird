@@ -29,13 +29,13 @@ describe("nullable date fields reject non-ISO strings", () => {
     actionIds: [],
   };
 
-  it("Risk dates accept null", () => {
+  it("Risk.updatedDate accepts null (due/updated timestamps stay nullable)", () => {
     const parsed = RiskSchema.parse({
       ...baseRisk,
-      createdDate: null,
+      createdDate: "2024-01-01",
       updatedDate: null,
     });
-    expect(parsed.createdDate).toBeNull();
+    expect(parsed.createdDate).toBe("2024-01-01");
     expect(parsed.updatedDate).toBeNull();
   });
 
@@ -59,6 +59,16 @@ describe("nullable date fields reject non-ISO strings", () => {
     ).not.toThrow();
   });
 
+  it("Risk.createdDate rejects null (creation anchor is required)", () => {
+    expect(() =>
+      RiskSchema.parse({
+        ...baseRisk,
+        createdDate: null,
+        updatedDate: null,
+      }),
+    ).toThrow();
+  });
+
   it("Risk.createdDate rejects empty string (the P0 bypass)", () => {
     expect(() =>
       RiskSchema.parse({
@@ -73,7 +83,7 @@ describe("nullable date fields reject non-ISO strings", () => {
     expect(() =>
       RiskSchema.parse({
         ...baseRisk,
-        createdDate: null,
+        createdDate: "2024-01-01",
         updatedDate: "tomorrow",
       }),
     ).toThrow();
@@ -97,21 +107,22 @@ describe("nullable date fields reject non-ISO strings", () => {
     ).toThrow();
   });
 
-  it("EvidenceItem.date accepts null", () => {
-    const parsed = EvidenceItemSchema.parse({
-      id: "e1",
-      title: "t",
-      description: "d",
-      source: "s",
-      sourceType: "document",
-      strength: "strong",
-      date: null,
-      url: null,
-      claimIds: [],
-      sourceEntityId: null,
-      sourceEntityType: null,
-    });
-    expect(parsed.date).toBeNull();
+  it("EvidenceItem.date rejects null (creation anchor is required)", () => {
+    expect(() =>
+      EvidenceItemSchema.parse({
+        id: "e1",
+        title: "t",
+        description: "d",
+        source: "s",
+        sourceType: "document",
+        strength: "strong",
+        date: null,
+        url: null,
+        claimIds: [],
+        sourceEntityId: null,
+        sourceEntityType: null,
+      }),
+    ).toThrow();
   });
 });
 
@@ -891,7 +902,7 @@ describe("EvidenceItemSchema sourceEntity refine", () => {
     source: "s",
     sourceType: "document" as const,
     strength: "strong" as const,
-    date: null,
+    date: "2024-01-01",
     url: null,
     claimIds: [],
   };
@@ -1144,7 +1155,7 @@ describe("schema-coupling: required arrays", () => {
       severity: "high",
       likelihood: "medium",
       mitigationPlan: "m",
-      createdDate: null,
+      createdDate: "2024-01-01",
       updatedDate: null,
     });
     expect(result.success).toBe(false);

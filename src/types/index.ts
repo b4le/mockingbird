@@ -278,7 +278,7 @@ export interface Risk {
   mitigationPlan: string;
   /** Linked actions: permissive semantics — no backref drift check today. */
   actionIds: string[];
-  createdDate: string | null;
+  createdDate: string;
   updatedDate: string | null;
 }
 
@@ -300,7 +300,7 @@ export interface EvidenceItem {
   source: string;
   sourceType: 'document' | 'conversation' | 'metric' | 'external';
   strength: EvidenceStrength;
-  date: string | null;
+  date: string;
   url: string | null;
   /** Linked claims (bidirectional pair with `Claim.evidenceIds`): permissive semantics — no backref drift check today. */
   claimIds: string[];
