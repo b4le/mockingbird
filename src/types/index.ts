@@ -223,12 +223,6 @@ export interface Conversation {
   /** Linked actions: origin required, related extras OK. Required; empty array when none. */
   actionItemIds: string[];
   medium?: 'in-person' | 'video-call' | 'phone-call';
-  /**
-   * @deprecated — legacy back-compat fallback. Prefer `transcriptId`
-   * joining a Transcript row. Will be removed once all data uses
-   * `transcriptId`.
-   */
-  transcript?: string;
   transcriptId?: string;
   snippetIds?: string[];
   /**

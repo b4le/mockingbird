@@ -33,7 +33,7 @@ function makeTranscript(overrides: Partial<Transcript> = {}): Transcript {
 }
 
 describe("TranscriptPanel", () => {
-  it("renders the 'none' empty state when no transcript and no flat fallback", () => {
+  it("renders the 'none' empty state when no transcript", () => {
     const { getByText } = render(
       <TranscriptPanel
         transcript={null}
@@ -41,17 +41,6 @@ describe("TranscriptPanel", () => {
       />,
     );
     expect(getByText(/No transcript available/i)).not.toBeNull();
-  });
-
-  it("renders the flat fallback when no transcript record but flatTranscript provided", () => {
-    const { getByText } = render(
-      <TranscriptPanel
-        transcript={null}
-        flatTranscript="Raw transcript line one"
-        speakerStakeholderMap={new Map()}
-      />,
-    );
-    expect(getByText(/Raw transcript line one/)).not.toBeNull();
   });
 
   it("renders the no-cues empty state when transcript has zero cues", () => {
@@ -66,9 +55,7 @@ describe("TranscriptPanel", () => {
         speakerStakeholderMap={new Map()}
       />,
     );
-    expect(
-      getByText(/Cue-level navigation isn't available/i),
-    ).not.toBeNull();
+    expect(getByText(/No cues to display/i)).not.toBeNull();
   });
 
   it("renders the toolbar and at least one cue button when cues are present", () => {

@@ -487,12 +487,6 @@ export const ConversationSchema = z.object({
   // SCHEMA-COUPLING: required by checkConversationActionIds + checkActionBackref in invariants.ts
   actionItemIds: z.array(z.string()),
   medium: MediumSchema.optional(),
-  /**
-   * @deprecated — legacy back-compat fallback. Prefer `transcriptId`
-   * joining a Transcript row. Will be removed once all data uses
-   * `transcriptId`.
-   */
-  transcript: z.string().optional(),
   transcriptId: z.string().optional(),
   snippetIds: z.array(z.string()).optional(),
   // Only set on audio-only sessions; never on conversations with a paired

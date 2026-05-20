@@ -621,7 +621,6 @@ Snippets are user-facing audio bookmarks linking back to their parent conversati
 | `decisions` | yes | Bullet list. |
 | `actionItemIds` | **required (load-bearing)** | Consumed by `checkConversationActionIds` and `checkActionBackref`. |
 | `medium` | optional | `MediumSchema`. |
-| `transcript` | optional | @deprecated raw inline transcript fallback. Prefer `transcriptId`. |
 | `transcriptId` | optional | Joins to `Transcript.id`. |
 | `snippetIds` | optional | Optional-array exception; `checkConversationSnippetIds` guards. |
 | `audioReference` | optional | `AudioReferenceSchema`; `Transcript.audioReference` wins when both present. |
@@ -728,7 +727,7 @@ Actions point back to where they were raised. The refine prevents a stale "type 
 ### RiskSchema
 
 - **File**: src/lib/schemas.ts:496
-- **Purpose**: Risk register row. Uses `NullableIsoDateSchema` for `createdDate`/`updatedDate` to reject empty-string dates at ingestion.
+- **Purpose**: Risk register row. `createdDate` uses required `IsoDateSchema` (creation anchor); `updatedDate` uses `NullableIsoDateSchema` (update timestamps are policy-nullable). Both reject empty strings at ingestion.
 - **Wired by**: `getRisks` in `src/lib/data.ts:132`.
 - **TS interface**: `Risk` in `src/types/index.ts`.
 
@@ -744,8 +743,8 @@ Actions point back to where they were raised. The refine prevents a stale "type 
 | `likelihood` | yes | `PrioritySchema`. |
 | `mitigationPlan` | yes | Free-form. |
 | `actionIds` | **required (load-bearing)** | Consumed by `checkRiskActionIds` without a presence guard. |
-| `createdDate` | yes (nullable, ISO) | `NullableIsoDateSchema`. |
-| `updatedDate` | yes (nullable, ISO) | Same. |
+| `createdDate` | yes (ISO, required) | `IsoDateSchema` — creation anchor, never null. |
+| `updatedDate` | yes (nullable, ISO) | `NullableIsoDateSchema` — update timestamp, may be null. |
 
 #### Cross-coupling
 
@@ -775,7 +774,8 @@ A `Risk` mirrors the entries an analyst would keep in a risk register. Dates use
 #### For AI agents (when modifying)
 
 - Do NOT relax `actionIds` to `.optional()` — `checkRiskActionIds` dereferences without a guard.
-- Do NOT replace `NullableIsoDateSchema` on the date fields with `z.string().nullable()` — empty strings would bypass the date guard and render as "Invalid Date".
+- Do NOT replace `IsoDateSchema` / `NullableIsoDateSchema` on the date fields with raw `z.string()` — empty strings would bypass the date guard and render as "Invalid Date".
+- Do NOT relax `createdDate` to nullable without a data audit — the policy declares creation anchors required, and `data/severance` + `data/demo` carry no nulls today.
 - Companion `_AssertX`: `_AssertRisk`.
 - TS interface: `Risk` in `src/types/index.ts`.
 - Invariants: `checkRiskActionIds`.
@@ -837,7 +837,7 @@ A `Claim` is a single assertion. Status reflects how well it is supported. Evide
 ### EvidenceItemSchema
 
 - **File**: src/lib/schemas.ts:521
-- **Purpose**: One evidence row with a polymorphic `sourceEntity` pointer (same refine as `ActionItem`) and `NullableIsoDateSchema` for `date`.
+- **Purpose**: One evidence row with a polymorphic `sourceEntity` pointer (same refine as `ActionItem`) and required `IsoDateSchema` for `date` (creation anchor).
 - **Wired by**: `getEvidence` in `src/lib/data.ts:148`.
 - **TS interface**: `EvidenceItem` in `src/types/index.ts`.
 
@@ -851,7 +851,7 @@ A `Claim` is a single assertion. Status reflects how well it is supported. Evide
 | `source` | yes | Free-form source string. |
 | `sourceType` | yes | `EvidenceSourceTypeSchema`. |
 | `strength` | yes | `EvidenceStrengthSchema`. |
-| `date` | yes (nullable, ISO) | `NullableIsoDateSchema`. |
+| `date` | yes (ISO, required) | `IsoDateSchema` — creation anchor, never null. |
 | `url` | yes (nullable) | Plain `z.string().nullable()`. |
 | `claimIds` | yes | `string[]`; bidirectional pair with `Claim.evidenceIds`. |
 | `sourceEntityId` | yes (nullable) | Both-or-neither with `sourceEntityType`. |

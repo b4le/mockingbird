@@ -22,7 +22,6 @@ const FOLLOW_AUDIO_PAUSE_MS = 5000;
 
 export interface TranscriptPanelProps {
   transcript: Transcript | null;
-  flatTranscript?: string;
   speakerStakeholderMap: ReadonlyMap<string, Stakeholder>;
   onSeek?: (ms: number) => void;
   /**
@@ -37,7 +36,6 @@ export interface TranscriptPanelProps {
 
 export function TranscriptPanel({
   transcript,
-  flatTranscript,
   speakerStakeholderMap,
   onSeek,
   activeCueIndex: activeCueIndexOverride,
@@ -230,28 +228,11 @@ export function TranscriptPanel({
   }, [currentMatchIndex, matches]);
 
   if (!transcript) {
-    const hasFlat =
-      typeof flatTranscript === "string" && flatTranscript.trim() !== "";
-    if (!hasFlat) {
-      return <TranscriptEmpty kind="none" className={className} />;
-    }
-    return (
-      <TranscriptEmpty
-        kind="no-cues"
-        flatTranscript={flatTranscript}
-        className={className}
-      />
-    );
+    return <TranscriptEmpty kind="none" className={className} />;
   }
 
   if (transcript.cues.length === 0) {
-    return (
-      <TranscriptEmpty
-        kind="no-cues"
-        flatTranscript={flatTranscript}
-        className={className}
-      />
-    );
+    return <TranscriptEmpty kind="no-cues" className={className} />;
   }
 
   return (

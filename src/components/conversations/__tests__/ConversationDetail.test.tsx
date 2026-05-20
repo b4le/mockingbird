@@ -196,18 +196,10 @@ describe("ConversationDetail", () => {
     expect(transcriptTab.getAttribute("data-active")).toBe("");
   });
 
-  it("disables the Transcript trigger when neither structured nor flat transcript exists", () => {
+  it("disables the Transcript trigger when no transcript record exists", () => {
     const { getByRole } = renderDetail();
     const transcriptTab = getByRole("tab", { name: "Transcript" });
     expect(transcriptTab.getAttribute("aria-disabled")).toBe("true");
-  });
-
-  it("enables the Transcript trigger when only a flat fallback exists", () => {
-    const { getByRole } = renderDetail({
-      conversation: { transcript: "Some flat transcript text." },
-    });
-    const transcriptTab = getByRole("tab", { name: "Transcript" });
-    expect(transcriptTab.getAttribute("aria-disabled")).not.toBe("true");
   });
 
   it("renders the audio player above the tab list", () => {

@@ -60,10 +60,7 @@ export function ConversationDetail({
     ? CONVERSATION_MEDIUM_LABELS[conversation.medium]
     : CONVERSATION_FALLBACK_LABEL;
 
-  const hasFlatTranscript =
-    typeof conversation.transcript === "string" &&
-    conversation.transcript.trim() !== "";
-  const transcriptDisabled = !transcript && !hasFlatTranscript;
+  const transcriptDisabled = !transcript;
 
   const speakerStakeholderMap = useMemo(
     () =>
@@ -126,9 +123,6 @@ export function ConversationDetail({
             conversation={conversation}
             participants={participants}
             onStakeholderClick={onStakeholderClick}
-            flatTranscript={
-              hasFlatTranscript ? conversation.transcript : undefined
-            }
             speakerStakeholderMap={speakerStakeholderMap}
             linkedActions={linkedActions}
           />
@@ -144,7 +138,6 @@ interface ConversationTabsProps {
   conversation: Conversation;
   participants: Stakeholder[];
   onStakeholderClick: (s: Stakeholder) => void;
-  flatTranscript: string | undefined;
   speakerStakeholderMap: ReadonlyMap<string, Stakeholder>;
   linkedActions: ActionItem[];
 }
@@ -155,7 +148,6 @@ function ConversationTabs({
   conversation,
   participants,
   onStakeholderClick,
-  flatTranscript,
   speakerStakeholderMap,
   linkedActions,
 }: ConversationTabsProps) {
@@ -191,7 +183,6 @@ function ConversationTabs({
       <TabsContent value="transcript" className="space-y-4">
         <TranscriptTab
           transcript={transcript}
-          flatTranscript={flatTranscript}
           speakerStakeholderMap={speakerStakeholderMap}
         />
       </TabsContent>
@@ -279,13 +270,11 @@ function OverviewTab({
 
 interface TranscriptTabProps {
   transcript: Transcript | null;
-  flatTranscript: string | undefined;
   speakerStakeholderMap: ReadonlyMap<string, Stakeholder>;
 }
 
 function TranscriptTab({
   transcript,
-  flatTranscript,
   speakerStakeholderMap,
 }: TranscriptTabProps) {
   const controls = useAudioPlayerControls();
@@ -309,7 +298,6 @@ function TranscriptTab({
     <div className="h-[clamp(20rem,60vh,40rem)]">
       <TranscriptPanel
         transcript={transcript}
-        flatTranscript={flatTranscript}
         speakerStakeholderMap={speakerStakeholderMap}
         onSeek={handleSeek}
       />
