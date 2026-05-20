@@ -177,3 +177,21 @@ Each will be tracked as a follow-up issue or ADR.
 - `npx vitest run` passes (including new invariant tests for Findings 5)
 - All bidirectional `_AssertX` schema/interface checks in `src/lib/schemas.ts` hold
 - `getProjectBundle` continues to return a valid bundle against `data/demo/` and `data/local/` with strict mode off; CI runs with `CI=true` and `reporter.flush()` throws on any drift
+
+---
+
+## Follow-up status (2026-05-20)
+
+Snapshot of the five originally out-of-scope findings, plus F1 (snippet loader) and F2 (audioReference removal), audited against `data/severance/` + `data/demo/`:
+
+| Finding | Status | Notes |
+|---|---|---|
+| **F1** — Snippet loader + invariant | **Resolved** | `getSnippets` + `checkSnippetBackref` shipped on main; F1's blocker (atticus-finch#71) was resolved upstream. |
+| **F2** — `Conversation.audioReference` removal | **Parked** | Field still load-bearing. Severance has one audio-only conversation (`conversation-d738b9e8-…`) and demo has one (`c5`) with no `transcriptId`. Dropping the field would break their player. |
+| **F3** — Transcript derivable fields | **Parked** | Exporter still emits `cueCount`, `hasCues`, `participants` for all transcripts in `data/severance/` and `data/demo/`. Re-evaluate after the next atticus-finch sync. |
+| **F6** — `Communication.hasAttachments` | **Resolved** | Field dropped from schema + interface — no UI consumer ever read it; callers can compute from `attachments?.length`. |
+| **F7** — Date nullability | **Partial** | `Risk.createdDate` and `EvidenceItem.date` tightened to required `IsoDateSchema` (zero null values in either project). `Conversation.date` left nullable — `data/severance` has two legitimately-undated union meetings (`conv-union-undated-*`). |
+| **F9** — Derive `Stakeholder.initials` from `name` | **Parked** | `[Privileged]` stakeholder uses `initials: "--"` as an editorial redaction choice; derivation can't reproduce it. Removing the field would force the privileged sentinel into the derivation helper, trading one stored field for one special-case branch — a non-simplification. |
+| **F10** — `TimelineEvent` thin pointer | **Already done** | `TimelineEventSchema` (`src/lib/schemas.ts:559`) and the `TimelineEvent` interface already carry only the pointer pair (`linkedEntityId` + `linkedEntityType`); no denormalised fields. No code change needed. |
+
+Migration table follow-ups from this update: `CommAttachment.name` is **still parked** — demo data carries 3 attachments with only `name` and no `filename`, so the consumer-side fallback can't be removed yet. `Conversation.transcript` flat-blob is **resolved** — zero records carry it in either project, schema + UI cascade removed.
