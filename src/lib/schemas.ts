@@ -297,7 +297,6 @@ export const StakeholderSchema = z.object({
   name: z.string(),
   role: z.string(),
   organisation: z.string(),
-  initials: z.string(),
   colour: z.string(),
   email: z.string().optional(),
   phone: z.string().optional(),

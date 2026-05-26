@@ -23,7 +23,6 @@ const stakeholderA: Stakeholder = {
   name: "Alex Stone",
   role: "PM",
   organisation: "Acme",
-  initials: "AS",
   colour: "#112233",
 };
 
@@ -32,7 +31,6 @@ const stakeholderB: Stakeholder = {
   name: "Maria Lin",
   role: "Eng",
   organisation: "Acme",
-  initials: "ML",
   colour: "#445566",
 };
 

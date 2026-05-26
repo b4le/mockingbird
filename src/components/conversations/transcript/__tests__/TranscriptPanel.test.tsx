@@ -12,7 +12,6 @@ const ben: Stakeholder = {
   name: "Ben",
   role: "Founder",
   organisation: "Acme",
-  initials: "B",
   colour: "#111",
 };
 

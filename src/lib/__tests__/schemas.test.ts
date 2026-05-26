@@ -787,7 +787,6 @@ describe("StakeholderSchema", () => {
     name: "Alice",
     role: "Engineer",
     organisation: "Acme",
-    initials: "AA",
     colour: "#abcdef",
   };
 
@@ -811,9 +810,9 @@ describe("StakeholderSchema", () => {
     expect(parsed.notes).toBe("primary contact");
   });
 
-  it("rejects a stakeholder missing a required field (initials)", () => {
-    const { initials: _initials, ...rest } = baseStakeholder;
-    void _initials;
+  it("rejects a stakeholder missing a required field (colour)", () => {
+    const { colour: _colour, ...rest } = baseStakeholder;
+    void _colour;
     expect(() => StakeholderSchema.parse(rest)).toThrow();
   });
 });

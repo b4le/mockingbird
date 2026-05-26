@@ -24,7 +24,6 @@ const stakeholder: Stakeholder = {
   name: "Ada Lovelace",
   role: "Engineer",
   organisation: "ACME",
-  initials: "AL",
   colour: "#4f46e5",
 };
 

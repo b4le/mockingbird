@@ -12,7 +12,6 @@ const ben: Stakeholder = {
   name: "Ben",
   role: "Founder",
   organisation: "Acme",
-  initials: "B",
   colour: "#111",
 };
 
@@ -21,7 +20,6 @@ const adrian: Stakeholder = {
   name: "Adrian",
   role: "Engineer",
   organisation: "Acme",
-  initials: "A",
   colour: "#222",
 };
 

@@ -154,7 +154,6 @@ function makeStakeholder(id: string): Stakeholder {
     name: id,
     role: "r",
     organisation: "o",
-    initials: "x",
     colour: "#000000",
   };
 }

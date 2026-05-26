@@ -16,7 +16,6 @@ const stakeholders: Stakeholder[] = [
     name: "Alex Stone",
     role: "PM",
     organisation: "Acme",
-    initials: "AS",
     colour: "#112233",
   },
 ];

@@ -135,7 +135,6 @@ export interface Stakeholder {
   name: string;
   role: string;
   organisation: string;
-  initials: string;
   colour: string;
   email?: string;
   phone?: string;

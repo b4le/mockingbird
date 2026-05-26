@@ -308,22 +308,22 @@ A `Communication` is one written-channel thread. Treat the five `*Ids` arrays as
 | `name` | yes | Display name. |
 | `role` | yes | Job title / role. |
 | `organisation` | yes | Employer or group. |
-| `initials` | yes | Used in avatar fallback. |
 | `colour` | yes | Used in chart series / avatar background. |
 | `email` | optional | Populated when known. |
 | `phone` | optional | Populated when known. |
-| `avatarUrl` | optional | Image URL for the avatar; falls back to initials when absent. |
+| `avatarUrl` | optional | Image URL for the avatar; falls back to derived initials when absent. |
 | `notes` | optional | Free-form. |
 
 #### Cross-coupling
 
 - Referenced by `Conversation.participantIds`, `Communication.participantIds`, `Transcript.participantIds`, `ActionItem.ownerId`, `Claim.raisedById`, `TimelineEvent.stakeholderIds`, `TranscriptCue.speakerId`.
 - No invariant check enforces id-resolution into `Stakeholder` today; the UI shows `Unknown` for unresolved ids.
+- Avatar initials are derived from `name` at render time via `getStakeholderInitials` in `src/lib/stakeholders.ts` (fully bracketed names like `[Privileged]` render the `--` redaction sentinel). There is no stored `initials` field.
 
 #### Examples
 
 ```jsonc
-{ "id": "s-1", "name": "Alice", "role": "Engineer", "organisation": "Acme", "initials": "AA", "colour": "#abcdef" }
+{ "id": "s-1", "name": "Alice", "role": "Engineer", "organisation": "Acme", "colour": "#abcdef" }
 ```
 
 #### For humans
@@ -332,7 +332,8 @@ A `Stakeholder` is "a person who shows up in the data". Optional fields exist be
 
 #### For AI agents (when modifying)
 
-- The six required fields are all rendered directly in the UI; do NOT make them optional without updating the components that read them.
+- The five required fields are all rendered directly in the UI; do NOT make them optional without updating the components that read them.
+- Avatar initials are NOT stored — they derive from `name` via `getStakeholderInitials`. If you reintroduce a stored field, update both render sites (`StakeholderAvatar`, `StakeholderDetailDialog`) and the helper's tests.
 - Companion `_AssertX`: `_AssertStakeholder`.
 - TS interface: `Stakeholder` in `src/types/index.ts`.
 - Tests: `StakeholderSchema` block in `src/lib/__tests__/schemas.test.ts`.

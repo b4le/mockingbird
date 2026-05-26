@@ -5,6 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { getStakeholderInitials } from "@/lib/stakeholders";
 import type { Stakeholder } from "@/types";
 
 interface StakeholderAvatarProps {
@@ -53,7 +54,7 @@ export function StakeholderAvatar({
         className={`${sizes[size]} relative inline-flex shrink-0 items-center justify-center rounded-full font-medium text-white before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-11 before:-translate-x-1/2 before:-translate-y-1/2 before:content-[''] ${interactive ? "cursor-pointer" : ""}`}
         style={{ backgroundColor: stakeholder.colour }}
       >
-        {stakeholder.initials}
+        {getStakeholderInitials(stakeholder.name)}
       </TooltipTrigger>
       <TooltipContent>
         <p className="font-medium">{stakeholder.name}</p>

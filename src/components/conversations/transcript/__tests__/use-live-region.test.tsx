@@ -17,7 +17,6 @@ const ben: Stakeholder = {
   name: "Ben Purslow",
   role: "Founder",
   organisation: "Acme",
-  initials: "BP",
   colour: "#111",
 };
 

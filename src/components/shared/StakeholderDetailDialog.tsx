@@ -20,6 +20,7 @@ import {
   getStakeholderActivity,
   resolveSourceLabel,
 } from "@/lib/stakeholder-activity";
+import { getStakeholderInitials } from "@/lib/stakeholders";
 import { StatusBadge } from "./StatusBadge";
 import { DateDisplay } from "./DateDisplay";
 import type {
@@ -68,7 +69,7 @@ export function StakeholderDetailDialog({
               className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-medium text-white"
               style={{ backgroundColor: stakeholder.colour }}
             >
-              {stakeholder.initials}
+              {getStakeholderInitials(stakeholder.name)}
             </div>
             <div>
               <DialogTitle>{stakeholder.name}</DialogTitle>
