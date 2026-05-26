@@ -423,11 +423,8 @@ export const TranscriptSchema = z.object({
   date: z.string(),
   category: z.string(),
   conversationId: z.string().nullable(),
-  participants: z.array(z.string()),
   participantIds: z.array(z.string()).optional(),
   durationSeconds: z.number().nonnegative().nullable(),
-  cueCount: z.number().int().nonnegative(),
-  hasCues: z.boolean(),
   // SCHEMA-COUPLING: required by checkTranscriptSpeakers in invariants.ts
   cues: z.array(TranscriptCueSchema),
   sourceFile: z.string(),

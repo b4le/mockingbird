@@ -356,11 +356,8 @@ export interface Transcript {
   date: string;
   category: string;
   conversationId: string | null;
-  participants: string[];
   participantIds?: string[];
   durationSeconds: number | null;
-  cueCount: number;
-  hasCues: boolean;
   cues: TranscriptCue[];
   sourceFile: string;
   /**

@@ -113,10 +113,7 @@ function makeTranscript(
     date: "",
     category: "test",
     conversationId,
-    participants: [],
     durationSeconds: null,
-    cueCount: 0,
-    hasCues: false,
     cues: [],
     sourceFile: "test.md",
   };

@@ -22,10 +22,7 @@ function makeTranscript(overrides: Partial<Transcript> = {}): Transcript {
     date: "",
     category: "demo",
     conversationId: "c1",
-    participants: ["Ben"],
     durationSeconds: 120,
-    cueCount: 1,
-    hasCues: true,
     cues: [{ startMs: 0, endMs: 1000, speaker: "Ben", text: "Hello." }],
     sourceFile: "x",
     ...overrides,
@@ -46,8 +43,6 @@ describe("TranscriptPanel", () => {
   it("renders the no-cues empty state when transcript has zero cues", () => {
     const transcript = makeTranscript({
       cues: [],
-      cueCount: 0,
-      hasCues: false,
     });
     const { getByText } = render(
       <TranscriptPanel

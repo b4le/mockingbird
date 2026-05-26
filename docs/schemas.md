@@ -485,11 +485,8 @@ Cues are atomic units of transcript. Keep the bounds tight — `text` at 10k cha
 | `date` | yes | ISO date string. |
 | `category` | yes | Free-form category label. |
 | `conversationId` | yes (nullable) | Resolves to `Conversation.id` or `null` for transcripts without a meeting. |
-| `participants` | yes | Raw speaker label list. |
 | `participantIds` | optional | Resolved `Stakeholder.id` list. |
 | `durationSeconds` | yes (nullable) | Total runtime. |
-| `cueCount` | yes | Convenience count; should equal `cues.length`. |
-| `hasCues` | yes | Convenience boolean. |
 | `cues` | **required (load-bearing)** | `TranscriptCueSchema[]` consumed by `checkTranscriptSpeakers` without a presence guard. |
 | `sourceFile` | yes | Original file name for provenance. |
 | `audioReference` | optional | `AudioReferenceSchema`; source of truth for the recording when present. |
@@ -498,7 +495,7 @@ Cues are atomic units of transcript. Keep the bounds tight — `text` at 10k cha
 #### Cross-coupling
 
 - `checkConversationTranscriptId` (invariants.ts:410) + `checkTranscriptConversationId` (invariants.ts:437) enforce bidirectional link consistency with `Conversation`.
-- `checkTranscriptSpeakers` (invariants.ts:474) iterates `cues` and `participants`.
+- `checkTranscriptSpeakers` (invariants.ts:474) iterates `cues`, `cue.speakerId`, `speakerMap`, and resolved `participantIds`.
 - When both `Conversation.audioReference` and `Transcript.audioReference` exist, **Transcript wins** — see the `AudioReferenceSchema` doc block.
 
 #### Examples
@@ -509,10 +506,7 @@ Cues are atomic units of transcript. Keep the bounds tight — `text` at 10k cha
   "date": "2024-01-01",
   "category": "interview",
   "conversationId": "conv-1",
-  "participants": ["Alice", "Bob"],
   "durationSeconds": 120,
-  "cueCount": 1,
-  "hasCues": true,
   "cues": [{ "startMs": 0, "endMs": 1000, "speaker": "Alice", "text": "hi" }],
   "sourceFile": "t-1.wav"
 }

@@ -26,10 +26,7 @@ function makeTranscript(overrides: Partial<Transcript> = {}): Transcript {
     date: "",
     category: "demo",
     conversationId: "c1",
-    participants: ["Ben", "Adrian"],
     durationSeconds: 120,
-    cueCount: 2,
-    hasCues: true,
     cues: [
       { startMs: 0, endMs: 1000, speaker: "Ben", text: "hi" },
       { startMs: 1000, endMs: 2000, speaker: "Adrian", text: "hello" },
