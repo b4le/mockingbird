@@ -14,12 +14,25 @@ A self-hosted project dashboard for tracking complex multi-stakeholder projects.
 
 ## Quick Start
 
+**Prerequisites:** Node 22 (pinned in `.nvmrc`). With nvm: `nvm use`.
+
 ```bash
+nvm use          # or ensure Node >=22 is active
 npm install
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### Verifying a change
+
+```bash
+npm run lint                       # eslint
+npm test                           # vitest
+CI=true npm run build              # build with strict cross-collection invariants
+```
+
+`CI=true` makes the data invariants in `src/lib/invariants.ts` throw on drift instead of warning — this is exactly what the GitHub Actions pipeline runs. See `AGENTS.md` for the invariant and schema-coupling rules.
 
 ## Data Contract
 
