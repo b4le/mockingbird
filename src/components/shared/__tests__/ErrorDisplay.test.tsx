@@ -9,8 +9,6 @@ const baseProps = {
 };
 
 describe("ErrorDisplay — NODE_ENV-gated message rendering", () => {
-  const originalEnv = process.env.NODE_ENV;
-
   beforeEach(() => {
     vi.unstubAllEnvs();
   });
@@ -18,7 +16,6 @@ describe("ErrorDisplay — NODE_ENV-gated message rendering", () => {
   afterEach(() => {
     cleanup();
     vi.unstubAllEnvs();
-    process.env.NODE_ENV = originalEnv;
   });
 
   it("renders error.message in non-production (dev DX)", () => {
