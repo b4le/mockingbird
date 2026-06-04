@@ -240,6 +240,48 @@ describe("useSpeakerChangeAnnouncer — cue advance", () => {
     expect(result.current.message).not.toBe("A new voice arrives.");
   });
 
+  it("prefers the speaker announcement at a non-zero debounce (deferred speaker flush, no double-announce)", () => {
+    // Same coincident transition as above, but with a production-like debounce
+    // window. Exercises the *deferred* speaker-flush path: the speaker effect
+    // schedules its announcement in a timer rather than flushing synchronously,
+    // so the cue-advance guard must yield on the stale label (guard 1) — the
+    // index-stamp guard (guard 2) hasn't run yet when the cue effect evaluates.
+    const speakerChangeWithPause: TranscriptCue[] = [
+      { startMs: 0, endMs: 1000, speaker: "Ben", text: "Opening." },
+      { startMs: 6000, endMs: 7000, speaker: "Adrian", text: "A new voice arrives." },
+    ];
+    const map = new Map<string, Stakeholder>();
+    const { result, rerender } = renderHook(
+      ({ idx }: { idx: number }) =>
+        useSpeakerChangeAnnouncer({
+          cues: speakerChangeWithPause,
+          activeCueIndex: idx,
+          speakerStakeholderMap: map,
+          debounceMs: 2000,
+        }),
+      { initialProps: { idx: 0 } },
+    );
+    // First resolution announces immediately (lastAnnouncedAt === 0).
+    expect(result.current.message).toContain("Ben");
+
+    rerender({ idx: 1 });
+    // Speaker change is debounced — nothing has landed yet. Crucially, the
+    // cue-advance effect must NOT have sneaked the raw cue text in via its
+    // setTimeout(0) while the speaker flush is still pending.
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
+    expect(result.current.message).toContain("Ben");
+    expect(result.current.message).not.toBe("A new voice arrives.");
+
+    // Let the debounce window elapse — the speaker announcement wins.
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+    expect(result.current.message).toContain("Adrian");
+    expect(result.current.message).not.toBe("A new voice arrives.");
+  });
+
   it("truncates long cue text to the default maxLength with an ellipsis", () => {
     const longText = "x".repeat(250);
     const longCues: TranscriptCue[] = [
